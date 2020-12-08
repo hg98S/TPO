@@ -85,7 +85,7 @@
                <ul>
                   <li><a href="destination.html">Reservation</a></li>
                   
-                  <li><a href="pricing.html">Attraction</a></li>
+                  <li><a href="sightList.tpo">Attraction</a></li>
                   <li><a href="contact.html">Room</a></li>
                   <li class="has-dropdown">
                      <a href="#">Login</a>
