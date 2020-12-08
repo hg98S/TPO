@@ -55,6 +55,7 @@
 <![endif]-->
 </head>
 <body>
+	<div class="page"></div>
    <!-- 헤더 시작 -->
    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(resources/images/img_bg_2.jpg)">
       <div class="overlay"></div>
@@ -79,21 +80,18 @@
          
          <div class="row">
             <div class="col-sm-4 col-xs-12">
-               <div id="gtco-logo"><a href="index.html">TPO</a></div>
+               <div id="gtco-logo"><a href="index.jsp">TPO</a></div>
             </div>
             <div class="col-xs-8 text-right menu-1">
                <ul>
-                  <li><a href="destination.html">Reservation</a></li>
-                  
-                  <li><a href="pricing.html">Attraction</a></li>
-                  <li><a href="contact.html">Room</a></li>
+                  <li><a href="reservation.jsp">Reservation</a></li>
+                  <li><a href="#">Attraction</a></li>
+                  <li><a href="#">Room</a></li>
                   <li class="has-dropdown">
                      <a href="#">Login</a>
                      <ul class="dropdown">
                         <li><a href="#">My Page</a></li>
                         <li><a href="#">Logout</a></li>
-                        <!-- <li><a href="#">America</a></li>
-                        <li><a href="#">Canada</a></li> -->
                      </ul>
                   </li>
                </ul>   
