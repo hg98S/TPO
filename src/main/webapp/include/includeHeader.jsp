@@ -88,7 +88,7 @@
             <div class="col-xs-8 text-right menu-1">
                <ul>
                   <li><a href="reservation.jsp">Reservation</a></li>
-                  <li><a href="#">Attraction</a></li>
+                  <li><a href="sightList.tpo">Attraction</a></li>
                   <li><a href="#">Room</a></li>
                   <li class="has-dropdown">
                    <c:if test="${empty loginUser }">
