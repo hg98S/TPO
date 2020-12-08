@@ -10,7 +10,7 @@
 <body>
 	
 	<!-- 헤더 시작 -->
-	<jsp:include page="include/includeHeader.jsp">ㅋ</jsp:include>
+	<jsp:include page="include/includeHeader.jsp"></jsp:include>
 	<!-- 헤더 끝 -->
 
 	<!-- 메인 내용 시작 -->

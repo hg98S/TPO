@@ -57,7 +57,6 @@
 <body>
    <div class="gtco-loader"></div>
    
-   
    <!-- 푸터 시작 -->
    <footer id="gtco-footer" role="contentinfo">
       <div class="gtco-container">
