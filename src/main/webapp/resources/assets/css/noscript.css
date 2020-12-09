@@ -38,7 +38,7 @@
 
 		#main > .panel {
 			background: #ffffff;
-			margin-bottom: 2em;
+			margin-bottom: 0;
 		}
 
 			#main > .panel:last-child {
