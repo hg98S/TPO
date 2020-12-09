@@ -8,4 +8,17 @@
 	<select id="selectOne" resultMap="MemberResultMap">
 		select * from member where  userid=#{userId} and userpwd=#{userPwd} and mstatus='Y'
 	</select>
+	<select id="checkIdDup" resultType="int">
+		select count(*) from member where userid=#{userId}
+	</select>
+	<insert id="insertMember">
+		insert into member
+		values(#{userId},#{userPwd},#{userName},#{age},#{gender},#{email},#{phone},#{address},#{domestic},SYSDATE,SYSDATE,DEFAULT)
+	</insert>
+	<select id="searchId" resultMap="MemberResultMap">
+		select * from member where username=#{userName} and phone=#{phone} and mstatus='Y'
+	</select>
+	<select id="emailChk" resultType="int">
+		select count(*) from member where userid=#{userId} and email=#{email} and mstatus='Y'
+	</select>
 </mapper>

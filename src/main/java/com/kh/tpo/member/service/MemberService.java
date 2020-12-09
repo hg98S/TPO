@@ -53,7 +53,7 @@ public interface MemberService {
 	 *  @Param Member
 	 *  @Return String
 	 * */
-	public String findId(String userId);
+	public Member findId(Member member);
 	/*
 	 * 	회원 비밀번호 찾기
 	 *  
@@ -61,4 +61,11 @@ public interface MemberService {
 	 *  @Return int
 	 * */
 	public int findPwd(String userPwd);
+	/*
+	 * 	회원 이메일 인증여부
+	 *  
+	 *  @Param Member
+	 *  @Return int
+	 * */
+	public int emailChk(Member member);
 }

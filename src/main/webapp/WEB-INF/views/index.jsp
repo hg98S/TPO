@@ -10,7 +10,7 @@
 <body>
 	
 	<!-- 헤더 시작 -->
-	<jsp:include page="include/includeHeader.jsp"></jsp:include>
+	<jsp:include page="/include/includeHeader.jsp"></jsp:include>
 	<!-- 헤더 끝 -->
 
 	<!-- 메인 내용 시작 -->
@@ -121,7 +121,7 @@
 	<!-- 메인 내용 끝 -->
 	
 	<!-- 푸터 시작 -->
-	<jsp:include page="include/includeFooter.jsp"></jsp:include>
+	<jsp:include page="/include/includeFooter.jsp"></jsp:include>
 	<!-- 푸터 끝 -->
 	
 </body>

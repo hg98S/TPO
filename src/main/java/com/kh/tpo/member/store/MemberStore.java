@@ -53,7 +53,7 @@ public interface MemberStore {
 	 *  @Param Member
 	 *  @Return String
 	 * */
-	public String searchId(String userId);
+	public Member searchId(Member member);
 	/*
 	 * 	회원 비밀번호 찾기
 	 *  
@@ -61,4 +61,11 @@ public interface MemberStore {
 	 *  @Return int
 	 * */
 	public int searchPwd(String userPwd);
+	/*
+	 * 	회원 이메일 인증여부
+	 *  
+	 *  @Param Member
+	 *  @Return int
+	 * */
+	public int emailChk(Member member);
 }

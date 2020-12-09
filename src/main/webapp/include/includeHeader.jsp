@@ -53,8 +53,11 @@
 <!--[if lt IE 9]>
 <script src="resources/js/respond.min.js"></script>
 <![endif]-->
-<!-- jQuery 추가 -->
+<!-- jQuery 쿼리 추가 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--  주소팝업창 script 추가 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- jQuery Modal script 추가-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </head>
 <body>
@@ -80,10 +83,9 @@
    <!-- <div class="page-inner"> -->
    <nav class="gtco-nav" role="navigation">
       <div class="gtco-container">
-         
          <div class="row">
             <div class="col-sm-4 col-xs-12">
-               <div id="gtco-logo"><a href="index.jsp">TPO</a></div>
+               <div id="gtco-logo"><a href="mainPage.tpo">TPO</a></div>
             </div>
             <div class="col-xs-8 text-right menu-1">
                <ul>
@@ -94,17 +96,17 @@
                    <c:if test="${empty loginUser }">
                    	<a href="loginView.tpo">Login</a>
                    </c:if>
-                     <c:if test="${!empty loginUser }">
+                    <c:if test="${!empty loginUser }">
+                     <a href="#">아이콘</a>
                      <ul class="dropdown">
+                     	<li><a href="logout.tpo">Logout</a></li>
                         <li><a href="#">My Page</a></li>
-                        <li><a href="#">Logout</a></li>
                      </ul>
                      </c:if>
                   </li>
                </ul>   
             </div>
          </div>
-         
       </div>
    </nav>
    <!-- 네비게이션 끝 -->

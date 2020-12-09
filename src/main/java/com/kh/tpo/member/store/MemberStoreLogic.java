@@ -20,19 +20,16 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public int insertMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.insert("MemberMapper.insertMember", member);
 	}
 
 	@Override
 	public int idDuplicateChk(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.selectOne("MemberMapper.checkIdDup",userId);
 	}
 
 	@Override
 	public int updateMember(Member member) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -49,15 +46,19 @@ public class MemberStoreLogic implements MemberStore{
 	}
 
 	@Override
-	public String searchId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member searchId(Member member) {
+		return session.selectOne("MemberMapper.searchId",member);
 	}
 
 	@Override
 	public int searchPwd(String userPwd) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int emailChk(Member member) {
+		return session.selectOne("MemberMapper.emailChk", member);
 	}
 
 }

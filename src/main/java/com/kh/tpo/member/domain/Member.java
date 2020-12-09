@@ -10,7 +10,7 @@ public class Member {
 	private int age;
 	private String gender;
 	private String email;
-	private int phone;
+	private String phone;
 	private String address;
 	private String domestic;
 	private Date mCreateDate;
@@ -67,11 +67,12 @@ public class Member {
 		this.email = email;
 	}
 
-	public int getPhone() {
+	
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

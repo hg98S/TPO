@@ -20,14 +20,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int registerMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mStore.insertMember(member);
 	}
 
 	@Override
 	public int idDuplicateChk(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mStore.idDuplicateChk(userId);
 	}
 
 	@Override
@@ -49,15 +47,19 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String findId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member findId(Member member) {
+		return mStore.searchId(member);
 	}
 
 	@Override
 	public int findPwd(String userPwd) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int emailChk(Member member) {
+		return mStore.emailChk(member);
 	}
 
 }
