@@ -13,7 +13,7 @@
 	<jsp:include page="/include/includeHeader.jsp"></jsp:include>
 	
 	<section>
-		
+		<a href="ex.tpo">다음확인</a>
 		<!-- Wrapper-->
 			<div id="wrapper">
 
@@ -138,6 +138,5 @@
 	</section>
 	
 	<jsp:include page="/include/includeFooter.jsp"></jsp:include>
-	
 </body>
 </html>

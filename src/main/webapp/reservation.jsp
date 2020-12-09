@@ -11,7 +11,7 @@
 <body>
 	
 	<jsp:include page="/include/includeHeader.jsp"></jsp:include>
-	
+	<a href="ex.tpo">다음</a>
 	<section>
 		
 		<!-- Wrapper-->
