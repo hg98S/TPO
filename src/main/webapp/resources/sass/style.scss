@@ -110,10 +110,27 @@ body {
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 1.7;
-	color: #777;
+	color: #fff;
 	background: $brand-white;
 	
 }
+
+#twoway_dep, #twoway_arr, #oneway_dep, #oneway_arr {
+    width: 200px; /* 원하는 너비설정 */
+    padding: .8em .5em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    background: url('/resources/images/arrow-down-sign-to-navigate.png') no-repeat 95% 50%; /* 네이티브 화살표를 커스텀 화살표로 대체 */
+    /* width:32px;height:32px; */
+    border: 1px solid #999;
+    border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+/* 출처: https://webclub.tistory.com/235 [Web Club] */
+}
+
+
+
 #page {
 	position: relative;
 	overflow-x: hidden;
