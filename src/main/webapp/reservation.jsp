@@ -154,6 +154,159 @@
 								<form action="">
 									가는 날짜 : 
 									<input style="width:35%;" type="text" id="datePicker_arr" class="form-control" value="2020-00-00">
+									
+									
+									
+									
+									<div class="bowl">
+										<a href="#select_person" title="일반석" class="btn person js_show" style="overflow: hidden;">
+											<span class="icn member">성인 1명</span> 
+											<span class="divider_dot"></span>
+											일반석
+										</a> 
+										<div id="select_person" class="js_show_wrap lypop_selectPerson" style="margin-top: 5px; right: 0px;">
+											<div class="member_count">
+												<ul>
+													<li>
+														<div class="text_wrap mid line top">
+															<strong class="tit">인원</strong>
+														</div> 
+														<div class="num_count_holder">
+															<p class="tit">성인 <span class="txt">만 12세 이상</span></p> 
+															<span class="num_count_group cir">
+																<button class="btn_decrement down"></button> 
+																<span class="inpt_counter">1</span> 
+																<button class="btn_increment up"></button>
+															</span>
+														</div> 
+														<div class="num_count_holder">
+															<p class="tit">소아 <span class="txt">만 2세~12세 미만</span></p>
+															<span class="num_count_group cir">
+																<button class="btn_decrement down"></button> 
+																<span class="inpt_counter">0</span> 
+																<button class="btn_increment up"></button>
+															</span>
+														</div> 
+														<div class="num_count_holder">
+															<p class="tit">유아 <span class="txt">만 2세 미만</span></p> 
+															<span class="num_count_group cir">
+																<button class="btn_decrement down"></button> 
+																<span class="inpt_counter">0</span> 
+																<button class="btn_increment up"></button>
+															</span>
+														</div>
+													</li>
+												</ul> 
+												<p class="mt20 mb10 exclam em">예약 가능 최대 인원은 9명이며, 유아는 성인 인원 내에서 선택 가능합니다.</p>
+											</div> 
+											<div class="option_wrap">
+												<span class="right_cont">
+													<button class="btn pink">선택완료</button>
+												</span>
+											</div>
+										</div>
+									</div>
+									
+									
+									
+									
+									
+									
+									<li><strong class="tit">좌석수 </strong>
+					                   <ul class="type01">
+					                        <li><label for="Adult" class="tit">성인</label>
+					                            <span class="bsc1SelectWrapN" style="width: 40px;">
+					                            	<span class="bsc1SelectsN">
+					                            		<input type="button" id="si_selAdt" value="1" style="width: 23px;">
+					                            	</span>
+					                            	<ul id="ou_selAdt" class="" style="width: 38px; display: none;">
+					                            		<li style="width: 24px;"><a href="#">1</a></li>
+					                            		<li style="width: 24px;"><a href="#">2</a></li>
+					                            		<li style="width: 24px;"><a href="#">3</a></li>
+					                            		<li style="width: 24px;"><a href="#">4</a></li>
+					                            		<li style="width: 24px;"><a href="#">5</a></li>
+					                            		<li style="width: 24px;"><a href="#">6</a></li>
+					                            		<li style="width: 24px;"><a href="#">7</a></li>
+					                            		<li style="width: 24px;"><a href="#">8</a></li>
+					                            		<li style="width: 24px;"><a href="#">9</a></li>
+					                            	</ul>
+					                            </span>
+					                            <select id="selAdt" class="bsc1" title="성인 좌석수를 선택하세요" style="width: 40px; position: absolute; visibility: hidden;">
+					                                <option value="1" selected="selected">1</option>
+					                                <option value="2">2</option>
+					                                <option value="3">3</option>
+					                                <option value="4">4</option>
+					                                <option value="5">5</option>
+					                                <option value="6">6</option>
+					                                <option value="7">7</option>
+					                                <option value="8">8</option>
+					                                <option value="9">9</option>
+					                            </select>
+					                        </li>
+					                        <li><label for="Young" class="tit">소아</label>
+					                            <span class="bsc1SelectWrapN" style="width: 40px;">
+					                            	<span class="bsc1SelectsN">
+					                            		<input type="button" id="si_selChd" value="0" style="width: 23px;">
+					                            	</span>
+				                            		<ul id="ou_selChd" class="bscOptionsN bsc1OptionsAddN" style="width: 38px; display: none;">
+				                            			<li style="width: 24px;"><a href="#">0</a></li>
+				                            			<li style="width: 24px;"><a href="#">1</a></li>
+				                            			<li style="width: 24px;"><a href="#">2</a></li>
+				                            			<li style="width: 24px;"><a href="#">3</a></li>
+				                            			<li style="width: 24px;"><a href="#">4</a></li>
+				                            			<li style="width: 24px;"><a href="#">5</a></li>
+				                            			<li style="width: 24px;"><a href="#">6</a></li>
+				                            			<li style="width: 24px;"><a href="#">7</a></li>
+				                            			<li style="width: 24px;"><a href="#">8</a></li>
+				                            			<li style="width: 24px;"><a href="#">9</a></li>
+				                            		</ul>
+					                            </span>
+					                            <select id="selChd" class="bsc1" title="소아 좌석수를 선택하세요" style="width: 40px; position: absolute; visibility: hidden;">
+					                                <option value="0" selected="selected">0</option>
+					                                <option value="1">1</option>
+					                                <option value="2">2</option>
+					                                <option value="3">3</option>
+					                                <option value="4">4</option>
+					                                <option value="5">5</option>
+					                                <option value="6">6</option>
+					                                <option value="7">7</option>
+					                                <option value="8">8</option>
+					                                <option value="9">9</option>
+					                            </select>
+					                        </li>
+					                        <li><label for="Child" class="tit">유아</label>
+					                            <span class="bsc1SelectWrapN" style="width: 40px;">
+					                            	<span class="bsc1SelectsN">
+					                            		<input type="button" id="si_selIinf" value="0" style="width: 23px;">
+					                            	</span>
+					                            	<ul id="ou_selIinf" class="bscOptionsN bsc1OptionsAddN" style="width: 38px; display: none;">
+					                            		<li style="width: 24px;"><a href="#">0</a></li>
+					                            		<li style="width: 24px;"><a href="#">1</a></li>
+					                            		<li style="width: 24px;"><a href="#">2</a></li>
+					                            		<li style="width: 24px;"><a href="#">3</a></li>
+					                            		<li style="width: 24px;"><a href="#">4</a></li>
+					                            		<li style="width: 24px;"><a href="#">5</a></li>
+					                            		<li style="width: 24px;"><a href="#">6</a></li>
+					                            		<li style="width: 24px;"><a href="#">7</a></li>
+					                            		<li style="width: 24px;"><a href="#">8</a></li>
+					                            		<li style="width: 24px;"><a href="#">9</a></li>
+					                            	</ul>
+					                            </span>
+					                            <select id="selIinf" class="bsc1" title="유아 좌석수를 선택하세요" style="width: 40px; position: absolute; visibility: hidden;">
+					                                <option value="0" selected="selected">0</option>
+					                                <option value="1">1</option>
+					                                <option value="2">2</option>
+					                                <option value="3">3</option>
+					                                <option value="4">4</option>
+					                                <option value="5">5</option>
+					                                <option value="6">6</option>
+					                                <option value="7">7</option>
+					                                <option value="8">8</option>
+					                                <option value="9">9</option>
+					                            </select>
+					                        </li>
+					                    </ul>
+					                </li>
 									<input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
 								</form>
 							</article>
@@ -169,6 +322,7 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 			<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 			<script type="text/javascript">
+				/* 왕복/편도 datepicker 시작 */
 				$(document).ready(function() {	
 					$('#datePicker_dep1').datepicker({
 					    format: 'yyyy-mm-dd',	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -258,6 +412,17 @@
 						$('#datePicker_dep1').datepicker('setEndDate', minDate);
 					});
 				});//ready end
+				/* 왕복/편도 datepicker 끝 */
+				
+				/* 성인/소아/유아 select 시작 */
+				$(document).ready(function() {
+					$("#ou_selAdt").on('change', function() {
+						if(this.value !="") {
+							var optionVal = $(this).find("selected").val();
+							alert(optionVal);
+						}
+					});
+				});
 				
 			</script>
 		</div>
