@@ -56,334 +56,161 @@
 <!--[if lt IE 9]>
    <script src="js/respond.min.js"></script>
    <![endif]-->
-<style>
-.sectionmain {
-	margin-top: 920px;
-}
+        <style>
+            
+            .sectionmain{
+                
+            }
+                
+            .main-side{
+                width: 25%; height: 100%; float: left;
+            }
+            
+            .main-right{
+                width: 75%; height: 100%; float: left;
+            }
+            
+            .search{
+                background-color: Lightgray; padding-left: 6%; padding-top: 6%; width: 100%; padding-bottom: 3%;
+                
+                
+            }
+             .price-search{
+                padding-left: 10%; padding-top: 6%; background-color: Lightgray; margin-top: 20px; width: 100%; height: 260px;
+                                               
+            }
+            .name-search{
+                padding-left: 10%; padding-top: 6%; background-color: Lightgray; width: 100%; float: left;
 
-.main-side {
-	width: 25%;
-	height: 100%;
-	float: left;
-}
+            }   
+            
+            .sortarea{
+                background-color: Lightgray; width: 90%; margin-left: 5%; height: 60px; float: left; margin-bottom: 100px;
+            }
+            
+            .restInfo-area{
+                margin-top: 11.5%; width: 100%; height: 100%;
+            }
+            
+            .restInfo{
+                margin-top: 2%; margin-left: 5%; height: 260px; width: 90%;
+                
+            }
+            
+             .search-list{
+                margin-top: 10%; margin-left: 1%; width: 100%; margin-bottom: 6%;
+            }
+            
+            .location{
+                margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;
+            }
+            
 
-.main-right {
-	width: 75%;
-	height: 100%;
-	float: left;
-}
+            .sleep{
+                width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; background-color: white;
+            }
+            
+            
+            .total{
+                width: 100%; height: 95%; background-color: white; margin-top: 7%; padding-top: 8%;
+                
+            }
+            
+            .total-amount{   
+                width: 38%; height: 100%; background-color: lightgray; margin-top: -5.5%; margin-bottom: -1%; padding-left: 6%;
+                
+            }
+            
+            .price{
+                width: 150px;
+            }
+            
+            .fonts{
+                padding-top: 11%; float: right;
+            }
+            
+            
+        </style>
+        
+        
+   </head>
+   <body>
+    
+      
+   <div class="gtco-loader"></div>
+   
+        <div id="page"></div>
 
-.search {
-	background-color: Lightgray;
-	padding-left: 6%;
-	padding-top: 6%;
-	width: 100%;
-	padding-bottom: 3%;
-}
-
-.price-search {
-	padding-left: 10%;
-	padding-top: 6%;
-	background-color: Lightgray;
-	margin-top: 20px;
-	width: 100%;
-	height: 260px;
-}
-
-.name-search {
-	padding-left: 10%;
-	padding-top: 6%;
-	background-color: Lightgray;
-	width: 100%;
-	float: left;
-}
-
-.sortarea {
-	background-color: Lightgray;
-	width: 90%;
-	margin-left: 5%;
-	height: 60px;
-	float: left;
-	margin-bottom: 100px;
-}
-
-.restInfo-area {
-	margin-top: 11.5%;
-	width: 100%;
-	height: 100%;
-}
-
-.restInfo {
-	background-color: Lightgray;
-	margin-top: 2%;
-	margin-left: 5%;
-	height: 260px;
-	width: 90%;
-}
-
-.search-list {
-	margin-top: 10%;
-	margin-left: 1%;
-	width: 100%;
-	margin-bottom: 6%;
-}
-
-.location {
-	margin-top: 5%;
-	margin-bottom: 7%;
-	background-color: white;
-	width: 99%;
-	height: 35px;
-}
-
-.sleep {
-	width: 40px;
-	margin-top: -50%;
-	margin-left: 4%;
-	margin-bottom: 7%;
-	height: 0%;
-	background-color: white;
-}
-
-.total {
-	width: 100%;
-	height: 95%;
-	background-color: white;
-	margin-top: 7%;
-	padding-top: 8%;
-}
-
-.total-amount {
-	width: 38%;
-	height: 100%;
-	background-color: lightgray;
-	margin-top: -5.5%;
-	margin-bottom: -1%;
-	padding-left: 6%;
-}
-
-.price {
-	width: 150px;
-}
-
-.fonts {
-	padding-top: 11%;
-	float: right;
-}
-</style>
-
-
-</head>
-<body>
-
-
-	<div class="gtco-loader"></div>
-
-	<div id="page"></div>
 
 
 	<!-- <div class="page-inner"> -->
-	<nav class="gtco-nav" role="navigation">
-		<div class="gtco-container">
-
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<div id="gtco-logo">
-						<a href="index.html">Traveler <em>.</em></a>
-					</div>
-				</div>
-				<div class="col-xs-8 text-right menu-1">
-					<ul>
-						<li><a href="destination.html">Destination</a></li>
-						<li class="has-dropdown"><a href="#">Travel</a>
-							<ul class="dropdown">
-								<li><a href="#">Europe</a></li>
-								<li><a href="#">Asia</a></li>
-								<li><a href="#">America</a></li>
-								<li><a href="#">Canada</a></li>
-							</ul></li>
-						<li><a href="pricing.html">Pricing</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</nav>
-
-	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner"
-		style="background-image: url(images/img_bg_2.jpg)">
-		<div class="overlay"></div>
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0 text-left">
-
-
-					<div class="row row-mt-15em">
-						<div class="col-md-7 mt-text animate-box"
-							data-animate-effect="fadeInUp">
-							<h1>Planing Trip To Anywhere in The World?</h1>
-						</div>
-						<div class="col-md-4 col-md-push-1 animate-box"
-							data-animate-effect="fadeInRight"></div>
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-	</header>
+<jsp:include page="/include/includeHeader.jsp" />
 	<!--헤더 끝-->
 	<!--section시작-->
-	<section class="gtco-container sectionmain" role="contentinfo">
-		<div class="section-container">
-			<div class="section-main">
-				<div class="main-side">
-					<div class="well well-lg search" style="background-color: #eeeeee">
-						<h3>
-							<b id="rs">숙소검색</b>
-						</h3>
-						<div class="search-list">
-							<b>목적지</b> <input type="text" class="well well-sm location">
-						</div>
-						<div class="search-list">
-							<b>숙박기간</b> <input type="text" class="well well-sm sleep">
-							<b>박</b> <input type="text" class="well well-sm sleep"> <b>일</b>
-
-						</div>
-						<div>
-							<b>객실 및 인원</b>
-							<div class="well well-sm total">
-								<div class="well well-sm total-amount"
-									style="background-color: #09c6ab; color: white">
-									<b>객실수</b><br> <b>성인</b><br> <b>어린이</b><br>
-								</div>
-							</div>
-						</div>
-						<div class="search-list">
-							<button type="submit" class="btn btn-primary btn-sm"
-								style="width: 220px; background-color: #09c6ab">검색</button>
-						</div>
-					</div>
-					<div class="well well-lg search price-search"
-						style="background-color: #eeeeee">
-						<h3>
-							<b id="rs">가격</b>
-						</h3>
-						<div class="search-list">
-							<b>최저금액</b> <input type="text"
-								class="well well-sm location price">&nbsp;
-							<div class="fonts">
-								<b>원 부터</b>
-							</div>
-							<b>최저금액</b> <input type="text"
-								class="well well-sm location price">&nbsp;
-							<div class="fonts">
-								<b>원 까지</b>
-							</div>
-						</div>
-					</div>
-					<div class="well well-lg search name-search"
-						style="background-color: #eeeeee">
-						<h3>
-							<b id="rs">숙소명</b>
-						</h3>
-						<input type="text" class="well location price"
-							style="width: 210px;">&nbsp;
-						<button type="submit" class="btn btn-primary btn-xs"
-							style="width: 100px; margin-left: 50%;">검색</button>
-					</div>
-				</div>
-			</div>
-			<div class="main-right">
-				<div class="well well-lg search sortarea"
-					style="background-color: #eeeeee"></div>
-				<div class=" restInfo-area">
-					<div class="well well-lg search restInfo"
-						style="background-color: #eeeeee"></div>
-					<div class="well well-lg search restInfo"
-						style="background-color: #eeeeee"></div>
-					<div class="well well-lg search restInfo"
-						style="background-color: #eeeeee"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+	 <section class="gtco-container sectionmain" role="contentinfo" style="margin-top:920px;">
+        <div class="section-container">
+            <div class="section-main">
+                <div class="main-side" style=" width: 25%; height: 100%; float: left;">
+                    <div class="well well-lg search" style="background-color:#eeeeee; padding-left: 6%; padding-top: 6%; width: 100%; padding-bottom: 3%;">
+                        <h3><b id="rs">숙소검색</b></h3>
+                        <div class="search-list">
+                            <b>목적지</b>
+                             <input type="text" class="well well-sm location" style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;">
+                        </div>
+                        <div class="search-list">
+                            <b>숙박기간</b>
+                            <input type="text" class="well well-sm sleep" style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; background-color: white;">
+                            <b>박</b>
+                            <input type="text" class="well well-sm sleep" style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; background-color: white;">
+                            <b>일</b>
+                           
+                        </div>
+                        <div>
+                            <b>객실 및 인원</b>
+                            <div class="well well-sm total" style=" width: 100%; height: 95%; background-color: white; margin-top: 7%; padding-top: 8%;">
+                                <div class="well well-sm total-amount" style="background-color:#09c6ab; color: white; width: 38%; height: 100%; margin-top: -5.5%; margin-bottom: -1%; padding-left: 6%;">
+                                    <b>객실수</b><br>
+                                   <b>성인</b><br>
+                                    <b>어린이</b><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-list" style="margin-top: 10%; margin-left: 1%; width: 100%; margin-bottom: 6%;">
+                            <button type="submit" class="btn btn-primary btn-sm" style="width: 220px; background-color:#09c6ab ">
+                                검색
+                            </button>
+                        </div>
+                    </div>
+                    <div class="well well-lg search price-search" style="background-color:#eeeeee; padding-left: 10%; padding-top: 6%; margin-top: 20px; width: 100%; height: 260px;">
+                        <h3><b id="rs">가격</b></h3>
+                         <div class="search-list">
+                            <b>최저금액</b>
+                             <input type="text" class="well well-sm location price" style="width: 150px; background-color: white;">&nbsp; <div class="fonts" style="padding-top: 11%; float: right;"><b>원 부터</b></div>
+                            <b>최저금액</b>
+                             <input type="text" class="well well-sm location price" style="width: 150px; background-color: white;">&nbsp;<div class="fonts" style="padding-top: 11%; float: right;"><b>원 까지</b></div>
+                        </div>
+                    </div>
+                    <div class="well well-lg search name-search" style="background-color: #eeeeee; padding-left: 10%; padding-top: 6%; width: 100%; float: left;">
+                        <h3><b id="rs">숙소명</b></h3>
+                             <input type="text" class="well location price" style="width: 210px; background-color: white;">&nbsp;
+                        <button type="submit" class="btn btn-primary btn-xs" style="width: 100px; margin-left: 50%;">
+                                검색
+                        </button></div>
+                    </div>
+                </div>
+                <div class="main-right" style="width: 75%; height: 100%; float: left;">
+                    <div class="well well-lg search sortarea" style="background-color: #eeeeee; width: 90%; margin-left: 5%; height: 60px; float: left; margin-bottom: 100px;">
+                    </div>
+                    <div class=" restInfo-area" style=" margin-top: 11.5%; width: 100%; height: 100%;">
+                    <div class="well well-lg search restInfo" style="background-color: #eeeeee;  margin-top: 2%; margin-left: 5%; height: 260px; width: 90%; "></div>                   
+                    <div class="well well-lg search restInfo" style="background-color: #eeeeee;  margin-top: 2%; margin-left: 5%; height: 260px; width: 90%;"></div> 
+                    <div class="well well-lg search restInfo" style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 90%;"></div> 
+                    </div>
+                </div>
+            </div>
+    </section>
 	<!--section 끝-->
-	<!--푸터 시작-->
-	<footer id="gtco-footer" role="contentinfo">
-		<div class="gtco-container">
-			<div class="row row-p   b-md">
-
-				<div class="col-md-4">
-					<div class="gtco-widget">
-						<h3>About Us</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Tempore eos molestias quod sint ipsum possimus temporibus officia
-							iste perspiciatis consectetur in fugiat repudiandae cum. Totam
-							cupiditate nostrum ut neque ab?</p>
-					</div>
-				</div>
-
-				<div class="col-md-2 col-md-push-1">
-					<div class="gtco-widget">
-						<h3>Destination</h3>
-						<ul class="gtco-footer-links">
-							<li><a href="#">Europe</a></li>
-							<li><a href="#">Australia</a></li>
-							<li><a href="#">Asia</a></li>
-							<li><a href="#">Canada</a></li>
-							<li><a href="#">Dubai</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-2 col-md-push-1">
-					<div class="gtco-widget">
-						<h3>Hotels</h3>
-						<ul class="gtco-footer-links">
-							<li><a href="#">Luxe Hotel</a></li>
-							<li><a href="#">Italy 5 Star hotel</a></li>
-							<li><a href="#">Dubai Hotel</a></li>
-							<li><a href="#">Deluxe Hotel</a></li>
-							<li><a href="#">BoraBora Hotel</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-3 col-md-push-1">
-					<div class="gtco-widget">
-						<h3>Get In Touch</h3>
-						<ul class="gtco-quick-contact">
-							<li><a href="#"><i class="icon-phone"></i> +1 234 567
-									890</a></li>
-							<li><a href="#"><i class="icon-mail2"></i>
-									info@freehtml5.co</a></li>
-							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12">
-					<p class="pull-left">
-						<small class="block">&copy; 2016 Free HTML5. All Rights
-							Reserved.</small> <small class="block">Designed by <a
-							href="https://freehtml5.co/" target="_blank">FreeHTML5.co</a>
-							Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
-					</p>
-					<ul class="gtco-social-icons pull-right">
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
-						<li><a href="#"><i class="icon-facebook"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin"></i></a></li>
-						<li><a href="#"><i class="icon-dribbble"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</footer>
+<jsp:include page="/include/includeFooter.jsp" />
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>

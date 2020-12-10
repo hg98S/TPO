@@ -3,9 +3,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.tpo.member.domain.Member" alias="Member"/>
+		<typeAlias type="com.kh.tpo.rest.domain.Rest" alias="Rest"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/member/member-mapper.xml"/>
+		<mapper resource="mappers/rest/rest-mapper.xml"/>
 	</mappers>
 </configuration>
