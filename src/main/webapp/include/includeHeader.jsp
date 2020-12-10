@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 <title>TPO</title>
@@ -46,7 +45,6 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="resources/css/style.css">
-
 <!-- Modernizr JS -->
 <script src="resources/js/modernizr-2.6.2.min.js"></script>
 <!-- FOR IE9 below -->
@@ -97,10 +95,10 @@
                    	<a href="loginView.tpo">Login</a>
                    </c:if>
                     <c:if test="${!empty loginUser }">
-                     <a href="#">아이콘</a>
+                          <a href="../resources/images/woman.png"><img src="../resources/images/login.png" style="width:30px;"></a>
                      <ul class="dropdown">
                      	<li><a href="logout.tpo">Logout</a></li>
-                        <li><a href="#">My Page</a></li>
+                        <li><a href="myPageView.tpo">My Page</a></li>
                      </ul>
                      </c:if>
                   </li>

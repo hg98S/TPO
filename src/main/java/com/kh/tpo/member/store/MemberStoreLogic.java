@@ -30,13 +30,12 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public int updateMember(Member member) {
-		return 0;
+		return session.update("MemberMapper.updateMember", member);
 	}
 
 	@Override
 	public int deleteMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.update("MemberMapper.deleteMember", member);
 	}
 
 	@Override
@@ -51,14 +50,18 @@ public class MemberStoreLogic implements MemberStore{
 	}
 
 	@Override
-	public int searchPwd(String userPwd) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Member searchPwd(Member member) {
+		return session.selectOne("MemberMapper.searchPwd", member);
 	}
 
 	@Override
 	public int emailChk(Member member) {
 		return session.selectOne("MemberMapper.emailChk", member);
+	}
+
+	@Override
+	public int pwdDuplicateChk(Member member) {
+		return session.selectOne("MemberMapper.pwdDuplicateChk", member);
 	}
 
 }

@@ -30,14 +30,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int modifyMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mStore.updateMember(member);
 	}
 
 	@Override
 	public int deleteMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mStore.deleteMember(member);
 	}
 
 	@Override
@@ -52,9 +50,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int findPwd(String userPwd) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Member findPwd(Member member) {
+		return mStore.searchPwd(member);
 	}
 
 	@Override
@@ -62,4 +59,10 @@ public class MemberServiceImpl implements MemberService{
 		return mStore.emailChk(member);
 	}
 
+	@Override
+	public int pwdDuplicateChk(Member member) {
+		return mStore.pwdDuplicateChk(member);
+	}
+
+	
 }

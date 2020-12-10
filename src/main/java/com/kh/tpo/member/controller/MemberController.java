@@ -47,8 +47,8 @@ public class MemberController {
 		HttpSession session  = request.getSession();
 		Member loginUser = mService.memberLogin(member);
 		if(loginUser!=null) {
-		model.addAttribute("loginUser", loginUser);
-		return "index";
+		session.setAttribute("loginUser", loginUser);
+		return "redirect:mainPage.tpo";
 		}else {
 		return "common/errorPage";
 		}
@@ -65,7 +65,6 @@ public class MemberController {
 			return "common/errrorPage";
 		}
 	}
-	// 마이페이지(예정)
 	
 	// 회원가입 화면 이동
 	@RequestMapping(value="memberJoinForm.tpo", method=RequestMethod.GET)
@@ -93,7 +92,7 @@ public class MemberController {
 		}
 	}
 	
-	// 아이디찾기(화면이동)
+	// 아이디찾기(화면불러오기)
 	@RequestMapping(value="memberIdFindForm.tpo", method=RequestMethod.GET)
 	public String MemberIdFindForm() {
 		return "member/MemberIdFind";
@@ -112,7 +111,7 @@ public class MemberController {
 			 return userId;
 		 }
 	}
-	// 비밀번호 찾기
+	// 비밀번호 찾기(화면불러오기)
 	@RequestMapping(value="memberPwdFindForm.tpo", method=RequestMethod.GET)
 	public String MemberPwdFindForm() {
 		return "member/MemberPwdFind";
@@ -122,44 +121,108 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value="emailCheck.tpo", method=RequestMethod.GET)
 	public void emailCheck(Member member,HttpServletResponse response) throws Exception{
-		// 보내는 사람
-		String setfrom = "emailkst7238@gmail.com";
-		// 받는 사람 이메일
-		String tomail = member.getEmail();
-		System.out.println(tomail);
-		// 제목
-		String title = "TPO사이트 비밀번호 찾기(인증번호)";
-		// 인증번호 난수로 생성
-		int randomNumber = (int)(Math.random()*1000) +1;
-		// 내용
-		String content = "임시비밀번호 : " + randomNumber;
-		// mailSending작성
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-			// 보내는 사람 생략하면 오류뜸
-			messageHelper.setFrom(setfrom);
-			// 받는 사람 이메일저장
-			messageHelper.setTo(tomail);
-			// 메일제목 저장 (생략 가능)
-			messageHelper.setSubject(title);
-			// 메일내용
-			messageHelper.setText(content);
-			// 메일 보내기~
-			mailSender.send(message);
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		// 이메일 일치여부
 		boolean emailCheck = mService.emailChk(member)==1? true : false;
 		// emailCheck값과 난수값을 받아서 넘겨야 됨
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("emailCheck", emailCheck+"");
-		map.put("randomNumber", randomNumber);
-		/* return emailCheck+""; */
+		if(emailCheck==true) { // 등록된 이메일정보와 일치하는 경우만 메일 발송
+			// 보내는 사람
+			String setfrom = "emailkst7238@gmail.com";
+			// 받는 사람 이메일
+			String tomail = member.getEmail();
+			System.out.println(tomail);
+			// 제목
+			String title = "TPO사이트 비밀번호 찾기(인증번호)";
+			// 인증번호 난수로 생성
+			int randomNumber = (int)(Math.random()*1000) +1;
+			// 내용
+			String content = "임시비밀번호 : " + randomNumber;
+			// mailSending작성
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+				// 보내는 사람 생략하면 오류뜸
+				messageHelper.setFrom(setfrom);
+				// 받는 사람 이메일저장
+				messageHelper.setTo(tomail);
+				// 메일제목 저장 (생략 가능)
+				messageHelper.setSubject(title);
+				// 메일내용
+				messageHelper.setText(content);
+				// 메일 보내기~
+				mailSender.send(message);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			map.put("emailCheck", emailCheck+"");
+			map.put("randomNumber", randomNumber);
+		}
 		Gson gson = new Gson();
 		gson.toJson(map,response.getWriter());
 	}
 	
+	// 회원비밀번호 불러오기
+	@ResponseBody
+	@RequestMapping(value="resultPwd.tpo", method=RequestMethod.POST)
+	public String resultPwd(Member member) {
+		Member mem = mService.findPwd(member);
+		if(mem!=null) {
+		return mem.getUserPwd();
+		}else {
+		return "";
+		}
+	}
+	
+	// 마이페이지(화면이동)
+	@RequestMapping(value="myPageView.tpo", method=RequestMethod.GET)
+	public String myPageView() {
+		return "member/MyPageView";
+	}
+	
+	// 마이페이지(회원정보수정)
+	@RequestMapping(value="modifyMember.tpo", method=RequestMethod.POST)
+	public String modifyMember(HttpServletRequest request, 
+										 Member member,
+										 String post,
+										 String roadAddress,
+										 String detailAddress,
+										 String extraAddress) {
+		HttpSession session = request.getSession();
+		/* session.invalidate(); */
+		member.setAddress(post+","+roadAddress+","+detailAddress+","+extraAddress);
+		int result = mService.modifyMember(member);
+		if(result>0) {
+			session.setAttribute("loginUser", member);
+			return "member/MyPageView";
+		}else {
+			return "common/errorPage";
+		}
+	}
+	
+	// 회원탈퇴 페이지(화면이동)
+	@RequestMapping(value="deleteMemberView.tpo", method=RequestMethod.GET)
+	public String deleteMemberView() {
+		return "member/MemberDelete";
+	}
+	
+	// 회원탈퇴(update)
+	@RequestMapping(value="deleteMember.tpo", method=RequestMethod.POST)
+	public String deleteMember(HttpServletRequest request, Member member) {
+			HttpSession session = request.getSession();
+			int result = mService.deleteMember(member);
+			if(result>0) {
+				session.invalidate();
+				return "redirect:mainPage.tpo";
+			}else {
+			    return "common/errorPage";
+			}
+	}
+	// 비밀번호 유효성 검사
+	@ResponseBody
+	@RequestMapping(value="pwdDuplicateChk.tpo", method=RequestMethod.GET)
+	public String pwdDuplicateChk(Member member) {
+		boolean pwdDuplicateChk = mService.pwdDuplicateChk(member)==0 ? true : false;
+		return pwdDuplicateChk+"";
+	}
 }

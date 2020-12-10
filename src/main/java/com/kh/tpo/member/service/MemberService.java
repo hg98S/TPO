@@ -58,9 +58,16 @@ public interface MemberService {
 	 * 	회원 비밀번호 찾기
 	 *  
 	 *  @Param Member
-	 *  @Return int
+	 *  @Return Member
 	 * */
-	public int findPwd(String userPwd);
+	public Member findPwd(Member member);
+	/*
+	 * 	비밀번호 유효성 체크
+	 *  
+	 *  @Param Member
+	 *  @Return Member
+	 * */
+	public int pwdDuplicateChk(Member member);
 	/*
 	 * 	회원 이메일 인증여부
 	 *  

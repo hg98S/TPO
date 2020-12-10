@@ -84,7 +84,7 @@
         	</tr>
         	<tr>  <!-- 7번째 -->
         		<td>
-        		<input type="text" class="confiremdNum" name="confiremdNum" size="10">
+        		<input type="text" class="confirmedNum" name="confiremdNum" size="10">
         		<input type="hidden" class="randomNum" name="randomNum">
         		</td>
         	</tr>
@@ -104,16 +104,16 @@
       	    $("#mailSend").on("click",function(){
       	    	var userId = $(".inputText").val();
       	    	var email = $(".inputEmail").val();
-      	    	console.log(userId);
-      	    	console.log(email);
+      	    	/* console.log(userId);
+      	    	console.log(email); */
       	    	$.ajax({
       	    		url: "emailCheck.tpo",
       	    		type: "get",
       	    		data: {"userId":userId,"email":email},
       	    		dataType: "json",
       	    		success: function(data){
-      	    			console.log(data.emailCheck);
-      	    			console.log(data.randomNumber);
+      	    			/* console.log(data.emailCheck);
+      	    			console.log(data.randomNumber); */
       	    			if(data.emailCheck=="true"){
       	    			// 일치,불일치 태그  
       	    			$(".table tr:nth-child(5)").show(); 
@@ -137,11 +137,38 @@
       	    })
       	    // 확인버튼 눌렀을 때 인증번호 일치 확인 후 비밀번호 보여줌
       	    $("#pwdConfirm").on("click",function(){
-      	    	if($(".randomNum").val()==$(".confiremdNum").val()) {
-      	    		
-      	    		$(".resultPwd").show();
-					$(".resultPwd").text("귀하의 비밀번호는 : " + data + " 입니다.");
+      	    	var userId = $(".inputText").val();
+      	    	var email = $(".inputEmail").val();
+      /* 	    console.log($(".randomNum").val());
+      	    	console.log($(".confirmedNum").val()); */
+      	    	if(userId=='' || email==''){
+      	    		if(userId==''){
+      	    			alert("아이디를 입력해주세요.");
+      	    			$(".inputText").focus();
+      	    			return;
+      	    		}else{
+      	    			alert("이메일을 입력해주세요.");
+      	    			$(".inputEmail").focus();
+      	    			return;
+      	    		}
+      	    	}
+      	    	if($(".randomNum").val()==$(".confirmedNum").val()) {
+      	    		$.ajax({
+      	    			url: "resultPwd.tpo",
+      	    			type: "post",
+      	    			data: {"userId":userId, "email":email},
+      	    			success: function(data){
+      	    			if(data!=''){
+      	    			$(".table tr:nth-child(8)").show();
+      					$(".resultPwd").text("귀하의 비밀번호는 : " + data + " 입니다.");
+      	    			}else{
+      	    				alert("잘못된 입력입니다.");
+      	    				return;
+      	    			}
+      	    			}
+      	    		})
       	    	}else{
+      	    		$(".table tr:nth-child(8)").hide();
       	    		alert("인증번호를 다시 확인해 주세요.");
       	    		$(".confiremdNum").focus();
       	    	}
