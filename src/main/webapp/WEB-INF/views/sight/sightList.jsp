@@ -13,18 +13,23 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <title>명소 리스트</title>
 <style>
-*contents {
+.contents {
 	display: inline-block;
 }
 
 #search {
 	margin-left: 10px;
+	width: 100%;
 	float: left;
 }
 
 #content {
 	display: inline;
-	float: left;
+	width: 70%;
+	float: right;
+}
+img {
+	width:200px;
 }
 
 #bottons {
@@ -39,53 +44,19 @@
 
 
 	<!-- left sidebar -->
-
-	<div id="search" class="contents">
+	<section class="container">
+	
+	<div id="search" class="col-md-2">
 		<h3>명소검색</h3>
-		<!-- <h6>명소 위치</h6>
-
-		<h6>요금 유무</h6>
-		<p>
-			<input type="checkbox" name="fee" value="y">Yes
-		</p>
-		<p>
-			<input type="checkbox" name="fee" value="n">No
-		</p>
-		<h6>주차여부</h6>
-		<p>
-			<input type="checkbox" name="parking" value="y">Yes
-		</p>
-		<p>
-			<input type="checkbox" name="parking" value="n">No
-		</p>
-		<h6>유모차 여부</h6>
-		<p>
-			<input type="checkbox" name="baby" value="y">Yes
-		</p>
-		<p>
-			<input type="checkbox" name="baby" value="n">No
-		</p>
-		<h6>애완동물 가능 여부</h6>
-		<p>
-			<input type="checkbox" name="pet" value="y">Yes
-		</p>
-		<p>
-			<input type="checkbox" name="pet" value="n">No
-		</p>
-		<h6>화장실 유무</h6>
-		<p>
-			<input type="checkbox" name="toilet" value="y">Yes
-		</p>
-		<p>
-			<input type="checkbox" name="toilet" value="n">No
-		</p> -->
+		
 		<ul class="media-list">
 
 			<li class="media">
 				<div class="media-left">
-					<b>요금유무</b><br>
+					
 				</div>
 				<div class="media-body">
+				<b>요금유무</b>
 					<p>
 					<input type="checkbox" name="fee" value="y">Yes
 					</p>
@@ -96,9 +67,10 @@
 			</li>
 			<li class="media">
 				<div class="media-left">
-					<b>주차여부</b><br>
+					
 				</div>
 				<div class="media-body">
+				<b>주차여부</b>
 				<p>
 					<input type="checkbox" name="parking" value="y">Yes
 					</p>
@@ -110,9 +82,10 @@
 
 			<li class="media">
 				<div class="media-left">
-					<b>유모차 여부</b><br>
+					
 				</div>
 				<div class="media-body">
+				<b>유모차 여부</b>
 				<p>
 					<input type="checkbox" name="baby" value="y">Yes
 					</p>
@@ -124,9 +97,10 @@
 
 			<li class="media">
 				<div class="media-left">
-					<b>애완동물 가능 여부<b><br>
+					
 				</div>
 				<div class="media-body">
+				<b>애완동물 가능 여부</b>
 				<p>
 					<input type="checkbox" name="pet" value="y">Yes
 					</p>
@@ -138,9 +112,10 @@
 
 			<li class="media">
 				<div class="media-left">
-					<b>화장실 유무<b>
+					
 				</div>
 				<div class="media-body">
+				<b>화장실 유무</b>
 				<p>
 					<input type="checkbox" name="toilet" value="y">Yes
 					</p>
@@ -151,15 +126,19 @@
 			</li>
 		</ul>
 	</div>
+	
+	
+	
 	<!-- Content -->
-	<div id="content">
+	
+	<div id="content" class="col-md-8">
 		<h2 id="contentTitle">명소 리스트</h2>
 
 
 		<div class="media">
 			<div class="media-left media-middle">
 				<a href="#"> <img class="media-object"
-					src="./resources/img/1.jpg" alt="명소임ㅇㅇ아무튼명소">
+					src="./resources/images/img_1.jpg" alt="명소임ㅇㅇ아무튼명소">
 				</a>
 			</div>
 			<div class="media-body">
@@ -171,11 +150,15 @@
 
 
 		<div id="buttons">
-			<button>메인페이지</button>
-			<button>음?</button>
+			<button class="btn btn-primary btn-xs">메인페이지</button>
+			
 		</div>
 	</div>
+	
+	
 
+
+</section>
 
 
 
