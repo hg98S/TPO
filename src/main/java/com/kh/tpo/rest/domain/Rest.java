@@ -13,7 +13,7 @@ public class Rest {
 	private String checkout;
 	private int rTotal;
 	private int pTotal;
-	private char pStatus;
+	private String pStatus;
 	private String reFacility;
 	private int clcik;
 	
@@ -107,11 +107,11 @@ public class Rest {
 		this.pTotal = pTotal;
 	}
 
-	public char getpStatus() {
+	public String getpStatus() {
 		return pStatus;
 	}
 
-	public void setpStatus(char pStatus) {
+	public void setpStatus(String pStatus) {
 		this.pStatus = pStatus;
 	}
 
@@ -140,7 +140,7 @@ public class Rest {
 	}
 
 	public Rest(int reNo, String reName, String reAddr, String reImage, String rePhone, String reUrl, String reInfo,
-			String checkIn, String checkout, int rTotal, int pTotal, char pStatus, String reFacility, int clcik) {
+			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik) {
 		super();
 		this.reNo = reNo;
 		this.reName = reName;

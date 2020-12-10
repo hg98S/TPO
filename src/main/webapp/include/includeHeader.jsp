@@ -89,7 +89,7 @@
                <ul>
                   <li><a href="reservation.jsp">Reservation</a></li>
                   <li><a href="sightList.tpo">Attraction</a></li>
-                  <li><a href="#">Room</a></li>
+                  <li><a href="restList.tpo">Room</a></li>
                   <li class="has-dropdown">
                    <c:if test="${empty loginUser }">
                    	<a href="loginView.tpo">Login</a>
