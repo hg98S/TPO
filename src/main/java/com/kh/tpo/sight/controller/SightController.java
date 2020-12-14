@@ -69,7 +69,7 @@ public class SightController {
 	 return "sight/sightList";
 	}
 //  
-  }
+ }
 
 	    
 

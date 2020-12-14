@@ -153,13 +153,13 @@
 					}
 					today = yyyy + '-' + mm + '-' + dd;
 					/*  alert(today);  */
-					for(var i=0 in data){
+/* 					for(var i=0 in data){
 						 if(data[i].uDate==today){ 
 						alert(data[i].urbanName);
 						 }else{
 							 alert("실패");
 						 }
-					}
+					} */
 				}
 			});
 		});
