@@ -35,9 +35,6 @@ public class SightController {
 	@Autowired
 	private ApiController ac;
 
-<<<<<<< HEAD
-=======
-
 //tag값의 정보를 가져오는 메소드
 //		private static String getTagValue(String tag, Element eElement) {
 //		    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
@@ -103,10 +100,6 @@ public class SightController {
 	
 	
 	
-	
->>>>>>> refs/remotes/origin/1211CJH
-//  // sightList주소 불러오고, 페이징처리까지
-<<<<<<< HEAD
   @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
 	public String sightList (ModelAndView mv,SightList sList,
 			@RequestParam(value="page", required=false)Integer page, Model model) {
@@ -114,21 +107,6 @@ public class SightController {
 	  // api controller 에서 list 추가
 //	  if(sList == null) {
 	  ApiController ac = new ApiController();
-//	  try {
-//		ac.getSightList(sList, model);
-//	} catch (Exception e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//	  }
-	  
-	  // 페이징 처리
-=======
-//  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
-//	public ModelAndView sightList (ModelAndView mv,@RequestParam(value="page", required=false)Integer page) {
-		
-	  // 
->>>>>>> refs/remotes/origin/1211CJH
 //	  int currentPage = (page != null) ? page:1;
 //	  int listCount = sService.getListCount();
 //	  PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
@@ -141,17 +119,10 @@ public class SightController {
 //		  mv.addObject("msg","명소 전체 조회실패");
 //		  mv.setViewName("common/errorPage");
 //	  }
-<<<<<<< HEAD
 	  
 	  
 	 return "sight/sightList";
 	}
-=======
-//	  
-//	  mv.setViewName("sight/sightList");
-//	  return mv;
-//	}
->>>>>>> refs/remotes/origin/1211CJH
 //  
  }
 
