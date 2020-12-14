@@ -29,16 +29,11 @@ public class MemberController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
-	
-	// 메인페이지 이동(코로나 확진수 데이터, 명소, 숙소 데이터를 불러와야 함 / 일단 keep)
-	@RequestMapping(value="mainPage.tpo", method=RequestMethod.GET)
-	public String mainPageView() { // 파라미터 아직 안넣었음 수정할 부분
-		return "index";
-	}
+
 	// 로그인 페이지이동
 	@RequestMapping(value="loginView.tpo", method=RequestMethod.GET)
 	public String  MemberLoginView() {
-		return "member/MemberLoginView";
+		return "member/memberLoginView";
 	}
 	
 	// 로그인
@@ -69,7 +64,7 @@ public class MemberController {
 	// 회원가입 화면 이동
 	@RequestMapping(value="memberJoinForm.tpo", method=RequestMethod.GET)
 	public String MemberJoinForm() {
-		return "member/MemberJoinForm";
+		return "member/memberJoinForm";
 	}
 	
 	// ID 중복체크 확인
@@ -86,7 +81,7 @@ public class MemberController {
 		member.setAddress(post+","+roadAddress+","+detailAddress+","+extraAddress);
 		int result = mService.registerMember(member);
 		if(result>0) {
-			return "member/MemberLoginView";
+			return "member/memberLoginView";
 		}else {
 		return "common/errorPage";
 		}
@@ -95,7 +90,7 @@ public class MemberController {
 	// 아이디찾기(화면불러오기)
 	@RequestMapping(value="memberIdFindForm.tpo", method=RequestMethod.GET)
 	public String MemberIdFindForm() {
-		return "member/MemberIdFind";
+		return "member/memberIdFind";
 	}
 	// 아이디찾기(값 가져오기)
 	@ResponseBody
@@ -114,7 +109,7 @@ public class MemberController {
 	// 비밀번호 찾기(화면불러오기)
 	@RequestMapping(value="memberPwdFindForm.tpo", method=RequestMethod.GET)
 	public String MemberPwdFindForm() {
-		return "member/MemberPwdFind";
+		return "member/memberPwdFind";
 	}
 	
 	// 등록된 회원정보의 이름과 이메일 일치 여부 및 메일보내기
@@ -177,7 +172,7 @@ public class MemberController {
 	// 마이페이지(화면이동)
 	@RequestMapping(value="myPageView.tpo", method=RequestMethod.GET)
 	public String myPageView() {
-		return "member/MyPageView";
+		return "member/myPageView";
 	}
 	
 	// 마이페이지(회원정보수정)
@@ -194,7 +189,7 @@ public class MemberController {
 		int result = mService.modifyMember(member);
 		if(result>0) {
 			session.setAttribute("loginUser", member);
-			return "member/MyPageView";
+			return "member/myPageView";
 		}else {
 			return "common/errorPage";
 		}
@@ -203,7 +198,7 @@ public class MemberController {
 	// 회원탈퇴 페이지(화면이동)
 	@RequestMapping(value="deleteMemberView.tpo", method=RequestMethod.GET)
 	public String deleteMemberView() {
-		return "member/MemberDelete";
+		return "member/memberDelete";
 	}
 	
 	// 회원탈퇴(update)
@@ -218,11 +213,9 @@ public class MemberController {
 			    return "common/errorPage";
 			}
 	}
-	// 비밀번호 유효성 검사
-	@ResponseBody
-	@RequestMapping(value="pwdDuplicateChk.tpo", method=RequestMethod.GET)
-	public String pwdDuplicateChk(Member member) {
-		boolean pwdDuplicateChk = mService.pwdDuplicateChk(member)==0 ? true : false;
-		return pwdDuplicateChk+"";
-	}
+	
+	// 항공예약정보조회(보류)
+//	public String reservationInfoView() {
+//		
+//	}
 }

@@ -59,10 +59,5 @@ public class MemberServiceImpl implements MemberService{
 		return mStore.emailChk(member);
 	}
 
-	@Override
-	public int pwdDuplicateChk(Member member) {
-		return mStore.pwdDuplicateChk(member);
-	}
-
 	
 }

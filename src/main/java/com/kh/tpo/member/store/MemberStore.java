@@ -62,13 +62,6 @@ public interface MemberStore {
 	 * */
 	public Member searchPwd(Member member);
 	/*
-	 * 	회원 비밀번호 유효성검사
-	 *  
-	 *  @Param Member
-	 *  @Return Member
-	 * */
-	public int pwdDuplicateChk(Member member);
-	/*
 	 * 	회원 이메일 인증여부
 	 *  
 	 *  @Param Member

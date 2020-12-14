@@ -95,7 +95,7 @@
                    	<a href="loginView.tpo">Login</a>
                    </c:if>
                     <c:if test="${!empty loginUser }">
-                          <a href="../resources/images/woman.png"><img src="../resources/images/login.png" style="width:30px;"></a>
+                          <a href="#"><img src="../resources/images/login.png" style="width:30px;"></a>
                      <ul class="dropdown">
                      	<li><a href="logout.tpo">Logout</a></li>
                         <li><a href="myPageView.tpo">My Page</a></li>

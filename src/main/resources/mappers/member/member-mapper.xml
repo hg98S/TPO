@@ -42,8 +42,4 @@
 		set mstatus='N'
 		where userid=#{userId} and userpwd=#{userPwd}
 	</update>
-	<!-- 비밀번호 유효성 체크 -->
-	<select id="pwdDuplicateChk" resultType="int">
-	select count(*) from member where userid=#{userId} and userpwd=#{userPwd} and mstatus='Y'
-	</select>
 </mapper>

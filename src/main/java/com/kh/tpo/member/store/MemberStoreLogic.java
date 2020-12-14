@@ -59,9 +59,4 @@ public class MemberStoreLogic implements MemberStore{
 		return session.selectOne("MemberMapper.emailChk", member);
 	}
 
-	@Override
-	public int pwdDuplicateChk(Member member) {
-		return session.selectOne("MemberMapper.pwdDuplicateChk", member);
-	}
-
 }

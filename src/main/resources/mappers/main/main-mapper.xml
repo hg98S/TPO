@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MainMapper">
+	<resultMap type="Urban" id="ResultMapUrban">
+		<result property="urbanNo" column="urban_no"/>
+		<result property="urbanName" column="urban_name"/>
+		<result property="uConfirmedNum" column="u_confirmed_num"/>
+	</resultMap>
+	<resultMap type="City" id="ResultMapCity">
+		<result property="cityNo" column="city_no"/>
+		<result property="cityName" column="city_name"/>
+		<result property="cConfirmedNum" column="c_confirmed_num"/>
+	</resultMap>
+	<!-- 시도별 insert 구문 -->
+	<insert id="insertUrban" parameterType="List">
+		 insert into URBAN
+		 select urban_seq.nextval as URBAN_NO, A.* from
+		(<foreach collection="list" item="urbanList" index="index" separator="union all">
+		<!-- values( #{cityList.cityName}, #{cityList.cConfirmedNum}, #{cityList.cDate} ) -->
+		select #{urbanList.urbanName} as URBAN_NAME, #{urbanList.uConfirmedNum} as U_CONFIRMED_NUM, #{urbanList.uDate} as UDATE from DUAL
+		</foreach>)A
+	</insert>
+	
+	<!-- 시도별 select 구문 -->
+	<select id="selectAllUrban" resultMap="ResultMapUrban">
+		select * from urban
+	</select>
+	
+	<!-- 행정구역별 insert 구문 -->
+	<insert id="insertCity" parameterType="List">
+		 insert into CITY
+		 select city_seq.nextval as CITY_NO, A.* from
+		(<foreach collection="list" item="cityList" index="index" separator="union all">
+		<!-- values( #{cityList.cityName}, #{cityList.cConfirmedNum}, #{cityList.cDate} ) -->
+		select #{cityList.cityName} as CITY_NAME, #{cityList.cConfirmedNum} as C_CONFIRMED_NUM, #{cityList.cDate} as CDATE from DUAL
+		</foreach>)A
+	</insert>
+	
+		<!-- 행정구역(서울) select 구문 -->
+	<select id="selectAllSeoul" resultMap="ResultMapCity">
+		select * from city where city_name like '%서울%'
+	</select>
+</mapper>

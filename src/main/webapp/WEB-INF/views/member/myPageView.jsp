@@ -213,7 +213,7 @@
 	// 회원정보 페이지 보여주기
 	function fnMemberInfo(){
 	    /* $("#myPage").show(); */
-		$("#deletePage").hide();
+	/* 	$("#deletePage").hide(); */
 	}
 	// 항공 예약 정보 페이지 보여주기
 	

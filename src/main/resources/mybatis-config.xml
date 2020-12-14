@@ -4,10 +4,13 @@
 	<typeAliases>
 		<typeAlias type="com.kh.tpo.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.kh.tpo.rest.domain.Rest" alias="Rest"/>
+		<typeAlias type="com.kh.tpo.main.domain.City" alias="City"/>
+		<typeAlias type="com.kh.tpo.main.domain.Urban" alias="Urban"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/member/member-mapper.xml"/>
 		<mapper resource="mappers/rest/rest-mapper.xml"/>
+		<mapper resource="mappers/main/main-mapper.xml"/>
 	</mappers>
 </configuration>
