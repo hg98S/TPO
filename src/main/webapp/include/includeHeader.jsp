@@ -87,7 +87,7 @@
             </div>
             <div class="col-xs-8 text-right menu-1">
                <ul>
-                  <li><a href="reservation.jsp">Reservation</a></li>
+                  <li><a href="reservation.tpo">Reservation</a></li>
                   <li><a href="sightList.tpo">Attraction</a></li>
                   <li><a href="restList.tpo">Room</a></li>
                   <li class="has-dropdown">
