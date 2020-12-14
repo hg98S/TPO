@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="RestMapper">
+	<resultMap type="Rest" id="RestResultMap">
+		<result property="reName" column="RE_NAME" />
+	</resultMap>
 
-	<insert id="insertRest" parameterType="java.util.List">
-		insert into rest values
-		(REST_SEQ.NEXTVAL,#{rename}, #{reAddr}, #{reImage}, #{rePhone}, #{reUrl}, #{reInfo}, #{checkIn}, #{checkOut}, #{rTotal}, #{pTotal}, "Y", #{reFacility}, 0 )
-	</insert>
+	<update id="insertRest" parameterType="java.util.List">
+			insert into rest (RENO,	RE_NAME, READDR, REIMAGE, REPHONE, REURL, REINFO, CHECKIN, CHECKOUT, RTOTAL, PTOTAL, PSTATUS, REFACILITY, CLICK)
+			select REST_SEQ.NEXTVAL as reSeq, T.*
+			from(
+			<foreach collection="list" item="item" index="index" separator="UNION ALL  ">			
+			select  #{item.reName}, #{item.reAddr}, #{item.reImage}, #{item.rePhone}, #{item.reUrl}, #{item.reInfo}, #{item.checkIn},
+			#{item.checkout}, #{item.rTotal}, #{item.pTotal}, #{item.pStatus}, #{item.reFacility}, 0
+			from SYS.DUAL
+			</foreach> 
+			)T
+
+	</update>
+	
+		<update id="selectRooms" parameterType="java.util.List">
+			insert into room (RNO, RENO,	RONAME, ROPRICE, PLIMIT, PMAXCOUNT, ROINFO, ROFACILITY, ROSIZE, ROCOUNT, ROIMAGE)
+			select ROOM_SEQ.NEXTVAL as roSeq, T.*
+			from(
+			<foreach collection="list" item="item" index="index" separator="UNION ALL  ">			
+			select  #{item.reNo}, #{item.roName}, #{item.roPrice}, #{item.pLimit}, #{item.pMaxCount}, #{item.roInfo}, #{item.roFacility}, #{item.roSize}, #{item.roCount},
+			#{item.roImage}
+			from SYS.DUAL
+			</foreach> 
+			)T
+
+	</update>
+	
+	<select id="selectList" resultMap="RestResultMap">
+		select * from rest
+		order by 2
+	</select>
+	
+<!-- 		<select id="roomList" resultType="room">
+		select * from rest join room using(reNo) where re_name=#{reName}; 
+	</select> -->
+	
+	<select id="getListCount" resultType="int">
+		select count(*)
+		from rest
+	</select>
+	
+	<select id="selectOne"  resultMap="RestResultMap">
+		select * from rest where reNo = #{reNo}
+		order by 2
+	</select>
+	
+	<select id="selectRoomList"  resultType="Room">
+		select * from room join rest using(reNo)
+		where reNo = #{reNo}
+		order by 2
+	</select>
+	
+	
+
+
+
 </mapper>

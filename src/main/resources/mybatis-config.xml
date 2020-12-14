@@ -4,6 +4,7 @@
 	<typeAliases>
 		<typeAlias type="com.kh.tpo.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.kh.tpo.rest.domain.Rest" alias="Rest"/>
+		<typeAlias type="com.kh.tpo.rest.domain.Room" alias="Room"/>
 	</typeAliases>
 	
 	<mappers>
