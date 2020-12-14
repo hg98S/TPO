@@ -161,7 +161,11 @@ public class SightController {
 //				e.printStackTrace();
 //			}	// try~catch end
 //		}	// main end
+<<<<<<< HEAD
 	
+=======
+//	
+>>>>>>> refs/remotes/origin/1211_SHG
 	
 	
 	

@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp" />
 	<div id="page"></div>
-	<a href="ex3.tpo">다음</a>
 	
 	<!-- 컨텐츠 시작 -->
     <section class="gtco-container" style="margin-top: 50px;">
-        <form action="" method="post" class="was-validated">
+        <form action="insertPassenger.tpo" method="post" class="was-validated">
         <article>
             <h2>예약 정보 입력</h2>
             <div style="margin: auto; text-align: center;">
@@ -67,7 +67,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이름</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" required>
+                        <input id="passengerName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
                     </td>
                 </tr>
                 <tr>
@@ -75,10 +75,10 @@
                         <b style="color: red;">*</b>&nbsp;<b>성별</b>
                     </td>
                     <td>
-                        <select class="form-control form-control-sm" style="width: 150px;" required>
+                        <select class="form-control form-control-sm" style="width: 150px;" >
                             <option value="">== 성별 ==</option>
-                            <option value="">남자</option>
-                            <option value="">여자</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
                         </select>
                     </td>
                 </tr>
@@ -87,18 +87,18 @@
                         <b style="color: red;">*</b>&nbsp;<b>국적</b>
                     </td>
                     <td class="mb-3">
-                        <select class="form-control form-control-sm" style="width: 150px;" required>
+                        <select class="form-control form-control-sm" style="width: 150px;">
                             <option value="">== 국적 ==</option>
-                            <option value="">한국</option>
-                            <option value="">중국</option>
-                            <option value="">일본</option>
-                            <option value="">러시아</option>
-                            <option value="">미국</option>
-                            <option value="">캐나다</option>
-                            <option value="">호주</option>
-                            <option value="">영국</option>
-                            <option value="">프랑스</option>
-                            <option value="">기타</option>
+                            <option value="korea">한국</option>
+                            <option value="china">중국</option>
+                            <option value="japan">일본</option>
+                            <option value="russia">러시아</option>
+                            <option value="usa">미국</option>
+                            <option value="canada">캐나다</option>
+                            <option value="australia">호주</option>
+                            <option value="england">영국</option>
+                            <option value="france">프랑스</option>
+                            <option value="etc">기타</option>
                         </select>
                     </td>
                 </tr>
@@ -107,7 +107,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>생년월일</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" required>
+                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
                     </td>
                 </tr>
                 <tr >
@@ -115,7 +115,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이메일</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  required>
+                        <input class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
                     </td>
                 </tr>
                 <tr>
@@ -123,7 +123,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>전화번호</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" required>
+                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
                     </td>
                 </tr>
             </table>
@@ -170,7 +170,7 @@
                         </div>
                     </h2>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body" style="border-bottom: 0px solid lightgray; height: 200px; overflow: auto;">
                         <pre style="background-color: white; margin: 0px; font-family: '고딕체'; font-size: 12px;">
 항공권 수령시 준비사항
@@ -962,42 +962,136 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                 <button onclick="#" class="btn btn-secondary" style="height: 60px;">
                     항공 스케줄 다시 선택
                 </button>
-                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
             </div>
         </article>
     </form>
+    <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
     </section>
     <!-- 컨텐츠 끝 -->
     
     <!-- 약관동의 유효성검사 -->
     <script>
-        /* 모든 약관 동의 */
-        $("#all_chk").click(function(){
-            var radios = $(":radio[value='Y']");
-            if($("#all_chk").prop("checked")) {
-                $(radios).prop("checked",true);
-            } else {
-                $(radios).prop("checked",false); 
-            }
-        });
+    /* 모든 약관 동의 */
+    $("#all_chk").click(function(){
+        var radios = $(":radio[value='Y']");
+        if($("#all_chk").prop("checked")) {
+            radios.prop("checked",true);
+        } else {
+            radios.prop("checked",false); 
+        }
+    });
 
-        /* 동의여부 확인 및 value=Y선택 확인 */
-        $("#btn").on("click", function() {
-            var check = $(".radio_chk:checked").length;
-            var radios = $(":radio[value='Y']");
-            if (check == 0) {
-                alert("동의여부를 확인해주세요.");
-                return false;
-            }
-            for(var i = 0; i < radios.length; i++) {
-                var $this = $(radios[i]);
+    /* 동의여부 확인 및 value=Y선택 확인 */
+    /* $("#check_module").click(function() {
+       	var check = $(".radio_chk:checked").length;
+        var radios = $(":radio[value='Y']");
+       	if(check == 0) {
+       		alert('동의여부를 확인해주세요');
+       		return false;
+       	} else if (check > 0){
+       		for(var i = 0; i < radios.length; i++) {
+            	var $this = $(radios[i]);
                 if(!$this.is(":checked")) {
-                    alert('반드시 동의해야 합니다.');
+                	alert('반드시 동의해야 합니다.');
                     $this.focus();
-                    return false;
                 }
-            }
-        });
+                return false;
+       		}
+       	}
+    }); */
+    /* $("#check_module").click(function() { */
+    function checkModule() {
+    	var pName = $("#passengerName").val();
+    	var pGender = $("#").val();
+    	if ( pName == "" ) {
+    		alert("이름을 적어주세요");
+    		$("#passengerName").focus();
+    		return false;
+    	}
+    	
+    	var check = $(".radio_chk:checked").length;
+        var radios = $(":radio[value='Y']");
+       	if(check == 0) {
+       		alert('동의여부를 확인해주세요');
+       		return false;
+       	} else if (check > 0){
+       		for(var i = 0; i < radios.length; i++) {
+            	var $this = $(radios[i]);
+                if(!$this.is(":checked")) {
+                	alert('반드시 동의해야 합니다.');
+                    $this.focus();
+		       		return false;
+                }
+       		}
+       	}
+    	
+        var IMP = window.IMP;
+       	IMP.init('imp55814317');
+		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+		IMP.request_pay({
+			pg : 'inicis', // version 1.1.0부터 지원.
+			/*
+			 'kakao':카카오페이,
+			 html5_inicis':이니시스(웹표준결제)
+			 'nice':나이스페이
+			 'jtnet':제이티넷
+			 'uplus':LG유플러스
+			 'danal':다날
+			 'payco':페이코
+			 'syrup':시럽페이
+			 'paypal':페이팔
+			 */
+			pay_method : 'card',
+			/*
+			 'samsung':삼성페이,
+			 'card':신용카드,
+			 'trans':실시간계좌이체,
+			 'vbank':가상계좌,
+			 'phone':휴대폰소액결제
+			 */
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			/*
+			 merchant_uid에 경우
+			 https://docs.iamport.kr/implementation/payment
+			 위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+			 참고하세요.
+			 나중에 포스팅 해볼게요.
+			 */
+			name : '비행기예매',
+			//결제창에서 보여질 이름
+			amount : 100,
+			//가격
+			buyer_email : 'iamport@siot.do',
+			buyer_name : '구매자이름',
+			buyer_tel : '010-1234-5678',
+			buyer_addr : '서울특별시 강남구 삼성동',
+			buyer_postcode : '123-456',
+			m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+		/*
+		 모바일 결제시,
+		 결제가 끝나고 랜딩되는 URL을 지정
+		 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+		 */
+		}, function(rsp) {
+			if (rsp.success) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '고유ID : ' + rsp.imp_uid;
+				msg += '상점 거래ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 : ' + rsp.apply_num;
+				$("form").submit();
+				alert("결제 완료되었습니다.");
+				return true;
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+				return false;
+			}
+			alert(msg);
+		});
+    };
+
     </script>
 	
 	<jsp:include page="/include/includeFooter.jsp" />

@@ -52,7 +52,7 @@
 <script src="resources/js/respond.min.js"></script>
 <![endif]-->
 <!-- jQuery 쿼리 추가 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <!--  주소팝업창 script 추가 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- jQuery Modal script 추가-->
@@ -114,7 +114,7 @@
    <!-- jQuery Easing -->
    <script src="resources/js/jquery.easing.1.3.js"></script>
    <!-- Bootstrap -->
-   <script src="resources/js/bootstrap.min.js"></script>
+   <!-- <script src="resources/js/bootstrap.min.js"></script> -->
    <!-- Waypoints -->
    <script src="resources/js/jquery.waypoints.min.js"></script>
    <!-- Carousel -->
