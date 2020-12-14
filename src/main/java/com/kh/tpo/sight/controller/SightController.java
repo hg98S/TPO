@@ -161,19 +161,15 @@ public class SightController {
 //				e.printStackTrace();
 //			}	// try~catch end
 //		}	// main end
-<<<<<<< HEAD
-	
-=======
-//	
->>>>>>> refs/remotes/origin/1211_SHG
+
 	
 	
 	
 	
 //  // sightList주소 불러오고, 페이징처리까지
-  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
-	public ModelAndView sightList (ModelAndView mv,
-			@RequestParam(value="page", required=false)Integer page) {
+//  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
+//	public ModelAndView sightList (ModelAndView mv,
+//			@RequestParam(value="page", required=false)Integer page) {
 		
 	  // 
 //	  int currentPage = (page != null) ? page:1;
@@ -189,10 +185,10 @@ public class SightController {
 //		  mv.setViewName("common/errorPage");
 //	  }
 	  
-	  mv.setViewName("sight/sightList");
-	  return mv;
-	}
-//  
+//	  mv.setViewName("sight/sightList");
+//	  return mv;
+//	}
+////  
   }
 
 	    
