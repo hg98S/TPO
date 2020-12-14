@@ -3,7 +3,7 @@ package com.kh.tpo.rest.domain;
 public class Room {
 	
 	private int reNo;
-	private int rNO;
+	private int rNo;
 	private String roName;
 	private int roPrice;
 	private int pLimit;
@@ -20,16 +20,16 @@ public class Room {
 		return reNo;
 	}
 
-	public void setReNo(int reNo) {
-		this.reNo = reNo;
+	public int setReNo(int reNo) {
+		return this.reNo = reNo;
 	}
 
-	public int getrNO() {
-		return rNO;
+	public int getrNo() {
+		return rNo;
 	}
 
-	public void setrNO(int rNO) {
-		this.rNO = rNO;
+	public void setrNo(int rNo) {
+		this.rNo = rNo;
 	}
 
 	public String getRoName() {
@@ -106,16 +106,16 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "Room [reNo=" + reNo + ", rNO=" + rNO + ", roName=" + roName + ", roPrice=" + roPrice + ", pLimit="
+		return "Room [reNo=" + reNo + ", rNo=" + rNo + ", roName=" + roName + ", roPrice=" + roPrice + ", pLimit="
 				+ pLimit + ", roInfo=" + roInfo + ", roFacility=" + roFacility + ", roSize=" + roSize + ", roImage="
 				+ roImage + ", pMaxCount=" + pMaxCount + ", roCount=" + roCount + "]";
 	}
 
-	public Room(int reNo, int rNO, String roName, int roPrice, int pLimit, String roInfo, String roFacility,
+	public Room(int reNo, int rNo, String roName, int roPrice, int pLimit, String roInfo, String roFacility,
 			String roSize, String roImage, int pMaxCount, int roCount) {
 		super();
 		this.reNo = reNo;
-		this.rNO = rNO;
+		this.rNo = rNo;
 		this.roName = roName;
 		this.roPrice = roPrice;
 		this.pLimit = pLimit;
@@ -127,6 +127,7 @@ public class Room {
 		this.roCount = roCount;
 	}
 
+	
 	
 	
 	

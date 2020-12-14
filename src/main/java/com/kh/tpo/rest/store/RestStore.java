@@ -3,15 +3,19 @@ package com.kh.tpo.rest.store;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.tpo.rest.domain.PageInfo;
 import com.kh.tpo.rest.domain.Rest;
 import com.kh.tpo.rest.domain.Room;
 import com.kh.tpo.rest.domain.Search;
 
 public interface RestStore {
 	
-	public int insertRest(Rest rest);
-	public ArrayList<Rest> restSearchList();
-	public Rest restSearchOne(Rest rest, ArrayList<Room> room);
+	public int insertRest(ArrayList<Rest> list);
+	public int insertRoom(ArrayList<Room> rooms);
+	public ArrayList<Rest> restSearchList(PageInfo page);
+	public Rest restSearchOne(int reNo);
+	public ArrayList<Room> roomSearchList(int reNo);
 	public ArrayList<Rest> selectSearchList(Search search);
+	public int getListCount();
 
 }
