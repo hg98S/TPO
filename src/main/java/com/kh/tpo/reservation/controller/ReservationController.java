@@ -17,7 +17,7 @@ public class ReservationController {
 		return "reservation/passengerInsertForm";
 	}
 	
-	@RequestMapping(value="ex3.tpo", method=RequestMethod.GET)
+	@RequestMapping(value="insertPassenger.tpo", method=RequestMethod.POST)
 	public String reservationDetailView() {
 		return "reservation/reservationDetailView";
 	}
