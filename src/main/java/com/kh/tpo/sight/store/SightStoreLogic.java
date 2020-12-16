@@ -42,8 +42,23 @@ public class SightStoreLogic implements SightStore{
 	}
 
 	@Override
-	public int insertSightList(SightList sList) {
-		return sqlSession.insert("sightMapper.insertSightList", sList);
+	public int insertSightList(SightList sightList) {
+		return sqlSession.insert("sightMapper.insertSightList", sightList);
+	}
+
+	@Override
+	public ArrayList<SightList> selectSightList() {
+		ArrayList<SightList> sList = (ArrayList)sqlSession.selectList("sightMapper.selectSightList");
+//		for(SightList list: sList) {
+//			System.out.println(list.toString());
+//		}
+
+		return sList;
+	}
+
+	@Override
+	public Sight selectSight(int sNo) {
+		return sqlSession.selectOne("sightMapper.selectSight", sNo);
 	}
 
 }
