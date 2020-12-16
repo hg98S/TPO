@@ -57,59 +57,67 @@
 
 				<!-- Main -->
 					<div id="main">
-
 						<!-- Me -->
 							<article id="home" class="panel" style="background-color:#eeeeee;">
 								<form action="reservationSearchView.tpo">
-									<select id="twoway_dep">
+									<select id="twoway_dep" name="sDepAirportNm">
 										<option selected="selected">출발지</option>
-										<option value="인천">인천</option>
-										<option value="김포">김포</option>
-										<option value="제주">제주</option>
-										<option value="부산">부산</option>
-										<option value="광주">광주</option>
-										<option value="양양">양양</option>
-										<option value="여수">여수</option>
-										<option value="포항">포항</option>
-										<option value="울산">울산</option>
-										<option value="군산">군산</option>
-										<option value="원주">원주</option>
-										<option value="대구">대구</option>
-										<option value="청주">청주</option>
-										<option value="무안">무안</option>
-										<option value="진주">진주</option>
+										<option value="incheon">인천</option>
+										<option value="gimpo">김포</option>
+										<option value="jeju">제주</option>
+										<option value="busan">부산</option>
+										<option value="gwangju">광주</option>
+										<option value="yangyang">양양</option>
+										<option value="yeosu">여수</option>
+										<option value="pohang">포항</option>
+										<option value="ulsan">울산</option>
+										<option value="gunsan">군산</option>
+										<option value="wonju">원주</option>
+										<option value="daegu">대구</option>
+										<option value="cheongju">청주</option>
+										<option value="muan">무안</option>
+										<option value="jeonju">진주</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/double-arrow.png" style="width:32px;height:32px;"></span>
 									&ensp;
-									<select id="twoway_arr">
+									<select id="twoway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="인천">인천</option>
-										<option value="김포">김포</option>
-										<option value="제주">제주</option>
-										<option value="부산">부산</option>
-										<option value="광주">광주</option>
-										<option value="양양">양양</option>
-										<option value="여수">여수</option>
-										<option value="포항">포항</option>
-										<option value="울산">울산</option>
-										<option value="군산">군산</option>
-										<option value="원주">원주</option>
-										<option value="대구">대구</option>
-										<option value="청주">청주</option>
-										<option value="무안">무안</option>
-										<option value="진주">진주</option>
+										<option value="incheon">인천</option>
+										<option value="gimpo">김포</option>
+										<option value="jeju">제주</option>
+										<option value="busan">부산</option>
+										<option value="gwangju">광주</option>
+										<option value="yangyang">양양</option>
+										<option value="yeosu">여수</option>
+										<option value="pohang">포항</option>
+										<option value="ulsan">울산</option>
+										<option value="gunsan">군산</option>
+										<option value="wonju">원주</option>
+										<option value="daegu">대구</option>
+										<option value="cheongju">청주</option>
+										<option value="muan">무안</option>
+										<option value="jeonju">진주</option>
 									</select>
 									<br><br>
 								
 									<div>
 										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" value="가는 날짜">
 									</div>
+									
 									&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;
 									<div>
 										오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" value="오는 날짜">
 									</div>
+									
+									<script type="text/javascript">
+										$("#datePicker_dep1").on("click", function() {
+											console.log(datePicker_dep1);
+										});
+									</script>
+									
 									<div><br></div>
+									
 									<div>
 										<button type="button" id="select_person_btn" data-toggle="collapse" data-target="#twoway_select_person"
 										style="color:#777; background-color:#eeeeee;">
@@ -120,7 +128,7 @@
 										<div class="row twoway_AYIPart">
 											<p value="성인">성인</p>
 										</div>
-										<select class="row" id="twoway_adult_number">
+										<select class="row" id="twoway_adult_number" name="adultCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1" selected="selected">1</option>
@@ -137,7 +145,7 @@
 										<div class="row twoway_AYIPart">
 											<p value="소아">소아</p>
 										</div>
-										<select class="row" id="twoway_child_number">
+										<select class="row" id="twoway_child_number" name="childCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1">1</option>
@@ -154,7 +162,7 @@
 										<div class="row twoway_AYIPart">
 											<p value="유아">유아</p>
 										</div>
-										<select class="row" id="twoway_infant_number">
+										<select class="row" id="twoway_infant_number" name="infantCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1">1</option>
@@ -175,44 +183,44 @@
 						<!-- Contact -->
 							<article id="contact" class="panel" style="background-color:#eeeeee;">
 								<form action="reservationSearchView">
-									<select id="oneway_dep">
+									<select id="oneway_dep" name="sDepAirportNm">
 										<option selected="selected">출발지</option>
-										<option value="인천">인천</option>
-										<option value="김포">김포</option>
-										<option value="제주">제주</option>
-										<option value="부산">부산</option>
-										<option value="광주">광주</option>
-										<option value="양양">양양</option>
-										<option value="여수">여수</option>
-										<option value="포항">포항</option>
-										<option value="울산">울산</option>
-										<option value="군산">군산</option>
-										<option value="원주">원주</option>
-										<option value="대구">대구</option>
-										<option value="청주">청주</option>
-										<option value="무안">무안</option>
-										<option value="진주">진주</option>
+										<option value="incheon">인천</option>
+										<option value="gimpo">김포</option>
+										<option value="jeju">제주</option>
+										<option value="busan">부산</option>
+										<option value="gwangju">광주</option>
+										<option value="yangyang">양양</option>
+										<option value="yeosu">여수</option>
+										<option value="pohang">포항</option>
+										<option value="ulsan">울산</option>
+										<option value="gunsan">군산</option>
+										<option value="wonju">원주</option>
+										<option value="daegu">대구</option>
+										<option value="cheongju">청주</option>
+										<option value="muan">무안</option>
+										<option value="jeonju">진주</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/next.png"></span>
 									&ensp;
-									<select id="oneway_arr">
+									<select id="oneway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="인천">인천</option>
-										<option value="김포">김포</option>
-										<option value="제주">제주</option>
-										<option value="부산">부산</option>
-										<option value="광주">광주</option>
-										<option value="양양">양양</option>
-										<option value="여수">여수</option>
-										<option value="포항">포항</option>
-										<option value="울산">울산</option>
-										<option value="군산">군산</option>
-										<option value="원주">원주</option>
-										<option value="대구">대구</option>
-										<option value="청주">청주</option>
-										<option value="무안">무안</option>
-										<option value="진주">진주</option>
+										<option value="incheon">인천</option>
+										<option value="gimpo">김포</option>
+										<option value="jeju">제주</option>
+										<option value="busan">부산</option>
+										<option value="gwangju">광주</option>
+										<option value="yangyang">양양</option>
+										<option value="yeosu">여수</option>
+										<option value="pohang">포항</option>
+										<option value="ulsan">울산</option>
+										<option value="gunsan">군산</option>
+										<option value="wonju">원주</option>
+										<option value="daegu">대구</option>
+										<option value="cheongju">청주</option>
+										<option value="muan">무안</option>
+										<option value="jeonju">진주</option>
 									</select>
 									<br><br>
 								
@@ -230,7 +238,7 @@
 										<div class="row oneway_AYIPart">
 											<p value="성인">성인</p>
 										</div>
-										<select class="row" id="oneway_adult_number">
+										<select class="row" id="oneway_adult_number" name="adultCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1" selected="selected">1</option>
@@ -247,7 +255,7 @@
 										<div class="row oneway_AYIPart">
 											<p value="소아">소아</p>
 										</div>
-										<select class="row" id="oneway_child_number">
+										<select class="row" id="oneway_child_number" name="childCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1">1</option>
@@ -264,7 +272,7 @@
 										<div class="row oneway_AYIPart">
 											<p value="유아">유아</p>
 										</div>
-										<select class="row" id="oneway_infant_number">
+										<select class="row" id="oneway_infant_number" name="infantCount">
 											<option value="">== 선택 ==</option>
 											<option value="0">0</option>
 											<option value="1">1</option>

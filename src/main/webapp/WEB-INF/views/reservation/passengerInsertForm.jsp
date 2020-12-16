@@ -75,7 +75,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>성별</b>
                     </td>
                     <td>
-                        <select class="form-control form-control-sm" style="width: 150px;" >
+                        <select id="pGender" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 성별 ==</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
@@ -87,7 +87,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>국적</b>
                     </td>
                     <td class="mb-3">
-                        <select class="form-control form-control-sm" style="width: 150px;">
+                        <select id="nationality" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 국적 ==</option>
                             <option value="korea">한국</option>
                             <option value="china">중국</option>
@@ -107,7 +107,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>생년월일</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
+                        <input id="pBirthDay" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
                     </td>
                 </tr>
                 <tr >
@@ -115,7 +115,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이메일</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
+                        <input id="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
                     </td>
                 </tr>
                 <tr>
@@ -123,7 +123,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>전화번호</b>
                     </td>
                     <td>
-                        <input class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
+                        <input id="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
                     </td>
                 </tr>
             </table>
@@ -851,27 +851,20 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                     <div class="card-body" style="border-bottom: 0px solid lightgray; height: 200px; overflow: auto;">
                         <pre style="background-color: white; margin: 0px; font-family: '고딕체'; font-size: 12px;">
             개인정보 수집 및 이용목적
-                            <table class="table table-bordered" style="margin: auto; width: 90%; font-size: 12px;">
-                                <colgroup>
-                                    <col width="30%">
-                                    <col width="30%">
-                                    <col width="40%">
-                                </colgroup>
+                            <table class="table table-bordered" style="margin: auto; width: 90%; font-size: 12px; text-align: center">
                                 <tr>
                                     <th>수집 및 이용 목적</th>
                                     <th>수집 항목</th>
                                     <th>보유 및 이용 기간</th>
                                 </tr>
                                 <tr>
-                                    <td>상품 예약 및 상담, 출입국 가능 여부 확인</td>
-                                    <td>예약자 정보(한글이름, 이메일, 휴대전화), 탑승자 정보(한글이름, 생년월일, 성별, 국적) ,외국인의 경우(영문이름)</td>
-                                    <td rowspan="4"><br><br><br>회원탈퇴 후 파기됩니다. 다만 관계법령에 의해 보존할 경우 그 의무기간 동안 별도 보관되며 불,편법 행위의 방지 및 대응의 목적으로 60일간 별도 보관됩니다</td>
+                                    <td>상품 예약 및 상담,<br>출입국 가능 여부 확인</td>
+                                    <td>예약자 정보(한글이름, 이메일, 휴대전화),<br>탑승자 정보(한글이름, 생년월일, 성별, 국적),<br>외국인의 경우(영문이름)</td>
+                                    <td rowspan="4"><br><br><br><br>회원탈퇴 후 파기됩니다. 다만 관계법령에 의해 보존할 경우 그 의무기간 동안 별도 보관되며<br>불,편법 행위의 방지 및 대응의 목적으로 60일간 별도 보관됩니다</td>
                                 </tr>
                                 <tr>
                                     <td>대금결제서비스 제공</td>
-                                    <td>
-                                        카드번호, 유효기간, 이름, 생년월일, 성별, 카드비밀번호 앞2자리, 계약자와의 관계 증빙
-                                    </td>
+                                    <td>카드번호, 유효기간, 이름,<br>생년월일, 성별, 카드비밀번호 앞2자리,<br>계약자와의 관계 증빙</td>
                                 </tr>
                                 <tr>
                                     <td>마일리지 적립</td>
@@ -907,13 +900,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                     <div class="card-body" style="border-bottom: 0px solid lightgray; height: 200px; overflow: auto;">
                         <pre style="background-color: white; margin: 0px; font-family: '고딕체'; font-size: 12px;">
             개인정보 제3자 제공에 관한 사항
-                            <table class="table table-bordered" style="margin: auto; width: 90%; font-size: 12px;">
-                                <colgroup>
-                                    <col width="25%">
-                                    <col width="25%">
-                                    <col width="25%">
-                                    <col width="25%">
-                                </colgroup>
+                            <table class="table table-bordered" style="margin: auto; width: 90%; font-size: 12px; text-align: center">
                                 <tr>
                                     <th>제공 받는 자</th>
                                     <th>이용 목적</th>
@@ -922,14 +909,14 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                                 </tr>
                                 <tr>
                                     <th>항공사</th>
-                                    <td>청약의사의 확인, 거래이행, 고객상담, AS 등 불만 처리</td>
-                                    <td>한글이름, 생년월일, 성별, 연락처(휴대전화, 일반전화), 외국인의 경우(영문이름), 마일리지 번호(선택 시)</td>
-                                    <td rowspan="2">관계법령에 따른 보존기간</td>
+                                    <td>청약의사의 확인, 거래이행,<br>고객상담, AS 등 불만 처리</td>
+                                    <td>한글이름, 생년월일, 성별,<br> 연락처(휴대전화, 일반전화), 외국인의 경우(영문이름),<br> 마일리지 번호(선택 시)</td>
+                                    <td rowspan="2"><br><br>관계법령에 따른 보존기간</td>
                                 </tr>
                                 <tr>
-                                    <th>에이스 손해보험, 여행보험 대리점 케이티인슈</th>
-                                    <td>여행자보험 가입, 결제 및 환불, 보험금 지급 서비스 제공</td>
-                                    <td>한글이름, 생년월일, 성별, 연락처(전화번호, 이메일)</td>
+                                    <th>에이스 손해보험,<br>여행보험 대리점 케이티인슈</th>
+                                    <td>여행자보험 가입,<br>결제 및 환불, 보험금 지급 서비스 제공</td>
+                                    <td>한글이름, 생년월일, 성별,<br> 연락처(전화번호, 이메일)</td>
                                 </tr>
                             </table>
             ※ 동의를 거부할 권리 및 동의 거부에 따른 불이익
@@ -957,15 +944,15 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
         </article>
         <br>
         
+    </form>
         <article>
             <div style="width: 35%; margin: auto;">
-                <button onclick="#" class="btn btn-secondary" style="height: 60px;">
+                <button onclick="href='ex.tpo'" class="btn btn-secondary" style="height: 60px;">
                     항공 스케줄 다시 선택
                 </button>
+			    <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
             </div>
         </article>
-    </form>
-    <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
     </section>
     <!-- 컨텐츠 끝 -->
     
@@ -1001,14 +988,41 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
     }); */
     /* $("#check_module").click(function() { */
     function checkModule() {
+    	
+    	/* 탑승객 정보 입력확인 */
     	var pName = $("#passengerName").val();
-    	var pGender = $("#").val();
-    	if ( pName == "" ) {
-    		alert("이름을 적어주세요");
+    	var gender = $("#pGender").val();
+    	var nation = $("#nationality").val();
+    	var pBirthDay = $("#pBirthDay").val();
+    	var pEmail = $("#pEmail").val();
+    	var pPhone = $("#pPhone").val();   	
+    	if (pName == "") {
+    		alert("이름을 입력해주세요.");
     		$("#passengerName").focus();
     		return false;
+    	} else if (gender == "") {
+    		alert("성별을 선택해주세요.");
+    		$("#pGender").focus();
+    		return false;
+    	} else if (nation == "") {
+    		alert("국적을 선택해주세요.");
+    		$("#nationality").focus();
+    		return false;
+    	} else if (pBirthDay == "") {
+    		alert("생년월일을 입력해주세요.");
+    		$("#pBirthDay").focus();
+    		return false;
+    	} else if (pEmail == "") {
+    		alert("이메일을 입력해주세요.");
+    		$("#pEmail").focus();
+    		return false;
+    	} else if (pPhone == "") {
+    		alert("전화번호를 입력해주세요.");
+    		$("#pPhone").focus();
+    		return false;
     	}
-    	
+		
+    	/* 약관동의 확인 및 동의함 체크여부 */
     	var check = $(".radio_chk:checked").length;
         var radios = $(":radio[value='Y']");
        	if(check == 0) {
@@ -1025,6 +1039,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
        		}
        	}
     	
+       	/* 결제 */
         var IMP = window.IMP;
        	IMP.init('imp55814317');
 		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -1058,15 +1073,13 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
 			 참고하세요.
 			 나중에 포스팅 해볼게요.
 			 */
-			name : '비행기예매',
-			//결제창에서 보여질 이름
-			amount : 100,
-			//가격
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456',
+			name : '항공편 예매',
+			amount : 100, // 가격
+			buyer_email : 'iamport@siot.do', // 예매자 이메일 ${loginUser.email}
+			buyer_name : '구매자이름', // 예매자 이름 ${loginUser.userName}
+			buyer_tel : '010-1234-5678', // 예매자 전화번호 ${loginUser.phone}
+			buyer_addr : '서울특별시 강남구 삼성동', // 예매자 주소 ${loginUser.address}
+			buyer_postcode : '123-456', // 우편번호에 대한 정보가 우리는 없음..
 			m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 		/*
 		 모바일 결제시,
@@ -1075,22 +1088,23 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
 		 */
 		}, function(rsp) {
 			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.';
-				msg += '고유ID : ' + rsp.imp_uid;
-				msg += '상점 거래ID : ' + rsp.merchant_uid;
-				msg += '결제 금액 : ' + rsp.paid_amount;
+				var msg = '결제가 완료되었습니다.\n';
+				msg += '고유ID : ' + rsp.imp_uid + '\n';
+				msg += '상점 거래ID : ' + rsp.merchant_uid + '\n';
+				msg += '결제 금액 : ' + rsp.paid_amount + '\n';
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 				$("form").submit();
-				alert("결제 완료되었습니다.");
+				alert(msg);
 				return true;
 			} else {
-				var msg = '결제에 실패하였습니다.';
+				var msg = '결제에 실패하였습니다.\n';
 				msg += '에러내용 : ' + rsp.error_msg;
+				alert(msg);
 				return false;
 			}
 			alert(msg);
 		});
-    };
+    }
 
     </script>
 	

@@ -62,7 +62,7 @@
             <div style="width: 50%; float: left;">
                 <div style="font-size: 25px; font-weight: 500">
                     <img src="../resources/images/plane2.png" style="width: 50px;">
-                    오는편 [제주 -> 김포]
+                    오는편 [${item.depAirportNm } -> ${item.arrAirportNm }]
                 </div>
                 <div>
                     <div style="float: left;">

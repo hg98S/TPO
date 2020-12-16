@@ -4,35 +4,38 @@ public class FlightSchedule {
 
 	// 매개변수
 	private int fsNo; // 항공일정번호
-	private String airportNo; // 공항번호
-	private String airlineNo; // 항공사번호
-	private String departureDate; // 출발일자
-	private String arrivalDate; // 도착일자
-	private String departureArea; // 출발지
-	private String arrivalArea; // 도착지
+	private String airportId; // 공항번호
+	private String airlineId; // 항공사번호
+	private String vihicleId; // 항공편명
+	private String airlineNm; // 항공사명
+	private String depPlandTime; // 출발일자
+	private String arrPlandTime; // 도착일자
+	private String depAirportNm; // 출발지
+	private String arrAirportNm; // 도착지
+	private String economyCharge; // 일반석 운임료
+	private String prestigeCharge; // 비즈니스석 운임료
 	private int capacity; // 수용인원
-	private String fsName; // 항공편명
-	private String seatGrade; // 좌석등급
-	private int fare; // 운임료
 	
 	// 기본 생성자
 	public FlightSchedule() {}
 
 	// 매개변수 생성자
-	public FlightSchedule(int fsNo, String airportNo, String airlineNo, String departureDate, String arrivalDate,
-			String departureArea, String arrivalArea, int capacity, String fsName, String seatGrade, int fare) {
+	public FlightSchedule(int fsNo, String airportId, String airlineId, String vihicleId, String airlineNm,
+			String depPlandTime, String arrPlandTime, String depAirportNm, String arrAirportNm, String economyCharge,
+			String prestigeCharge, int capacity) {
 		super();
 		this.fsNo = fsNo;
-		this.airportNo = airportNo;
-		this.airlineNo = airlineNo;
-		this.departureDate = departureDate;
-		this.arrivalDate = arrivalDate;
-		this.departureArea = departureArea;
-		this.arrivalArea = arrivalArea;
+		this.airportId = airportId;
+		this.airlineId = airlineId;
+		this.vihicleId = vihicleId;
+		this.airlineNm = airlineNm;
+		this.depPlandTime = depPlandTime;
+		this.arrPlandTime = arrPlandTime;
+		this.depAirportNm = depAirportNm;
+		this.arrAirportNm = arrAirportNm;
+		this.economyCharge = economyCharge;
+		this.prestigeCharge = prestigeCharge;
 		this.capacity = capacity;
-		this.fsName = fsName;
-		this.seatGrade = seatGrade;
-		this.fare = fare;
 	}
 	
 	// getter/setter
@@ -44,52 +47,84 @@ public class FlightSchedule {
 		this.fsNo = fsNo;
 	}
 
-	public String getAirportNo() {
-		return airportNo;
+	public String getAirportId() {
+		return airportId;
 	}
 
-	public void setAirportNo(String airportNo) {
-		this.airportNo = airportNo;
+	public void setAirportId(String airportId) {
+		this.airportId = airportId;
 	}
 
-	public String getAirlineNo() {
-		return airlineNo;
+	public String getAirlineId() {
+		return airlineId;
 	}
 
-	public void setAirlineNo(String airlineNo) {
-		this.airlineNo = airlineNo;
+	public void setAirlineId(String airlineId) {
+		this.airlineId = airlineId;
 	}
 
-	public String getDepartureDate() {
-		return departureDate;
+	public String getVihicleId() {
+		return vihicleId;
 	}
 
-	public void setDepartureDate(String departureDate) {
-		this.departureDate = departureDate;
+	public void setVihicleId(String vihicleId) {
+		this.vihicleId = vihicleId;
 	}
 
-	public String getArrivalDate() {
-		return arrivalDate;
+	public String getAirlineNm() {
+		return airlineNm;
 	}
 
-	public void setArrivalDate(String arrivalDate) {
-		this.arrivalDate = arrivalDate;
+	public void setAirlineNm(String airlineNm) {
+		this.airlineNm = airlineNm;
 	}
 
-	public String getDepartureArea() {
-		return departureArea;
+	public String getDepPlandTime() {
+		return depPlandTime;
 	}
 
-	public void setDepartureArea(String departureArea) {
-		this.departureArea = departureArea;
+	public void setDepPlandTime(String depPlandTime) {
+		this.depPlandTime = depPlandTime;
 	}
 
-	public String getArrivalArea() {
-		return arrivalArea;
+	public String getArrPlandTime() {
+		return arrPlandTime;
 	}
 
-	public void setArrivalArea(String arrivalArea) {
-		this.arrivalArea = arrivalArea;
+	public void setArrPlandTime(String arrPlandTime) {
+		this.arrPlandTime = arrPlandTime;
+	}
+
+	public String getDepAirportNm() {
+		return depAirportNm;
+	}
+
+	public void setDepAirportNm(String depAirportNm) {
+		this.depAirportNm = depAirportNm;
+	}
+
+	public String getArrAirportNm() {
+		return arrAirportNm;
+	}
+
+	public void setArrAirportNm(String arrAirportNm) {
+		this.arrAirportNm = arrAirportNm;
+	}
+
+	public String getEconomyCharge() {
+		return economyCharge;
+	}
+
+	public void setEconomyCharge(String economyCharge) {
+		this.economyCharge = economyCharge;
+	}
+
+	public String getPrestigeCharge() {
+		return prestigeCharge;
+	}
+
+	public void setPrestigeCharge(String prestigeCharge) {
+		this.prestigeCharge = prestigeCharge;
 	}
 
 	public int getCapacity() {
@@ -100,36 +135,13 @@ public class FlightSchedule {
 		this.capacity = capacity;
 	}
 
-	public String getFsName() {
-		return fsName;
-	}
-
-	public void setFsName(String fsName) {
-		this.fsName = fsName;
-	}
-
-	public String getSeatGrade() {
-		return seatGrade;
-	}
-
-	public void setSeatGrade(String seatGrade) {
-		this.seatGrade = seatGrade;
-	}
-
-	public int getFare() {
-		return fare;
-	}
-
-	public void setFare(int fare) {
-		this.fare = fare;
-	}
-	
 	// toString
 	@Override
 	public String toString() {
-		return "FlightSchedule [fsNo=" + fsNo + ", airportNo=" + airportNo + ", airlineNo=" + airlineNo
-				+ ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + ", departureArea="
-				+ departureArea + ", arrivalArea=" + arrivalArea + ", capacity=" + capacity + ", fsName=" + fsName
-				+ ", seatGrade=" + seatGrade + ", fare=" + fare + "]";
+		return "FlightSchedule [fsNo=" + fsNo + ", airportId=" + airportId + ", airlineId=" + airlineId + ", vihicleId="
+				+ vihicleId + ", airlineNm=" + airlineNm + ", depPlandTime=" + depPlandTime + ", arrPlandTime="
+				+ arrPlandTime + ", depAirportNm=" + depAirportNm + ", arrAirportNm=" + arrAirportNm
+				+ ", economyCharge=" + economyCharge + ", prestigeCharge=" + prestigeCharge + ", capacity=" + capacity
+				+ "]";
 	}
 }

@@ -3,124 +3,167 @@ package com.kh.tpo.reservation.domain;
 public class ScheduleSearch {
 
 	// 매개변수
-	private String searchDepartureArea; // 출발지
-	private String searchArrivalArea; // 도착지
-	private String searchDepartureDate; // 출발시간
-	private String searchArrivalDate; // 도착시간
+	private String sVihicleId;
+	private String sAirlineNm;
+	private String sDepPlandTime;
+	private String sArrPlandTime;
+	private String sEconomyCharge;
+	private String sPrestigeCharge;
+	private String sDepAirportNm;
+	private String sArrAirportNm;
+	private String searchAirline; // 항공사 검색
+	private String searchTime; // 시간 검색
 	private int adultCount; // 성인 인원수
 	private int childCount; // 소아 인원수
 	private int infantCount; // 유아 인원수
-	private String searchAirline; // 항공사 검색
-	private String searchTime; // 시간 검색
 	private boolean cookieDel; // 쿠키 삭제
 	
 	// 기본 생성자
 	public ScheduleSearch() {}
 
 	// 매개변수 생성자
-	public ScheduleSearch(String searchDepartureArea, String searchArrivalArea, String searchDepartureDate,
-			String searchArrivalDate, int adultCount, int childCount, int infantCount, String searchAirline,
-			String searchTime, boolean cookieDel) {
+	public ScheduleSearch(String sVihicleId, String sAirlineNm, String sDepPlandTime, String sArrPlandTime,
+			String sEconomyCharge, String sPrestigeCharge, String sDepAirportNm, String sArrAirportNm,
+			String searchAirline, String searchTime, int adultCount, int childCount, int infantCount,
+			boolean cookieDel) {
 		super();
-		this.searchDepartureArea = searchDepartureArea;
-		this.searchArrivalArea = searchArrivalArea;
-		this.searchDepartureDate = searchDepartureDate;
-		this.searchArrivalDate = searchArrivalDate;
+		this.sVihicleId = sVihicleId;
+		this.sAirlineNm = sAirlineNm;
+		this.sDepPlandTime = sDepPlandTime;
+		this.sArrPlandTime = sArrPlandTime;
+		this.sEconomyCharge = sEconomyCharge;
+		this.sPrestigeCharge = sPrestigeCharge;
+		this.sDepAirportNm = sDepAirportNm;
+		this.sArrAirportNm = sArrAirportNm;
+		this.searchAirline = searchAirline;
+		this.searchTime = searchTime;
 		this.adultCount = adultCount;
 		this.childCount = childCount;
 		this.infantCount = infantCount;
-		this.searchAirline = searchAirline;
-		this.searchTime = searchTime;
 		this.cookieDel = cookieDel;
 	}
 
 	// getter/setter
-	public String getSearchDepartureArea() {
-		return searchDepartureArea;
+	public String getsVihicleId() {
+		return sVihicleId;
 	}
-
-	public void setSearchDepartureArea(String searchDepartureArea) {
-		this.searchDepartureArea = searchDepartureArea;
+	
+	public void setsVihicleId(String sVihicleId) {
+		this.sVihicleId = sVihicleId;
 	}
-
-	public String getSearchArrivalArea() {
-		return searchArrivalArea;
+	
+	public String getsAirlineNm() {
+		return sAirlineNm;
 	}
-
-	public void setSearchArrivalArea(String searchArrivalArea) {
-		this.searchArrivalArea = searchArrivalArea;
+	
+	public void setsAirlineNm(String sAirlineNm) {
+		this.sAirlineNm = sAirlineNm;
 	}
-
-	public String getSearchDepartureDate() {
-		return searchDepartureDate;
+	
+	public String getsDepPlandTime() {
+		return sDepPlandTime;
 	}
-
-	public void setSearchDepartureDate(String searchDepartureDate) {
-		this.searchDepartureDate = searchDepartureDate;
+	
+	public void setsDepPlandTime(String sDepPlandTime) {
+		this.sDepPlandTime = sDepPlandTime;
 	}
-
-	public String getSearchArrivalDate() {
-		return searchArrivalDate;
+	
+	public String getsArrPlandTime() {
+		return sArrPlandTime;
 	}
-
-	public void setSearchArrivalDate(String searchArrivalDate) {
-		this.searchArrivalDate = searchArrivalDate;
+	
+	public void setsArrPlandTime(String sArrPlandTime) {
+		this.sArrPlandTime = sArrPlandTime;
 	}
-
-	public int getAdultCount() {
-		return adultCount;
+	
+	public String getsEconomyCharge() {
+		return sEconomyCharge;
 	}
-
-	public void setAdultCount(int adultCount) {
-		this.adultCount = adultCount;
+	
+	public void setsEconomyCharge(String sEconomyCharge) {
+		this.sEconomyCharge = sEconomyCharge;
 	}
-
-	public int getChildCount() {
-		return childCount;
+	
+	public String getsPrestigeCharge() {
+		return sPrestigeCharge;
 	}
-
-	public void setChildCount(int childCount) {
-		this.childCount = childCount;
+	
+	public void setsPrestigeCharge(String sPrestigeCharge) {
+		this.sPrestigeCharge = sPrestigeCharge;
 	}
-
-	public int getInfantCount() {
-		return infantCount;
+	
+	public String getsDepAirportNm() {
+		return sDepAirportNm;
 	}
-
-	public void setInfantCount(int infantCount) {
-		this.infantCount = infantCount;
+	
+	public void setsDepAirportNm(String sDepAirportNm) {
+		this.sDepAirportNm = sDepAirportNm;
 	}
-
+	
+	public String getsArrAirportNm() {
+		return sArrAirportNm;
+	}
+	
+	public void setsArrAirportNm(String sArrAirportNm) {
+		this.sArrAirportNm = sArrAirportNm;
+	}
+	
 	public String getSearchAirline() {
 		return searchAirline;
 	}
-
+	
 	public void setSearchAirline(String searchAirline) {
 		this.searchAirline = searchAirline;
 	}
-
+	
 	public String getSearchTime() {
 		return searchTime;
 	}
-
+	
 	public void setSearchTime(String searchTime) {
 		this.searchTime = searchTime;
 	}
-
+	
+	public int getAdultCount() {
+		return adultCount;
+	}
+	
+	public void setAdultCount(int adultCount) {
+		this.adultCount = adultCount;
+	}
+	
+	public int getChildCount() {
+		return childCount;
+	}
+	
+	public void setChildCount(int childCount) {
+		this.childCount = childCount;
+	}
+	
+	public int getInfantCount() {
+		return infantCount;
+	}
+	
+	public void setInfantCount(int infantCount) {
+		this.infantCount = infantCount;
+	}
+	
 	public boolean isCookieDel() {
 		return cookieDel;
 	}
-
+	
 	public void setCookieDel(boolean cookieDel) {
 		this.cookieDel = cookieDel;
-	}
+	}	
 
 	// toString
 	@Override
 	public String toString() {
-		return "ScheduleSearch [searchDepartureArea=" + searchDepartureArea + ", searchArrivalArea=" + searchArrivalArea
-				+ ", searchDepartureDate=" + searchDepartureDate + ", searchArrivalDate=" + searchArrivalDate
-				+ ", adultCount=" + adultCount + ", childCount=" + childCount + ", infantCount=" + infantCount
-				+ ", searchAirline=" + searchAirline + ", searchTime=" + searchTime + ", cookieDel=" + cookieDel + "]";
+		return "ScheduleSearch [sVihicleId=" + sVihicleId + ", sAirlineNm=" + sAirlineNm + ", sDepPlandTime="
+				+ sDepPlandTime + ", sArrPlandTime=" + sArrPlandTime + ", sEconomyCharge=" + sEconomyCharge
+				+ ", sPrestigeCharge=" + sPrestigeCharge + ", sDepAirportNm=" + sDepAirportNm + ", sArrAirportNm="
+				+ sArrAirportNm + ", searchAirline=" + searchAirline + ", searchTime=" + searchTime + ", adultCount="
+				+ adultCount + ", childCount=" + childCount + ", infantCount=" + infantCount + ", cookieDel="
+				+ cookieDel + "]";
 	}
 }
