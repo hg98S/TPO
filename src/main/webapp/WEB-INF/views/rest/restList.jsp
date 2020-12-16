@@ -62,39 +62,48 @@
 					</div>
 					<div class="well well-lg search price-search"
 						style="background-color: #eeeeee; padding-left: 10%; padding-top: 6%; margin-top: 20px; width: 100%; height: 260px;">
+
 						<h3>
 							<b id="rs">가격</b>
 						</h3>
 						<div class="search-list">
-							<b>최저금액 </b><br> <input type="text"
-								class="well well-sm location"
-								style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;">
-							원 부터<br> <b>최고금액 </b><br> <input type="text"
-								class="well well-sm location"
-								style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;">
-							원 까지
+							<form action="rPriceSearch.tpo" method="get">
+								<b>최저금액 </b><br> <input type="text"
+									class="well well-sm location"
+									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;"
+									name="minPrice" value="${search.minPrice}" id="min"> 원 부터<br>
+								<b>최고금액 </b><br> <input type="text"
+									class="well well-sm location"
+									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;"
+									name="maxPrice" value="${ search.maxPrice}" id="max"> 원 까지
+							</form>
 						</div>
 					</div>
 					<div class="well well-lg search name-search"
 						style="background-color: #eeeeee; padding-left: 10%; padding-top: 6%; width: 100%; float: left;">
-						<h3>
-							<b id="rs">숙소명</b>
-						</h3>
-						<input type="text" class="well well-sm location"
-							style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;">&nbsp;
-						<button type="submit" class="btn btn-primary btn-xs"
-							style="width: 100px; margin-left: 50%;">검색</button>
+						<form action="rNameSearch.tpo" method="get">
+							<h3>
+								<b id="rs">숙소명</b>
+							</h3>
+							<input type="text" class="well well-sm location"
+								name="searchName" 
+								style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;">&nbsp;
+							<button type="submit" class="btn btn-primary btn-xs"
+								style="width: 100px; margin-left: 50%;">검색</button>
+						</form>
 					</div>
 				</div>
 			</div>
-			<div class="main-right" style="width: 75%; height: 100%; float: left;">
+			<div class="main-right"
+				style="width: 75%; height: 100%; float: left;">
 				<div class="well well-sm search sortarea"
 					style="background-color: #eeeeee; width: 100%; height: 60px; margin-left: 5%; float: left;">
-					정렬 위치</div>
+					<a href="#">이름</a> | <a href="#">요금</a> | <a href="#">최다클릭</a> |
+				</div>
 				<div class=" restInfo-area"
 					style="width: 100%; height: 100%; margin-top: 10%;">
 					<c:forEach items="${rList }" var="rest">
-					<input type="hidden" value="${rest.reNo}">
+						<input type="hidden" value="${rest.reNo}">
 						<a href="restDetail.tpo?reNo=${rest.reNo}">
 							<div class="well well-lg search restInfo"
 								style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">
@@ -168,6 +177,40 @@
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+		
+	
+			$('#min').change(function(){
+				var min2 = $('#min').val();
+				$('#min').attr('value',min2);
+				console.log(min);
+			});
+			$('#max').change(function(){
+					var max2 = $('#max').val();
+					$('#max').attr('value',max2);
+					console.log(max)
+				});
+	
+		
+			$('#max').change(function(){
+				
+				var min = $('#min').val();
+				console.log('min값 : ' + min)
+				var max = $('#max').val();
+				console.log('max값 : ' + max) 
+				$.ajax({
+					url:"searchPrice.tpo",
+					data : { "min" : min , "max" : max},
+				    type: "get",
+					success : function(data){
+						alert("검색성공!");
+					}	  
+				
+				})
+			})
+			
+		</script>
 
 	</section>
 	<!--section 끝-->

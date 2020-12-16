@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.tpo.rest.domain.PageInfo;
 import com.kh.tpo.rest.domain.Rest;
+import com.kh.tpo.rest.domain.RestInfo;
 import com.kh.tpo.rest.domain.Room;
 import com.kh.tpo.rest.domain.Search;
 
@@ -48,9 +49,9 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public Rest restSearchOne(int reNo) {
+	public Rest restSearchOne(Rest rest) {
 		// TODO Auto-generated method stub
-		return session.selectOne("RestMapper.selectOne",reNo);
+		return session.selectOne("RestMapper.selectOne",rest);
 	}
 
 	@Override
@@ -63,6 +64,30 @@ public class RestStoreLogic implements RestStore{
 	public ArrayList<Room> roomSearchList(int reNo) {
 		// TODO Auto-generated method stub
 		return (ArrayList)session.selectList("RestMapper.selectRoomList", reNo);
+	}
+
+	@Override
+	public Room roomInfo(int rNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("RestMapper.roomInfo", rNo);
+	}
+
+	@Override
+	public int addReadCount(int reNo) {
+		// TODO Auto-generated method stub
+		return session.update("RestMapper.addCount",reNo);
+	}
+
+	@Override
+	public ArrayList<Rest> SearchrName(Search search){
+		// TODO Auto-generated method stub
+		return (ArrayList)session.selectList("RestMapper.SearchrName", search);
+	}
+
+	@Override
+	public ArrayList<RestInfo> searchPrice(Search search) {
+		// TODO Auto-generated method stub
+		return (ArrayList)session.selectList("RestMapper.SearchPrice", search);
 	}
 
 

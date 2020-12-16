@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.tpo.rest.domain.Room;
 import com.kh.tpo.rest.service.RestService;
@@ -29,6 +30,15 @@ public class RoomController {
 			System.out.println("실패");
 		}
 		//}
+	}
+	
+	@RequestMapping(value="roomInfo.tpo", method=RequestMethod.GET)
+	public ModelAndView roomInfo(ModelAndView mv ,int rNo) {
+		Room room = reService.roomInfo(rNo);
+		if(room != null) {
+			mv.addObject("room", room).setViewName("rest/roomOne");
+		}
+		return mv;
 	}
 
 
