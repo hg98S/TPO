@@ -230,9 +230,6 @@ public class RestInfo {
 				+ ", roSize=" + roSize + ", roImage=" + roImage + ", pMaxCount=" + pMaxCount + ", roCount=" + roCount
 				+ "]";
 	}
-<<<<<<< HEAD
-	
-=======
 
 	public RestInfo(int reNo, String reName, String reAddr, String reImage, String rePhone, String reUrl, String reInfo,
 			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik,
@@ -264,9 +261,4 @@ public class RestInfo {
 		this.pMaxCount = pMaxCount;
 		this.roCount = roCount;
 	}
-	
-	
-	
-
->>>>>>> refs/remotes/origin/1215CJH
 }
