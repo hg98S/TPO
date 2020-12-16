@@ -24,8 +24,8 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public int insertSightList(SightList sList) {
-		return sStore.insertSightList(sList);
+	public int insertSightList(SightList sightList) {
+		return sStore.insertSightList(sightList);
 	}
 
 	@Override
@@ -44,6 +44,17 @@ public class SightServiceImpl implements SightService{
 	public int insertReply(SightReply reply) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ArrayList<SightList> selectSightList() {
+		
+		return sStore.selectSightList();
+	}
+
+	@Override
+	public Sight selectSight(int sNo) {
+		return sStore.selectSight(sNo);
 	}
 
 }

@@ -3,15 +3,17 @@ package com.kh.tpo.sight.domain;
 public class SightList {
 	
 	private int sNo;
+	private String image;
 	private String addr;
 	private String title;
 	public SightList() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SightList(int sNo, String addr, String title) {
+	public SightList(int sNo, String image, String addr, String title) {
 		super();
 		this.sNo = sNo;
+		this.image = image;
 		this.addr = addr;
 		this.title = title;
 	}
@@ -20,6 +22,12 @@ public class SightList {
 	}
 	public void setsNo(int sNo) {
 		this.sNo = sNo;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getAddr() {
 		return addr;
@@ -35,7 +43,9 @@ public class SightList {
 	}
 	@Override
 	public String toString() {
-		return "SightList [sNo=" + sNo + ", addr=" + addr + ", title=" + title + "]";
+		return "SightList [sNo=" + sNo + ", image=" + image + ", addr=" + addr + ", title=" + title + "]";
 	}
+	
+	
 	
 }

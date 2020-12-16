@@ -104,16 +104,33 @@ public class ApiController {
 
 
 	//tag값의 정보를 가져오는 메소드
-	private static String getTagValue(String tag, Element eElement) {
-		System.out.printf(tag, eElement);
-		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
-		Node nValue = (Node) nlList.item(0);
+	private String getTagValue(String tag, Element eElement) {
+		//			NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+		//		    Node nValue = (Node) nlList.item(0);
+		//		    if(nValue == null) 
+		//		        return null;
+		//		    return nValue.getNodeValue();
+		NodeList nlList = null;
+		Node nValue = null;
+		if(tag == "firstimage") {
+			if(eElement.getElementsByTagName(tag).item(0) != null) {
+				nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+				nValue = (Node) nlList.item(0);
+			}else {
+				nValue = null;
+			}
+
+		} else {
+			nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+			nValue = (Node) nlList.item(0);
+		}
+
 		if(nValue == null) 
 			return null;
 		return nValue.getNodeValue();
 	}
 
-	//@RequestMapping(value="addSightList.kh", method=RequestMethod.POST)
+	//@RequestMapping(value="addSightList.kh", method=RequestMethod.GET)
 	public void getSightList(ArrayList<SightList> sList) throws Exception {
 		int page = 1;	// 페이지 초기값 
 		//			try{
@@ -122,13 +139,13 @@ public class ApiController {
 			//String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?=pJ3KoXLiUPTbegKASU9qcoZJUM5VTsBUzcx%2Fxun7o3kkoe942GUlF8ruLT1YrpsC4%2FejdjH3Rce%2FtJ2nU5hHyA%3D%3D"+page;
 			StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=pJ3KoXLiUPTbegKASU9qcoZJUM5VTsBUzcx%2Fxun7o3kkoe942GUlF8ruLT1YrpsC4%2FejdjH3Rce%2FtJ2nU5hHyA%3D%3D"); /*Service Key*/
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과수*/
-			urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(Integer.toString(page), "UTF-8")); /*현재 페이지 번호*/
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("200", "UTF-8")); /*한 페이지 결과수*/
 			urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 			urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("TourAPI3.0_Guide", "UTF-8")); /*서비스명=어플명*/
 			urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*지역코드, 시군구코드*/
 			urlBuilder.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8"));
 			urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"));
+			urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(Integer.toString(page), "UTF-8")); /*현재 페이지 번호*/
 			URL url = new URL(urlBuilder.toString());
 
 			// url 연결
@@ -186,6 +203,7 @@ public class ApiController {
 					SightList sight = new SightList();
 					String sNo = getTagValue("contentid", eElement);
 					sight.setsNo(Integer.parseInt(sNo));
+					sight.setImage(getTagValue("firstimage",eElement));
 					sight.setAddr(getTagValue("addr1",eElement));
 					sight.setTitle(getTagValue("title",eElement));
 
@@ -194,25 +212,25 @@ public class ApiController {
 					// sight DB에 넣기
 					int result = sService.insertSightList(sight);
 					if(result > 0) {
-					}
 
 					}	// if end
 				}	// for end
-				page += 1;
-				System.out.println("page number : "+page);
-				if(page > 20){	
-					break;
-				}
-			}	// while end
+				
+				
+			} // for end
+			page += 1;
+			System.out.println("page number : "+page);
+			if(page > 8){	
+				break;
+			}
+		} // while end
 
-			//			} catch (Exception e){	
-			//				e.printStackTrace();
-			//			}	// try~catch end
+		//			} catch (Exception e){	
+		//				e.printStackTrace();
+		//			}	// try~catch end
 
 
 
-		}	// main end
-
-
-	}
+	}	// main end
+}
 

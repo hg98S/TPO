@@ -138,11 +138,11 @@ img {
 		<div class="media">
 			<div class="media-left media-middle">
 				<a href="#"> <img class="media-object"
-					src="./resources/images/img_1.jpg" alt="명소임ㅇㅇ아무튼명소">
+					src="${sList[0].image }" alt="명소임ㅇㅇ아무튼명소">
 				</a>
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading">명소제목이 들어갈 공간</h4>
+				<h4 class="media-heading">${sList[0].title}</h4>
 				명소 설명이 들어가야 할 공간으로써 api 에서 따와야하는디...
 			</div>
 		</div>

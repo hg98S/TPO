@@ -10,8 +10,10 @@ import com.kh.tpo.sight.domain.SightReview;
 public interface SightService {
 
 	public int insertSight(Sight sight);
-	public int insertSightList(SightList sList);
+	public int insertSightList(SightList sightList);
+	public ArrayList<SightList> selectSightList();
 	public ArrayList<Sight> searchSight();
 	public int insertReview(SightReview review);
 	public int insertReply(SightReply reply);
+	public Sight selectSight(int sNo);
 }
