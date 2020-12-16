@@ -49,15 +49,17 @@
 		select * from rest where reNo = #{reNo}
 		order by 2
 	</select>
-	
+	<!-- 지혜꺼 -->
 	<select id="selectRoomList"  resultType="Room">
 		select * from room join rest using(reNo)
 		where reNo = #{reNo}
 		order by 2
 	</select>
-	
-	
-
-
-
+	<!-- MainPage(김승태) -->
+	<select id="selectAllRest" resultMap="RestResultMap">
+		select * from rest
+	</select>
+	<select id="selectAllRoom" resultType="Room">
+		select * from room
+	</select>
 </mapper>

@@ -36,8 +36,14 @@
 		</foreach>)A
 	</insert>
 	
-		<!-- 행정구역(서울) select 구문 -->
-	<select id="selectAllSeoul" resultMap="ResultMapCity">
-		select * from city where city_name like '%서울%'
+	<!-- 행정구역(지역) select 구문 -->
+	<select id="selectCity" resultMap="ResultMapCity" parameterType="HashMap">
+	select * from (select substr(city_name,4,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name)
 	</select>
+	
+	<!-- 당일날짜 업데이트 유무(행정구역) -->
+	<select id="checkDate" resultType="int">
+		select count(*) from city where cdate=#{currentDate}
+	</select>
+	
 </mapper>

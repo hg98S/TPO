@@ -1,9 +1,14 @@
 package com.kh.tpo.main.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.tpo.main.domain.City;
 import com.kh.tpo.main.domain.Urban;
+import com.kh.tpo.rest.domain.Rest;
+import com.kh.tpo.rest.domain.RestInfo;
+import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.sight.domain.Sight;
 
 public interface MainService {
 	/*
@@ -25,9 +30,33 @@ public interface MainService {
 	 * */
 	public int insertCity(ArrayList<City> cityList);
 	/*
-	 * 서울 확진자 수 select
-	 * @param
+	 * 해당 지역 확진자 수 select
+	 * @param HashMap<String,String>
 	 * @result ArrayList<Urban>
 	 * */
-	public ArrayList<City> selectSeoul();
+	public ArrayList<City> selectCity(HashMap<String,String> map);
+	/*
+	 * 숙소 리스트 select
+	 * @param 
+	 * @result ArrayList<Rest>
+	 * */
+	public ArrayList<Rest> selectRestList();
+	/*
+	 * 객소 리스트 select
+	 * @param 
+	 * @result ArrayList<Rest>
+	 * */
+	public ArrayList<Room> selectRoomList();
+	/*
+	 * 명소 리스트 select
+	 * @param 
+	 * @result ArrayList<Rest>
+	 * */
+	public ArrayList<Sight> selectSightList();
+	/*
+	 * 날짜 체크(현재날짜로 데이터가 들어가있는지)
+	 * @param String
+	 * @result int
+	 * */
+	public int checkDate(String currentDate);
 }

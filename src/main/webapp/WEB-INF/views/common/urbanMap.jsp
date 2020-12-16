@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>시도별 지도</title>
-<link rel="stylesheet" type="text/css" href="resources/css/urban.css">
 </head>
 <body>
 				<svg style='overflow: visible' height="1107" width="800"
@@ -78,62 +77,106 @@
 				<text id="LCD11" class="URBANTEXT" x="154" y="200"><a id="seoul">서울</a></text>
 				<!--  <rect width="70" height="80" fill="yellow" x="123" y="100" rx="20" ry="20"/>
 				 <line x1="123" y1="148" x2="193" y2="148" stroke-width="10" stroke="black" /> -->
-				 <text id="LCD11" class="urbanNum" x="145" y="220" fill="#0000ff"><a>1</a></text>
+				 <text id="LCD11" class="urbanNum" x="145" y="220" fill="#0000ff"><a></a></text>
 				
 				<text id="LCD26" class="URBANTEXT" x="503" y="685"><a id="busan">부산광역시</a></text>
-				<text id="LCD26" class="urbanNum" x="493" y="705" fill="#0000ff" ><a>2</a></text>
+				<text id="LCD26" class="urbanNum" x="493" y="705" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD27" class="URBANTEXT" x="418" y="562"><a id="daegu">대구광역시</a></text>
-				<text id="LCD27" class="urbanNum" x="403" y="582" fill="#0000ff" ><a>3</a></text>
+				<text id="LCD27" class="urbanNum" x="403" y="582" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD28" class="URBANTEXT" x="67" y="177"><a id="incheon">인천광역시</a></text>
-				<text id="LCD28" class="urbanNum" x="56" y="197" fill="#0000ff"><a>4</a></text>
+				<text id="LCD28" class="urbanNum" x="56" y="197" fill="#0000ff"><a></a></text>
 				
 				<text id="LCD29" class="URBANTEXT" x="127" y="687"><a id="gwangju">광주광역시</a></text>
-				<text id="LCD29" class="urbanNum" x="112" y="707" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD29" class="urbanNum" x="112" y="707" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD30" class="URBANTEXT" x="221" y="463"><a id="daejeon">대전광역시</a></text>
-				<text id="LCD30" class="urbanNum" x="207" y="483" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD30" class="urbanNum" x="207" y="483" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD31" class="URBANTEXT" x="531" y="622"><a id="ulsan">울산광역시</a></text>
-				<text id="LCD31" class="urbanNum" x="520" y="642" fill="#0000ff"><a>1</a></text>
+				<text id="LCD31" class="urbanNum" x="520" y="642" fill="#0000ff"><a></a></text>
 				
 				<text id="LCD36" class="URBANTEXT" x="199" y="408"><a id="sejong">세종특별자치시</a></text>
-				<text id="LCD36" class="urbanNum" x="187" y="428" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD36" class="urbanNum" x="187" y="428" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD41" class="URBANTEXT" x="216" y="245"><a id="gyeonggi">경기도</a></text>
-				<text id="LCD41" class="urbanNum" x="205" y="265" fill="#0000ff"><a>1</a></text>
+				<text id="LCD41" class="urbanNum" x="205" y="265" fill="#0000ff"><a></a></text>
 				
 				<text id="LCD42" class="URBANTEXT" x="370" y="179"><a id="gangwon">강원도</a></text>
-				<text id="LCD42" class="urbanNum" x="355" y="199" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD42" class="urbanNum" x="355" y="199" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD43" class="URBANTEXT" x="294" y="351"><a id="chungcheon1">충청북도</a></text>
-				<text id="LCD43" class="urbanNum" x="280" y="371" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD43" class="urbanNum" x="280" y="371" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD44" class="URBANTEXT" x="105" y="449"><a id="chungcheon2">충청남도</a></text>
-				<text id="LCD44" class="urbanNum" x="92" y="469" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD44" class="urbanNum" x="92" y="469" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD45" class="URBANTEXT" x="179" y="592"><a id="jeonla1">전라북도</a></text>
-				<text id="LCD45" class="urbanNum" x="168" y="612" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD45" class="urbanNum" x="168" y="612" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD46" class="URBANTEXT" x="138" y="764"><a id="jeonla2">전라남도</a></text>
-				<text id="LCD46" class="urbanNum" x="123" y="784" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD46" class="urbanNum" x="123" y="784" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD47" class="URBANTEXT" x="447" y="460"><a id="gyeongsang1">경상북도</a></text>
-				<text id="LCD47" class="urbanNum" x="438" y="480" fill="#0000ff"><a>1</a></text>
+				<text id="LCD47" class="urbanNum" x="438" y="480" fill="#0000ff"><a></a></text>
 				
 				<text id="LCD48" class="URBANTEXT" x="367" y="672"><a id="gyeongsang2">경상남도</a></text>
-				<text id="LCD48" class="urbanNum" x="357" y="692" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD48" class="urbanNum" x="357" y="692" fill="#0000ff" ><a></a></text>
 				
 				<text id="LCD50" class="URBANTEXT" x="76" y="970"><a id="jeju">제주특별자치도</a></text>
-				<text id="LCD50" class="urbanNum" x="65" y="990" fill="#0000ff" ><a>1</a></text>
+				<text id="LCD50" class="urbanNum" x="65" y="990" fill="#0000ff" ><a></a></text>
 				</g>
 				</svg>
 	<!-- script -->
 	<script>
-		$("#seoul").on("click",function(){
-			$("#city_seoul").show();
+		$($(".URBANTEXT a")).on("click",function(){
+			// 그 중 내가 선택한 지역의 a태그만 show, 나머진 hide
+	 		var aTag = $(".URBANTEXT a");
+			var selectTag = $(this).text();
+			// console.log(selectTag);
+ 			for(var i=0; i<aTag.length; i++){
+				var aText = $(".URBANTEXT a:eq" + "(" + i + ")").text();
+				var svgDiv = $(".city div:eq" +  "(" + i + ")");
+				if(aText!=selectTag){
+					// 선택하지않을 값은 hide
+					svgDiv.css("display","none");
+				}else{
+					/* $("#city_seoul").show(); */
+					svgDiv.css("display","");
+				}
+			} 
+	
+	/* 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".CITYTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".CITYTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".cityNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".CITYOUTLINE:eq" + "(" + i + ")");
+								if(data[j].cConfirmedNum<=10){
+									cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+								}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+									cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+								}else{
+									cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+								}
+							}
+						}
+					}
+				}
+			});   */
 		});
+		
 		// 각 지역에 text태그에 가져온 데이터를 담을거셈
 		$(function(){
 			$.ajax({
@@ -142,6 +185,7 @@
 				success: function(data){
 					// 오늘 날짜를 기준으로 데이터를 추출
 					var today = new Date();
+					var yesterday = new Date();
 					var yyyy = today.getFullYear();
 					var mm = today.getMonth()+1;
 					var dd = today.getDate();
@@ -152,16 +196,63 @@
 						mm='0'+mm
 					}
 					today = yyyy + '-' + mm + '-' + dd;
-					/*  alert(today);  */
-/* 					for(var i=0 in data){
+					yesterday = yyyy + '-' + mm + '-' + (dd-1);
+					// alert(today);  
+					// index는 데이터를 뒤에서부터 채워넣기 위해서 
+					var index = 16;
+					for(var i=0; i<data.length; i++){
+						// 날짜는 오늘날짜로 해야함 
 						 if(data[i].uDate==today){ 
-						alert(data[i].urbanName);
-						 }else{
-							 alert("실패");
+							// 해당지역의 코로나 확진자 수를 넣는 태그를 리스트로 받아옴
+						    var urbanNum = $(".urbanNum a:eq" + "(" + index + ")");
+							 // 각 태그에 값을 넣어줌 
+							urbanNum.text(data[i].uConfirmedNum); 
+							// index를 하나씩 줄여줌
+							index--;
+						 }else{ // 오늘날짜 데이터가 없으면 어제날짜 데이터를 가져옴
+							if(data[i].uDate==yesterday){
+							 var urbanNum = $(".urbanNum a:eq" + "(" + index + ")"); 
+							 urbanNum.text(data[i].uConfirmedNum); 
+							 index--;
+							}
 						 }
-					} */
+					}
 				}
 			});
+			
+			// default로 서울이 나올거임	
+			var selectTag = "";
+			$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".CITYTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".CITYTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".cityNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".CITYOUTLINE:eq" + "(" + i + ")");
+								if(data[j].cConfirmedNum<=10){
+									cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+									cityNum.css("fill", "#000000");
+								}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+									cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+									cityNum.css("fill", "#ffffff");
+								}else{
+									cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+									cityNum.css("fill", "#ffffff");
+								}
+							}
+						}
+					}
+				}
+			}); 
 		});
 	</script>
 </body>

@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,6 +31,8 @@ import org.w3c.dom.Element;
 import com.kh.tpo.main.domain.City;
 import com.kh.tpo.main.domain.Urban;
 import com.kh.tpo.main.service.MainService;
+import com.kh.tpo.rest.domain.Rest;
+import com.kh.tpo.rest.domain.Room;
 
 @Controller
 public class MainController {
@@ -327,31 +330,34 @@ public class MainController {
 		}
 	}
 	
-	// 메인페이지 이동(코로나 확진수 데이터, 명소, 숙소 데이터를 불러와야 함 / 일단 keep)
+	// 메인페이지 이동(명소, 숙소 데이터를 불러와야 함)
 	@RequestMapping(value="mainPage.tpo", method=RequestMethod.GET)
-	public String mainPageView() {
-//		SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd");
-//		// 오늘날짜를 파라미터로 넘겨서 가져와야 함
-//		String registerDate = registerdf.format(new Date(System.currentTimeMillis()));
-//		// 일일 시도별 코로나 확진자 데이터
-//		ArrayList<Urban> urbanList = mainService.selectAllUrban();
-//		// 일일 행정구역별 코로나 확진자 데이터 (서울)
-//		ArrayList<City> seoulList = mainService.selectSeoul();
-//		if(!urbanList.isEmpty() && !seoulList.isEmpty()) {
-//			model.addAttribute("urbanList", urbanList);
-//			model.addAttribute("seoulList", seoulList);
-//			return "index";
-//		}else {
-//			return "common/errorPage";
+	public String mainPageView(Model model) {
+		// 최신순으로 명소, 숙소 리스트를 받아서 넘김
+		ArrayList<Rest> restList = mainService.selectRestList();
+		ArrayList<Room> roomList = mainService.selectRoomList();
+//		ArrayList<Sight> sightList = mainService.selectSightList();
+//		for(RestInfo info: roomList) {
+//			System.out.println(info.toString());
 //		}
-		return "index";
+		if(!roomList.isEmpty() && !restList.isEmpty()) {
+			model.addAttribute("roomList", roomList);
+			model.addAttribute("restList", restList);
+			return "index";
+		}else {
+			return "common/errorPage";
+		}
 	}
+	
+	// 국내 지도 데이터 가져오는 거
 	@ResponseBody
 	@RequestMapping(value="urbanMapList.tpo", method=RequestMethod.GET)
 	public ArrayList<Urban> mainUrbanMap() {
-		SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd");
-		// 오늘날짜를 파라미터로 넘겨서 가져와야 함
-		String registerDate = registerdf.format(new Date(System.currentTimeMillis()));
+		/*
+		 * SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd"); // 오늘날짜를
+		 * 파라미터로 넘겨서 가져와야 함 String registerDate = registerdf.format(new
+		 * Date(System.currentTimeMillis()));
+		 */
 		// 일일 시도별 코로나 확진자 데이터
 		ArrayList<Urban> urbanList = mainService.selectAllUrban();
 		// 일일 행정구역별 코로나 확진자 데이터 (서울)
@@ -362,4 +368,49 @@ public class MainController {
 			return null;
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="cityMapList.tpo", method=RequestMethod.GET)
+	public ArrayList<City> mainCityMap(String local){
+		ArrayList<City> cityList = null;
+		// 클릭한 값이 없는 경우 서울을 default로 잡음
+		if(local=="") {
+			local="서울";
+		}
+		// 데이터 등록일자 받아오는 날짜 타입
+		SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd");
+		// 데이터 등록일자(현재날짜)
+		String currentDate = registerdf.format(new Date(System.currentTimeMillis()));
+		// currentDay기준 2일전 날짜 
+		String prevDate = currentDate.substring(0,7) + "-" +(Integer.parseInt(currentDate.substring(8,10))-2);
+		// 현재날짜가 기준 -1
+		String yesterDay = currentDate.substring(0,7) + "-" +(Integer.parseInt(currentDate.substring(8,10))-1);
+		// yesterDay를 기준으로 2일 전 날짜
+		String beforeDate = yesterDay.substring(0,7) + "-" +(Integer.parseInt(yesterDay.substring(8,10))-2);
+		// 당일 데이터가 있는지 유무
+		boolean dataChk = mainService.checkDate(currentDate)==0 ? true : false;
+		// 지역, 날짜 기준으로 3일 데이터를 불러와야함
+		HashMap<String, String> map = new HashMap<String, String>();
+		if(dataChk) {
+			// 당일날짜로 업데이트가 없으면 전날을 기준으로 3일데이터를 불러옴
+			map.put("local", local);
+			map.put("currentDate", yesterDay);
+			map.put("prevDate", beforeDate);
+			cityList=mainService.selectCity(map);
+		}else {
+			map.put("local", local);
+			map.put("currentDate", currentDate);
+			map.put("prevDate", prevDate);
+			cityList=mainService.selectCity(map);
+		}
+//		for(City city : cityList) {
+//			System.out.println(city.toString());
+//		}
+		if(!cityList.isEmpty() &&cityList!=null) {
+			return cityList; 
+		}else {
+			return null;
+		}
+	}
+	
 }

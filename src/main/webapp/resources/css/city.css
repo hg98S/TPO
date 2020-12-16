@@ -6,94 +6,7 @@
     stroke-width: 2;
     
 }
-#CD11110 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11140 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11170 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11200 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11215 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11230 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11260 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11290 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11305 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11320 {
-    fill: rgba(246, 234, 140, 0.7);
-}
-#CD11350 {
-    fill: rgba(246, 234, 140, 0.7);
-}
 
-#CD11380 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11410 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11440 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11470 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11500 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11530 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11545 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-#CD11560 {
-    fill: rgba(242, 110, 92, 0.9);
-}
-
-#CD11590 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-#CD11620 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-#CD11650 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-#CD11680 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-#CD11710 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-#CD11740 {
-    fill: rgba(192, 54, 71, 0.9);
-}
-/*  .LINE {
-    stroke-linejoin:round;
-    stroke: #ffffff;
-    stroke-width: 1;
-    fill: none;
-}
-.POINT {
-    stroke: #ffffff;
-    stroke-width: 1;
-    fill: #ffffff;
-}  */
 .CITYTEXT {
     fill: black;
     font-size: 16px;
@@ -102,9 +15,4 @@
 }
 .CITYTEXT:hover{
 	fill: red;
-}
-#city_seoul{
-	display:none;
-	transition-duration: 4s;
-	transition-timing-function: ease-in; 
 }
