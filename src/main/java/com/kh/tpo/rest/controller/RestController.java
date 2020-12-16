@@ -2,20 +2,23 @@ package com.kh.tpo.rest.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.tpo.rest.common.pagination;
-import com.kh.tpo.rest.domain.Rest;
-import com.kh.tpo.rest.domain.Room;
-import com.kh.tpo.rest.service.RestService;
 import com.kh.tpo.rest.domain.PageInfo;
+import com.kh.tpo.rest.domain.Rest;
+import com.kh.tpo.rest.domain.RestInfo;
+import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.rest.domain.Search;
+import com.kh.tpo.rest.service.RestService;
 
 
 @Controller
@@ -61,19 +64,50 @@ public class RestController {
 	
 	//상세조회
 	@RequestMapping(value="restDetail.tpo", method = RequestMethod.GET)
-	public ModelAndView restOne(ModelAndView mv, int reNo, Integer page) {
+	public ModelAndView restOne(ModelAndView mv, Rest rest ,int reNo, Integer page) {
+		reService.addReadCount(reNo);
 		int currentPage = page !=null ? page:1;
-		Rest rest = reService.restSearchOne(reNo);
+		Rest rlist = reService.restSearchOne(rest);
 		ArrayList<Room> room = reService.roomSearchList(reNo);
 	//	System.out.println(rest.toString());
 		if(room != null) {
-			mv.addObject("room", room).addObject("currentPage", currentPage).addObject("rest", rest).setViewName("rest/restOne");
+			mv.addObject("room", room).addObject("currentPage", currentPage).addObject("rest", rlist).setViewName("rest/restOne");
 		}else {
 			mv.addObject("msg", "게시글 상세조회 실패");
 		}
 		return mv;
 	}
-
+	
+	// 숙소명 조회
+	@RequestMapping(value="rNameSearch.tpo", method = RequestMethod.GET)
+	public String rNameSearch(Model model, Search search) {
+		//System.out.println(search.toString());
+			ArrayList<Rest> rList = reService.SearchrName(search);
+			if(!rList.isEmpty()) {
+				model.addAttribute("rList", rList);
+				model.addAttribute("search",search);
+				return "rest/restList";
+			}else {
+				model.addAttribute("msg", "게시글 상세조회 실패");
+				return "";
+			}	
+	}
+	
+	// 최저, 최고금액 조회
+	@ResponseBody
+	@RequestMapping(value="searchPrice.tpo", method=RequestMethod.GET)
+	public String priceSearch(Model model, Search search) {
+		System.out.println(search.toString());
+		ArrayList<RestInfo> rList = reService.searchPrice(search); 
+		if(!rList.isEmpty()) {
+			model.addAttribute("rList", rList);
+			model.addAttribute("search", search);
+			return "rest/restList";
+		}else {
+			model.addAttribute("msg", "게시글 상세조회 실패");
+			return "";
+		}
+	}
 
 	
 	

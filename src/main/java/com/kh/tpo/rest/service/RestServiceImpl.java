@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.tpo.rest.domain.PageInfo;
 import com.kh.tpo.rest.domain.Rest;
+import com.kh.tpo.rest.domain.RestInfo;
 import com.kh.tpo.rest.domain.Room;
 import com.kh.tpo.rest.domain.Search;
 import com.kh.tpo.rest.store.RestStore;
@@ -38,20 +39,11 @@ public class RestServiceImpl implements RestService{
 	}
 	
 	
-
 	@Override
-	public Rest restSearchOne(int reNo) {
+	public Rest restSearchOne(Rest rest) {
 		// TODO Auto-generated method stub
-		return reStore.restSearchOne(reNo);
+		return reStore.restSearchOne(rest);
 	}
-
-	@Override
-	public ArrayList<Rest> selectSearchList(Search search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 
 	@Override
 	public int insertRoom(ArrayList<Room> list) {
@@ -65,8 +57,37 @@ public class RestServiceImpl implements RestService{
 		return reStore.roomSearchList(reNo);
 	} 
 
+	@Override
+	public ArrayList<Rest> selectSearchList(Search search) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public Room roomInfo(int rNo) {
+		// TODO Auto-generated method stub
+		return reStore.roomInfo(rNo);
+	}
 
+	@Override
+	public int addReadCount(int reNo) {
+		// TODO Auto-generated method stub
+		return reStore.addReadCount(reNo);
+	}
+
+	@Override
+	public ArrayList<Rest> SearchrName(Search search){
+		// TODO Auto-generated method stub
+		return reStore.SearchrName(search);
+	}
+
+	@Override
+	public ArrayList<RestInfo> searchPrice(Search search) {
+		// TODO Auto-generated method stub
+		return reStore.searchPrice(search);
+	}
+
+	
 
 
 }

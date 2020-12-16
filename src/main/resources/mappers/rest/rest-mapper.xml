@@ -45,11 +45,12 @@
 		from rest
 	</select>
 	
+	<!-- 정렬 join 필요-->
 	<select id="selectOne"  resultMap="RestResultMap">
 		select * from rest where reNo = #{reNo}
 		order by 2
 	</select>
-	<!-- 지혜꺼 -->
+	
 	<select id="selectRoomList"  resultType="Room">
 		select * from room join rest using(reNo)
 		where reNo = #{reNo}
@@ -62,4 +63,29 @@
 	<select id="selectAllRoom" resultType="Room">
 		select * from room
 	</select>
+	
+	<select id="roomInfo" resultType="Room">
+		select * from room
+		where rNo = #{rNo}
+	</select>
+	
+	<update id="addCount">
+		update rest set click = click + 1
+		where reNo = #{reNo}
+	</update>
+
+	<!-- 숙소명 조회 -->
+	<select id="SearchrName" resultMap="RestResultMap">
+		select * from rest
+		where re_name like '%' || #{searchName} || '%'
+	</select>
+	
+	<!-- 숙소 가격 조회 -->
+	<select id="SearchPrice" resultMap="RestResultMap">
+		select rest.re_name, min(room.roPrice), rest.rePhone, rest.READDR
+		from rest join room on rest.reNo = room.RENO
+		where room.roprice between #{minPrice} and #{maxPrice}
+		group by rest.re_name, rest.rePhone, rest.READDR
+	</select>
+
 </mapper>

@@ -230,5 +230,43 @@ public class RestInfo {
 				+ ", roSize=" + roSize + ", roImage=" + roImage + ", pMaxCount=" + pMaxCount + ", roCount=" + roCount
 				+ "]";
 	}
+<<<<<<< HEAD
 	
+=======
+
+	public RestInfo(int reNo, String reName, String reAddr, String reImage, String rePhone, String reUrl, String reInfo,
+			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik,
+			int rNo, String roName, int roPrice, int pLimit, String roInfo, String roFacility, String roSize,
+			String roImage, int pMaxCount, int roCount) {
+		super();
+		this.reNo = reNo;
+		this.reName = reName;
+		this.reAddr = reAddr;
+		this.reImage = reImage;
+		this.rePhone = rePhone;
+		this.reUrl = reUrl;
+		this.reInfo = reInfo;
+		this.checkIn = checkIn;
+		this.checkout = checkout;
+		this.rTotal = rTotal;
+		this.pTotal = pTotal;
+		this.pStatus = pStatus;
+		this.reFacility = reFacility;
+		this.clcik = clcik;
+		this.rNo = rNo;
+		this.roName = roName;
+		this.roPrice = roPrice;
+		this.pLimit = pLimit;
+		this.roInfo = roInfo;
+		this.roFacility = roFacility;
+		this.roSize = roSize;
+		this.roImage = roImage;
+		this.pMaxCount = pMaxCount;
+		this.roCount = roCount;
+	}
+	
+	
+	
+
+>>>>>>> refs/remotes/origin/1215CJH
 }
