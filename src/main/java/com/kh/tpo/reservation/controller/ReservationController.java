@@ -13,7 +13,7 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -30,6 +30,9 @@ import com.kh.tpo.reservation.domain.MyUtils;
 @Controller
 public class ReservationController {
 
+//	@Autowired
+//	private ReservationService reservationService;
+	
 	@ResponseBody
 	@RequestMapping(value="getReservationData.tpo", method=RequestMethod.GET)
 	public JSONArray getFlightSchedule() {
@@ -134,21 +137,55 @@ public class ReservationController {
 	public String reservationDetailView() {
 		return "reservation/reservationDetailView";
 	}
-
+	@ResponseBody
 	@RequestMapping(value="reservationSearchView.tpo", method = RequestMethod.GET)
-	public String airport(AirVo airVo, Model model) throws Exception
+	public JSONArray testReservationSearchView() throws Exception
 	{
-		Map<String, String> result = MyUtils.getAirportId();
-		String depAirportId = result.get(airVo.getDepAirportNm());
-		String arrAirportId = result.get(airVo.getArrAirportNm());
-		String depPlandTime = airVo.getDepPlandTime();
-		String arrPlandTime = airVo.getArrPlandTime();
-		List<AirVo> go = ApiExplorer.getAirportJson(depAirportId, arrAirportId, depPlandTime);
-		List<AirVo> back = ApiExplorer.getAirportJson(depAirportId, arrAirportId, arrPlandTime);
-
-		model.addAttribute("go", go);
-		model.addAttribute("back", back);
-
-		return "reservation/reservationSearchView";
-	}	
+        StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*페이지 번호*/
+        urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKSS", "UTF-8")); /*출발공항ID*/
+        urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKPC", "UTF-8")); /*도착공항ID*/
+        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20201218", "UTF-8")); /*출발일*/
+        urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*항공사ID*/
+        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*형식*/
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        //conn.disconnect();
+        System.out.println(sb.toString());
+        
+        Object obj = JSONValue.parse(sb.toString());
+        
+        JSONObject jobj = (JSONObject)obj;
+        
+        JSONObject obj_response = (JSONObject)jobj.get("response");
+        JSONObject obj1 = (JSONObject)obj_response.get("body");
+        JSONObject obj2 = (JSONObject)obj1.get("items");
+        JSONArray obj3 = (JSONArray)obj2.get("item");
+        System.out.println(obj3);
+        
+        for(int i = 0; i < obj3.size(); i++)
+        {
+        	JSONObject reservationInfo = (JSONObject)obj3.get(i);
+        	//reservationInfo.get("depPlandTime").equals("20201218");
+        	System.out.println(reservationInfo);
+        }
+        return obj3;
+    }
 }

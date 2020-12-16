@@ -61,43 +61,43 @@
 							<article id="home" class="panel" style="background-color:#eeeeee;">
 								<form action="reservationSearchView.tpo">
 									<select id="twoway_dep" name="sDepAirportNm">
-										<option selected="selected">출발지</option>
-										<option value="incheon">인천</option>
-										<option value="gimpo">김포</option>
-										<option value="jeju">제주</option>
-										<option value="busan">부산</option>
-										<option value="gwangju">광주</option>
-										<option value="yangyang">양양</option>
-										<option value="yeosu">여수</option>
-										<option value="pohang">포항</option>
-										<option value="ulsan">울산</option>
-										<option value="gunsan">군산</option>
-										<option value="wonju">원주</option>
-										<option value="daegu">대구</option>
-										<option value="cheongju">청주</option>
-										<option value="muan">무안</option>
-										<option value="jeonju">진주</option>
+										<option selected="selected" >출발지</option>
+										<option value="인천" name="NAARKSI">인천</option>
+										<option value="김포" name="NAARKSS">김포</option>
+										<option value="제주" name="NAARKPC">제주</option>
+										<option value="김해" name="NAARKPK">김해</option>
+										<option value="광주" name="NAARKJJ">광주</option>
+										<option value="양양" name="NAARKNY">양양</option>
+										<option value="여수" name="NAARKJY">여수</option>
+										<option value="포항" name="NAARKTH">포항</option>
+										<option value="울산" name="NAARKPU">울산</option>
+										<option value="군산" name="NAARKJK">군산</option>
+										<option value="원주" name="NAARKNW">원주</option>
+										<option value="대구" name="NAARKTN">대구</option>
+										<option value="청주" name="NAARKTU">청주</option>
+										<option value="무안" name="NAARKJB">무안</option>
+										<option value="사천" name="NAARKPS">사천</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/double-arrow.png" style="width:32px;height:32px;"></span>
 									&ensp;
 									<select id="twoway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="incheon">인천</option>
-										<option value="gimpo">김포</option>
-										<option value="jeju">제주</option>
-										<option value="busan">부산</option>
-										<option value="gwangju">광주</option>
-										<option value="yangyang">양양</option>
-										<option value="yeosu">여수</option>
-										<option value="pohang">포항</option>
-										<option value="ulsan">울산</option>
-										<option value="gunsan">군산</option>
-										<option value="wonju">원주</option>
-										<option value="daegu">대구</option>
-										<option value="cheongju">청주</option>
-										<option value="muan">무안</option>
-										<option value="jeonju">진주</option>
+										<option value="인천" name="NAARKSI">인천</option>
+										<option value="김포" name="NAARKSS">김포</option>
+										<option value="제주" name="NAARKPC">제주</option>
+										<option value="김해" name="NAARKPK">김해</option>
+										<option value="광주" name="NAARKJJ">광주</option>
+										<option value="양양" name="NAARKNY">양양</option>
+										<option value="여수" name="NAARKJY">여수</option>
+										<option value="포항" name="NAARKTH">포항</option>
+										<option value="울산" name="NAARKPU">울산</option>
+										<option value="군산" name="NAARKJK">군산</option>
+										<option value="원주" name="NAARKNW">원주</option>
+										<option value="대구" name="NAARKTN">대구</option>
+										<option value="청주" name="NAARKTU">청주</option>
+										<option value="무안" name="NAARKJB">무안</option>
+										<option value="사천" name="NAARKPS">사천</option>
 									</select>
 									<br><br>
 								
@@ -185,42 +185,42 @@
 								<form action="reservationSearchView">
 									<select id="oneway_dep" name="sDepAirportNm">
 										<option selected="selected">출발지</option>
-										<option value="incheon">인천</option>
-										<option value="gimpo">김포</option>
-										<option value="jeju">제주</option>
-										<option value="busan">부산</option>
-										<option value="gwangju">광주</option>
-										<option value="yangyang">양양</option>
-										<option value="yeosu">여수</option>
-										<option value="pohang">포항</option>
-										<option value="ulsan">울산</option>
-										<option value="gunsan">군산</option>
-										<option value="wonju">원주</option>
-										<option value="daegu">대구</option>
-										<option value="cheongju">청주</option>
-										<option value="muan">무안</option>
-										<option value="jeonju">진주</option>
+										<option value="인천" name="NAARKSI">인천</option>
+										<option value="김포" name="NAARKSS">김포</option>
+										<option value="제주" name="NAARKPC">제주</option>
+										<option value="김해" name="NAARKPK">김해</option>
+										<option value="광주" name="NAARKJJ">광주</option>
+										<option value="양양" name="NAARKNY">양양</option>
+										<option value="여수" name="NAARKJY">여수</option>
+										<option value="포항" name="NAARKTH">포항</option>
+										<option value="울산" name="NAARKPU">울산</option>
+										<option value="군산" name="NAARKJK">군산</option>
+										<option value="원주" name="NAARKNW">원주</option>
+										<option value="대구" name="NAARKTN">대구</option>
+										<option value="청주" name="NAARKTU">청주</option>
+										<option value="무안" name="NAARKJB">무안</option>
+										<option value="사천" name="NAARKPS">사천</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/next.png"></span>
 									&ensp;
 									<select id="oneway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="incheon">인천</option>
-										<option value="gimpo">김포</option>
-										<option value="jeju">제주</option>
-										<option value="busan">부산</option>
-										<option value="gwangju">광주</option>
-										<option value="yangyang">양양</option>
-										<option value="yeosu">여수</option>
-										<option value="pohang">포항</option>
-										<option value="ulsan">울산</option>
-										<option value="gunsan">군산</option>
-										<option value="wonju">원주</option>
-										<option value="daegu">대구</option>
-										<option value="cheongju">청주</option>
-										<option value="muan">무안</option>
-										<option value="jeonju">진주</option>
+										<option value="인천" name="NAARKSI">인천</option>
+										<option value="김포" name="NAARKSS">김포</option>
+										<option value="제주" name="NAARKPC">제주</option>
+										<option value="김해" name="NAARKPK">김해</option>
+										<option value="광주" name="NAARKJJ">광주</option>
+										<option value="양양" name="NAARKNY">양양</option>
+										<option value="여수" name="NAARKJY">여수</option>
+										<option value="포항" name="NAARKTH">포항</option>
+										<option value="울산" name="NAARKPU">울산</option>
+										<option value="군산" name="NAARKJK">군산</option>
+										<option value="원주" name="NAARKNW">원주</option>
+										<option value="대구" name="NAARKTN">대구</option>
+										<option value="청주" name="NAARKTU">청주</option>
+										<option value="무안" name="NAARKJB">무안</option>
+										<option value="사천" name="NAARKPS">사천</option>
 									</select>
 									<br><br>
 								
@@ -284,10 +284,9 @@
 											<option value="7">7</option>
 											<option value="8">8</option>
 											<option value="9">9</option>
-										</select>
-										<input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
+										</select>						
 									</div>
-									
+									<input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
 								</form>
 							</article>
 					</div>
@@ -425,8 +424,13 @@
 							$("#oneway_infant_headCount").text(data);
 						});
 					});
-					
-					
+					/* select box name으로 접근하여 선택 값 읽기 
+					$(document).ready(function() {
+						$("select[name=twoway_dep]").val();
+						$("select[name=twoway_arr]").val();
+						$("select[name=oneway_dep]").val();
+						$("select[name=oneway_arr]").val();
+					}); */
 				</script>
 		
 		</div>
