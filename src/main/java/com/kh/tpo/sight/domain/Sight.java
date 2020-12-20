@@ -6,29 +6,27 @@ public class Sight {
 	private String sName;
 	private String sLocation;
 	private String sIntroduce;
-	private String sFee;
 	private String sPicture;
+	private String restDate;
 	private String sParking;
 	private String sBabyCarriage;
 	private String sPet;
-	private String sToilet;
 	public Sight() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Sight(int sNo, String sName, String sLocation, String sIntroduce, String sFee, String sPicture,
-			String sParking, String sBabyCarriage, String sPet, String sToilet) {
+	public Sight(int sNo, String sName, String sLocation, String sIntroduce, String sPicture, String restDate,
+			String sParking, String sBabyCarriage, String sPet) {
 		super();
 		this.sNo = sNo;
 		this.sName = sName;
 		this.sLocation = sLocation;
 		this.sIntroduce = sIntroduce;
-		this.sFee = sFee;
 		this.sPicture = sPicture;
+		this.restDate = restDate;
 		this.sParking = sParking;
 		this.sBabyCarriage = sBabyCarriage;
 		this.sPet = sPet;
-		this.sToilet = sToilet;
 	}
 	public int getsNo() {
 		return sNo;
@@ -54,17 +52,17 @@ public class Sight {
 	public void setsIntroduce(String sIntroduce) {
 		this.sIntroduce = sIntroduce;
 	}
-	public String getsFee() {
-		return sFee;
-	}
-	public void setsFee(String sFee) {
-		this.sFee = sFee;
-	}
 	public String getsPicture() {
 		return sPicture;
 	}
 	public void setsPicture(String sPicture) {
 		this.sPicture = sPicture;
+	}
+	public String getRestDate() {
+		return restDate;
+	}
+	public void setRestDate(String restDate) {
+		this.restDate = restDate;
 	}
 	public String getsParking() {
 		return sParking;
@@ -84,18 +82,14 @@ public class Sight {
 	public void setsPet(String sPet) {
 		this.sPet = sPet;
 	}
-	public String getsToilet() {
-		return sToilet;
-	}
-	public void setsToilet(String sToilet) {
-		this.sToilet = sToilet;
-	}
 	@Override
 	public String toString() {
 		return "Sight [sNo=" + sNo + ", sName=" + sName + ", sLocation=" + sLocation + ", sIntroduce=" + sIntroduce
-				+ ", sFee=" + sFee + ", sPicture=" + sPicture + ", sParking=" + sParking + ", sBabyCarriage="
-				+ sBabyCarriage + ", sPet=" + sPet + ", sToilet=" + sToilet + "]";
+				+ ", sPicture=" + sPicture + ", restDate=" + restDate + ", sParking=" + sParking + ", sBabyCarriage="
+				+ sBabyCarriage + ", sPet=" + sPet + "]";
 	}
 	
+	
+
 	
 }

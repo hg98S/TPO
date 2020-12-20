@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -41,7 +42,7 @@ public class SightController {
 	private SightService sService;
 
 //  // sightList주소 불러오고, 페이징처리까지
-	  @RequestMapping(value="sightList.kh", method=RequestMethod.GET)
+	  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
 		public ModelAndView sightList (ModelAndView mv,ArrayList<SightList> sightList,
 				@RequestParam(value="page", required=false)Integer page, Model model) {
 		  
@@ -88,20 +89,23 @@ public class SightController {
 		  
 		 
 	  
-	  @RequestMapping(value="selectSight",method=RequestMethod.GET)
-	  public ModelAndView selectSight(ModelAndView mv, int sNo ) {
+	  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
+	  public ModelAndView selectSight(ModelAndView mv, int sNo ,HttpServletRequest request) {
 		  Sight sight = new Sight();
-		  sight = sService.selectSight(sNo);
-		  if(sight != null ){
-			  mv.addObject("sight", sight);
-			  mv.setViewName("sight/sightDetail");
+		  System.out.println(sNo);
+		  if(sService.selectSight(sNo) == null ){
+			  ac.getSightDetail(sNo);
+			  mv.addObject("msg","다시 시도해 주십시오");
+			  mv.setViewName("common/errorPage");
+			  
 			  
 		  } else {
-			  mv.addObject("msg","명소세부정보조회실패");
-			  mv.setViewName("common/errorPage");
+			  sight=sService.selectSight(sNo);
+			  mv.addObject("sight", sight)
+			  .setViewName("sight/sightDetail");
+			  System.out.println(sight.toString());
+
 		  }
-		  
-		  
 		  return mv;
 	  }
 	  
