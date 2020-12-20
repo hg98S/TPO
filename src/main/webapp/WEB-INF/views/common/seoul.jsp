@@ -98,7 +98,7 @@
 							</g>
 							<g filter="url(#dropshadow2)"> <!-- 색깔은 script을 이용해서 text값에따라 바껴야 함 -->
 							<text id="LCD11110" class="CITYTEXT" x="399" y="277"><a href="#">종로구</a></text>
-							<text id="LCD11" class="cityNum" x="388" y="297" fill="#000000"><a></a></text>
+							<text id="LCD11" class="cityNum" x="388" y="297" fill="#000000"><a>1</a></text>
 							
 							<text id="LCD11140" class="CITYTEXT" x="433" y="338"><a href="#">중구</a></text>
 							<text id="LCD11" class="cityNum" x="422" y="358" fill="#000000"><a></a></text>

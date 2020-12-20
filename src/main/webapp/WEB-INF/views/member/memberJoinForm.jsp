@@ -403,6 +403,7 @@ span.checkPwd{
   	   				 $("#termsOfUse").focus();
   	   				 return false;
   	   			 }else{
+  	   				alert("회원 가입되었습니다.");
   	   				return true;
   	   			 }
    			 }

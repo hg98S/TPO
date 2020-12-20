@@ -7,11 +7,15 @@
 		<typeAlias type="com.kh.tpo.main.domain.City" alias="City"/>
 		<typeAlias type="com.kh.tpo.main.domain.Urban" alias="Urban"/>
 		<typeAlias type="com.kh.tpo.rest.domain.Room" alias="Room"/>
+		<typeAlias type="com.kh.tpo.sight.domain.MainSight" alias="MainSight"/>
+		<typeAlias type="com.kh.tpo.sight.domain.Sight" alias="Sight"/>
+		<typeAlias type="com.kh.tpo.sight.domain.SightList" alias="SightList"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/member/member-mapper.xml"/>
 		<mapper resource="mappers/rest/rest-mapper.xml"/>
 		<mapper resource="mappers/main/main-mapper.xml"/>
+		<mapper resource="mappers/sight/sight-mapper.xml"/>
 	</mappers>
 </configuration>

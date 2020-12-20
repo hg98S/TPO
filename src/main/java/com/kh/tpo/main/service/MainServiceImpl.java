@@ -12,6 +12,7 @@ import com.kh.tpo.main.store.MainStore;
 import com.kh.tpo.rest.domain.Rest;
 import com.kh.tpo.rest.domain.RestInfo;
 import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.sight.domain.MainSight;
 import com.kh.tpo.sight.domain.Sight;
 
 @Service
@@ -36,8 +37,8 @@ public class MainServiceImpl implements MainService {
 		return mainStore.selectCity(map);
 	}
 	@Override
-	public ArrayList<Sight> selectSightList() {
-		return null;
+	public ArrayList<MainSight> selectSightList() {
+		return mainStore.selectSightList();
 	}
 	@Override
 	public int checkDate(String currentDate) {

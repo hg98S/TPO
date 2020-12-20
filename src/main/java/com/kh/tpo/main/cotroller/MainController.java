@@ -33,6 +33,7 @@ import com.kh.tpo.main.domain.Urban;
 import com.kh.tpo.main.service.MainService;
 import com.kh.tpo.rest.domain.Rest;
 import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.sight.domain.MainSight;
 
 @Controller
 public class MainController {
@@ -143,7 +144,7 @@ public class MainController {
 	
 	 // 서울 코로나 확진자 데이터 ... 
 //	@Scheduled(fixedDelay=1000)
-	@Scheduled(cron="0 10 11 * * ?")
+	@Scheduled(cron="0 30 11 * * ?")
 	public void insertCity() throws Exception{ 
 		URL req = new URL("http://openapi.seoul.go.kr:8088/56586777556b737431303242594c576e/json/Corona19Status/1/1000/");
 		HttpURLConnection conn = (HttpURLConnection)req.openConnection();
@@ -318,6 +319,8 @@ public class MainController {
 //		}else {
 //			System.out.println("오류");
 //		}
+		System.out.println(registerDate);
+		System.out.println(coronaUpdateDay);
 		if(registerDate.equals(coronaUpdateDay)) {
 		int result = mainService.insertCity(cityList);
 		if(result>0) {
@@ -336,20 +339,21 @@ public class MainController {
 		// 최신순으로 명소, 숙소 리스트를 받아서 넘김
 		ArrayList<Rest> restList = mainService.selectRestList();
 		ArrayList<Room> roomList = mainService.selectRoomList();
-//		ArrayList<Sight> sightList = mainService.selectSightList();
-//		for(RestInfo info: roomList) {
+		ArrayList<MainSight> sightList = mainService.selectSightList();
+//		for(MainSight info: sightList) {
 //			System.out.println(info.toString());
 //		}
-		if(!roomList.isEmpty() && !restList.isEmpty()) {
+		if(!roomList.isEmpty() && !restList.isEmpty() && !sightList.isEmpty()) {
 			model.addAttribute("roomList", roomList);
 			model.addAttribute("restList", restList);
+			model.addAttribute("sightList", sightList);
 			return "index";
 		}else {
 			return "common/errorPage";
 		}
 	}
 	
-	// 국내 지도 데이터 가져오는 거
+	// 메인 국내 지도 데이터 가져오는 거
 	@ResponseBody
 	@RequestMapping(value="urbanMapList.tpo", method=RequestMethod.GET)
 	public ArrayList<Urban> mainUrbanMap() {
@@ -372,11 +376,13 @@ public class MainController {
 	@ResponseBody
 	@RequestMapping(value="cityMapList.tpo", method=RequestMethod.GET)
 	public ArrayList<City> mainCityMap(String local){
-		ArrayList<City> cityList = null;
+		ArrayList<City> cityList = new ArrayList<City>();
 		// 클릭한 값이 없는 경우 서울을 default로 잡음
-		if(local=="") {
+		if(local.equals("")) {
 			local="서울";
 		}
+		
+//		System.out.println(local);
 		// 데이터 등록일자 받아오는 날짜 타입
 		SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd");
 		// 데이터 등록일자(현재날짜)
@@ -387,10 +393,12 @@ public class MainController {
 		String yesterDay = currentDate.substring(0,7) + "-" +(Integer.parseInt(currentDate.substring(8,10))-1);
 		// yesterDay를 기준으로 2일 전 날짜
 		String beforeDate = yesterDay.substring(0,7) + "-" +(Integer.parseInt(yesterDay.substring(8,10))-2);
-		// 당일 데이터가 있는지 유무
-		boolean dataChk = mainService.checkDate(currentDate)==0 ? true : false;
 		// 지역, 날짜 기준으로 3일 데이터를 불러와야함
 		HashMap<String, String> map = new HashMap<String, String>();
+//		System.out.println(local.equals("서울") || local.equals("제주특별자치도"));
+		if(local.equals("서울") || local.equals("제주특별자치도")) {
+		// 당일 데이터가 있는지 유무
+		boolean dataChk = mainService.checkDate(currentDate)==0 ? true : false;
 		if(dataChk) {
 			// 당일날짜로 업데이트가 없으면 전날을 기준으로 3일데이터를 불러옴
 			map.put("local", local);
@@ -405,6 +413,19 @@ public class MainController {
 		}
 //		for(City city : cityList) {
 //			System.out.println(city.toString());
+//		}
+		// 서울, 제주 빼고는 특정날짜를 기준으로 불러옴(api가 없어서 임의의 데이터를 출력)
+		}else {
+			map.put("local", local);
+			map.put("currentDate", "2020-12-17");
+			map.put("prevDate", "2020-12-17");
+			cityList=mainService.selectCity(map);
+//			for(City city : cityList) {
+//			System.out.println(city.toString());
+//			}
+		}
+//		for(City city : cityList) {
+//		System.out.println(city.toString());
 //		}
 		if(!cityList.isEmpty() &&cityList!=null) {
 			return cityList; 
