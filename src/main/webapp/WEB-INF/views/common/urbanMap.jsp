@@ -130,6 +130,7 @@
 				</svg>
 	<!-- script -->
 	<script>
+		// 클릭한 지역
 		$($(".URBANTEXT a")).on("click",function(){
 			// 그 중 내가 선택한 지역의 a태그만 show, 나머진 hide
 	 		var aTag = $(".URBANTEXT a");
@@ -138,16 +139,16 @@
  			for(var i=0; i<aTag.length; i++){
 				var aText = $(".URBANTEXT a:eq" + "(" + i + ")").text();
 				var svgDiv = $(".city div:eq" +  "(" + i + ")");
-				if(aText!=selectTag){
+				 if(aText!=selectTag){
 					// 선택하지않을 값은 hide
-					svgDiv.css("display","none");
+					svgDiv.css("opacity","0");
 				}else{
-					/* $("#city_seoul").show(); */
-					svgDiv.css("display","");
-				}
+					svgDiv.css("opacity","1");
+				} 
 			} 
-	
-	/* 		$.ajax({
+ 		// 서울
+		if(selectTag=="서울"){
+	 		$.ajax({
 				url: "cityMapList.tpo",
 				type: "get",
 				data: {"local":selectTag},
@@ -165,17 +166,243 @@
 								var cityFill = $(".CITYOUTLINE:eq" + "(" + i + ")");
 								if(data[j].cConfirmedNum<=10){
 									cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+									cityNum.css("fill", "#000000");
 								}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
 									cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+									cityNum.css("fill", "#ffffff");
 								}else{
 									cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+									cityNum.css("fill", "#ffffff");
 								}
 							}
 						}
 					}
 				}
-			});   */
-		});
+			});  
+		 }
+		// 경기도
+		if(selectTag=="경기도"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".gyeonggidoTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					console.log(cityTag.length);
+					console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".gyeonggidoTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".gyeonggidoNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+							var cityFill = $(".gyeonggidoOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+		// 전라남도
+		if(selectTag=="전라남도"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".JNTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".JNTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".jnNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".JNOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+		
+		// 전라북도
+		if(selectTag=="전라북도"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".JBTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".JBTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".jbNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".JBOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+		
+		// 세종특별시
+		if(selectTag=="세종특별자치시"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".SJTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".SJTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".sjNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".SJOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+		
+		if(selectTag=="대구광역시"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".DGTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".DGTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".dgNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".DGOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+		
+		// 대전광역시
+		if(selectTag=="대전광역시"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".DJTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".DJTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".djNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+								var cityFill = $(".DJOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										}
+							}
+						}
+					}
+				}
+			});  
+		 }
+	  });
+		
+		
+		
 		
 		// 각 지역에 text태그에 가져온 데이터를 담을거셈
 		$(function(){
@@ -228,12 +455,14 @@
 				data: {"local":selectTag},
 				success: function(data){
 					 var cityTag = $(".CITYTEXT a");
+					 console.log(cityTag.length);
 					// var cityFill = $(".CITYOUTLINE");
 					for(var i=0; i<cityTag.length; i++){
 						var cityName = $(".CITYTEXT a:eq" + "(" + i + ")").text();
 						for(var j=0; j<data.length; j++){
 							// 3일 평균 데이터를 가져와서 각 위치에 넣음
-								if(data[j].cityName.indexOf(cityName) != -1){
+								if(data[j].cityName.indexOf(cityName) != -1)
+								{
 								var cityNum = $(".cityNum a:eq" + "(" + i + ")");
 								cityNum.text(data[j].cConfirmedNum);
 							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색

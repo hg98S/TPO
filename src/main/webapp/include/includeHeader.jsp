@@ -53,7 +53,7 @@
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="resources/css/urban.css">
 <link rel="stylesheet" type="text/css" href="resources/css/city.css">
-<link rel="stylesheet" type="text/css" href="resources/css/gyeonggido.css">
+<!-- <link rel="stylesheet" type="text/css" href="resources/css/gyeonggido.css"> -->
 <!-- jQuery 쿼리 추가 -->
 <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 <!--  주소팝업창 script 추가 -->

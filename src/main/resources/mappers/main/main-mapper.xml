@@ -38,7 +38,21 @@
 	
 	<!-- 행정구역(지역) select 구문 -->
 	<select id="selectCity" resultMap="ResultMapCity" parameterType="HashMap">
-	select * from (select substr(city_name,4,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name)
+	<if test="local.length()==2">	
+	select * from (select substr(city_name,4,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name) where city_name is not null
+	</if>
+	<if test="local.length()==3">	
+	select * from (select substr(city_name,5,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name) where city_name is not null
+	</if>
+	<if test="local.length()==4">	
+	select * from (select substr(city_name,6,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name) where city_name is not null
+	</if>
+	<if test="local.length()==5">	
+	select * from (select substr(city_name,7,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name) where city_name is not null
+	</if>
+	<if test="local.length()==7">	
+	select * from (select substr(city_name,9,3) as city_name, sum(C_CONFIRMED_NUM) as C_CONFIRMED_NUM from city where city_name like '%' || #{local} || '%' and cdate between #{prevDate} and #{currentDate} group by city_name) where city_name is not null
+	</if>
 	</select>
 	
 	<!-- 당일날짜 업데이트 유무(행정구역) -->

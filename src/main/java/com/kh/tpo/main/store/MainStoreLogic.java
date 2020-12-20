@@ -12,6 +12,7 @@ import com.kh.tpo.main.domain.Urban;
 import com.kh.tpo.rest.domain.Rest;
 import com.kh.tpo.rest.domain.RestInfo;
 import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.sight.domain.MainSight;
 import com.kh.tpo.sight.domain.Sight;
 
 @Repository
@@ -41,8 +42,8 @@ public class MainStoreLogic implements MainStore{
 	}
 
 	@Override
-	public ArrayList<Sight> selectSightList() {
-		return null;
+	public ArrayList<MainSight> selectSightList() {
+		return (ArrayList)session.selectList("sightMapper.selectSightList");
 	}
 
 	@Override

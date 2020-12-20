@@ -8,6 +8,7 @@ import com.kh.tpo.main.domain.Urban;
 import com.kh.tpo.rest.domain.Rest;
 import com.kh.tpo.rest.domain.RestInfo;
 import com.kh.tpo.rest.domain.Room;
+import com.kh.tpo.sight.domain.MainSight;
 import com.kh.tpo.sight.domain.Sight;
 
 public interface MainService {
@@ -48,11 +49,11 @@ public interface MainService {
 	 * */
 	public ArrayList<Room> selectRoomList();
 	/*
-	 * 명소 리스트 select
+	 * 메인 명소 리스트 select
 	 * @param 
 	 * @result ArrayList<Rest>
 	 * */
-	public ArrayList<Sight> selectSightList();
+	public ArrayList<MainSight> selectSightList();
 	/*
 	 * 날짜 체크(현재날짜로 데이터가 들어가있는지)
 	 * @param String

@@ -7,6 +7,7 @@
 <title>에러 페이지</title>
 </head>
 <body>
- <h1>힝.. 실패햇어~</h1>
+	<h1>왘 실패했어</h1>
+	<img alt="resources/images/zzz.jpg" src="">
 </body>
 </html>
