@@ -7,6 +7,7 @@
 		<typeAlias type="com.kh.tpo.main.domain.City" alias="City"/>
 		<typeAlias type="com.kh.tpo.main.domain.Urban" alias="Urban"/>
 		<typeAlias type="com.kh.tpo.rest.domain.Room" alias="Room"/>
+				<typeAlias type="com.kh.tpo.rest.domain.RestInfo" alias="RestInfo"/>
 	</typeAliases>
 	
 	<mappers>

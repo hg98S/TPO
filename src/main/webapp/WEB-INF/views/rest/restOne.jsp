@@ -43,21 +43,21 @@
 			<div class="infoArea" style="height: 270px; width: 100%;">
 				<div class="well well-sm infoImage"
 					style="width: 38%; height: 250px; float: left;">
-					<c:if test="${rest.reImage ne '없음'}">
-						<img src="${rest.reImage }" style="width: 100%; height: 230px;">
+					<c:if test="${room[0].reImage ne '없음'}">
+						<img src="${room[0].reImage }" style="width: 100%; height: 230px;">
 					</c:if>
-					<c:if test="${rest.reImage eq '없음'}">
+					<c:if test="${room[0].reImage  eq '없음'}">
 						<img src="resources/images/noimage.png"
 							style="width: 100%; height: 310px; margin-top: -10%;">
 					</c:if>
 				</div>
 				<div class="well well-sm  restName"
 					style="width: 60%; background-color: #eeeeee; height: 250px; margin-left: 2%; float: left; padding-left: 35px; padding-top: 15px;">
-					<b>${rest.reName }</b>
+					<b>${room[0].reName }</b>
 					<div style="margin-top: 10px; margin-left: 20px;">
-						전화번호 : ${rest.rePhone } <br>홈페이지 : ${rest.reUrl } <br>주소
-						: ${rest.reAddr } <br>주차유무 :
-						<c:if test="${rest.pStatus eq 'Y'}">가능</c:if>
+						전화번호 : ${room[0].rePhone } <br>홈페이지 : ${room[0].reUrl } <br>주소
+						: ${room[0].reAddr } <br>주차유무 :
+						<c:if test="${room[0].pStatus eq 'Y'}">가능</c:if>
 						<br> <br>
 						<!-- <button type="button" class="btn btn-primary btn-sm" id="modalMap"
 							onclick="modalMap()">지도보기</button> -->
@@ -155,6 +155,8 @@
 		<jsp:include page="/include/includeFooter.jsp" />
 
 		<script>
+		$(function() {
+			var coords;
 			//지도
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
@@ -168,6 +170,7 @@
 			// 모달위에 지도 relayout()실행하기
 			$('.modal').on('shown.bs.modal', function() {
 				map.relayout();
+				map.setCenter(coords);
 			});
 
 			// 주소-좌표 변환 객체를 생성합니다
@@ -182,9 +185,8 @@
 								// 정상적으로 검색이 완료됐으면 
 								if (status === kakao.maps.services.Status.OK) {
 
-									var coords = new kakao.maps.LatLng(
+									coords = new kakao.maps.LatLng(
 											result[0].y, result[0].x);
-									debugger;
 									// 결과값으로 받은 위치를 마커로 표시합니다
 									var marker = new kakao.maps.Marker({
 										map : map,
@@ -200,15 +202,15 @@
 											});
 									infowindow.open(map, marker);
 									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-									map.setCenter(coords);
+									
 								}
 
 							});
 			
-			function modalMap() {
+			/* function modalMap() {
 				window.open("", "_blank", "width=770,height=460");
-			}
-		
+			} */
+		});
 		</script>
 
 

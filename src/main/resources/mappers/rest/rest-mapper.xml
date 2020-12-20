@@ -4,6 +4,9 @@
 	<resultMap type="Rest" id="RestResultMap">
 		<result property="reName" column="RE_NAME" />
 	</resultMap>
+		<resultMap type="RestInfo" id="RestInfoMap">
+		<result property="reName" column="RE_NAME" />
+	</resultMap>
 
 	<update id="insertRest" parameterType="java.util.List">
 			insert into rest (RENO,	RE_NAME, READDR, REIMAGE, REPHONE, REURL, REINFO, CHECKIN, CHECKOUT, RTOTAL, PTOTAL, PSTATUS, REFACILITY, CLICK)
@@ -45,16 +48,10 @@
 		from rest
 	</select>
 	
-	<!-- 정렬 join 필요-->
-	<select id="selectOne"  resultMap="RestResultMap">
-		select * from rest where reNo = #{reNo}
-		order by 2
-	</select>
-	
-	<select id="selectRoomList"  resultType="Room">
+	<select id="selectRoomList"  resultMap="RestInfoMap">
 		select * from room join rest using(reNo)
 		where reNo = #{reNo}
-		order by 2
+		order by 1
 	</select>
 	<!-- MainPage(김승태) -->
 	<select id="selectAllRest" resultMap="RestResultMap">
@@ -81,11 +78,40 @@
 	</select>
 	
 	<!-- 숙소 가격 조회 -->
-	<select id="SearchPrice" resultMap="RestResultMap">
-		select rest.re_name, min(room.roPrice), rest.rePhone, rest.READDR
+	<select id="SearchPrice" resultMap="RestInfoMap">
+		select rest.re_name, min(room.roPrice)as rowMin, rest.rePhone, rest.READDR, rest.RENO, rest.REIMAGE
 		from rest join room on rest.reNo = room.RENO
 		where room.roprice between #{minPrice} and #{maxPrice}
-		group by rest.re_name, rest.rePhone, rest.READDR
+		group by rest.re_name, rest.rePhone, rest.READDR, rest.reNo, rest.REIMAGE order by rest.RE_NAME
+	</select>
+	
+		<!-- 정렬 join-->
+	<select id="alignList"  resultMap="RestInfoMap">
+		<if test="alignList == 'Name'">
+		select * from rest order by re_name
+		</if>
+		<if test="alignList == 'Price'">
+		select
+		rest.re_Name, min(room.roPrice)as rowMin, rest.rePhone, rest.reAddr, rest.reImage
+		from rest join room on rest.reNo = room.RENO
+		group by rest.re_Name, rest.rePhone, rest.reAddr, rest.reImage
+		order by rowMin, re_Name
+		</if>
+		<if test="alignList == 'Click'">
+		select
+		rest.re_Name, rest.CLICK, rest.rePhone, rest.reAddr, rest.reImage
+		from rest join room on rest.reNo = room.RENO
+		group by rest.CLICK, rest.re_name, rest.rePhone, rest.reAddr, rest.reImage
+		order by rest.CLICK desc
+		</if>
+	</select>
+	
+	<!-- 지역조회 -->
+	<select id="searchLocal" resultMap="RestInfoMap">
+		select
+		rest.re_name, min(room.roPrice) as rowMin, rest.rePhone, rest.READDR, rest.RENO, rest.REIMAGE
+		from rest join room on rest.reNo = room.RENO
+		where reAddr like '%'||#{location}||'%' group by rest.re_name, rest.rePhone, rest.READDR, rest.RENO, rest.REIMAGE
 	</select>
 
 </mapper>

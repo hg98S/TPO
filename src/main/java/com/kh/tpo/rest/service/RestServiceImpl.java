@@ -52,7 +52,7 @@ public class RestServiceImpl implements RestService{
 	}
 
 	@Override
-	public ArrayList<Room> roomSearchList(int reNo) {
+	public ArrayList<RestInfo> roomSearchList(int reNo) {
 		// TODO Auto-generated method stub
 		return reStore.roomSearchList(reNo);
 	} 
@@ -83,8 +83,21 @@ public class RestServiceImpl implements RestService{
 
 	@Override
 	public ArrayList<RestInfo> searchPrice(Search search) {
+		ArrayList<RestInfo> result = reStore.searchPrice(search);
+	//	System.out.println("rService: " + result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RestInfo> alignList(Search search) {
 		// TODO Auto-generated method stub
-		return reStore.searchPrice(search);
+		return reStore.alignList(search);
+	}
+
+	@Override
+	public ArrayList<RestInfo> searchLocal(Search search) {
+		// TODO Auto-generated method stub
+		return reStore.searchLocal(search);
 	}
 
 	

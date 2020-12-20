@@ -61,7 +61,7 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<Room> roomSearchList(int reNo) {
+	public ArrayList<RestInfo> roomSearchList(int reNo) {
 		// TODO Auto-generated method stub
 		return (ArrayList)session.selectList("RestMapper.selectRoomList", reNo);
 	}
@@ -86,8 +86,21 @@ public class RestStoreLogic implements RestStore{
 
 	@Override
 	public ArrayList<RestInfo> searchPrice(Search search) {
+		ArrayList<RestInfo> result = (ArrayList)session.selectList("RestMapper.SearchPrice", search);
+	//	System.out.println("Store: " + result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<RestInfo> alignList(Search search) {
 		// TODO Auto-generated method stub
-		return (ArrayList)session.selectList("RestMapper.SearchPrice", search);
+		return (ArrayList)session.selectList("RestMapper.alignList", search);
+	}
+
+	@Override
+	public ArrayList<RestInfo> searchLocal(Search search) {
+		// TODO Auto-generated method stub
+		return (ArrayList)session.selectList("RestMapper.searchLocal", search);
 	}
 
 
