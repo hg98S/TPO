@@ -13,11 +13,13 @@ public interface RestService {
 	public int insertRoom(ArrayList<Room> rooms);
 	public ArrayList<Rest> restSearchList(PageInfo page);
 	public Rest restSearchOne(Rest rest);
-	public ArrayList<Room> roomSearchList(int reNo);
+	public ArrayList<RestInfo> roomSearchList(int reNo);
 	public ArrayList<Rest> selectSearchList(Search search);
 	public int getListCount();
 	public Room roomInfo(int rNo);
 	public int addReadCount(int reNo);
 	public ArrayList<Rest> SearchrName(Search search);
 	public ArrayList<RestInfo> searchPrice(Search search);
+	public ArrayList<RestInfo> alignList(Search search);
+	public ArrayList<RestInfo> searchLocal(Search search);
 }
