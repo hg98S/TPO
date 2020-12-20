@@ -59,50 +59,50 @@
 					<div id="main">
 						<!-- Me -->
 							<article id="home" class="panel" style="background-color:#eeeeee;">
-								<form action="reservationSearchView.tpo">
+								<form action="getReservationData.tpo">
 									<select id="twoway_dep" name="sDepAirportNm">
 										<option selected="selected" >출발지</option>
-										<option value="인천" name="NAARKSI">인천</option>
-										<option value="김포" name="NAARKSS">김포</option>
-										<option value="제주" name="NAARKPC">제주</option>
-										<option value="김해" name="NAARKPK">김해</option>
-										<option value="광주" name="NAARKJJ">광주</option>
-										<option value="양양" name="NAARKNY">양양</option>
-										<option value="여수" name="NAARKJY">여수</option>
-										<option value="포항" name="NAARKTH">포항</option>
-										<option value="울산" name="NAARKPU">울산</option>
-										<option value="군산" name="NAARKJK">군산</option>
-										<option value="원주" name="NAARKNW">원주</option>
-										<option value="대구" name="NAARKTN">대구</option>
-										<option value="청주" name="NAARKTU">청주</option>
-										<option value="무안" name="NAARKJB">무안</option>
-										<option value="사천" name="NAARKPS">사천</option>
+										<option value="NAARKSI">인천</option>
+										<option value="NAARKSS">김포</option>
+										<option value="NAARKPC">제주</option>
+										<option value="NAARKPK">김해</option>
+										<option value="NAARKJJ">광주</option>
+										<option value="NAARKNY">양양</option>
+										<option value="NAARKJY">여수</option>
+										<option value="NAARKTH">포항</option>
+										<option value="NAARKPU">울산</option>
+										<option value="NAARKJK">군산</option>
+										<option value="NAARKNW">원주</option>
+										<option value="NAARKTN">대구</option>
+										<option value="NAARKTU">청주</option>
+										<option value="NAARKJB">무안</option>
+										<option value="NAARKPS">사천</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/double-arrow.png" style="width:32px;height:32px;"></span>
 									&ensp;
 									<select id="twoway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="인천" name="NAARKSI">인천</option>
-										<option value="김포" name="NAARKSS">김포</option>
-										<option value="제주" name="NAARKPC">제주</option>
-										<option value="김해" name="NAARKPK">김해</option>
-										<option value="광주" name="NAARKJJ">광주</option>
-										<option value="양양" name="NAARKNY">양양</option>
-										<option value="여수" name="NAARKJY">여수</option>
-										<option value="포항" name="NAARKTH">포항</option>
-										<option value="울산" name="NAARKPU">울산</option>
-										<option value="군산" name="NAARKJK">군산</option>
-										<option value="원주" name="NAARKNW">원주</option>
-										<option value="대구" name="NAARKTN">대구</option>
-										<option value="청주" name="NAARKTU">청주</option>
-										<option value="무안" name="NAARKJB">무안</option>
-										<option value="사천" name="NAARKPS">사천</option>
+										<option value="NAARKSI">인천</option>
+										<option value="NAARKSS">김포</option>
+										<option value="NAARKPC">제주</option>
+										<option value="NAARKPK">김해</option>
+										<option value="NAARKJJ">광주</option>
+										<option value="NAARKNY">양양</option>
+										<option value="NAARKJY">여수</option>
+										<option value="NAARKTH">포항</option>
+										<option value="NAARKPU">울산</option>
+										<option value="NAARKJK">군산</option>
+										<option value="NAARKNW">원주</option>
+										<option value="NAARKTN">대구</option>
+										<option value="NAARKTU">청주</option>
+										<option value="NAARKJB">무안</option>
+										<option value="NAARKPS">사천</option>
 									</select>
 									<br><br>
 								
 									<div>
-										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" value="가는 날짜">
+										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime">
 									</div>
 									
 									&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;
@@ -110,9 +110,12 @@
 										오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" value="오는 날짜">
 									</div>
 									
-									<script type="text/javascript">
-										$("#datePicker_dep1").on("click", function() {
-											console.log(datePicker_dep1);
+									<script>
+										$("#datePicker_dep1").click(function() {
+											var str = $("#datePicker_dep1").val().replace(/\-/g,'');
+											console.log(str);
+											$("#datePicker_dep1").val(str);
+											return true;
 										});
 									</script>
 									
@@ -182,50 +185,50 @@
 							
 						<!-- Contact -->
 							<article id="contact" class="panel" style="background-color:#eeeeee;">
-								<form action="reservationSearchView">
+								<form action="getReservationData.tpo">
 									<select id="oneway_dep" name="sDepAirportNm">
 										<option selected="selected">출발지</option>
-										<option value="인천" name="NAARKSI">인천</option>
-										<option value="김포" name="NAARKSS">김포</option>
-										<option value="제주" name="NAARKPC">제주</option>
-										<option value="김해" name="NAARKPK">김해</option>
-										<option value="광주" name="NAARKJJ">광주</option>
-										<option value="양양" name="NAARKNY">양양</option>
-										<option value="여수" name="NAARKJY">여수</option>
-										<option value="포항" name="NAARKTH">포항</option>
-										<option value="울산" name="NAARKPU">울산</option>
-										<option value="군산" name="NAARKJK">군산</option>
-										<option value="원주" name="NAARKNW">원주</option>
-										<option value="대구" name="NAARKTN">대구</option>
-										<option value="청주" name="NAARKTU">청주</option>
-										<option value="무안" name="NAARKJB">무안</option>
-										<option value="사천" name="NAARKPS">사천</option>
+										<option value="NAARKSI">인천</option>
+										<option value="NAARKSS">김포</option>
+										<option value="NAARKPC">제주</option>
+										<option value="NAARKPK">김해</option>
+										<option value="NAARKJJ">광주</option>
+										<option value="NAARKNY">양양</option>
+										<option value="NAARKJY">여수</option>
+										<option value="NAARKTH">포항</option>
+										<option value="NAARKPU">울산</option>
+										<option value="NAARKJK">군산</option>
+										<option value="NAARKNW">원주</option>
+										<option value="NAARKTN">대구</option>
+										<option value="NAARKTU">청주</option>
+										<option value="NAARKJB">무안</option>
+										<option value="NAARKPS">사천</option>
 									</select>
 									&ensp;
 									<span><img src="/resources/images/next.png"></span>
 									&ensp;
 									<select id="oneway_arr" name="sArrAirportNm">
 										<option selected="selected">도착지</option>
-										<option value="인천" name="NAARKSI">인천</option>
-										<option value="김포" name="NAARKSS">김포</option>
-										<option value="제주" name="NAARKPC">제주</option>
-										<option value="김해" name="NAARKPK">김해</option>
-										<option value="광주" name="NAARKJJ">광주</option>
-										<option value="양양" name="NAARKNY">양양</option>
-										<option value="여수" name="NAARKJY">여수</option>
-										<option value="포항" name="NAARKTH">포항</option>
-										<option value="울산" name="NAARKPU">울산</option>
-										<option value="군산" name="NAARKJK">군산</option>
-										<option value="원주" name="NAARKNW">원주</option>
-										<option value="대구" name="NAARKTN">대구</option>
-										<option value="청주" name="NAARKTU">청주</option>
-										<option value="무안" name="NAARKJB">무안</option>
-										<option value="사천" name="NAARKPS">사천</option>
+										<option value="NAARKSI">인천</option>
+										<option value="NAARKSS">김포</option>
+										<option value="NAARKPC">제주</option>
+										<option value="NAARKPK">김해</option>
+										<option value="NAARKJJ">광주</option>
+										<option value="NAARKNY">양양</option>
+										<option value="NAARKJY">여수</option>
+										<option value="NAARKTH">포항</option>
+										<option value="NAARKPU">울산</option>
+										<option value="NAARKJK">군산</option>
+										<option value="NAARKNW">원주</option>
+										<option value="NAARKTN">대구</option>
+										<option value="NAARKTU">청주</option>
+										<option value="NAARKJB">무안</option>
+										<option value="NAARKPS">사천</option>
 									</select>
 									<br><br>
 								
 									가는 날짜 : 
-									<input style="width:35%;" type="text" id="datePicker_dep2" class="form-control" value="가는 날짜">
+									<input style="width:35%;" type="text" id="datePicker_dep2" class="form-control" value="가는 날짜" name="sDepPlandTime">
 									<div><br></div>
 									
 									<div>
@@ -239,9 +242,7 @@
 											<p value="성인">성인</p>
 										</div>
 										<select class="row" id="oneway_adult_number" name="adultCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
-											<option value="1" selected="selected">1</option>
+											<option value="1" selected>1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
@@ -256,8 +257,7 @@
 											<p value="소아">소아</p>
 										</div>
 										<select class="row" id="oneway_child_number" name="childCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
+											<option value="0" selected>0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -273,8 +273,7 @@
 											<p value="유아">유아</p>
 										</div>
 										<select class="row" id="oneway_infant_number" name="infantCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
+											<option value="0" selected>0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -286,7 +285,7 @@
 											<option value="9">9</option>
 										</select>						
 									</div>
-									<input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
+									<input type="submit" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
 								</form>
 							</article>
 					</div>
@@ -304,7 +303,7 @@
 					/* 왕복/편도 datepicker 시작 */
 					$(document).ready(function() {	
 						$('#datePicker_dep1').datepicker({
-							format: 'yyyy-mm-dd',	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+							format: 'yyyymmdd',	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
 						    startDate: '+3d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
 						    endDate: '+3m',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
 						    autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
@@ -329,7 +328,7 @@
 						    language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
 						}); //datepicker end
 						$('#datePicker_arr1').datepicker({
-							format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+							format: "yyyymmdd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
 						    startDate: '+3d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
 						    endDate: '+3m',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
 						    autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
@@ -347,7 +346,7 @@
 						    language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
 						}); //datepicker end/* 
 						$('#datePicker_dep2').datepicker({
-						    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+						    format: "yyyymmdd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
 						    startDate: '+3d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
 						    endDate: '+3m',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
 						    autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
