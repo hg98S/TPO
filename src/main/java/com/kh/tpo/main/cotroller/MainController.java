@@ -334,19 +334,20 @@ public class MainController {
 	@RequestMapping(value="mainPage.tpo", method=RequestMethod.GET)
 	public String mainPageView(Model model) {
 		// 최신순으로 명소, 숙소 리스트를 받아서 넘김
-		ArrayList<Rest> restList = mainService.selectRestList();
-		ArrayList<Room> roomList = mainService.selectRoomList();
-//		ArrayList<Sight> sightList = mainService.selectSightList();
-//		for(RestInfo info: roomList) {
-//			System.out.println(info.toString());
+//		ArrayList<Rest> restList = mainService.selectRestList();
+//		ArrayList<Room> roomList = mainService.selectRoomList();
+////		ArrayList<Sight> sightList = mainService.selectSightList();
+////		for(RestInfo info: roomList) {
+////			System.out.println(info.toString());
+////		}
+//		if(!roomList.isEmpty() && !restList.isEmpty()) {
+//			model.addAttribute("roomList", roomList);
+//			model.addAttribute("restList", restList);
+//			return "index";
+//		}else {
+//			return "common/errorPage";
 //		}
-		if(!roomList.isEmpty() && !restList.isEmpty()) {
-			model.addAttribute("roomList", roomList);
-			model.addAttribute("restList", restList);
-			return "index";
-		}else {
-			return "common/errorPage";
-		}
+		return "index";
 	}
 	
 	// 국내 지도 데이터 가져오는 거

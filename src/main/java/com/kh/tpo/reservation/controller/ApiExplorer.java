@@ -41,102 +41,102 @@ public class ApiExplorer
 //		return nodeValue.getNodeValue();
 //	}
 	
-	public static void main(String[] args) throws Exception 
-	{
-        StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D"); /*Service Key*/
-        //urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
-        //urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
-        urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKSS", "UTF-8")); /*출발공항ID*/
-        urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKPC", "UTF-8")); /*도착공항ID*/
-        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20201218", "UTF-8")); /*출발일*/
-        urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*항공사ID*/
-        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*형식*/
-        URL url = new URL(urlBuilder.toString());
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
-        BufferedReader rd;
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = rd.readLine()) != null) {
-            sb.append(line);
-        }
-        rd.close();
-        conn.disconnect();
-        System.out.println(sb.toString());
-        
-        
-        Object obj = JSONValue.parse(new InputStreamReader(conn.getInputStream()));
-        
-        JSONObject jobj = (JSONObject)obj;
-        
-        JSONObject obj1 = (JSONObject)jobj.get("body");
-        JSONObject obj2 = (JSONObject)obj1.get("items");
-        JSONArray obj3 = (JSONArray)obj2.get("item");
-        
-        String [] reservationList = new String[obj3.size()];
-        ArrayList<AirVo> airList = new ArrayList<AirVo>();
-        AirVo airVo = new AirVo();
-        String noData = "";
-        
-        for(int i = 0; i < obj3.size(); i++)
-        {
-        	JSONObject reservationInfo = (JSONObject)obj3.get(i);
-        	
-        	String airlineNm = (String)reservationInfo.get("airlineNm");  /*항공사ID*/
-        	String arrAirportNm = (String)reservationInfo.get("arrAirportNm"); /*도착공항ID*/
-        	String arrPlandTime = (String)reservationInfo.get("arrPlandTime"); /*출발일도착시간*/
-        	String depAirportNm = (String)reservationInfo.get("depAirportNm"); /*출발공항ID*/
-        	String depPlandTime = (String)reservationInfo.get("depPlandTime"); /*출발일*/
-        	String economyCharge = (String)reservationInfo.get("economyCharge"); /*일반석운임*/
-        	String prestigeCharge = (String)reservationInfo.get("prestigeCharge"); /*비즈니스운임*/
-        	String vihicleId = (String)reservationInfo.get("vihicleId"); /*항공편명*/
-        	
-        	System.out.println("airlineNm : " + airlineNm);
-        	System.out.println("arrAirportNm : " + arrAirportNm);
-        	System.out.println("arrPlandTime : " + arrPlandTime);
-        	System.out.println("depAirportNm : " + depAirportNm);
-        	System.out.println("depPlandTime : " + depPlandTime);
-        	System.out.println("economyCharge : " + economyCharge);
-        	System.out.println("prestigeCharge : " + prestigeCharge);
-        	System.out.println("vihicleId : " + vihicleId);
-//        	if(reservationInfo.is)
+//	public static void main(String[] args) throws Exception 
+//	{
+//        StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); /*URL*/
+//        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D"); /*Service Key*/
+//        //urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+//        //urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
+//        urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKSS", "UTF-8")); /*출발공항ID*/
+//        urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKPC", "UTF-8")); /*도착공항ID*/
+//        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20201218", "UTF-8")); /*출발일*/
+//        urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*항공사ID*/
+//        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*형식*/
+//        URL url = new URL(urlBuilder.toString());
+//        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//        conn.setRequestMethod("GET");
+//        conn.setRequestProperty("Content-type", "application/json");
+//        System.out.println("Response code: " + conn.getResponseCode());
+//        BufferedReader rd;
+//        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+//            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//        } else {
+//            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        String line;
+//        while ((line = rd.readLine()) != null) {
+//            sb.append(line);
+//        }
+//        rd.close();
+//        conn.disconnect();
+//        System.out.println(sb.toString());
+//        
+//        
+//        Object obj = JSONValue.parse(new InputStreamReader(conn.getInputStream()));
+//        
+//        JSONObject jobj = (JSONObject)obj;
+//        
+//        JSONObject obj1 = (JSONObject)jobj.get("body");
+//        JSONObject obj2 = (JSONObject)obj1.get("items");
+//        JSONArray obj3 = (JSONArray)obj2.get("item");
+//        
+//        String [] reservationList = new String[obj3.size()];
+//        ArrayList<AirVo> airList = new ArrayList<AirVo>();
+//        AirVo airVo = new AirVo();
+//        String noData = "";
+//        
+//        for(int i = 0; i < obj3.size(); i++)
+//        {
+//        	JSONObject reservationInfo = (JSONObject)obj3.get(i);
+//        	
+//        	String airlineNm = (String)reservationInfo.get("airlineNm");  /*항공사ID*/
+//        	String arrAirportNm = (String)reservationInfo.get("arrAirportNm"); /*도착공항ID*/
+//        	String arrPlandTime = (String)reservationInfo.get("arrPlandTime"); /*출발일도착시간*/
+//        	String depAirportNm = (String)reservationInfo.get("depAirportNm"); /*출발공항ID*/
+//        	String depPlandTime = (String)reservationInfo.get("depPlandTime"); /*출발일*/
+//        	String economyCharge = (String)reservationInfo.get("economyCharge"); /*일반석운임*/
+//        	String prestigeCharge = (String)reservationInfo.get("prestigeCharge"); /*비즈니스운임*/
+//        	String vihicleId = (String)reservationInfo.get("vihicleId"); /*항공편명*/
+//        	
+//        	System.out.println("airlineNm : " + airlineNm);
+//        	System.out.println("arrAirportNm : " + arrAirportNm);
+//        	System.out.println("arrPlandTime : " + arrPlandTime);
+//        	System.out.println("depAirportNm : " + depAirportNm);
+//        	System.out.println("depPlandTime : " + depPlandTime);
+//        	System.out.println("economyCharge : " + economyCharge);
+//        	System.out.println("prestigeCharge : " + prestigeCharge);
+//        	System.out.println("vihicleId : " + vihicleId);
+////        	if(reservationInfo.is)
+////        	{
+////        		airlineNm = "항공사 : 배정없음";
+////        	}
+////        	else
+////        	{
+////        		
+////        	}
+//        }
+//        ArrayList<String> arrayList = new ArrayList();
+//        for(String data : reservationList)
+//        {
+//        	if(!arrayList.contains(data))
 //        	{
-//        		airlineNm = "항공사 : 배정없음";
+//        		arrayList.add(data);
 //        	}
-//        	else
-//        	{
-//        		
-//        	}
-        }
-        ArrayList<String> arrayList = new ArrayList<>();
-        for(String data : reservationList)
-        {
-        	if(!arrayList.contains(data))
-        	{
-        		arrayList.add(data);
-        	}
-        }
-        for(int i = 0; i < arrayList.size(); i++)
-        {
-        	airVo = new AirVo();
-        	airVo.setAirlineNm(arrayList.get(i));
-        	airVo.setArrAirportNm(arrayList.get(i));
-        	airVo.setArrPlandTime(arrayList.get(i));
-        	airVo.setDepAirportNm(arrayList.get(i));
-        	airVo.setDepPlandTime(arrayList.get(i));
-        	airVo.setEconomyCharge(arrayList.get(i));
-        	airVo.setPrestigeCharge(arrayList.get(i));
-        	airVo.setVihicleId(arrayList.get(i));
-        	airList.add(airVo);
-        }
+//        }
+//        for(int i = 0; i < arrayList.size(); i++)
+//        {
+//        	airVo = new AirVo();
+//        	airVo.setAirlineNm(arrayList.get(i));
+//        	airVo.setArrAirportNm(arrayList.get(i));
+//        	airVo.setArrPlandTime(arrayList.get(i));
+//        	airVo.setDepAirportNm(arrayList.get(i));
+//        	airVo.setDepPlandTime(arrayList.get(i));
+//        	airVo.setEconomyCharge(arrayList.get(i));
+//        	airVo.setPrestigeCharge(arrayList.get(i));
+//        	airVo.setVihicleId(arrayList.get(i));
+//        	airList.add(airVo);
+//        }
         
         
         
@@ -207,7 +207,7 @@ public class ApiExplorer
 //			e.printStackTrace();
 //		}
         //return sb.toString();
-    }
+//    }
 	
 	// Json으로 만들기
 //    public static List<AirVo> getAirportJson(String depAirportId, String arrAirportId, String depPlandTime) throws Exception {
@@ -240,4 +240,73 @@ public class ApiExplorer
 //    	
 //    	return list;
 //    }
+	
+	public static void main(String[] args) throws Exception 
+	{
+        StringBuilder urlBuilder = new StringBuilder("http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("500", "UTF-8")); /*한 페이지 결과 수*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*페이지 번호*/
+        urlBuilder.append("&" + URLEncoder.encode("depAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKSS", "UTF-8")); /*출발공항ID*/
+        urlBuilder.append("&" + URLEncoder.encode("arrAirportId","UTF-8") + "=" + URLEncoder.encode("NAARKPC", "UTF-8")); /*도착공항ID*/
+        urlBuilder.append("&" + URLEncoder.encode("depPlandTime","UTF-8") + "=" + URLEncoder.encode("20201220", "UTF-8")); /*출발일*/
+        urlBuilder.append("&" + URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*항공사ID*/
+        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*형식*/
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        //conn.disconnect();
+        System.out.println(sb.toString());
+        
+        Object obj = JSONValue.parse(sb.toString());
+        
+        JSONObject jobj = (JSONObject)obj;
+        
+        JSONObject obj_response = (JSONObject)jobj.get("response");
+        JSONObject obj1 = (JSONObject)obj_response.get("body");
+        JSONObject obj2 = (JSONObject)obj1.get("items");
+        JSONArray obj3 = (JSONArray)obj2.get("item");
+        //System.out.println(obj3);
+        
+        for(int i = 0; i < obj3.size(); i++)
+        {
+        	JSONObject reservationInfo = (JSONObject)obj3.get(i);
+        	// 2020-12-18 => 20201218
+        	//reservationInfo.get("depPlandTime").equals("20201218");
+        	Long depPlandTime = (Long)reservationInfo.get("depPlandTime");
+        	Long arrPlandTime = (Long)reservationInfo.get("arrPlandTime");
+        	String depAirportNm = (String)reservationInfo.get("depAirportNm");
+        	String arrAirportNm = (String)reservationInfo.get("arrAirportNm");
+        	String airlineNm = (String)reservationInfo.get("airlineNm");
+        	Long economyCharge = (Long)reservationInfo.get("economyCharge");
+        	Long prestigeCharge = (Long)reservationInfo.get("prestigeCharge");
+        	String vihicleId = (String)reservationInfo.get("vihicleId");
+        	
+        	System.out.println("========= " + (i+1)  + "검색 내용 =========");
+        	System.out.println("출발시간 : " + depPlandTime);
+        	System.out.println("도착시간 : " + arrPlandTime);
+        	System.out.println("출발공항 : " + depAirportNm);
+        	System.out.println("도착공항 : " + arrAirportNm);
+        	System.out.println("항공사명 : " + airlineNm);
+        	System.out.println("일반석운임료 : " + economyCharge);
+        	System.out.println("비즈니스석운임료 : " + prestigeCharge);
+        	System.out.println("항공편명 : " + vihicleId);
+        }
+//        return obj3;
+		
+    }
 }
