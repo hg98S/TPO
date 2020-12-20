@@ -127,12 +127,7 @@ public class ReservationController {
 					flight.setEconomyCharge(45000L);
 				}
 
-				if((Long)reservationInfo.get("prestigeCharge") != null) {
-					flight.setPrestigeCharge((Long)reservationInfo.get("prestigeCharge"));
-				} else {
-					flight.setPrestigeCharge(45000L);
-				}
-				
+				flight.setPrestigeCharge((Long)reservationInfo.get("prestigeCharge"));
 				flight.setVihicleId((String)reservationInfo.get("vihicleId"));
 				fList.add(flight);
 				System.out.println(flight);

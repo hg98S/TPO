@@ -4,11 +4,8 @@ public class ScheduleSearch {
 
 	// 매개변수
 	private String sVihicleId;
-	private String sAirlineNm;
-	private String sDepPlandTime;
-	private String sArrPlandTime;
-	private String sEconomyCharge;
-	private String sPrestigeCharge;
+	private String sAirlineNm; 
+	private String sDepPlandTime; // 검색에서 가장 필요한 부분
 	private String sDepAirportNm;
 	private String sArrAirportNm;
 	private String searchAirline; // 항공사 검색
@@ -22,17 +19,12 @@ public class ScheduleSearch {
 	public ScheduleSearch() {}
 
 	// 매개변수 생성자
-	public ScheduleSearch(String sVihicleId, String sAirlineNm, String sDepPlandTime, String sArrPlandTime,
-			String sEconomyCharge, String sPrestigeCharge, String sDepAirportNm, String sArrAirportNm,
-			String searchAirline, String searchTime, int adultCount, int childCount, int infantCount,
-			boolean cookieDel) {
+	public ScheduleSearch(String sVihicleId, String sAirlineNm, String sDepPlandTime, String sDepAirportNm, String sArrAirportNm,
+			String searchAirline, String searchTime, int adultCount, int childCount, int infantCount, boolean cookieDel) {
 		super();
 		this.sVihicleId = sVihicleId;
 		this.sAirlineNm = sAirlineNm;
 		this.sDepPlandTime = sDepPlandTime;
-		this.sArrPlandTime = sArrPlandTime;
-		this.sEconomyCharge = sEconomyCharge;
-		this.sPrestigeCharge = sPrestigeCharge;
 		this.sDepAirportNm = sDepAirportNm;
 		this.sArrAirportNm = sArrAirportNm;
 		this.searchAirline = searchAirline;
@@ -66,30 +58,6 @@ public class ScheduleSearch {
 	
 	public void setsDepPlandTime(String sDepPlandTime) {
 		this.sDepPlandTime = sDepPlandTime;
-	}
-	
-	public String getsArrPlandTime() {
-		return sArrPlandTime;
-	}
-	
-	public void setsArrPlandTime(String sArrPlandTime) {
-		this.sArrPlandTime = sArrPlandTime;
-	}
-	
-	public String getsEconomyCharge() {
-		return sEconomyCharge;
-	}
-	
-	public void setsEconomyCharge(String sEconomyCharge) {
-		this.sEconomyCharge = sEconomyCharge;
-	}
-	
-	public String getsPrestigeCharge() {
-		return sPrestigeCharge;
-	}
-	
-	public void setsPrestigeCharge(String sPrestigeCharge) {
-		this.sPrestigeCharge = sPrestigeCharge;
 	}
 	
 	public String getsDepAirportNm() {
@@ -160,8 +128,7 @@ public class ScheduleSearch {
 	@Override
 	public String toString() {
 		return "ScheduleSearch [sVihicleId=" + sVihicleId + ", sAirlineNm=" + sAirlineNm + ", sDepPlandTime="
-				+ sDepPlandTime + ", sArrPlandTime=" + sArrPlandTime + ", sEconomyCharge=" + sEconomyCharge
-				+ ", sPrestigeCharge=" + sPrestigeCharge + ", sDepAirportNm=" + sDepAirportNm + ", sArrAirportNm="
+				+ sDepPlandTime + ", sDepAirportNm=" + sDepAirportNm + ", sArrAirportNm="
 				+ sArrAirportNm + ", searchAirline=" + searchAirline + ", searchTime=" + searchTime + ", adultCount="
 				+ adultCount + ", childCount=" + childCount + ", infantCount=" + infantCount + ", cookieDel="
 				+ cookieDel + "]";
