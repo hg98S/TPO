@@ -1,6 +1,7 @@
 package com.kh.tpo.sight.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,11 @@ public class SightStoreLogic implements SightStore{
 	@Override
 	public Sight selectSight(int sNo) {
 		return sqlSession.selectOne("sightMapper.selectSight", sNo);
+	}
+
+	@Override
+	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue) {
+		return (ArrayList)sqlSession.selectList("sightMapper.selectChkList", chkValue);
 	}
 
 

@@ -144,7 +144,7 @@ public class MainController {
 	
 	 // 서울 코로나 확진자 데이터 ... 
 //	@Scheduled(fixedDelay=1000)
-	@Scheduled(cron="0 10 11 * * ?")
+	@Scheduled(cron="0 00 12 * * ?")
 	public void insertCity() throws Exception{ 
 		URL req = new URL("http://openapi.seoul.go.kr:8088/56586777556b737431303242594c576e/json/Corona19Status/1/1000/");
 		HttpURLConnection conn = (HttpURLConnection)req.openConnection();
@@ -339,15 +339,15 @@ public class MainController {
 		// 최신순으로 명소, 숙소 리스트를 받아서 넘김
 		ArrayList<Rest> restList = mainService.selectRestList();
 		ArrayList<Room> roomList = mainService.selectRoomList();
-//		ArrayList<MainSight> sightList = mainService.selectSightList();
+		ArrayList<MainSight> sightList = mainService.selectSightList();
 //		for(MainSight info: sightList) {
 //			System.out.println(info.toString());
 //		}
 //		&& !sightList.isEmpty()
-		if(!roomList.isEmpty() && !restList.isEmpty() ) {
+		if(!roomList.isEmpty() && !restList.isEmpty() && !sightList.isEmpty()) {
 			model.addAttribute("roomList", roomList);
 			model.addAttribute("restList", restList);
-	//		model.addAttribute("sightList", sightList);
+			model.addAttribute("sightList", sightList);
 			return "index";
 		}else {
 			return "common/errorPage";

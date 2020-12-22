@@ -1,6 +1,7 @@
 package com.kh.tpo.sight.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -57,6 +58,11 @@ public class SightServiceImpl implements SightService{
 	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue) {
+		return sStore.sightChkList(chkValue);
 	}
 
 }

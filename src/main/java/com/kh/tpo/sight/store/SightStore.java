@@ -1,6 +1,7 @@
 package com.kh.tpo.sight.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.tpo.sight.domain.Sight;
 import com.kh.tpo.sight.domain.SightReply;
@@ -15,4 +16,11 @@ public interface SightStore {
 	public int insertReview(SightReview review);
 	public int inserReply(SightReply reply);
 	public Sight selectSight(int sNo);
+	/*
+	 * 체크에 따른 명소리스트 불러오기
+	 * 
+	 * @param HashMap<String,int>
+	 * @return ArrayList<Sight>
+	 * */
+	public ArrayList<Sight> sightChkList(HashMap<String,Integer> chkValue);
 }

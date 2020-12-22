@@ -1,6 +1,7 @@
 package com.kh.tpo.sight.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,4 +20,11 @@ public interface SightService {
 	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request);
 	public int insertReply(SightReply reply);
 	public Sight selectSight(int sNo);
+	/*
+	 * 체크에 따른 명소리스트 불러오기
+	 * 
+	 * @param HashMap<String,int>
+	 * @return ArrayList<Sight>
+	 * */
+	public ArrayList<Sight> sightChkList(HashMap<String,Integer> chkValue);
 }

@@ -9,7 +9,6 @@
 		<typeAlias type="com.kh.tpo.rest.domain.Room" alias="Room"/>
 		<typeAlias type="com.kh.tpo.sight.domain.MainSight" alias="MainSight"/>
 		<typeAlias type="com.kh.tpo.sight.domain.Sight" alias="Sight"/>
-		<typeAlias type="com.kh.tpo.sight.domain.SightList" alias="SightList"/>
 		<typeAlias type="com.kh.tpo.rest.domain.RestInfo" alias="RestInfo"/>
 	</typeAliases>
 	

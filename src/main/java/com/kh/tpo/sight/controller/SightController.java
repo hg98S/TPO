@@ -9,8 +9,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -20,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
@@ -27,6 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.gson.Gson;
 import com.kh.tpo.sight.domain.PageInfo;
 import com.kh.tpo.sight.domain.Sight;
 import com.kh.tpo.sight.domain.SightReview;
@@ -50,24 +54,24 @@ public class SightController {
 		  
 		  ArrayList<Sight> sList = sService.selectSightList();
 			  
-//			  if(!sList.isEmpty()) {
-//				  mv.addObject("sList", sList);
-//				  mv.setViewName("sight/sightList");;
-//			  } else {
-//				  try {
-//					ac.getSightList(sightList);
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				  if(!sList.isEmpty()) {
-//					  mv.addObject("sList", sList);
-//					  mv.setViewName("sight/sightList");;
-//				  } else {
-//					  mv.addObject("msg", "명소 조회 실패");
-//					  mv.setViewName("common/errorPage");
-//				  }
-//			  }
+			  if(!sList.isEmpty()) {
+				  mv.addObject("sList", sList);
+				  mv.setViewName("sight/sightList");;
+			  } else {
+				  try {
+					ac.getSightList(sightList);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				  if(!sList.isEmpty()) {
+					  mv.addObject("sList", sList);
+					  mv.setViewName("sight/sightList");;
+				  } else {
+					  mv.addObject("msg", "명소 조회 실패");
+					  mv.setViewName("common/errorPage");
+				  }
+			  }
 			  return mv;
 		  }
 //		  for(SightList list: sList) {
@@ -160,6 +164,21 @@ public class SightController {
 			return filePath;
 		}
 	  
+	  // 명소체크된 값 불러오는 메소드
+	  @ResponseBody
+	  @RequestMapping(value="sightChkList.tpo", method=RequestMethod.GET)
+	  public void sightChkList(HttpServletResponse response, int parking, int babyCar, int pet) throws Exception {
+		  System.out.println("parking: " + parking +", babyCar: " + babyCar + ", pet: " + pet);
+		  HashMap<String,Integer> chkValue = new HashMap<String, Integer>();
+		  chkValue.put("parking", parking);
+		  chkValue.put("babyCar", babyCar);
+		  chkValue.put("pet", pet);
+		  ArrayList<Sight> sightList = sService.sightChkList(chkValue);
+//		  for(Sight sight: sightList) {
+//			  System.out.println(sight.toString());
+//		  }
+		  new Gson().toJson(sightList, response.getWriter());
+	  }
 }
 
 	    

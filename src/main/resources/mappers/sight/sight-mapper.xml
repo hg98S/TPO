@@ -16,5 +16,36 @@
 		SELECT * FROM SIGHT 
 		WHERE SNO=#{sNo}
 	</select>
-
+	
+	<select id="selectSightList" resultType="Sight">
+      SELECT * FROM SIGHT
+      ORDER BY SNO DESC
+   </select>
+   
+   <select id="selectChkList" resultType="Sight" parameterType="HashMap">
+      	<if test="parking == 0 and babyCar == 0 and pet == 0">
+   			select * from sight order by sno desc
+   		</if>
+   		<if test="parking == 1 and babyCar == 0 and pet == 0">
+   			select * from sight where sparking like '%있음%' order by sno desc
+   		</if>
+   		<if test="parking == 0 and babyCar == 1 and pet == 0">
+   		 	select * from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' order by sno desc
+   		</if> 
+   		<if test="parking == 0 and babyCar == 0 and pet == 1">
+   		 	select * from sight where spet!='불가' and spet!='없음' order by sno desc
+   		</if> 
+  		<if test="parking == 1 and babyCar == 1 and pet == 0">
+  			select * from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and sparking like '%있음%' order by sno desc
+   		</if>
+   		 <if test="parking == 0 and babyCar == 1 and pet == 1">
+   		 	select * from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음' order by sno desc
+   		</if> 
+   		<if test="parking == 1 and babyCar == 0 and pet == 1">
+   			select * from sight where sparking like '%주차 가능%' and sparking='있음' and spet!='불가' and spet!='없음' order by sno desc
+   		</if> 
+   		<if test="parking == 1 and babyCar == 1 and pet == 1">
+   			select * from sight where sparking like '%주차 가능%' and sparking='있음' and SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음' order by sno desc
+   		</if>
+   </select>
 </mapper>
