@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.tpo.sight.domain.Sight;
-import com.kh.tpo.sight.domain.SightList;
 import com.kh.tpo.sight.domain.SightReply;
 import com.kh.tpo.sight.domain.SightReview;
 
@@ -42,13 +41,13 @@ public class SightStoreLogic implements SightStore{
 	}
 
 	@Override
-	public int insertSightList(SightList sightList) {
+	public int insertSightList(Sight sightList) {
 		return sqlSession.insert("sightMapper.insertSightList", sightList);
 	}
 
 	@Override
-	public ArrayList<SightList> selectSightList() {
-		ArrayList<SightList> sList = (ArrayList)sqlSession.selectList("sightMapper.selectSightList");
+	public ArrayList<Sight> selectSightList() {
+		ArrayList<Sight> sList = (ArrayList)sqlSession.selectList("sightMapper.selectSightList");
 //		for(SightList list: sList) {
 //			System.out.println(list.toString());
 //		}
@@ -60,5 +59,6 @@ public class SightStoreLogic implements SightStore{
 	public Sight selectSight(int sNo) {
 		return sqlSession.selectOne("sightMapper.selectSight", sNo);
 	}
+
 
 }

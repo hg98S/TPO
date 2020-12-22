@@ -2,11 +2,13 @@ package com.kh.tpo.sight.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.tpo.sight.domain.Sight;
-import com.kh.tpo.sight.domain.SightList;
 import com.kh.tpo.sight.domain.SightReply;
 import com.kh.tpo.sight.domain.SightReview;
 import com.kh.tpo.sight.store.SightStore;
@@ -24,7 +26,7 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public int insertSightList(SightList sightList) {
+	public int insertSightList(Sight sightList) {
 		return sStore.insertSightList(sightList);
 	}
 
@@ -47,7 +49,7 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public ArrayList<SightList> selectSightList() {
+	public ArrayList<Sight> selectSightList() {
 		
 		return sStore.selectSightList();
 	}
@@ -55,6 +57,13 @@ public class SightServiceImpl implements SightService{
 	@Override
 	public Sight selectSight(int sNo) {
 		return sStore.selectSight(sNo);
+	}
+
+
+	@Override
+	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
