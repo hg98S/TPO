@@ -129,71 +129,71 @@
             </div>
            	<script>
                 $("#dAirport").on("change",function(){
-                	var airNm = $("#dAirport").val();
-                   	var time = $("#dTime").val();
-                   	if (airNm == "dAllAirLine" && time == "dAllTime") {
-                   		$(".dAir.dTime").show();
-                   	} else if (airNm == "dAllAirLine" && time != "dAllTime"){
-                   		$(".dAir.dTime").hide();
-                   		$(".dAir.d"+time).show();
-                   	} else if (airNm != "dAllAirLine" && time == "dAllTime"){
-                   		$(".dAir.dTime").hide();
-                   		$(".d"+airNm+".dTime").show();
-                   	} else if (airNm != "dAllAirLine" && time != "dAllTime") {
-                   		$(".dAir.dTime").hide();
-                   		$(".d"+airNm+".d"+time).show();
-                   	}
+                   var airNm = $("#dAirport").val();
+                      var time = $("#dTime").val();
+                      if (airNm == "dAllAirLine" && time == "dAllTime") {
+                         $(".dAir.dTime").show();
+                      } else if (airNm == "dAllAirLine" && time != "dAllTime"){
+                         $(".dAir.dTime").hide();
+                         $(".dAir.d"+time).show();
+                      } else if (airNm != "dAllAirLine" && time == "dAllTime"){
+                         $(".dAir.dTime").hide();
+                         $(".d"+airNm+".dTime").show();
+                      } else if (airNm != "dAllAirLine" && time != "dAllTime") {
+                         $(".dAir.dTime").hide();
+                         $(".d"+airNm+".d"+time).show();
+                      }
                 });
                 
                 $("#dTime").on("change",function() {
-                	var airNm = $("#dAirport").val();
-                   	var time = $("#dTime").val();
-                   	if (time == "dAllTime" && airNm == "dAllAirLine") {
-                   		$(".dAir.dTime").show();
-                   	} else if (time == "dAllTime" && airNm != "dAllAirLine"){
-                   		$(".dAir.dTime").hide();
-                   		$(".d"+airNm+".dTime").show();
-                   	} else if (time != "dAllTime" && airNm == "dAllAirLine"){
-                   		$(".dAir.dTime").hide();
-                   		$(".dAir.d"+time).show();
-                   	} else if (time != "dAllTime" && airNm != "dAllAirLine"){
-                   		$(".dAir.dTime").hide();
-                   		$(".d"+airNm+".d"+time).show();
-                   	}
+                   var airNm = $("#dAirport").val();
+                      var time = $("#dTime").val();
+                      if (time == "dAllTime" && airNm == "dAllAirLine") {
+                         $(".dAir.dTime").show();
+                      } else if (time == "dAllTime" && airNm != "dAllAirLine"){
+                         $(".dAir.dTime").hide();
+                         $(".d"+airNm+".dTime").show();
+                      } else if (time != "dAllTime" && airNm == "dAllAirLine"){
+                         $(".dAir.dTime").hide();
+                         $(".dAir.d"+time).show();
+                      } else if (time != "dAllTime" && airNm != "dAllAirLine"){
+                         $(".dAir.dTime").hide();
+                         $(".d"+airNm+".d"+time).show();
+                      }
                 });
                 $("#aAirport").on("change",function(){
-                	var airNm = $("#aAirport").val();
-                   	var time = $("#aTime").val();
-                   	if (airNm == "aAllAirLine" && time == "aAllTime") {
-                   		$(".aAir.aTime").show();
-                   	} else if (airNm == "aAllAirLine" && time != "aAllTime"){
-                   		$(".aAir.aTime").hide();
-                   		$(".aAir.a"+time).show();
-                   	} else if (airNm != "aAllAirLine" && time == "aAllTime"){
-                   		$(".aAir.aTime").hide();
-                   		$(".a"+airNm+".aTime").show();
-                   	} else if (airNm != "aAllAirLine" && time != "aAllTime") {
-                   		$(".aAir.aTime").hide();
-                   		$(".a"+airNm+".a"+time).show();
-                   	}
+                   var airNm = $("#aAirport").val();
+                      var time = $("#aTime").val();
+                      if (airNm == "aAllAirLine" && time == "aAllTime") {
+                         $(".aAir.aTime").show();
+                      } else if (airNm == "aAllAirLine" && time != "aAllTime"){
+                         $(".aAir.aTime").hide();
+                         $(".aAir.a"+time).show();
+                      } else if (airNm != "aAllAirLine" && time == "aAllTime"){
+                         $(".aAir.aTime").hide();
+                         $(".a"+airNm+".aTime").show();
+                      } else if (airNm != "aAllAirLine" && time != "aAllTime") {
+                         $(".aAir.aTime").hide();
+                         $(".a"+airNm+".a"+time).show();
+                      }
                  });
                  $("#aTime").on("change",function() {
-                	 var airNm = $("#aAirport").val();
-                   	var time = $("#aTime").val();
-                   	if (time == "aAllTime" && airNm == "aAllAirLine") {
-                   		$(".aAir.aTime").show();
-                   	} else if (time == "aAllTime" && airNm != "aAllAirLine"){
-                   		$(".aAir.aTime").hide();
-                   		$(".a"+airNm+".aTime").show();
-                   	} else if (time != "aAllTime" && airNm == "aAllAirLine"){
-                   		$(".aAir.aTime").hide();
-                   		$(".aAir.a"+time).show();
-                   	} else if (time != "aAllTime" && airNm != "aAllAirLine"){
-                   		$(".aAir.aTime").hide();
-                   		$(".a"+airNm+".a"+time).show();
-                   	}
+                    var airNm = $("#aAirport").val();
+                      var time = $("#aTime").val();
+                      if (time == "aAllTime" && airNm == "aAllAirLine") {
+                         $(".aAir.aTime").show();
+                      } else if (time == "aAllTime" && airNm != "aAllAirLine"){
+                         $(".aAir.aTime").hide();
+                         $(".a"+airNm+".aTime").show();
+                      } else if (time != "aAllTime" && airNm == "aAllAirLine"){
+                         $(".aAir.aTime").hide();
+                         $(".aAir.a"+time).show();
+                      } else if (time != "aAllTime" && airNm != "aAllAirLine"){
+                         $(".aAir.aTime").hide();
+                         $(".a"+airNm+".a"+time).show();
+                      }
                  });
-           	</script>
+              </script>
             <!-- 가는 편 리스트 -->
             <div style="float: left; width: 50%;">
                 <table class="table table-hover">
@@ -211,7 +211,7 @@
                           <c:set var="time" value="${flight.depPlandTime }"/>
                         <c:set var="time2" value="${flight.arrPlandTime }"/>
                            <c:if test="${flight.airlineNm ne null }">
-                           <tr style="display:table; width:100%;" class="${flight.airlineNm } dAir ${fn:substring(time,8,10) } dTime">
+                           <tr style="display:table; width:100%;" class="d${flight.airlineNm } dAir d${fn:substring(time,8,10) } dTime">
                                <td style="width: 120px;">${flight.airlineNm }<br>&nbsp;${flight.vihicleId }</td>
                                <td style="line-height: 2.5; width: 150px;">${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }</td>
                               <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
@@ -267,7 +267,7 @@
                           <c:set var="time3" value="${flight2.depPlandTime }"/>
                         <c:set var="time4" value="${flight2.arrPlandTime }"/>
                            <c:if test="${flight2.airlineNm ne null }">
-                           <tr style="display:table; width:100%;" class="${flight2.airlineNm } aAir ${fn:substring(time3,8,10) } aTime">
+                           <tr style="display:table; width:100%;" class="a${flight2.airlineNm } aAir a${fn:substring(time3,8,10) } aTime" onclick="fnTest(this);">
                                <td style="width: 120px;">${flight2.airlineNm }<br>&nbsp;${flight2.vihicleId }</td>
                                <td style="line-height: 2.5; width: 150px;">${fn:substring(time3,8,10) } : ${fn:substring(time3,10,12) } ~ ${fn:substring(time4,8,10) }: ${fn:substring(time4,10,12) }</td>
                               <c:if test="${flight2.prestigeCharge eq 0 || flight2.prestigeCharge eq null}">
@@ -307,7 +307,7 @@
                         </tr>
                     </thead>
                     <tbody style="text-align: center;">
-                        <tr>
+                        <tr id="selectGoSchedule">
                             <td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
                             <td style="line-height: 2"></td>
                             <td style="line-height: 2"></td>
@@ -316,7 +316,7 @@
                             <td style="line-height: 2"></td>
                             <td style="line-height: 2">${acCount }석</td>
                         </tr>
-                        <tr>
+                        <tr id="selectComeSchedule">
                             <td style="line-height: 2">${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }</td>
                             <td style="line-height: 2"></td>
                             <td style="line-height: 2"></td>
@@ -329,62 +329,63 @@
                 </table>
             </div>
             
-                      <script>
+           <script>
             $(document).ready(function() {
-            	$("#comeTbody>tr").click(function(e) {
-	            	// var rowData = new Array();
-	            	console.log($(e))
-	            	var depMonth = ${fn:substring(depDay2,4,6) };
-	            	var depDay = ${fn:substring(depDay2,6,8) };
-	            	var tdArr = new Array();
-	            	
-	            	var tr = $(this);
-	            	var td = tr.children();
-	            	var fsRadio = td.eq(4).children().val();
-	            	
+               $("#comeTbody>tr").click(function(e) {
+                  // var rowData = new Array();
+                  console.log($(e))
+                  var depMonth = ${fn:substring(depDay2,4,6) };
+                  var depDay = ${fn:substring(depDay2,6,8) };
+                  var tdArr = new Array();
+                  
+                  var tr = $(this);
+                  var td = tr.children();
+                  var fsRadio = td.eq(5).children().val();
+                  
+                  
+                  $(this).find('input:radio').prop('checked', true);
+                  
+                  $("input:checked[id=departure]").each(function() {
+                     if (fsRadio != $(this).val()) {
+                        $(this).attr("checked", false); // uncheck all checkboxes
+                            //alert("checked checkbox false");
+                     }
+                   });
+                  /* td.eq(4).children().attr("checked", "true"); */
 
-	            	
-	            	$("input:checked[id=departure]").each(function() {
-	            		if (fsRadio != $(this).val()) {
-	            			$(this).attr("checked", false); // uncheck all checkboxes
-	            		       //alert("checked checkbox false");
-	            		}
-         		    });
-	            	/* td.eq(4).children().attr("checked", "true"); */
-
-	            	td.each(function(index, item) {
-						tdArr.push(td.eq(index, item).text());
-						//console.log(item);
-						var sIndex = index + 1;
-						if ( sIndex == 2) {
-							console.log(item.innerHTML);
-							var timeValue = item.innerHTML;
-							console.log(timeValue.trim());
-							var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
-							var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(14,2);
-							$("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+"."+" "+depHour);
-							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+"."+" "+arrHour);
-						} else if( sIndex == 1){
-							$("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
-						} else if( sIndex == 3) {
-							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
-						}else if( sIndex == 4) {
-							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
-						}
-						//console.log(index);
-						if(index == 1) {
-							var depTime;
-							//var depTimeTest = depTime.html();
-							//console.log(depTime);
-							//console.log(depTimeTest);
-						}
-						if(index == 3) {
-							var charge;
-							//console.log(charge);
-						}
-					});
-	            	//console.log(tdArr);
-	            });
+                  td.each(function(index, item) {
+                  tdArr.push(td.eq(index, item).text());
+                  //console.log(item);
+                  var sIndex = index + 1;
+                  if ( sIndex == 2) {
+                     console.log(item.innerHTML);
+                     var timeValue = item.innerHTML;
+                     console.log(timeValue.trim());
+                     var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+                     var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(14,2);
+                     $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+"."+" "+depHour);
+                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+"."+" "+arrHour);
+                  } else if( sIndex == 1){
+                     $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+                  } else if( sIndex == 3) {
+                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+                  }else if( sIndex == 4) {
+                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+                  }
+                  //console.log(index);
+                  if(index == 1) {
+                     var depTime;
+                     //var depTimeTest = depTime.html();
+                     //console.log(depTime);
+                     //console.log(depTimeTest);
+                  }
+                  if(index == 3) {
+                     var charge;
+                     //console.log(charge);
+                  }
+               });
+                  //console.log(tdArr);
+               });
             });
             </script>
         </article>

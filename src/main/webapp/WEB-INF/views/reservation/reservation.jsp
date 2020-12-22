@@ -55,10 +55,10 @@
                   </a> <!--   -->
                </nav>
 
-<<<<<<< HEAD
-				<!-- Main -->
+<!-- <<<<<<< HEAD
+				Main
 					<div id="main">
-						<!-- 왕복 -->
+						왕복
 							<article id="home" class="panel" style="background-color:#eeeeee;">
 								<form action="getReservationDataSearch.tpo">
 									<select id="twoway_dep" name="sDepAirportNm">
@@ -180,7 +180,7 @@
 								</form>
 							</article>
 							
-						<!-- 편도 -->
+						편도
 							<article id="contact" class="panel" style="background-color:#eeeeee;">
 								<form action="getReservationData.tpo">
 									<select id="oneway_dep" name="sDepAirportNm">
@@ -286,7 +286,7 @@
 								</form>
 							</article>
 					</div>
-=======
+======= -->
             <!-- Main -->
                <div id="main">
                   <!-- 왕복 -->
@@ -517,7 +517,7 @@
                         </form>
                      </article>
                </div>
->>>>>>> refs/remotes/origin/1221_CYJ
+<!-- >>>>>>> refs/remotes/origin/1221_CYJ -->
 
             <!-- Scripts -->
             <script src="resources/assets/js/jquery.min.js"></script>
