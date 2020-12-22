@@ -59,7 +59,7 @@
 					<div id="main">
 						<!-- 왕복 -->
 							<article id="home" class="panel" style="background-color:#eeeeee;">
-								<form action="getReservationData.tpo">
+								<form action="getReservationDataSearch.tpo">
 									<select id="twoway_dep" name="sDepAirportNm">
 										<option selected="selected" >출발지</option>
 										<option value="NAARKSI">인천</option>
@@ -102,12 +102,12 @@
 									<br><br>
 								
 									<div>
-										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime">
+										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime" value="가는 날짜">
 									</div>
 									
 									&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;
 									<div>
-										오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" value="오는 날짜">
+										오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" name="sArrPlandTime" value="오는 날짜">
 									</div>
 									
 									<script>
@@ -132,9 +132,7 @@
 											<p value="성인">성인</p>
 										</div>
 										<select class="row" id="twoway_adult_number" name="adultCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
-											<option value="1" selected="selected">1</option>
+											<option value="1" selected>1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
@@ -149,8 +147,7 @@
 											<p value="소아">소아</p>
 										</div>
 										<select class="row" id="twoway_child_number" name="childCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
+											<option value="0" selected>0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -166,8 +163,7 @@
 											<p value="유아">유아</p>
 										</div>
 										<select class="row" id="twoway_infant_number" name="infantCount">
-											<option value="">== 선택 ==</option>
-											<option value="0">0</option>
+											<option value="0" selected>0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
