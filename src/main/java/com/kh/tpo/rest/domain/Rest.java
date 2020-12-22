@@ -17,6 +17,7 @@ public class Rest {
 	private String pStatus;
 	private String reFacility;
 	private int clcik;
+	private int sumPrice;
 	
 	public Rest() {}
 
@@ -132,16 +133,27 @@ public class Rest {
 		this.clcik = clcik;
 	}
 
+	
+	
+	public int getSumPrice() {
+		return sumPrice;
+	}
+
+	public void setSumPrice(int sumPrice) {
+		this.sumPrice = sumPrice;
+	}
+
 	@Override
 	public String toString() {
 		return "Rest [reNo=" + reNo + ", reName=" + reName + ", reAddr=" + reAddr + ", reImage=" + reImage
 				+ ", rePhone=" + rePhone + ", reUrl=" + reUrl + ", reInfo=" + reInfo + ", checkIn=" + checkIn
 				+ ", checkout=" + checkout + ", rTotal=" + rTotal + ", pTotal=" + pTotal + ", pStatus=" + pStatus
-				+ ", reFacility=" + reFacility + ", clcik=" + clcik + "]";
+				+ ", reFacility=" + reFacility + ", clcik=" + clcik + ", sumPrice=" + sumPrice + "]";
 	}
 
 	public Rest(int reNo, String reName, String reAddr, String reImage, String rePhone, String reUrl, String reInfo,
-			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik) {
+			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik,
+			int sumPrice) {
 		super();
 		this.reNo = reNo;
 		this.reName = reName;
@@ -157,7 +169,9 @@ public class Rest {
 		this.pStatus = pStatus;
 		this.reFacility = reFacility;
 		this.clcik = clcik;
+		this.sumPrice = sumPrice;
 	}
+
 	
 	
 

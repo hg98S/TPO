@@ -1,6 +1,7 @@
 package com.kh.tpo.rest.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +40,7 @@ public class RestController {
 		 */
 	//	System.out.println(list.toString());
 		list = APIInfo.restAPI();
-		int result = reService.insertRest(list);  
+		 int result = reService.insertRest(list); 
 			if(result>0) {
 				System.out.println("성공");
 			}else {
@@ -85,12 +86,18 @@ public class RestController {
 	
 	// 숙소명 조회
 	@RequestMapping(value="rNameSearch.tpo", method = RequestMethod.GET)
-	public String rNameSearch(Model model, Search search) {
+	public String rNameSearch(Model model, Search search, @RequestParam(value="page", required=false)Integer page) {
 		//System.out.println(search.toString());
-			ArrayList<Rest> rList = reService.SearchrName(search);
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+			ArrayList<Rest> rList = reService.SearchrName(search,pi);
+		//System.out.println("넘긴 값 : " + search.toString());
+		//System.out.println("페이지 값 : " + pi.toString());
 			if(!rList.isEmpty()) {
 				model.addAttribute("rList", rList);
 				model.addAttribute("search",search);
+				model.addAttribute("pi", pi);
 				return "rest/restList";
 			}else {
 				model.addAttribute("msg", "게시글 상세조회 실패");
@@ -101,10 +108,13 @@ public class RestController {
 	// 최저, 최고금액 조회
 	@ResponseBody
 	@RequestMapping(value="searchPrice.tpo", method=RequestMethod.GET)
-	public void priceSearch(HttpServletResponse response, Search search) throws Exception {
+	public void priceSearch(HttpServletResponse response, Search search,  @RequestParam(value="page", required=false)Integer page) throws Exception {
 	//	System.out.println(search.toString());
-		ArrayList<RestInfo> rList = reService.searchPrice(search); 
-		System.out.println("rList : " + rList.toString());
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+		ArrayList<RestInfo> rList = reService.searchPrice(search, pi); 
+	//	System.out.println("rList : " + rList.toString());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		new Gson().toJson(rList, response.getWriter());	
@@ -115,15 +125,40 @@ public class RestController {
 		 */
 	}
 	
+	// 최고금액 설정x
+	@ResponseBody
+	@RequestMapping(value="searchRowPrice.tpo", method=RequestMethod.GET)
+	public void priceRowSearch(HttpServletResponse response, Search search,  @RequestParam(value="page", required=false)Integer page) throws Exception {
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+	//	System.out.println(search.toString());
+		ArrayList<RestInfo> rList = reService.priceRowSearch(search, pi); 
+		//System.out.println("rList : " + rList.toString());
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		new Gson().toJson(rList, response.getWriter());	
+		/*
+		 * if(!rList.isEmpty()) { model.addAttribute("rList", rList);
+		 * model.addAttribute("search", search); return "success"; }else {
+		 * model.addAttribute("msg", "게시글 상세조회 실패"); return "fail"; }
+		 */
+	}	
+	
+	
 	// 정렬
 	@RequestMapping(value="alignList.tpo", method=RequestMethod.GET)
-	  public ModelAndView alignRest(ModelAndView mv, Search search) {
-		System.out.println( "search : " + search.toString());
-		  ArrayList<RestInfo> rList = reService.alignList(search);
-		  System.out.println("rList : " + rList.toString());
+	  public ModelAndView alignRest(ModelAndView mv, Search search, @RequestParam(value="page", required=false)Integer page) {
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+		//System.out.println( "search : " + search.toString());
+		  ArrayList<RestInfo> rList = reService.alignList(search, pi);
+		//  System.out.println("rList : " + rList.toString());
 		  if(!rList.isEmpty()) {
 			  mv.addObject("rList", rList);
 			  mv.addObject("search", search);
+			  mv.addObject("pi", pi);
 			  mv.setViewName("rest/restList");
 		  }	else {
 				mv.addObject("msg", "게시글 상세조회 실패"); 
@@ -134,12 +169,38 @@ public class RestController {
 	// 지역 검색
 	@ResponseBody
 	@RequestMapping(value="searchLocation.tpo", method=RequestMethod.GET)
-	public void localSearch(HttpServletResponse response, Search search) throws Exception {
-		ArrayList<RestInfo> rList = reService.searchLocal(search);
+	public void localSearch(HttpServletResponse response, Search search, @RequestParam(value="page", required=false)Integer page) throws Exception {
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+		ArrayList<RestInfo> rList = reService.searchLocal(search, pi);
+		System.out.println("pi : " + pi);
+		System.out.println("rList  : " + rList);
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		new Gson().toJson(rList, response.getWriter());	
 		
+	}
+	
+	// 지역, 객실, 인원 검색
+	@RequestMapping(value="searchAllList.tpo", method=RequestMethod.GET)
+	public ModelAndView searchAllList(ModelAndView mv, Search search,  @RequestParam(value="page", required=false)Integer page) {
+	//	System.out.println( "search : " + search.toString());
+		int currentPage = (Integer) ((page != null) ? page : 1);
+		int listCount = reService.getSearchCount(search);
+		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+		ArrayList<RestInfo> rList = reService.searchAllList(search,pi);
+	//	System.out.println("rList 결과값: " + rList.toString());
+	//	System.out.println(pi.toString());
+		if(!rList.isEmpty()) {
+			 mv.addObject("rList", rList);
+			  mv.addObject("search", search);
+			  mv.addObject("pi", pi);
+			  mv.setViewName("rest/restList");
+		  }	else {
+				mv.addObject("msg", "게시글 상세조회 실패"); 
+		  }
+		  return mv;
 	}
 	 
 
