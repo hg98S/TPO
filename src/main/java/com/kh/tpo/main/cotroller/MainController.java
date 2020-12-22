@@ -144,7 +144,7 @@ public class MainController {
 	
 	 // 서울 코로나 확진자 데이터 ... 
 //	@Scheduled(fixedDelay=1000)
-	@Scheduled(cron="0 30 11 * * ?")
+	@Scheduled(cron="0 10 11 * * ?")
 	public void insertCity() throws Exception{ 
 		URL req = new URL("http://openapi.seoul.go.kr:8088/56586777556b737431303242594c576e/json/Corona19Status/1/1000/");
 		HttpURLConnection conn = (HttpURLConnection)req.openConnection();
@@ -339,14 +339,15 @@ public class MainController {
 		// 최신순으로 명소, 숙소 리스트를 받아서 넘김
 		ArrayList<Rest> restList = mainService.selectRestList();
 		ArrayList<Room> roomList = mainService.selectRoomList();
-		ArrayList<MainSight> sightList = mainService.selectSightList();
+//		ArrayList<MainSight> sightList = mainService.selectSightList();
 //		for(MainSight info: sightList) {
 //			System.out.println(info.toString());
 //		}
-		if(!roomList.isEmpty() && !restList.isEmpty() && !sightList.isEmpty()) {
+//		&& !sightList.isEmpty()
+		if(!roomList.isEmpty() && !restList.isEmpty() ) {
 			model.addAttribute("roomList", roomList);
 			model.addAttribute("restList", restList);
-			model.addAttribute("sightList", sightList);
+	//		model.addAttribute("sightList", sightList);
 			return "index";
 		}else {
 			return "common/errorPage";
@@ -396,7 +397,7 @@ public class MainController {
 		// 지역, 날짜 기준으로 3일 데이터를 불러와야함
 		HashMap<String, String> map = new HashMap<String, String>();
 //		System.out.println(local.equals("서울") || local.equals("제주특별자치도"));
-		if(local.equals("서울") || local.equals("제주특별자치도")) {
+		if(local.equals("서울")) {
 		// 당일 데이터가 있는지 유무
 		boolean dataChk = mainService.checkDate(currentDate)==0 ? true : false;
 		if(dataChk) {

@@ -49,24 +49,24 @@ public class SightController {
 		  
 		  ArrayList<SightList> sList = sService.selectSightList();
 			  
-			  if(!sList.isEmpty()) {
-				  mv.addObject("sList", sList);
-				  mv.setViewName("sight/sightList");;
-			  } else {
-				  try {
-					ac.getSightList(sightList);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				  if(!sList.isEmpty()) {
-					  mv.addObject("sList", sList);
-					  mv.setViewName("sight/sightList");;
-				  } else {
-					  mv.addObject("msg", "명소 조회 실패");
-					  mv.setViewName("common/errorPage");
-				  }
-			  }
+//			  if(!sList.isEmpty()) {
+//				  mv.addObject("sList", sList);
+//				  mv.setViewName("sight/sightList");;
+//			  } else {
+//				  try {
+//					ac.getSightList(sightList);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				  if(!sList.isEmpty()) {
+//					  mv.addObject("sList", sList);
+//					  mv.setViewName("sight/sightList");;
+//				  } else {
+//					  mv.addObject("msg", "명소 조회 실패");
+//					  mv.setViewName("common/errorPage");
+//				  }
+//			  }
 			  return mv;
 		  }
 //		  for(SightList list: sList) {
@@ -93,19 +93,19 @@ public class SightController {
 	  public ModelAndView selectSight(ModelAndView mv, int sNo ,HttpServletRequest request) {
 		  Sight sight = new Sight();
 		  System.out.println(sNo);
-		  if(sService.selectSight(sNo) == null ){
-			  ac.getSightDetail(sNo);
-			  mv.addObject("msg","다시 시도해 주십시오");
-			  mv.setViewName("common/errorPage");
-			  
-			  
-		  } else {
-			  sight=sService.selectSight(sNo);
-			  mv.addObject("sight", sight)
-			  .setViewName("sight/sightDetail");
-			  System.out.println(sight.toString());
-
-		  }
+//		  if(sService.selectSight(sNo) == null ){
+//			  ac.getSightDetail(sNo);
+//			  mv.addObject("msg","다시 시도해 주십시오");
+//			  mv.setViewName("common/errorPage");
+//			  
+//			  
+//		  } else {
+//			  sight=sService.selectSight(sNo);
+//			  mv.addObject("sight", sight)
+//			  .setViewName("sight/sightDetail");
+//			  System.out.println(sight.toString());
+//
+//		  }
 		  return mv;
 	  }
 	  

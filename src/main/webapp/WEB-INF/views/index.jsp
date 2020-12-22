@@ -53,34 +53,34 @@
 				<!-- 행정구역별 지도(서울) -->
 				<div class="city col-lg-6 col-md-4 col-sm-6">
 					<div id="city_seoul">
-						<jsp:include page="common/seoul.jsp"></jsp:include>
+						<jsp:include page="common/seoul.html"></jsp:include>
 					</div>
 					<div id="city_busan" style="opacity:0;">
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
 					</div>
 					<div id="city_daegu" style="opacity:0;">
-						- <jsp:include page="common/daegu.jsp"></jsp:include> 
+						- <jsp:include page="common/daegu.html"></jsp:include> 
 					</div>
 					<div id="city_incheon" style="opacity:0;">
-						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
+						 <jsp:include page="common/incheon.html"></jsp:include> 
 					</div>
 					<div id="city_gwangju" style="opacity:0;">
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
 					</div>
 					<div id="city_daejeon" style="opacity:0;">
-						 <jsp:include page="common/daejeon.jsp"></jsp:include> 
+						 <jsp:include page="common/daejeon.html"></jsp:include> 
 					</div>
 					<div id="city_ulsan" style="opacity:0;">
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
 					</div>
 					<div id="city_sejong" style="opacity:0;">
-						<jsp:include page="common/sejong.jsp"></jsp:include> 
+						<jsp:include page="common/sejong.html"></jsp:include> 
 					</div>
 					<div id="city_gyeonggido" style="opacity:0;">
-						<jsp:include page="common/gyeonggido.jsp"></jsp:include>
+						<jsp:include page="common/gyeonggido.html"></jsp:include>
 					</div>
 					<div id="city_gangwon" style="opacity:0;">
-						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
+						<jsp:include page="common/gangwon.html"></jsp:include> 
 					</div>
 					<div id="city_chungcheon1" style="opacity:0;">
 					<%-- 	<jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
@@ -89,10 +89,10 @@
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
 					</div>
 					<div id="city_jeonlabukdo" style="opacity:0;">
-						 <jsp:include page="common/jeonlabukdo.jsp"></jsp:include> 
+						 <jsp:include page="common/jeonlabukdo.html"></jsp:include> 
 					</div>
 					<div id="city_jeonlanamdo" style="opacity:0;">
-						 <jsp:include page="common/jeonlanamdo.jsp"></jsp:include>
+						 <jsp:include page="common/jeonlanamdo.html"></jsp:include>
 					</div>
 					<div id="city_gyeongsang1" style="opacity:0;">
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
@@ -101,7 +101,7 @@
 						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
 					</div>
 					<div id="city_jeju" style="opacity:0;">
-						<%-- <jsp:include page="common/gyeonggido.jsp"></jsp:include> --%>
+						 <jsp:include page="common/jeju.html"></jsp:include>
 					</div>
 				</div>
 				<!-- 명소가 표시되는 곳 -->	
@@ -113,29 +113,7 @@
 					</div>
 				</div>
 				<div class="row">
-			<%-- 	<% int i =0; %>
-				<c:forEach items="${sightList }" var="sightList">
-					<!-- 명소숙소이미지가 없는 건 스킵하고 있는것만 3번 돌게 함 -->
-					<c:if test="${sightList.sPicture ne null}"> --%>
-						<!-- 가져온 명소의 위치를 띄워쓰기 기준으로 0번째와 1번째만 추출 -->
-						<%-- <c:forTokens var="sLocation" items=" ${sightList.sLocation }" delims=" ">
-							<c:set var="Location1" value="${sLocation[0] }"/>
-							<c:set var="Location2" value="${sLocation[1] }"/>
-						</c:forTokens>
-						<!-- 0번째와 1번째를 합친 지역이름 -->
-						<c:set var="compareLocation" value="${Location1} ${Location2}"/>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-						<c:forEach items="${sightList }" var="sightList">
-						<c:forTokens var="sLocation" items=" ${sightList.sLocation }" delims=" ">
-							<c:set var="Location1" value="${sLocation[0] }"/>
-							<c:set var="Location2" value="${sLocation[1] }"/>
-						</c:forTokens>
-							<c:set var="Location" value="${Location1} ${Location2}"/>
-						<c:if test="${compareLocation eq Location}">
-							<a href="${sightList.sPicture }" class="sight">
-						</c:if>
-						</c:forEach> --%>
-						<% int i =0; %>
+						 <% int i =0; %>
 				<c:forEach items="${sightList }" var="sightList">
 					<!-- 명소이미지가 없는 건 스킵하고 있는것만 3번 돌게 함 -->
 					<c:if test="${sightList.sPicture ne '없음'}">
@@ -206,7 +184,7 @@
 					</div>
 					<%};%>
 					</c:if>
-				</c:forEach>
+				</c:forEach> 
 				</div>
 				<hr>
 				
@@ -302,7 +280,10 @@
 								</p>
 								<p style="text-align:center">
 								<c:if test="${restList.reUrl eq '준비중'}">
-									<a style="cursor:hand;"><span class="btn btn-primary">준비 중</span></a>
+									<c:url var="roomDirect" value="restDetail.tpo">
+										<c:param name="reNo" value="${restList.reNo }"></c:param>
+									</c:url>
+									<a style="cursor:hand;" href="${roomDirect }"><span class="btn btn-primary">상세 페이지</span></a>
 								</c:if>
 								<c:if test="${restList.reUrl ne '준비중'}">
 									<a href="${restList.reUrl }"><span class="btn btn-primary">바로가기</span></a>

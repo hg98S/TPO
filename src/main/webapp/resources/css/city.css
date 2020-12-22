@@ -167,3 +167,43 @@
     text-anchor: middle;
     alignment-baseline: middle;
 }
+
+/* 제주특별자치도 */
+.JEJUOUTLINE {
+    stroke-linejoin:round;
+    stroke: #ffffff;
+    stroke-width: 1;
+    fill: none;
+}
+.JEJUTEXT {
+    fill: #ffffff;
+    font-size: 16px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
+
+/* 인천광역시 */
+.ICTEXT {
+    fill: #ffffff;
+    font-size: 14px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
+/* 강원도 */
+.GWLINE {
+    stroke-linejoin:round;
+    stroke: #ffffff;
+    stroke-width: 1;
+    fill: none;
+}
+.GWPOINT {
+    stroke: #ffffff;
+    stroke-width: 1;
+    fill: #ffffff;
+}
+.GWTEXT {
+    fill: #ffffff;
+    font-size: 16px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+}

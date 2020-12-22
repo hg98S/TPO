@@ -399,6 +399,80 @@
 				}
 			});  
 		 }
+		
+		// 제주특별자치도
+		if(selectTag=="제주특별자치도"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".JEJUTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".JEJUTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".jejuNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+					/* 			var cityFill = $(".JJOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										} */
+							}
+						}
+					}
+				}
+			});  
+		 }
+		
+		// 인천광역시
+		if(selectTag=="인천광역시"){
+	 		$.ajax({
+				url: "cityMapList.tpo",
+				type: "get",
+				data: {"local":selectTag},
+				success: function(data){
+					 var cityTag = $(".ICTEXT a");
+					// var cityFill = $(".CITYOUTLINE");
+					// console.log(cityTag.length);
+					// console.log(data.length);
+					for(var i=0; i<cityTag.length; i++){
+						var cityName = $(".ICTEXT a:eq" + "(" + i + ")").text();
+						for(var j=0; j<data.length; j++){
+							// 3일 평균 데이터를 가져와서 각 위치에 넣음
+								if(data[j].cityName.indexOf(cityName) != -1){
+								var cityNum = $(".incheonNum a:eq" + "(" + i + ")");
+								cityNum.text(data[j].cConfirmedNum);
+							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
+					/* 			var cityFill = $(".JJOUTLINE:eq" + "(" + i + ")");
+									if(data[j].cConfirmedNum<=10){
+										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
+										cityNum.css("fill", "#000000");
+									}else if(data[j].cConfirmedNum>10 && data[j].cConfirmedNum<50){
+										cityFill.css("fill","rgba(242, 110, 92, 0.9)");
+										cityNum.css("fill", "#ffffff");
+									}else{
+										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
+										cityNum.css("fill", "#ffffff");
+										} */
+							}
+						}
+					}
+				}
+			});  
+		 }
 	  });
 		
 		
