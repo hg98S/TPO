@@ -1,6 +1,7 @@
 package com.kh.tpo.sight.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -109,13 +111,55 @@ public class SightController {
 		  return mv;
 	  }
 	  
-	  public String insertReview (SightReview review) {
-		  
-		  //SightReview review = new SightReview();
-		  //review.setReviewTitle(reviewTitle);
-		  int result = sService.insertReview(review);
-		  return null;
+	  @RequestMapping(value="sightReviewWrieteForm.tpo" , method= RequestMethod.GET )
+	  public String writeReview() {
+		  return "sight/reviewWriteForm";
 	  }
+	  
+	  
+	  @RequestMapping(value="insertReview.tpo", method=RequestMethod.POST)
+	  public ModelAndView  insertReview (SightReview review, ModelAndView mv, 
+			  @RequestParam(name="uploadFile", required=false)MultipartFile uploadFile, HttpServletRequest request  ) {
+		  
+		  System.out.println(uploadFile);
+		  System.out.println(review);
+		  if(!uploadFile.getOriginalFilename().equals("")) {
+			  String filePath = saveFile(uploadFile, request);
+			  if(filePath != null) {
+				  review.setReviewPicture(uploadFile.getOriginalFilename());
+					  
+				  }
+			  }
+		  
+		  int result = sService.insertReview(review, uploadFile, request);
+		  if(result>0) {
+		  mv.addObject(review).setViewName("sight/sightDetail");
+		  }else {
+			  mv.addObject("msg", "리뷰 등록실패!").setViewName("common/errorPage");
+		  }
+		  return mv;
+	  }
+	  
+	  public String saveFile(MultipartFile file, HttpServletRequest request) {
+			// 파일 저장 경로 설정
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String savePath = root + "\\nuploadFiles";
+			// 저장 폴더 선택
+			File folder = new File(savePath);
+			// 만약 폴더가 없을경우 자동 생성
+			if(!folder.exists()) {
+				folder.mkdir();
+			}
+			String filePath = folder + "\\" + file.getOriginalFilename();
+			// 파일저장
+			
+			try {
+				file.transferTo(new File(filePath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return filePath;
+		}
 	  
 }
 

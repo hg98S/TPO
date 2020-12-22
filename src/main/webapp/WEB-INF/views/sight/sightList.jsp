@@ -131,23 +131,19 @@ img {
 	<h2 id="contentTitle">명소 리스트</h2>
 	 <div class="container">
       <div class="row">
-      
       <c:forEach items="${sList }" var="sightList">
         <div class="col-4">
-          
           <div class="card">
-          <%-- <input type="hidden" name="sNo" value="${sightList.sNo }"> --%>
-          <img src="${sightList.image }" alt="" class="card-img-top" />
-          <%-- <c:if test="${sightList.image != null} ">
-          <img src="${sightList.image }" alt="" class="card-img-top" />
-          </c:if>
-          <c:if test="${sightList.image == null} ">
-            <img src="../resources/img/noImage.jpg" alt="" class="card-img-top" />
-           </c:if>--%>
+          	<c:if test="${sightList.sPicture != null }">
+          		<img src="${sightList.sPicture }" alt="" class="card-img-top" />
+          	</c:if>
+          	<c:if test="${sightList.sPicture == null }">
+          		<img src="/resources/img/sitelogo.png" alt="" class="card-img-top" />
+          	</c:if>
             <div class="card-body">
-              <h5 class="card-title">${sightList.title}</h5>
-              <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p> -->
-              <a href="selectSight.kh?sNo=${sightList.sNo }" class="btn btn-primary">More</a>
+              <h5 class="card-title">${sightList.sName}</h5>
+              <a href="javascript:location.href='selectSight.kh?sno=${sightList.sNo }'" class="btn btn-primary">
+              <input type="hidden" id="sNo" value="${sightList.sNo }">More</a>
             </div>
           </div>
         </div>
@@ -163,6 +159,23 @@ img {
 	
 	
 </section>
+<script>
+	function sightDetail(){
+		var sNo = document.getElementById("sNo").value;
+		var form=document.createElement("form");
+		form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "post");  //Post 방식
+        form.setAttribute("action", "selectSight.tpo"); //요청 보낼 주소
+        
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("sNo", sNo);
+        form.appendChild(hidden);
+  		document.body.appendChild(form);
+  		
+		form.submit();
+	}
+</script>
 
 
 	<!-- footer -->
