@@ -19,5 +19,4 @@ public interface SightService {
 	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request);
 	public int insertReply(SightReply reply);
 	public Sight selectSight(int sNo);
-	int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request);
 }
