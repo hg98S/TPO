@@ -29,7 +29,6 @@ import org.w3c.dom.NodeList;
 
 import com.kh.tpo.sight.domain.PageInfo;
 import com.kh.tpo.sight.domain.Sight;
-import com.kh.tpo.sight.domain.SightList;
 import com.kh.tpo.sight.domain.SightReview;
 import com.kh.tpo.sight.service.SightService;
 import com.kh.tpo.sight.store.Pagination;
@@ -45,11 +44,11 @@ public class SightController {
 
 //  // sightList주소 불러오고, 페이징처리까지
 	  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
-		public ModelAndView sightList (ModelAndView mv,ArrayList<SightList> sightList,
+		public ModelAndView sightList (ModelAndView mv,ArrayList<Sight> sightList,
 				@RequestParam(value="page", required=false)Integer page, Model model) {
 		  
 		  
-		  ArrayList<SightList> sList = sService.selectSightList();
+		  ArrayList<Sight> sList = sService.selectSightList();
 			  
 //			  if(!sList.isEmpty()) {
 //				  mv.addObject("sList", sList);

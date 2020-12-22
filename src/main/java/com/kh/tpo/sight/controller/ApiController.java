@@ -22,7 +22,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.kh.tpo.sight.domain.Sight;
-import com.kh.tpo.sight.domain.SightList;
 import com.kh.tpo.sight.service.SightService;
 
 @Controller
@@ -131,7 +130,7 @@ public class ApiController {
 	}
 
 	//@RequestMapping(value="addSightList.kh", method=RequestMethod.GET)
-	public void getSightList(ArrayList<SightList> sList) throws Exception {
+	public void getSightList(ArrayList<Sight> sList) throws Exception {
 		int page = 1;	// 페이지 초기값 
 		//			try{
 		while(true){
@@ -194,10 +193,21 @@ public class ApiController {
 
 					Element eElement = (Element) nNode;
 					System.out.println("######################");
-					SightList sight = new SightList();
-					int sNo = Integer.parseInt(getTagValue("contentid", eElement));
-					getSightDetail(sNo);
-					
+					//System.out.println(eElement.getTextContent());
+					//System.out.println("주소  : " + getTagValue("addr1", eElement));
+					//System.out.println("명소이름 : " + getTagValue("title", eElement));
+					//System.out.println("명소 id : " + getTagValue("contentid", eElement));
+					//System.out.println("연평균 수익률  : " + getTagValue("avg_prft_rate", eElement));
+					//System.out.println("공시 이율  : " + getTagValue("dcls_rate", eElement));
+					Sight sight = new Sight();
+					String sNo = getTagValue("contentid", eElement);
+					sight.setsNo(Integer.parseInt(sNo));
+//					sight.setImage(getTagValue("firstimage",eElement));
+//					sight.setAddr(getTagValue("addr1",eElement));
+//					sight.setTitle(getTagValue("title",eElement));
+
+
+					//sList.setAddr(sNo)=getTagValue("contetnid", eElement) ;
 					// sight DB에 넣기
 					int result = sService.insertSightList(sight);
 					if(result > 0) {

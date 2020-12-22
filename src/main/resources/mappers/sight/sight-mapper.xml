@@ -2,23 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="sightMapper">
 
-<resultMap type="SightList" id="sightListResultMap">
-	<result property="sNo" column="SNO"/>
-	<result property="image" column="IMAGE"/>
-	<result property="addr" column="ADDR"/>
-	<result property="title" column="TITLE"/>
-</resultMap>
-<resultMap type="Sight" id="sightResultMap">
-	<result property="sNo" column="SNO"/>
-	<result property="sName" column="SNAME"/>
-	<result property="sLocation" column="SLOCATION"/>
-	<result property="sIntroduce" column="SINTRUDUCE"/>
-	<result property="sPicture" column="SPICTURE"/>
-	<result property="restDate" column="RESTDATE"/>
-	<result property="sParking" column="SPARKING"/>
-	<result property="sBabyCarriage" column="SBABYCARRIAGE"/>
-	<result property="sPet" column="SPET"/>
-</resultMap>
 	<insert id="insertSightList">
 	INSERT INTO SIGHTLIST
 	VALUES(#{sNo}, #{image}, #{addr}, #{title})
@@ -29,11 +12,7 @@
 		#{sPicture}, #{restDate}, #{sParking}, #{sBabyCarriage}, #{sPet})
 	</insert>
 	
-	<select id="selectSightList" resultMap="sightListResultMap">
-		SELECT * FROM SIGHTLIST
-		ORDER BY SNO DESC
-	</select>
-	<select id="selectSight" resultMap="sightResultMap">
+	<select id="selectSight" resultType="Sight">
 		SELECT * FROM SIGHT 
 		WHERE SNO=#{sNo}
 	</select>
