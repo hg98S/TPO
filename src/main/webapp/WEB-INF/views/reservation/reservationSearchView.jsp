@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TPO_항공권 검색</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -194,7 +194,7 @@
                    	}
                  });
            	</script>
-            
+            <!-- 가는 편 리스트 -->
             <div style="float: left; width: 50%;">
                 <table class="table table-hover">
                     <thead align="center">
@@ -206,39 +206,51 @@
                             <th colspan="2" style="width: 60px; padding-left: 20px;">잔여석</th>
                         </tr>
                     </thead>
-                    <tbody style="display:block; height:400px; overflow:auto;" align="center">
-                       	<c:forEach items="${fList }" var="flight">
-                       	<c:set var="time" value="${flight.depPlandTime }"/>
-                  		<c:set var="time2" value="${flight.arrPlandTime }"/>
-                        	<c:if test="${flight.airlineNm ne null }">
-                        	<tr style="display:table; width:100%;" class="d${flight.airlineNm } dAir d${fn:substring(time,8,10) } dTime">
-	                            <td style="width: 120px;">
-	                            	${flight.airlineNm }<br>
-	                                &nbsp;${flight.vihicleId }
-	                            </td>
-	                            <td style="line-height: 2.5; width: 150px;">
-	                               ${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }
-	                     		</td>
-			                     <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
-			                        <td style="line-height: 2.5; width: 90px;">일반석</td>
-			                        <td style="line-height: 2.5; width: 75px;">${flight.economyCharge }</td>
-			                     </c:if>
-			                     
-			                     <c:if test="${flight.prestigeCharge ne null && flight.prestigeCharge ne 0}">
-			                        <td style="line-height: 2.5; width: 90px;">비즈니스</td>
-			                        <td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
-			                     </c:if>
-	                     
-	                            <td style="line-height: 2.5; width: 20px;">9</td>
-	                            <td style="width: 30px;">
-	                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure">
-	                            </td>
-	                        </tr>
-                        	</c:if>
+					<tbody style="display:block; height:400px; overflow:auto;" align="center" id="goTbody">
+                          <c:forEach items="${fList }" var="flight">
+                          <c:set var="time" value="${flight.depPlandTime }"/>
+                        <c:set var="time2" value="${flight.arrPlandTime }"/>
+                           <c:if test="${flight.airlineNm ne null }">
+                           <tr style="display:table; width:100%;" class="${flight.airlineNm } dAir ${fn:substring(time,8,10) } dTime">
+                               <td style="width: 120px;">${flight.airlineNm }<br>&nbsp;${flight.vihicleId }</td>
+                               <td style="line-height: 2.5; width: 150px;">${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }</td>
+                              <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
+                                 <td style="line-height: 2.5; width: 90px;">일반석</td>
+                                 <td style="line-height: 2.5; width: 75px;">${flight.economyCharge }</td>
+                              </c:if>
+                              <c:if test="${flight.prestigeCharge ne null && flight.prestigeCharge ne 0}">
+                                 <td style="line-height: 2.5; width: 90px;">비즈니스</td>
+                                 <td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
+                              </c:if>
+                               <td style="line-height: 2.5; width: 20px;">9</td>
+                               <td style="width: 30px;"><input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure"></td>
+                           </tr>
+                           </c:if>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <script>
+            $(document).ready(function() {
+            	$("#goTbody>tr").click(function() {
+	            	// var rowData = new Array();
+	            	var tdArr = new Array();
+	            	
+	            	/* var radio = $(this).find('td:last-child : radio');
+	            	radio.attr('checked', !radio.is(':checked')); */
+	            	
+	            	var tr = $(this);
+	            	var td = tr.children();
+	            	
+	            	td.each(function(i) {
+						tdArr.push(td.eq(i).text());
+					});
+	            	
+	            	console.log(tdArr);
+	            });
+            });
+            </script>
+            <!-- 오는 편 리스트 -->
             <div style="float: left; width: 50%;">
                 <table class="table table-hover">
                     <thead align="center">
@@ -250,35 +262,27 @@
                             <th colspan="2" style="width: 60px; padding-left: 20px;">잔여석</th>
                         </tr>
                     </thead>
-                    <tbody style="display:block; height:400px; overflow:auto;" align="center">
-                       	<c:forEach items="${fList2 }" var="flight2">
-                       	<c:set var="time3" value="${flight2.depPlandTime }"/>
-                  		<c:set var="time4" value="${flight2.arrPlandTime }"/>
-                        	<c:if test="${flight2.airlineNm ne null }">
-                        	<tr style="display:table; width:100%;" class="a${flight2.airlineNm } aAir a${fn:substring(time3,8,10) } aTime">
-	                            <td style="width: 120px;">
-	                                ${flight2.airlineNm }<br>
-	                                &nbsp;${flight2.vihicleId }
-	                            </td>
-	                            <td style="line-height: 2.5; width: 150px;">
-	                               ${fn:substring(time3,8,10) } : ${fn:substring(time3,10,12) } ~ ${fn:substring(time4,8,10) } : ${fn:substring(time4,10,12) }
-	                     		</td>
-			                     <c:if test="${flight2.prestigeCharge eq 0 || flight2.prestigeCharge eq null}">
-			                        <td style="line-height: 2.5; width: 90px;">일반석</td>
-			                        <td style="line-height: 2.5; width: 75px;">${flight2.economyCharge }</td>
-			                     </c:if>
-			                     
-			                     <c:if test="${flight2.prestigeCharge ne null && flight2.prestigeCharge ne 0}">
-			                        <td style="line-height: 2.5; width: 90px;">비즈니스</td>
-			                        <td style="line-height: 2.5; width: 75px;">${flight2.prestigeCharge }</td>
-			                     </c:if>
-	                     
-	                            <td style="line-height: 2.5; width: 20px;">9</td>
-	                            <td style="width: 30px;">
-	                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure">
-	                            </td>
-	                        </tr>
-                        	</c:if>
+                    <tbody style="display:block; height:400px; overflow:auto;" align="center" id="comeTbody">
+                          <c:forEach items="${fList2 }" var="flight2">
+                          <c:set var="time3" value="${flight2.depPlandTime }"/>
+                        <c:set var="time4" value="${flight2.arrPlandTime }"/>
+                           <c:if test="${flight2.airlineNm ne null }">
+                           <tr style="display:table; width:100%;" class="${flight2.airlineNm } aAir ${fn:substring(time3,8,10) } aTime">
+                               <td style="width: 120px;">${flight2.airlineNm }<br>&nbsp;${flight2.vihicleId }</td>
+                               <td style="line-height: 2.5; width: 150px;">${fn:substring(time3,8,10) } : ${fn:substring(time3,10,12) } ~ ${fn:substring(time4,8,10) }: ${fn:substring(time4,10,12) }</td>
+                              <c:if test="${flight2.prestigeCharge eq 0 || flight2.prestigeCharge eq null}">
+                                 <td style="line-height: 2.5; width: 90px;">일반석</td>
+                                 <td style="line-height: 2.5; width: 75px;">${flight2.economyCharge }</td>
+                              </c:if>
+                              <c:if test="${flight2.prestigeCharge ne null && flight2.prestigeCharge ne 0}">
+                                 <td style="line-height: 2.5; width: 90px;">비즈니스</td>
+                                 <td style="line-height: 2.5; width: 75px;">${flight2.prestigeCharge }</td>
+                              </c:if>
+                        
+                               <td style="line-height: 2.5; width: 20px;">9</td>
+                               <td style="width: 30px;" id="departure"><input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure"></td>
+                           </tr>
+                           </c:if>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -305,25 +309,84 @@
                     <tbody style="text-align: center;">
                         <tr>
                             <td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
-                            <td style="line-height: 2">진에어</td>
-                            <td style="line-height: 2">2021.01.04(월) 07:15</td>
-                            <td style="line-height: 2">2021.01.04(월) 08:15</td>
-                            <td style="line-height: 2">일반석</td>
-                            <td style="line-height: 2">38900원</td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
                             <td style="line-height: 2">${acCount }석</td>
                         </tr>
                         <tr>
                             <td style="line-height: 2">${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }</td>
-                            <td style="line-height: 2">진에어</td>
-                            <td style="line-height: 2">2021.01.08(금) 19:45</td>
-                            <td style="line-height: 2">2021.01.08(금) 20:45</td>
-                            <td style="line-height: 2">일반석</td>
-                            <td style="line-height: 2">19900원</td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2"></td>
                             <td style="line-height: 2">${acCount }석</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            
+                      <script>
+            $(document).ready(function() {
+            	$("#comeTbody>tr").click(function(e) {
+	            	// var rowData = new Array();
+	            	console.log($(e))
+	            	var depMonth = ${fn:substring(depDay2,4,6) };
+	            	var depDay = ${fn:substring(depDay2,6,8) };
+	            	var tdArr = new Array();
+	            	
+	            	var tr = $(this);
+	            	var td = tr.children();
+	            	var fsRadio = td.eq(4).children().val();
+	            	
+
+	            	
+	            	$("input:checked[id=departure]").each(function() {
+	            		if (fsRadio != $(this).val()) {
+	            			$(this).attr("checked", false); // uncheck all checkboxes
+	            		       //alert("checked checkbox false");
+	            		}
+         		    });
+	            	/* td.eq(4).children().attr("checked", "true"); */
+
+	            	td.each(function(index, item) {
+						tdArr.push(td.eq(index, item).text());
+						//console.log(item);
+						var sIndex = index + 1;
+						if ( sIndex == 2) {
+							console.log(item.innerHTML);
+							var timeValue = item.innerHTML;
+							console.log(timeValue.trim());
+							var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+							var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(14,2);
+							$("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+"."+" "+depHour);
+							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+"."+" "+arrHour);
+						} else if( sIndex == 1){
+							$("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+						} else if( sIndex == 3) {
+							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+						}else if( sIndex == 4) {
+							$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+						}
+						//console.log(index);
+						if(index == 1) {
+							var depTime;
+							//var depTimeTest = depTime.html();
+							//console.log(depTime);
+							//console.log(depTimeTest);
+						}
+						if(index == 3) {
+							var charge;
+							//console.log(charge);
+						}
+					});
+	            	//console.log(tdArr);
+	            });
+            });
+            </script>
         </article>
         
         <article>
