@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +62,7 @@
         <br>
         <article>
             <h3>탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
+            <c:forEach items="${tCount }" var="gg">
             <table class="table table-bordered">
                 <tr>
                     <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
@@ -127,6 +129,7 @@
                     </td>
                 </tr>
             </table>
+            </c:forEach>
         </article>
         <br>
         <article>

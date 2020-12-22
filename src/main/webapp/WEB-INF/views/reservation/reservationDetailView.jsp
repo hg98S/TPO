@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,6 +74,14 @@
                     </tr>
                 </thead>
                 <tbody style="font-size: 20px;">
+                    <tr>
+                        <td style="text-align: center;">성인</td>
+                        <td style="text-align: center;">1명</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">성인</td>
+                        <td style="text-align: center;">1명</td>
+                    </tr>
                     <tr>
                         <td style="text-align: center;">성인</td>
                         <td style="text-align: center;">1명</td>

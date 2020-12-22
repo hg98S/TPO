@@ -1,43 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp"/>
 	<div id="page"></div>
 	<a href="ex2.tpo">다음</a>
-	
+	<%-- <c:forEach items="${fList }" var="fly">
+		${fly.vihicleId }
+		${fly.airlineNm }
+		<c:set var="time" value="${fly.depPlandTime }"/>
+			${fn:substring(time,8,10) }: ${fn:substring(time,10,12) }
+		<c:set var="time2" value="${fly.arrPlandTime }"/>
+			${fn:substring(time2,8,10) }: ${fn:substring(time2,10,12) }
+      	${fly.depAirportNm }
+      	${fly.arrAirportNm }
+      	${fly.economyCharge }
+      	${fly.prestigeCharge }
+      	<br>
+	</c:forEach> --%>
 	<!-- 컨텐츠 시작 -->
-    <section class="gtco-container" style="margin-top: 50px;">
-        <article>
+	<section class="gtco-container" style="margin-top: 50px;">
+	<c:set var="depDay" value="${fList[0].depPlandTime }"/>
+	<c:set var="arrDay" value="${fList[0].arrPlandTime }"/>
+		<article>
             <div style="width: 50%; float: left;">
                 <div style="font-size: 25px; font-weight: 500">
                     <img src="../resources/images/plane2.png" style="width: 50px;">
-                    가는편 [김포 -> 제주]
+                    가는편 [${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }]
                 </div>
                 <div>
                     <div style="float: left;">
-                        01월 04일 월요일
+                        ${fn:substring(depDay,4,6) }월 ${fn:substring(depDay,6,8) }일
                     </div>
                     <div style="text-align: right; margin-right: 20px;">
-                        <select>
-                            <option>항공사</option>
-                            <option value="">대한항공</option>
-                            <option>아시아나</option>
-                            <option>제주항공</option>
-                            <option>진에어</option>
-                            <option>이스타항공</option>
-                            <option>티웨이항공</option>
-                            <option>에어부산</option>
-                            <option>에어서울</option>
+                         <select id="dAirport">
+                            <option value="dAllAirLine">항공사</option>
+                            <option value="대한항공">대한항공</option>
+                            <option value="아시아나항공">아시아나</option>
+                            <option value="제주항공">제주항공</option>
+                            <option value="진에어">진에어</option>
+                            <option value="이스타항공">이스타항공</option>
+                            <option value="티웨이항공">티웨이항공</option>
+                            <option value="에어부산">에어부산</option>
+                            <option value="에어서울">에어서울</option>
+                            <option value="플라이강원">플라이강원</option>
+                            <option value="하이에어">하이에어</option>
                         </select>
-                        <select>
-                            <option>시간대</option>
+                        <select id="dTime">
+                            <option value="dAllTime">시간대</option>
                             <option value="06">06시</option>
                             <option value="07">07시</option>
                             <option value="08">08시</option>
@@ -59,436 +77,120 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div style="width: 50%; float: left;">
-                <div style="font-size: 25px; font-weight: 500">
-                    <img src="../resources/images/plane2.png" style="width: 50px;">
-                    오는편 [${item.depAirportNm } -> ${item.arrAirportNm }]
-                </div>
-                <div>
-                    <div style="float: left;">
-                        01월 08일 금요일
-                    </div>
-                    <div style="text-align: right; margin-right: 20px;">
-                        <select>
-                            <option>항공사</option>
-                            <option>대한항공</option>
-                            <option>아시아나</option>
-                            <option>제주항공</option>
-                            <option>진에어</option>
-                            <option>이스타항공</option>
-                            <option>티웨이항공</option>
-                            <option>에어부산</option>
-                            <option>에어서울</option>
-                        </select>
-                        <select>
-                            <option>시간대</option>
-                            <option>06시</option>
-                            <option>07시</option>
-                            <option>08시</option>
-                            <option>09시</option>
-                            <option>10시</option>
-                            <option>11시</option>
-                            <option>12시</option>
-                            <option>13시</option>
-                            <option>14시</option>
-                            <option>15시</option>
-                            <option>16시</option>
-                            <option>17시</option>
-                            <option>18시</option>
-                            <option>19시</option>
-                            <option>20시</option>
-                            <option>21시</option>
-                            <option>22시</option>
-                            <option>23시</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div style="float: left; width: 50%;">
-                <table class="table table-hover">
-                    <thead>
-                        <tr style="display:table; width:100%;">
-                            <th style="width: 120px;">항공/편명</th>
-                            <th style="width: 100px;">운항시간</th>
-                            <th style="width: 120px; text-align: center;">좌석</th>
-                            <th style="width: 70px;">가격</th>
-                            <th style="width: 120px;">잔여석</th>
-                        </tr>
-                    </thead>
-                    <tbody style="display:block; height:400px; overflow:auto;">
-                        <tr style="display:table; width:100%;" onclick="departure_chk()">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div style="float: left; width: 50%;">
-                <table class="table table-hover">
-                    <thead>
-                        <tr style="display:table; width:100%;">
-                            <th style="width: 120px;">항공/편명</th>
-                            <th style="width: 100px;">운항시간</th>
-                            <th style="width: 120px; text-align: center;">좌석</th>
-                            <th style="width: 70px;">가격</th>
-                            <th style="width: 120px;">잔여석</th>
-                        </tr>
-                    </thead>
-                    <tbody style="display:block; height:400px; overflow:auto;">
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                        <tr style="display:table; width:100%;">
-                            <td>
-                                제주항공<br>
-                                &nbsp;&nbsp;7C161
-                            </td>
-                            <td style="line-height: 2.5;">06:05~07:10</td>
-                            <td style="line-height: 2.5; margin-left: -50px;">일반석</td>
-                            <td style="line-height: 2.5;">40,000원</td>
-                            <td style="line-height: 2.5;">7</td>
-                            <td>
-                                <input style="margin-top: 13px;" type="radio" name="ArrivalSelect">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+			<script type="text/javascript">
+				$("#dAirport").on("change",function(){
+	            	var airNm = $("#dAirport").val();
+	               	var time = $("#dTime").val();
+	               	if (airNm == "dAllAirLine" && time == "dAllTime") {
+	               		$(".dAir.dTime").show();
+	               	} else if (airNm == "dAllAirLine" && time != "dAllTime"){
+	               		$(".dAir.dTime").hide();
+	               		$(".dAir.d"+time).show();
+	               	} else if (airNm != "dAllAirLine" && time == "dAllTime"){
+	               		$(".dAir.dTime").hide();
+	               		$(".d"+airNm+".dTime").show();
+	               	} else if (airNm != "dAllAirLine" && time != "dAllTime") {
+	               		$(".dAir.dTime").hide();
+	               		$(".d"+airNm+".d"+time).show();
+	               	}
+	            });
+	            
+	            $("#dTime").on("change",function() {
+	            	var airNm = $("#dAirport").val();
+	               	var time = $("#dTime").val();
+	               	if (time == "dAllTime" && airNm == "dAllAirLine") {
+	               		$(".dAir.dTime").show();
+	               	} else if (time == "dAllTime" && airNm != "dAllAirLine"){
+	               		$(".dAir.dTime").hide();
+	               		$(".d"+airNm+".dTime").show();
+	               	} else if (time != "dAllTime" && airNm == "dAllAirLine"){
+	               		$(".dAir.dTime").hide();
+	               		$(".dAir.d"+time).show();
+	               	} else if (time != "dAllTime" && airNm != "dAllAirLine"){
+	               		$(".dAir.dTime").hide();
+	               		$(".d"+airNm+".d"+time).show();
+	               	}
+	            });
+           	</script>
+           
+	            <div>
+	                <table class="table table-hover">
+	                    <thead>
+	                        <tr style="display:table; width:100%;">
+	                            <th style="width: 120px;">항공/편명</th>
+	                            <th style="width: 100px;">운항시간</th>
+	                            <th style="width: 120px; text-align: center;">좌석</th>
+	                            <th style="width: 70px;">가격</th>
+	                            <th style="width: 120px;">잔여석</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody style="display:block; height:480px; overflow:auto;" align="center">
+	                       	<c:forEach items="${fList }" var="flight">
+	                       	<c:set var="time" value="${flight.depPlandTime }"/>
+	                  		<c:set var="time2" value="${flight.arrPlandTime }"/>
+                        	<c:if test="${flight.airlineNm ne null }">
+                        	<tr style="display:table; width:100%;" class="d${flight.airlineNm } dAir d${fn:substring(time,8,10) } dTime">
+	                            <td style="width: 120px;">
+	                            	${flight.airlineNm }<br>
+	                                &nbsp;${flight.vihicleId }
+	                            </td>
+	                            <td style="line-height: 2.5; width: 150px;">
+	                               ${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }
+	                     		</td>
+			                     <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
+			                        <td style="line-height: 2.5; width: 90px;">일반석</td>
+			                        <td style="line-height: 2.5; width: 75px;">${flight.economyCharge }</td>
+			                     </c:if>
+			                     
+			                     <c:if test="${flight.prestigeCharge ne null && flight.prestigeCharge ne 0}">
+			                        <td style="line-height: 2.5; width: 90px;">비즈니스</td>
+			                        <td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
+			                     </c:if>
+	                     
+	                            <td style="line-height: 2.5; width: 20px;">9</td>
+	                            <td style="width: 30px;">
+	                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure">
+	                            </td>
+	                        </tr>
+                        	</c:if>
+                        	</c:forEach>
+                    	</tbody>
+	                </table>
+	            </div>
+	        </div>
+            <div style="float: left; width: 535px; height:600px; text-align: center; border: 1px solid #09c6ab;">
+               	<b style="font-size: 20px; font-weight: 1000;">
+               	<br><br><br><br><br><br><br><br>
+               	편도를 선택하셔서 검색되는 항공권이 없습니다.</b><br>
+				선택 조건 변경 하신 후 재검색 부탁드립니다.
             </div>
         </article>
-        
-        <article>
-            <div>
-                <h3>선택한 항공 스케줄</h3>
-            </div>
-            <div>
-                <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
-                    <thead style="background-color: #09c6ab; color: white; text-align: center;">
-                        <tr style="text-align: center;">
-                            <th style="text-align: center;">여정</th>
-                            <th style="text-align: center;">항공편</th>
-                            <th style="text-align: center;">출발시간</th>
-                            <th style="text-align: center;">도착시간</th>
-                            <th style="text-align: center;">좌석등급</th>
-                            <th style="text-align: center;">금액</th>
-                            <th style="text-align: center;">요청좌석</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align: center;">
-                        <tr>
-                            <td style="line-height: 2">김포 -> 제주</td>
-                            <td style="line-height: 2">진에어</td>
-                            <td style="line-height: 2">2021.01.04(월) 07:15</td>
-                            <td style="line-height: 2">2021.01.04(월) 08:15</td>
-                            <td style="line-height: 2">일반석</td>
-                            <td style="line-height: 2">38900원</td>
-                            <td style="line-height: 2">1석</td>
-                        </tr>
-                        <tr>
-                            <td style="line-height: 2">제주 -> 김포</td>
-                            <td style="line-height: 2">진에어</td>
-                            <td style="line-height: 2">2021.01.08(금) 19:45</td>
-                            <td style="line-height: 2">2021.01.08(금) 20:45</td>
-                            <td style="line-height: 2">일반석</td>
-                            <td style="line-height: 2">19900원</td>
-                            <td style="line-height: 2">1석</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </article>
+	
+		<table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
+			<caption><b>선택한 항공 스케줄</b></caption>
+       		<thead style="background-color: #09c6ab; color: white; text-align: center;">
+				<tr style="text-align: center;">
+					<th style="text-align: center;">여정</th>
+                   	<th style="text-align: center;">항공편</th>
+                   	<th style="text-align: center;">출발시간</th>
+                   	<th style="text-align: center;">도착시간</th>
+                   	<th style="text-align: center;">좌석등급</th>
+                   	<th style="text-align: center;">금액</th>
+                   	<th style="text-align: center;">요청좌석</th>
+               	</tr>
+           	</thead>
+            <tbody style="text-align: center;">
+				<tr>
+					<td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
+                    <td style="line-height: 2">진에어</td>
+                    <td style="line-height: 2">2021.01.04(월) 07:15</td>
+                    <td style="line-height: 2">2021.01.04(월) 08:15</td>
+                    <td style="line-height: 2">일반석</td>
+                    <td style="line-height: 2">38900원</td>
+                    <td style="line-height: 2">${acCount }석</td>
+                </tr>
+            </tbody>
+		</table>
         
         <article>
             · 상기 요금은 항공운임/발권대행수수료 등 총액이 포함된 금액이며, 발권일/환률 등에 따라 유류할증료와 제세공과금은 변동될 수 있습니다.<br>
@@ -533,7 +235,7 @@
         </article>
     </section>
     <!-- 컨텐츠 끝 -->
-	
-	<jsp:include page="/include/includeFooter.jsp"/>
+   
+   <jsp:include page="/include/includeFooter.jsp"/>
 </body>
 </html>
