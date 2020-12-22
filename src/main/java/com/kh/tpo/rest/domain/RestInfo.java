@@ -26,6 +26,8 @@ public class RestInfo {
 	private int pMaxCount;
 	private int roCount;
 	private int rowMin;
+	private int sumPrice;
+	
 	
 	
 	public RestInfo() {}
@@ -280,6 +282,18 @@ public class RestInfo {
 		this.rowMin = rowMin;
 	}
 
+	
+	
+
+	public int getSumPrice() {
+		return sumPrice;
+	}
+
+
+	public void setSumPrice(int sumPrice) {
+		this.sumPrice = sumPrice;
+	}
+
 
 	@Override
 	public String toString() {
@@ -289,8 +303,10 @@ public class RestInfo {
 				+ ", reFacility=" + reFacility + ", clcik=" + clcik + ", rNo=" + rNo + ", roName=" + roName
 				+ ", roPrice=" + roPrice + ", pLimit=" + pLimit + ", roInfo=" + roInfo + ", roFacility=" + roFacility
 				+ ", roSize=" + roSize + ", roImage=" + roImage + ", pMaxCount=" + pMaxCount + ", roCount=" + roCount
-				+ ", rowMin=" + rowMin + "]";
+				+ ", rowMin=" + rowMin + ", sumPrice=" + sumPrice + "]";
 	}
+
+
 
 	
 	

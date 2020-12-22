@@ -32,10 +32,17 @@ public class RestServiceImpl implements RestService{
 		return reStore.restSearchList(page);
 	}
 	
+	// 페이징처리
 	@Override
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		return reStore.getListCount();
+	}
+	
+	@Override
+	public int getSearchCount(Search search) {
+		// TODO Auto-generated method stub
+		return reStore.getSearchCount(search);
 	}
 	
 	
@@ -69,36 +76,55 @@ public class RestServiceImpl implements RestService{
 		return reStore.roomInfo(rNo);
 	}
 
+	// 조회
 	@Override
 	public int addReadCount(int reNo) {
 		// TODO Auto-generated method stub
 		return reStore.addReadCount(reNo);
 	}
 
+	// 숙소명
 	@Override
-	public ArrayList<Rest> SearchrName(Search search){
+	public ArrayList<Rest> SearchrName(Search search, PageInfo page){
 		// TODO Auto-generated method stub
-		return reStore.SearchrName(search);
+		return reStore.SearchrName(search, page);
 	}
 
+	// 정렬
 	@Override
-	public ArrayList<RestInfo> searchPrice(Search search) {
-		ArrayList<RestInfo> result = reStore.searchPrice(search);
+	public ArrayList<RestInfo> alignList(Search search,  PageInfo page) {
+		// TODO Auto-generated method stub
+		return reStore.alignList(search, page);
+	}
+
+	// 지역조회
+	@Override
+	public ArrayList<RestInfo> searchLocal(Search search, PageInfo page) {
+		// TODO Auto-generated method stub
+		return reStore.searchLocal(search, page);
+	}
+	
+	@Override
+	public ArrayList<RestInfo> searchAllList(Search search, PageInfo page) {
+		// TODO Auto-generated method stub
+		return reStore.searchAllList(search, page);
+	}
+	
+	// 가격조회
+	@Override
+	public ArrayList<RestInfo> searchPrice(Search search, PageInfo page) {
+		ArrayList<RestInfo> result = reStore.searchPrice(search, page);
 	//	System.out.println("rService: " + result);
 		return result;
 	}
 
 	@Override
-	public ArrayList<RestInfo> alignList(Search search) {
+	public ArrayList<RestInfo> priceRowSearch(Search search, PageInfo page) {
 		// TODO Auto-generated method stub
-		return reStore.alignList(search);
+		return reStore.priceRowSearch(search, page);
 	}
 
-	@Override
-	public ArrayList<RestInfo> searchLocal(Search search) {
-		// TODO Auto-generated method stub
-		return reStore.searchLocal(search);
-	}
+
 
 	
 

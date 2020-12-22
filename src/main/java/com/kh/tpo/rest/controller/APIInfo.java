@@ -31,7 +31,7 @@ public class APIInfo {
 		API2 intro = null;
 		API3 rec = null;	
 		ArrayList<Rest> joined = new ArrayList<Rest>();
-		String serviceKey =  "EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D";
+		String serviceKey =  "6B%2BzQRQRMk5iKSRdVZa28m%2BffDiHLBtrOGeNl5Jche0E4sUm3qQh9QzABnMxlnD3brePS5Jx7qAmWyAqyCcgHA%3D%3D";
 		ArrayList<API1> rlist = new ArrayList<API1>();
 		ArrayList<API3> rlist1 = new ArrayList<API3>();
 		ArrayList<API2> rlist2 = new ArrayList<API2>();
@@ -40,7 +40,7 @@ public class APIInfo {
 		// url 토탈 값 가져오기
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append( "?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
 		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
@@ -106,7 +106,7 @@ public class APIInfo {
 		// 숙소정보 가져오기(숙소정보api)
 		urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
 		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
@@ -168,7 +168,7 @@ public class APIInfo {
 
 				contentId =  item.getElementsByTagName("contentid").item(0);
 
-				//		System.out.println(contentId.getNodeName() + " : " + contentId.getChildNodes().item(0).getNodeValue());
+				System.out.println(contentId.getNodeName() + " : " + contentId.getChildNodes().item(0).getNodeValue());
 				String conId = contentId.getChildNodes().item(0).getNodeValue();
 				conList[i] = conId;
 				//		System.out.println(conList[i]);
@@ -236,7 +236,7 @@ public class APIInfo {
 
 
 		//=		System.out.println("소개정보조회 check : " + check);	
-		for(int t = 0; t<10; t++) {
+		for(int t = 0; t<100; t++) {
 			//	System.out.println("1 : " +  t);
 			urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
@@ -307,11 +307,11 @@ public class APIInfo {
 						if(accomCountLodging != null) {
 							String pTotal = accomCountLodging.getFirstChild().getNodeValue();
 							String[]pTotal2 = pTotal.split("약| |명");
-							//	System.out.println(accomCountLodging.getNodeName() + " : " + accomCountLodging.getChildNodes().item(0).getNodeValue());
+								System.out.println(accomCountLodging.getNodeName() + " : " + accomCountLodging.getChildNodes().item(0).getNodeValue());
 					//		System.out.println("명수 체크 : " + pTotal.length());
 							if(pTotal.length()>4) {
 								result = Integer.parseInt(pTotal2[2]);
-					//			System.out.println( "결과값 : " +result);
+								System.out.println( "결과값 : " +result);
 								rec.setpTotal(result);
 							}else {
 								result = Integer.parseInt(pTotal2[0]);
@@ -401,7 +401,7 @@ public class APIInfo {
 		}
 
 		// 공통정보조회
-		for(int t = 0; t<10; t++) {
+		for(int t = 0; t<100; t++) {
 			urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/

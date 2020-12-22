@@ -18,11 +18,14 @@ public interface RestStore {
 	public ArrayList<RestInfo> roomSearchList(int reNo);
 	public ArrayList<Rest> selectSearchList(Search search);
 	public int getListCount();
+	public int getSearchCount(Search search);
 	public Room roomInfo(int rNo);
 	public int addReadCount(int reNo);
-	public ArrayList<Rest> SearchrName(Search search);
-	public ArrayList<RestInfo> searchPrice(Search search);
-	public ArrayList<RestInfo> alignList(Search search);
-	public ArrayList<RestInfo> searchLocal(Search search);
+	public ArrayList<Rest> SearchrName(Search search, PageInfo page);
+	public ArrayList<RestInfo> searchPrice(Search search,PageInfo page );
+	public ArrayList<RestInfo> alignList(Search search,  PageInfo page);
+	public ArrayList<RestInfo> searchLocal(Search search,PageInfo page );
+	public ArrayList<RestInfo> searchAllList(Search search,  PageInfo page);
+	public ArrayList<RestInfo> priceRowSearch(Search search,PageInfo page);
 
 }

@@ -21,7 +21,7 @@ public class RoomController {
 	@RequestMapping(value="roomInsesrt.tpo", method=RequestMethod.GET)
 	public void roomInsert(ArrayList<Room> list) throws IOException{
 		list = RoomInfo.roomAPI();
-		System.out.println("controller 결과는?" + list.toString());
+		//System.out.println("controller 결과는?" + list.toString());
 		//for(int i =0; i<list.size(); list.get(i)) {
 		int result = reService.insertRoom(list);
 		if(result>0) {
