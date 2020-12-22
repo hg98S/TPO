@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>왘 실패했어</h1>
-	<img alt="resources/images/zzz.jpg" src="">
+	<img alt="resources/images/zzz.jpg" src="resources/images/zzz.jpg">
 </body>
 </html>
