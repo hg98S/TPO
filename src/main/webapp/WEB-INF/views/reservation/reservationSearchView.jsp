@@ -9,9 +9,9 @@
 <title>TPO_항공권 검색</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
-	#selectGoSchedule br, #selectComeSchedule br {
-     	display: none;
-	}
+   #selectGoSchedule br, #selectComeSchedule br {
+        display: none;
+   }
 </style>
 </head>
 <body>
@@ -235,26 +235,6 @@
                     </tbody>
                 </table>
             </div>
-            <script>
-            $(document).ready(function() {
-            	$("#goTbody>tr").click(function() {
-	            	// var rowData = new Array();
-	            	var tdArr = new Array();
-	            	
-	            	/* var radio = $(this).find('td:last-child : radio');
-	            	radio.attr('checked', !radio.is(':checked')); */
-	            	
-	            	var tr = $(this);
-	            	var td = tr.children();
-	            	
-	            	td.each(function(i) {
-						tdArr.push(td.eq(i).text());
-					});
-	            	
-	            	console.log(tdArr);
-	            });
-            });
-            </script>
             <!-- 오는 편 리스트 -->
             <div style="float: left; width: 50%;">
                 <table class="table table-hover">
@@ -283,6 +263,7 @@
                                  	<td style="line-height: 2.5; width: 90px;">비즈니스</td>
                                  	<td style="line-height: 2.5; width: 75px;">${flight2.prestigeCharge }</td>
                                	</c:if>
+                               	
                                	<td style="line-height: 2.5; width: 20px;">9</td>
                                	<td style="width: 30px;" id="arrival"><input style="margin-top: 13px;" type="radio" name="ArrSelect" id="arrival"></td>
                            	</tr>
@@ -301,16 +282,15 @@
                 <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;" name="selectSchedule">
                     <thead style="background-color: #09c6ab; color: white;" align="center">
                         <tr style="text-align: center;">
-                            <th style="text-align: center;">여정</th>
-                            <th style="text-align: center;">항공편</th>
-                            <th style="text-align: center;">출발시간</th>
-                            <th style="text-align: center;">도착시간</th>
-                            <th style="text-align: center;">좌석등급</th>
-                            <th style="text-align: center;">금액</th>
-                            <th style="text-align: center;">요청좌석</th>
+                            <th style="text-align: center; width:150px;">여정</th>
+                            <th style="text-align: center; width:210px;">항공편</th>
+                            <th style="text-align: center; width:130px;">출발시간</th>
+                            <th style="text-align: center; width:130px;">도착시간</th>
+                            <th style="text-align: center; width:120px;">좌석등급</th>
+                            <th style="text-align: center; width:120px;">금액(1인)</th>
+                            <th style="text-align: center; width:100px;">요청좌석</th>
                         </tr>
-                    </thead>
-                    
+                    </thead>       
                     <tbody style="text-align: center;">
                     	<tr id="selectNoneGo">
                     		<td style="line-height: 2" colspan="7">가는편을 선택해주세요.</td>
@@ -350,6 +330,61 @@
 	        		}
 	           		$("#selectNoneGo td").show();
 	           		$("#selectNoneCome td").show();
+	           		
+	           			/* 가는편 테이블 */
+	               	$("#goTbody>tr").click(function(e) {
+	                   	console.log($(e))
+	                   	var depMonth = ${fn:substring(depDay,4,6) };
+	                   	var depDay = ${fn:substring(depDay,6,8) };
+	                   	var tdArr = new Array();
+	                   
+	                   	var tr = $(this);
+	                   	var td = tr.children();
+	                   	var fsRadio = td.eq(5).children().val();
+	                   
+	                   	$(this).find("input[name='DepSelect']:radio").prop('checked', true);
+	                   
+	                   	$("input:checked[id=departure]").each(function() {
+	                      	if (fsRadio != $(this).val()) {
+	                         	$(this).attr("checked", false);
+	                      	}
+	                   	});
+	
+	                   	td.each(function(index, item) {
+	                   		for (var i = 0; i < 7; i++) { 
+	    		               	$("#selectGoSchedule td:eq("+i+")").show();
+	    	        		}
+	                   		$("#selectNoneGo td").hide();
+		                   	tdArr.push(td.eq(index, item).text());
+		                   	var sIndex = index + 1;
+		                   	if (sIndex == 2) {  // 출발시간, 도착시간
+		                      	console.log(item.innerHTML);
+		                      	var timeValue = item.innerHTML;
+		                      	console.log(timeValue.trim());
+		                    	var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+		                      	var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(15,2);
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+" "+depHour);
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+" "+arrHour);
+		                   	} else if( sIndex == 1){ // 항공편
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+		                   	} else if( sIndex == 3) { // 좌석등급
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+		                   	} else if( sIndex == 4) { // 금액
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+		                   	}
+		                   	if(index == 1) {
+		                      	var depTime;
+		                   	}
+		                   	if(index == 3) {
+		                      	var charge;
+		                   	}
+		                   	$("#depAirlineNm").val($("#depAlNm").text());
+			               	$("#depTime").val($("#depPTime").text());
+			               	$("#arrTime").val($("#arrPTime").text());
+			               	$("#seatGrade").val($("#sGrade").text());
+			               	$("#fare").val($("#oneFare").text());
+	                	});
+	                });
 	           		
 	           		/* 오는편 테이블 */
 	               	$("#comeTbody>tr").click(function(e) {
@@ -414,60 +449,7 @@
 			               	$("#fare2").val($("#oneFare2").text());
 	               		});
 	               	});
-	               	/* 가는편 테이블 */
-	               	$("#goTbody>tr").click(function(e) {
-	                   	console.log($(e))
-	                   	var depMonth = ${fn:substring(depDay,4,6) };
-	                   	var depDay = ${fn:substring(depDay,6,8) };
-	                   	var tdArr = new Array();
-	                   
-	                   	var tr = $(this);
-	                   	var td = tr.children();
-	                   	var fsRadio = td.eq(5).children().val();
-	                   
-	                   	$(this).find("input[name='DepSelect']:radio").prop('checked', true);
-	                   
-	                   	$("input:checked[id=departure]").each(function() {
-	                      	if (fsRadio != $(this).val()) {
-	                         	$(this).attr("checked", false);
-	                      	}
-	                   	});
-	
-	                   	td.each(function(index, item) {
-	                   		for (var i = 0; i < 7; i++) {
-	    		               	$("#selectGoSchedule td:eq("+i+")").show();
-	    	        		}
-	                   		$("#selectNoneGo td").hide();
-		                   	tdArr.push(td.eq(index, item).text());
-		                   	var sIndex = index + 1;
-		                   	if (sIndex == 2) {
-		                      	console.log(item.innerHTML);
-		                      	var timeValue = item.innerHTML;
-		                      	console.log(timeValue.trim());
-		                    	var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
-		                      	var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(15,2);
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+" "+depHour);
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+" "+arrHour);
-		                   	} else if( sIndex == 1){
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
-		                   	} else if( sIndex == 3) {
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
-		                   	} else if( sIndex == 4) {
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
-		                   	}
-		                   	if(index == 1) {
-		                      	var depTime;
-		                   	}
-		                   	if(index == 3) {
-		                      	var charge;
-		                   	}
-		                   	$("#depAirlineNm").val($("#depAlNm").text());
-			               	$("#depTime").val($("#depPTime").text());
-			               	$("#arrTime").val($("#arrPTime").text());
-			               	$("#seatGrade").val($("#sGrade").text());
-			               	$("#fare").val($("#oneFare").text());
-	                	});
-	                });
+	               
 	            });
             </script>
         </article>
