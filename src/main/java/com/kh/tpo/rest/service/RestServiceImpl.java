@@ -112,16 +112,16 @@ public class RestServiceImpl implements RestService{
 	
 	// 가격조회
 	@Override
-	public ArrayList<RestInfo> searchPrice(Search search, PageInfo page) {
-		ArrayList<RestInfo> result = reStore.searchPrice(search, page);
+	public ArrayList<RestInfo> searchPrice(Search search) {
+		ArrayList<RestInfo> result = reStore.searchPrice(search);
 	//	System.out.println("rService: " + result);
 		return result;
 	}
 
 	@Override
-	public ArrayList<RestInfo> priceRowSearch(Search search, PageInfo page) {
+	public ArrayList<RestInfo> priceRowSearch(Search search) {
 		// TODO Auto-generated method stub
-		return reStore.priceRowSearch(search, page);
+		return reStore.priceRowSearch(search);
 	}
 
 

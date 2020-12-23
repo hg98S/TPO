@@ -184,11 +184,11 @@
 			</div>
 
 			<div class="pageDiv">
-				
+
 				<div class="pagination p12" style="margin-top: -2.5%;">
 					<c:if test="${pi.currentPage<=1 }">
 						<a href="${before }">Previous</a>&nbsp;
-				</c:if>
+					</c:if>
 					<c:if test="${pi.currentPage>1 }">
 						<c:url var="before" value="restList.tpo">
 							<c:param name="page" value="${pi.currentPage-1 }"></c:param>
@@ -197,86 +197,86 @@
 					</c:if>
 					<!-- 페이지 -->
 					<c:forEach var="p" begin="${pi.startPage }" end="${pi.endpage }">
-					<c:choose>
-					<c:when test = "${search.alignList eq 'Name' }">
-						<c:url var="pagination" value="alignList.tpo">
-							<c:param name="alignList" value="${search.alignList}"></c:param>
-							<c:param name="page" value="${p }"></c:param>
-						</c:url>
-						<c:if test="${p eq pi.currentPage}">
-							<a class="is-active" style="background-color: #007c6b;"
-								href="${pagenation }">${p }</a>&nbsp; 
+						<c:choose>
+							<c:when test="${search.alignList eq 'Name' }">
+								<c:url var="pagination" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active" style="background-color: #007c6b;"
+										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
-							<%-- ${p } --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }">${p }</a>&nbsp;
 						</c:if>
-						<c:if test="${p ne pi.currentPage}">
-							<a href="${pagination }">${p }</a>&nbsp;
+							</c:when>
+							<c:when test="${search.alignList eq 'Price' }">
+								<c:url var="pagination" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active" style="background-color: #007c6b;"
+										href="${pagenation }">${p }</a>&nbsp; 
+							<%-- <font color="red" size="4">[${p }]</font> --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }">${p }</a>&nbsp;
 					</c:if>
-					</c:when>
-					<c:when test = "${search.alignList eq 'Price' }">
-						<c:url var="pagination" value="alignList.tpo">
-							<c:param name="alignList" value="${search.alignList}"></c:param>
-							<c:param name="page" value="${p }"></c:param>
-						</c:url>
-						<c:if test="${p eq pi.currentPage}">
-							<a class="is-active" style="background-color: #007c6b;"
-								href="${pagenation }">${p }</a>&nbsp; 
+							</c:when>
+							<c:when test="${search.alignList eq 'Click' }">
+								<c:url var="pagination" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active" style="background-color: #007c6b;"
+										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
-							<%-- ${p } --%>
-						</c:if>
-						<c:if test="${p ne pi.currentPage}">
-							<a href="${pagination }">${p }</a>&nbsp;
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }">${p }</a>&nbsp;
 					</c:if>
-					</c:when>
-					<c:when test = "${search.alignList eq 'Click' }">
-						<c:url var="pagination" value="alignList.tpo">
-							<c:param name="alignList" value="${search.alignList}"></c:param>
-							<c:param name="page" value="${p }"></c:param>
-						</c:url>
-						<c:if test="${p eq pi.currentPage}">
-							<a class="is-active" style="background-color: #007c6b;"
-								href="${pagenation }">${p }</a>&nbsp; 
+							</c:when>
+							<c:when test="${search.location ne null }">
+								<c:url var="pagination" value="searchAllList.tpo">
+									<c:param name="location" value="${search.location}"></c:param>
+									<c:param name="sleep" value="${search.sleep}"></c:param>
+									<c:param name="rAmount" value="${search.rAmount}"></c:param>
+									<c:param name="aAmount" value="${search.aAmount}"></c:param>
+									<c:param name="kAmount" value="${search.kAmount}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active" style="background-color: #007c6b;"
+										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
-							<%-- ${p } --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }">${p }</a>&nbsp;
 						</c:if>
-						<c:if test="${p ne pi.currentPage}">
-							<a href="${pagination }">${p }</a>&nbsp;
+							</c:when>
+							<c:otherwise>
+								<c:url var="pagination" value="restList.tpo">
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active" style="background-color: #007c6b;"
+										href="${pagenation }">${p }</a>&nbsp; 
+							<%-- <font color="red" size="4">[${p }]</font> --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }">${p }</a>&nbsp;
 					</c:if>
-					</c:when>
-					<c:when test = "${search.location ne null }">
-						<c:url var="pagination" value="searchAllList.tpo">
-							<c:param name="location" value="${search.location}"></c:param>
-							<c:param name="sleep" value="${search.sleep}"></c:param>
-							<c:param name="rAmount" value="${search.rAmount}"></c:param>
-							<c:param name="aAmount" value="${search.aAmount}"></c:param>
-							<c:param name="kAmount" value="${search.kAmount}"></c:param>
-							<c:param name="page" value="${p }"></c:param>
-						</c:url>
-						<c:if test="${p eq pi.currentPage}">
-							<a class="is-active" style="background-color: #007c6b;"
-								href="${pagenation }">${p }</a>&nbsp; 
-							<%-- <font color="red" size="4">[${p }]</font> --%>
-							<%-- ${p } --%>
-						</c:if>
-						<c:if test="${p ne pi.currentPage}">
-							<a href="${pagination }">${p }</a>&nbsp;
-						</c:if>
-					</c:when>	
-					<c:otherwise>
-					<c:url var="pagination" value="restList.tpo">
-							<c:param name="page" value="${p }"></c:param>
-						</c:url>
-						<c:if test="${p eq pi.currentPage}">
-							<a class="is-active" style="background-color: #007c6b;"
-								href="${pagenation }">${p }</a>&nbsp; 
-							<%-- <font color="red" size="4">[${p }]</font> --%>
-							<%-- ${p } --%>
-						</c:if>
-						<c:if test="${p ne pi.currentPage}">
-							<a href="${pagination }">${p }</a>&nbsp;
-					</c:if>
-					</c:otherwise>								
-					</c:choose>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 
 					<!-- 다음 -->
@@ -290,7 +290,7 @@
 						<a href="${after }">Next</a>&nbsp;
 					</c:if>
 				</div>
-				
+
 			</div>
 		</div>
 
@@ -351,26 +351,62 @@
 		
 		
 		// 지역 조회 ajax
+		
+		var page =1;
 		$("#location").keyup(function(){
 			var loca = $('#location').val();
 			$.ajax({
 				url : "searchLocation.tpo",
-				data : {"location" : loca},
+				data : {"page" : page,
+						"location" : loca},
 				dataType : "json",
 				type : "get",
-				success : function(data, pi){
-					var i;
+				success : function(data){
+					/* $(".restInfo-area").remove(); */
+					//$(".well well-sm search sortarea").append("<div class='>" + data[0].rowMin + "</div>") */
 					$(".restInfo-area").empty();
 					successFunction(data);
+					console.log(data)
 					//page부분 삭제
-					$(".pageDiv").empty();			
-					console.log(pi.startPage)
-					console.log("성공")
-					return data;
+					$(".pageDiv").empty();				
+				// 뒤로가기 버튼 활성화
+						if(data.pi.currentPage <= 1){
+							$('.pageDiv').append(
+								'<div <div class="pagination p12 goFirstPage" style="margin-top: -2.5%;">'
+								+ '<a> Previous </a>&nbsp; </div>');
+						}else{
+							$('.pageDiv').append(
+									'<div <div class="pagination p12 disabled" style="margin-top: -2.5%;">'
+									+ '<a> Previous </a>&nbsp; </div>');
+						}
+				// 페이징 부분
+					for(var i= data.pi.startPage; i<= data.pi.endPage; i++){
+						if(data.pi.currentPage == i){
+							$('.pageDiv').append(
+									'<div <div class="pagination p12 activePage" style="margin-top: -2.5%;">'
+									+ '<a> ' + i + ' </a>&nbsp; </div>');
+						}else{
+							$('.pageDiv').append(
+									'<div <div class="pagination p12 goPage" style="margin-top: -2.5%;">'
+									+ '<a> ' + i + ' </a>&nbsp; </div>');
+						}
+					}
+				
+				// 다음페이지 활성화
+				if(data.pi.boradLimit < data.pi.pageLimit){
+							$('.pageDiv').append(
+									'<div <div class="pagination p12 goNextPage" style="margin-top: -2.5%;">'
+									+ '<a> Next </a>&nbsp; </div>');
+					}else{
+						$('.pageDiv').append(
+								'<div <div class="pagination p12 disabled" style="margin-top: -2.5%;">'
+								+ '<a> Next </a>&nbsp; </div>');
+					}	
+			
+					return data;													
 				}
-			})
-		
-		});
+			})	
+		})
 		
 		// 최고 금액 설정x
 		$('#min').keyup(function(){
@@ -448,38 +484,38 @@
 			
 			// ajax 성공했을시 부분
 			function successFunction(data){
-				for(i =0; i<data.length; i++){
-					console.log(data[i].reName);
-		
-				if(data[i].reImage == "없음"){
+				for(i =0; i<data.rList.length; i++){
+				if(data.rList[i].reImage == "없음"){
 					$('.restInfo-area').append(
-							'<input type="hidden" value="'+data[i].reNo+'">'
-							+ '<a href="restDetail.tpo?reNo="'+data[i].reNo+'">'
+							'<input type="hidden" value="'+data.rList[i].reNo+'">'
+							+ '<a href="restDetail.tpo?reNo="'+data.rList[i].reNo+'">'
 							+ '<div class="well well-lg search restInfo" style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">'
 							+ '<div style="float: left">'
 							+ '<img src="resources/images/noimage.png" style="width: 270px; height: 230px;"/> '
 							+ '</div>'
 							+ '<div style="float: left; margin-left: 15px;">'
-							+ '<b>' + data[i].reName +'</b> <br> <b>전화번호 :</b>' + data[i].rePhone
-							+ '<br> <b>상세주소 :</b> <br>' + data[i].reAddr + '<br>'
-							+ '<b>최저 금액</b> : ' + data[i].rowMin + '원'
+							+ '<b>' + data.rList[i].reName +'</b> <br> <b>전화번호 :</b>' + data.rList[i].rePhone
+							+ '<br> <b>상세주소 :</b> <br>' + data.rList[i].reAddr + '<br>'
+							+ '<b>최저 금액</b> : ' + data.rList[i].rowMin + '원'
 							+ '</div></div>')
-						}else if(data[i].reImage != "없음"){
-						$('.restInfo-area').append('<input type="hidden" value="'+data[i].reNo+'">'
-							+ '<a href="restDetail.tpo?reNo="'+data[i].reNo+'">'
+						}else if(data.rList[i].reImage != "없음"){
+						$('.restInfo-area').append('<input type="hidden" value="'+data.rList[i].reNo+'">'
+							+ '<a href="restDetail.tpo?reNo="'+data.rList[i].reNo+'">'
 							+ '<div class="well well-lg search restInfo" style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">'
 							+ '<div style="float: left">'
-							+ '<img src="' + data[i].reImage + '" style="width: 270px; height: 230px;" /> '
+							+ '<img src="' + data.rList[i].reImage + '" style="width: 270px; height: 230px;" /> '
 							+ '</div>'
 							+ '<div style="float: left; margin-left: 15px;">'
-							+ '<b>' + data[i].reName +'</b> <br> <b>전화번호 :</b>' + data[i].rePhone
-							+ '<br> <b>상세주소 :</b> <br>' + data[i].reAddr + '<br>'
-							+ '<b>최저 금액</b> : ' + data[i].rowMin + '원'
+							+ '<b>' + data.rList[i].reName +'</b> <br> <b>전화번호 :</b>' + data.rList[i].rePhone
+							+ '<br> <b>상세주소 :</b> <br>' + data.rList[i].reAddr + '<br>'
+							+ '<b>최저 금액</b> : ' + data.rList[i].rowMin + '원'
 							+ '</div>'
 							+ '</div></a>');
 												}
 				}
 			}
+		
+		$()
 			
 			
 			

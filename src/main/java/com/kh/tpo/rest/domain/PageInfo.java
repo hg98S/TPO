@@ -1,5 +1,7 @@
 package com.kh.tpo.rest.domain;
 
+import java.lang.reflect.Type;
+
 public class PageInfo {
 
 		//현재 페이지

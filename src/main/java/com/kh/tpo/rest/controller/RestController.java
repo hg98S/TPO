@@ -1,8 +1,9 @@
 package com.kh.tpo.rest.controller;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 import com.kh.tpo.rest.common.pagination;
 import com.kh.tpo.rest.domain.PageInfo;
 import com.kh.tpo.rest.domain.Rest;
@@ -108,12 +108,8 @@ public class RestController {
 	// 최저, 최고금액 조회
 	@ResponseBody
 	@RequestMapping(value="searchPrice.tpo", method=RequestMethod.GET)
-	public void priceSearch(HttpServletResponse response, Search search,  @RequestParam(value="page", required=false)Integer page) throws Exception {
-	//	System.out.println(search.toString());
-		int currentPage = (Integer) ((page != null) ? page : 1);
-		int listCount = reService.getSearchCount(search);
-		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
-		ArrayList<RestInfo> rList = reService.searchPrice(search, pi); 
+	public void priceSearch(HttpServletResponse response, Search search) throws Exception {
+		ArrayList<RestInfo> rList = reService.searchPrice(search); 
 	//	System.out.println("rList : " + rList.toString());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
@@ -128,12 +124,9 @@ public class RestController {
 	// 최고금액 설정x
 	@ResponseBody
 	@RequestMapping(value="searchRowPrice.tpo", method=RequestMethod.GET)
-	public void priceRowSearch(HttpServletResponse response, Search search,  @RequestParam(value="page", required=false)Integer page) throws Exception {
-		int currentPage = (Integer) ((page != null) ? page : 1);
-		int listCount = reService.getSearchCount(search);
-		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
+	public void priceRowSearch(HttpServletResponse response, Search search) throws Exception {
 	//	System.out.println(search.toString());
-		ArrayList<RestInfo> rList = reService.priceRowSearch(search, pi); 
+		ArrayList<RestInfo> rList = reService.priceRowSearch(search); 
 		//System.out.println("rList : " + rList.toString());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
@@ -169,17 +162,40 @@ public class RestController {
 	// 지역 검색
 	@ResponseBody
 	@RequestMapping(value="searchLocation.tpo", method=RequestMethod.GET)
-	public void localSearch(HttpServletResponse response, Search search, @RequestParam(value="page", required=false)Integer page) throws Exception {
+	public Map<String,Object> localSearch(HttpServletResponse response, Search search, @RequestParam(value="page", required=false) Integer page) throws Exception {
 		int currentPage = (Integer) ((page != null) ? page : 1);
 		int listCount = reService.getSearchCount(search);
 		PageInfo pi = pagination.getPageInfo(currentPage, listCount);
 		ArrayList<RestInfo> rList = reService.searchLocal(search, pi);
-		System.out.println("pi : " + pi);
-		System.out.println("rList  : " + rList);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		new Gson().toJson(rList, response.getWriter());	
-		
+		/*
+		 * for(RestInfo s : rList) {
+		 * s.setCheckIn(URLEncoder.encode(s.getCheckIn(),"utf-8"));
+		 * s.setCheckout(URLEncoder.encode(s.getCheckout(),"utf-8"));
+		 * s.setClcik(s.getClcik()); s.setpLimit(s.getpLimit());
+		 * s.setpMaxCount(s.getpMaxCount()); s.setpStatus(s.getpStatus());
+		 * s.setpTotal(s.getpTotal());
+		 * s.setReAddr(URLEncoder.encode(s.getReAddr(),"utf-8"));
+		 * s.setReFacility(URLEncoder.encode(s.getReFacility(),"utf-8"));
+		 * s.setReImage(URLEncoder.encode(s.getReImage(),"utf-8"));
+		 * s.setReInfo(URLEncoder.encode(s.getReInfo(),"utf-8"));
+		 * s.setReName(URLEncoder.encode(s.getReName(),"utf-8"));
+		 * s.setReNo(s.getReNo());
+		 * s.setRePhone(URLEncoder.encode(s.getRePhone(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 * s.setReUrl(URLEncoder.encode(s.getReUrl(),"utf-8"));
+		 */
+			
+		HashMap<String, Object> localMap = new HashMap<String, Object>();
+		localMap.put("pi", pi);
+		localMap.put("rList", rList);
+		return localMap;
 	}
 	
 	// 지역, 객실, 인원 검색

@@ -87,10 +87,8 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<RestInfo> searchPrice(Search search, PageInfo page) {
-		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, page.getBoardLimit());
-		ArrayList<RestInfo> result = (ArrayList)session.selectList("RestMapper.SearchPrice", search, rowBounds);
+	public ArrayList<RestInfo> searchPrice(Search search) {
+		ArrayList<RestInfo> result = (ArrayList)session.selectList("RestMapper.SearchPrice", search);
 	//	System.out.println("Store: " + result);
 		return result;
 	}
@@ -103,7 +101,7 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<RestInfo> searchLocal(Search search, PageInfo page) {
+	public ArrayList<RestInfo> searchLocal(Search search , PageInfo page) {
 		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, page.getBoardLimit());
 		return (ArrayList)session.selectList("RestMapper.searchLocal", search, rowBounds);
@@ -117,10 +115,8 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<RestInfo> priceRowSearch(Search search, PageInfo page) {
-		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, page.getBoardLimit());
-		return (ArrayList)session.selectList("RestMapper.priceRowSearch", search, rowBounds);
+	public ArrayList<RestInfo> priceRowSearch(Search search) {
+		return (ArrayList)session.selectList("RestMapper.priceRowSearch", search);
 	}
 
 	@Override
