@@ -23,4 +23,9 @@ public interface SightStore {
 	 * @return ArrayList<Sight>
 	 * */
 	public ArrayList<Sight> sightChkList(HashMap<String,Integer> chkValue);
+	
+	/* review */
+	public ArrayList<SightReview> selectReviewList(int sNo);
+	public SightReview selectReview(int reviewNo);
+	public int deleteReview(int reviewNo);
 }

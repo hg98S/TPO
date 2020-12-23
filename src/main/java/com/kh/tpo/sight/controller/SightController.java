@@ -115,8 +115,12 @@ public class SightController {
 	  }
 	  
 	  @RequestMapping(value="sightReviewWrieteForm.tpo" , method= RequestMethod.GET )
-	  public String writeReview() {
-		  return "sight/reviewWriteForm";
+	  public ModelAndView writeReview(ModelAndView mv, String sNo) {
+		  System.out.println(sNo);
+		  mv.addObject("sNo", sNo)
+		  .setViewName("sight/reviewWriteForm");
+		  
+		  return mv;
 	  }
 	  
 	  
@@ -179,6 +183,38 @@ public class SightController {
 //		  }
 		  new Gson().toJson(sightList, response.getWriter());
 	  }
+	  
+		@RequestMapping(value="deleteReview.tpo", method=RequestMethod.GET)
+		public String reviewDelete ( Model model, HttpServletRequest request) {
+			int reviewNo = 0;
+			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+			SightReview review = sService.selectReview(reviewNo);
+			int result = sService.deleteReview(reviewNo);
+			
+			if(result >0) {
+				if(review.getReviewPicture() != null) {
+					deleteFile(review.getReviewPicture(), request);
+				}
+				return "redirect:sightList.rpo";
+			}else {
+				model.addAttribute("msg", "공지사항 삭제 실패");
+				return "common/errorPage";
+			}
+			
+		}
+		public void deleteFile(String fileName, HttpServletRequest request) {
+			// 파일 저장 경로 설정
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String deletePath = root + "\\reviewuploadfiles";
+			// 삭제할 파일 경로를 통한 파일 객체생성
+			File deleteFile = new File(deletePath+"\\"+fileName);
+			// 해당 파일이 존재할 경우 삭제
+			if(deleteFile.exists()) {
+				deleteFile.delete();
+			}
+			
+			
+		}
 }
 
 	    

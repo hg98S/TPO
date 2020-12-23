@@ -48,4 +48,23 @@
    			select * from sight where sparking like '%주차 가능%' and sparking='있음' and SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음' order by sno desc
    		</if>
    </select>
+   
+   	<insert id="insertSightReview" >
+		INSERT INTO REVIEW 
+		VALUES(REVIEW_SEQ.NEXTVAL, #{sNo}, #{userId},#{reviewTitle}, #{reviewContent}, #{reviewScore},
+			#{reviewPicture}, SYSDATE, SYSDATE)
+	</insert>
+	<select id="selectReviewList" resultType="SightReview">
+		SELECT * FROM REVIEW
+		WHERE SNO=#{sNo}
+	</select>
+	<select id="selectReview" resultType="SightReview">
+		SELECT * FROM REVIEW 
+		WHERE REVIEWNO=#{reviewNo}
+	</select>
+	<delete id="deleteReview">
+		DELETE FROM REVIEW
+		WHERE REVIEWNO=#{reviewNo}
+	</delete>
+	
 </mapper>

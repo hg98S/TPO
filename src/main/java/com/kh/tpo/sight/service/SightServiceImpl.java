@@ -56,13 +56,27 @@ public class SightServiceImpl implements SightService{
 
 	@Override
 	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sStore.insertReview(review);
 	}
 
 	@Override
 	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue) {
 		return sStore.sightChkList(chkValue);
+	}
+
+	@Override
+	public ArrayList<SightReview> selectReviewList(int sNo) {
+		return sStore.selectReviewList(sNo);
+	}
+	
+	@Override
+	public SightReview selectReview(int reviewNo) {
+		return sStore.selectReview(reviewNo);
+	}
+
+	@Override
+	public int deleteReview(int reviewNo) {
+		return sStore.deleteReview(reviewNo);
 	}
 
 }
