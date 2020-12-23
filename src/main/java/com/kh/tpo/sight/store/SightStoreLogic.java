@@ -3,10 +3,12 @@ package com.kh.tpo.sight.store;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.tpo.sight.domain.PageInfo;
 import com.kh.tpo.sight.domain.Sight;
 import com.kh.tpo.sight.domain.SightReply;
 import com.kh.tpo.sight.domain.SightReview;
@@ -47,8 +49,10 @@ public class SightStoreLogic implements SightStore{
 	}
 
 	@Override
-	public ArrayList<Sight> selectSightList() {
-		ArrayList<Sight> sList = (ArrayList)sqlSession.selectList("sightMapper.selectSightList");
+	public ArrayList<Sight> selectSightList(PageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		ArrayList<Sight> sList = (ArrayList)sqlSession.selectList("sightMapper.selectSightList", null, rowBounds);
 //		for(SightList list: sList) {
 //			System.out.println(list.toString());
 //		}
@@ -62,8 +66,15 @@ public class SightStoreLogic implements SightStore{
 	}
 
 	@Override
-	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue) {
-		return (ArrayList)sqlSession.selectList("sightMapper.selectChkList", chkValue);
+	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue,PageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("sightMapper.selectChkList", chkValue, rowBounds);
+	}
+
+	@Override
+	public int getListCount() {
+		return sqlSession.selectOne("sightMapper.getListCount");
 	}
 
 

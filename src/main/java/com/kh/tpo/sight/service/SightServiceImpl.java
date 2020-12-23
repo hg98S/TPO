@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.tpo.sight.domain.PageInfo;
 import com.kh.tpo.sight.domain.Sight;
 import com.kh.tpo.sight.domain.SightReply;
 import com.kh.tpo.sight.domain.SightReview;
@@ -44,9 +45,9 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public ArrayList<Sight> selectSightList() {
+	public ArrayList<Sight> selectSightList(PageInfo pi) {
 		
-		return sStore.selectSightList();
+		return sStore.selectSightList(pi);
 	}
 
 	@Override
@@ -61,8 +62,13 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue) {
-		return sStore.sightChkList(chkValue);
+	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue,PageInfo pi) {
+		return sStore.sightChkList(chkValue,pi);
+	}
+
+	@Override
+	public int getListCount() {
+		return sStore.getListCount();
 	}
 
 }
