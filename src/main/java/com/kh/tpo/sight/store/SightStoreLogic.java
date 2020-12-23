@@ -33,9 +33,10 @@ public class SightStoreLogic implements SightStore{
 
 	@Override
 	public int insertReview(SightReview review) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("sightMapper.insertSightReview",review);
 	}
+
+
 
 	@Override
 	public int inserReply(SightReply reply) {

@@ -18,7 +18,7 @@ public interface SightService {
 	public int insertSightList(Sight sightList);
 	public ArrayList<Sight> selectSightList(PageInfo pi);
 	public ArrayList<Sight> searchSight();
-	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request);
+	public int insertReview(SightReview review);
 	public int insertReply(SightReply reply);
 	public Sight selectSight(int sNo);
 	/*

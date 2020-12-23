@@ -28,7 +28,7 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <h2 class="text-center"> 명소 리뷰 작성 </h2><p></p>
-        <form action="insertReview.kh" method="post" enctype="multipart/form-data">
+        <form action="insertReview.tpo" method="post" enctype="multipart/form-data">
             <div class="table table-responsive">
                       <table class="table table-striped">
             <tr>

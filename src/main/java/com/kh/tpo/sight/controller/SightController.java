@@ -143,8 +143,6 @@ public class SightController {
 	  public ModelAndView  insertReview (SightReview review, ModelAndView mv, 
 			  @RequestParam(name="uploadFile", required=false)MultipartFile uploadFile, HttpServletRequest request  ) {
 		  
-		  System.out.println(uploadFile);
-		  System.out.println(review);
 		  if(!uploadFile.getOriginalFilename().equals("")) {
 			  String filePath = saveFile(uploadFile, request);
 			  if(filePath != null) {
@@ -153,7 +151,7 @@ public class SightController {
 				  }
 			  }
 		  
-		  int result = sService.insertReview(review, uploadFile, request);
+		  int result = sService.insertReview(review);
 		  if(result>0) {
 		  mv.addObject(review).setViewName("sight/sightDetail");
 		  }else {
@@ -161,11 +159,11 @@ public class SightController {
 		  }
 		  return mv;
 	  }
+
 	  
-	  public String saveFile(MultipartFile file, HttpServletRequest request) {
-			// 파일 저장 경로 설정
+		public String saveFile(MultipartFile file, HttpServletRequest request) {
 			String root = request.getSession().getServletContext().getRealPath("resources");
-			String savePath = root + "\\nuploadFiles";
+			String savePath = root + "\\reviewuploadfiles";
 			// 저장 폴더 선택
 			File folder = new File(savePath);
 			// 만약 폴더가 없을경우 자동 생성
@@ -182,6 +180,8 @@ public class SightController {
 			}
 			return filePath;
 		}
+		
+
 	  
 	  // 명소체크된 값 불러오는 메소드
 	  @ResponseBody

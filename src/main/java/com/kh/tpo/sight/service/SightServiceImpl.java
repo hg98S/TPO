@@ -23,7 +23,6 @@ public class SightServiceImpl implements SightService{
 	
 	@Override
 	public int insertSight(Sight sight) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -56,7 +55,7 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public int insertReview(SightReview review, MultipartFile uploadFile, HttpServletRequest request) {
+	public int insertReview(SightReview review) {
 		return sStore.insertReview(review);
 	}
 

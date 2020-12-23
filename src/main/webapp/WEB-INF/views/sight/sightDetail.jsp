@@ -47,7 +47,7 @@
 			
 <script>
 	function writeForm(){
-		location.href="sightReviewWrieteForm.tpo"
+		location.href="sightReviewWrieteForm.tpo?sNo=${sight.sNo}"
 	}
 	
 	/* 지도 API*/
