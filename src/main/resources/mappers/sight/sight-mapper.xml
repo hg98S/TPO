@@ -52,4 +52,23 @@
    <select id="getListCount" resultType="int">
    		select count(*) from sight
    </select>
+   
+   	<insert id="insertSightReview" >
+		INSERT INTO REVIEW 
+		VALUES(REVIEW_SEQ.NEXTVAL, #{sNo}, #{userId},#{reviewTitle}, #{reviewContent}, #{reviewScore},
+			#{reviewPicture}, SYSDATE, SYSDATE)
+	</insert>
+	<select id="selectReviewList" resultType="SightReview">
+		SELECT * FROM REVIEW
+		WHERE SNO=#{sNo}
+	</select>
+	<select id="selectReview" resultType="SightReview">
+		SELECT * FROM REVIEW 
+		WHERE REVIEWNO=#{reviewNo}
+	</select>
+	<delete id="deleteReview">
+		DELETE FROM REVIEW
+		WHERE REVIEWNO=#{reviewNo}
+	</delete>
+	
 </mapper>

@@ -31,4 +31,9 @@ public interface SightStore {
 	 * @return int
 	 * */
 	public int getListCount();
+	
+	/* review */
+	public ArrayList<SightReview> selectReviewList(int sNo);
+	public SightReview selectReview(int reviewNo);
+	public int deleteReview(int reviewNo);
 }

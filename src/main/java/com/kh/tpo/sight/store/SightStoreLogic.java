@@ -77,5 +77,20 @@ public class SightStoreLogic implements SightStore{
 		return sqlSession.selectOne("sightMapper.getListCount");
 	}
 
+	@Override
+	public ArrayList<SightReview> selectReviewList(int sNo) {
+		return (ArrayList)sqlSession.selectList("sightMapper.selectReviewList", sNo);
+	}
+
+	@Override
+	public SightReview selectReview(int reviewNo) {
+		return sqlSession.selectOne("sightMapper.selectReview", reviewNo);
+	}
+
+	@Override
+	public int deleteReview(int reviewNo) {
+		return sqlSession.delete("sightMapper.deleteReview", reviewNo);
+	}
+
 
 }

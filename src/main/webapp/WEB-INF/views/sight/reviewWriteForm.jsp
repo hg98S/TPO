@@ -60,7 +60,7 @@
             <tr>  
                 <td colspan="2"  class="text-center">
                  
-                    <input type="hidden" name="num"  value="">
+                    <input type="hidden" name="sNo"  value="${sNo }">
                     <input type="hidden" name="ref"  value="">
                     <input type="hidden" name="ref_step"  value="">
                     <input type="hidden" name="ref_level"  value="">

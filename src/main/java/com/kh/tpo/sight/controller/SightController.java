@@ -98,29 +98,44 @@ public class SightController {
 		  
 		 
 	  
-//	  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
-//	  public ModelAndView selectSight(ModelAndView mv, int sNo ,HttpServletRequest request) {
-//		  Sight sight = new Sight();
-//		  System.out.println(sNo);
-//		  if(sService.selectSight(sNo) == null ){
-//			  ac.getSightDetail(sNo);
-//			  mv.addObject("msg","다시 시도해 주십시오");
-//			  mv.setViewName("common/errorPage");
-//			  
-//			  
-//		  } else {
-//			  sight=sService.selectSight(sNo);
-//			  mv.addObject("sight", sight)
-//			  .setViewName("sight/sightDetail");
-//			  System.out.println(sight.toString());
-//
-//		  }
-//		  return mv;
+		  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
+		  public ModelAndView selectSight(ModelAndView mv,HttpServletRequest request) {
+			  Sight sight = new Sight();
+			  ArrayList<SightReview> rList = null;
+			  String sNo = request.getParameter("sno");
+			  int sightNumber = Integer.parseInt(sNo);
+			  if(sService.selectSight(sightNumber) == null ){
+				  ac.getSightDetail(sightNumber);
+				  mv.addObject("msg","다시 시도해 주십시오");
+				  mv.setViewName("common/errorPage");
+
+			  } else {
+				  sight=sService.selectSight(sightNumber);
+				  if(sService.selectReviewList(sightNumber)!= null){
+					  rList = sService.selectReviewList(sightNumber);
+					  mv.addObject("sight", sight)
+					  .addObject("review", rList)
+					  .setViewName("sight/sightDetail");
+				  }else {
+					  sight=sService.selectSight(sightNumber);
+					  rList = sService.selectReviewList(sightNumber);
+					  mv.addObject("sight", sight)
+					  .addObject("review", rList)
+					  .setViewName("sight/sightDetail");
+				  }
+			  }
+				  return mv;
+			  }
+
 //	  }
 	  
 	  @RequestMapping(value="sightReviewWrieteForm.tpo" , method= RequestMethod.GET )
-	  public String writeReview() {
-		  return "sight/reviewWriteForm";
+	  public ModelAndView writeReview(ModelAndView mv, String sNo){
+		  System.out.println(sNo);
+		  mv.addObject("sNo", sNo)
+		  .setViewName("sight/reviewWriteForm");
+		  
+		  return mv;
 	  }
 	  
 	  
@@ -195,6 +210,38 @@ public class SightController {
 		  new Gson().toJson(sightPage, response.getWriter());
 	  }
 	  
+	  
+		@RequestMapping(value="deleteReview.tpo", method=RequestMethod.GET)
+		public String reviewDelete ( Model model, HttpServletRequest request) {
+			int reviewNo = 0;
+			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+			SightReview review = sService.selectReview(reviewNo);
+			int result = sService.deleteReview(reviewNo);
+			
+			if(result >0) {
+				if(review.getReviewPicture() != null) {
+					deleteFile(review.getReviewPicture(), request);
+				}
+				return "redirect:sightList.rpo";
+			}else {
+				model.addAttribute("msg", "공지사항 삭제 실패");
+				return "common/errorPage";
+			}
+			
+		}
+		public void deleteFile(String fileName, HttpServletRequest request) {
+			// 파일 저장 경로 설정
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String deletePath = root + "\\reviewuploadfiles";
+			// 삭제할 파일 경로를 통한 파일 객체생성
+			File deleteFile = new File(deletePath+"\\"+fileName);
+			// 해당 파일이 존재할 경우 삭제
+			if(deleteFile.exists()) {
+				deleteFile.delete();
+			}
+			
+			
+		}
 }
 
 	    

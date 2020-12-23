@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class SightReview {
 
+	private int reviewNo;
 	private int sNo;
 	private String userId;
 	private String reviewTitle;
@@ -16,9 +17,10 @@ public class SightReview {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SightReview(int sNo, String userId, String reviewTitle, String reviewContent, int reviewScore,
+	public SightReview(int reviewNo, int sNo, String userId, String reviewTitle, String reviewContent, int reviewScore,
 			String reviewPicture, Date reviewEnrollDate, Date reivewModifyDate) {
 		super();
+		this.reviewNo = reviewNo;
 		this.sNo = sNo;
 		this.userId = userId;
 		this.reviewTitle = reviewTitle;
@@ -27,6 +29,12 @@ public class SightReview {
 		this.reviewPicture = reviewPicture;
 		this.reviewEnrollDate = reviewEnrollDate;
 		this.reivewModifyDate = reivewModifyDate;
+	}
+	public int getReviewNo() {
+		return reviewNo;
+	}
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
 	}
 	public int getsNo() {
 		return sNo;
@@ -78,11 +86,9 @@ public class SightReview {
 	}
 	@Override
 	public String toString() {
-		return "SightReview [sNo=" + sNo + ", userId=" + userId + ", reviewTitle=" + reviewTitle + ", reviewContent="
-				+ reviewContent + ", reviewScore=" + reviewScore + ", reviewPicture=" + reviewPicture
-				+ ", reviewEnrollDate=" + reviewEnrollDate + ", reivewModifyDate=" + reivewModifyDate + "]";
+		return "SightReview [reviewNo=" + reviewNo + ", sNo=" + sNo + ", userId=" + userId + ", reviewTitle="
+				+ reviewTitle + ", reviewContent=" + reviewContent + ", reviewScore=" + reviewScore + ", reviewPicture="
+				+ reviewPicture + ", reviewEnrollDate=" + reviewEnrollDate + ", reivewModifyDate=" + reivewModifyDate
+				+ "]";
 	}
-	
-	
-	
 }
