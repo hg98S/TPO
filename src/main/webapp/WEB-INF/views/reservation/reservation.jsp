@@ -413,12 +413,12 @@
 					   $("#twoway_arr").focus();
 					   return false;
 				   }
-				   else if(sDepPlandTime == 0) {
+				   else if(sDepPlandTime == "가는 날짜") {
 					   alert("가는 날짜를 선택해주세요.");
 					   $("#datePicker_dep1").focus();
 					   return false;
 				   }
-				   else if(sArrPlandTime == 0) {
+				   else if(sArrPlandTime == "오는 날짜") {
 					   alert("오는 날짜를 선택해주세요.");
 					   $("#datePicker_arr1").focus();
 					   return false;
