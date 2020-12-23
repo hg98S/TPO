@@ -6,8 +6,8 @@ public class TestFlight {
    private String airlineId; // 항공사번호
    private String vihicleId; // 항공편명
    private String airlineNm; // 항공사명
-   private Long depPlandTime; // 출발일자
-   private Long arrPlandTime; // 도착일자 202012301030
+   private Long depPlandTime; // 출발시간
+   private Long arrPlandTime; // 도착시간
    private String depAirportNm; // 출발지
    private String arrAirportNm; // 도착지
    private Long economyCharge; // 일반석 운임료

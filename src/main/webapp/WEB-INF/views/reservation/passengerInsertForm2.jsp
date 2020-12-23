@@ -18,7 +18,7 @@
         <article>
             <h2>예약 정보 입력</h2>
             <div style="margin: auto; text-align: center;">
-                <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
+                <table align="center" class="table table-bordered" style="height: 100px; font-size: 20px;">
                     <thead style="background-color: #09c6ab; color: white; text-align: center;">
                         <tr style="text-align: center;">
                             <th style="text-align: center;">여정</th>
@@ -39,15 +39,6 @@
                             <td style="line-height: 2">${seatGrade }</td>
                             <td style="line-height: 2">${fare }</td>
                             <td style="line-height: 2">${people }</td>
-                        </tr>
-                        <tr>
-                            <td style="line-height: 2">${depJourney2 }</td>
-                            <td style="line-height: 2">${depAirlineNm2 }</td>
-                            <td style="line-height: 2">${depTime2 }</td>
-                            <td style="line-height: 2">${arrTime2 }</td>
-                            <td style="line-height: 2">${seatGrade2 }</td>
-                            <td style="line-height: 2">${fare2 }</td>
-                            <td style="line-height: 2">${people2 }</td>
                         </tr>
                     </tbody>
                 </table>
