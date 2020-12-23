@@ -8,11 +8,16 @@
 <meta charset="UTF-8">
 <title>TPO_항공권 검색</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+	#selectGoSchedule br, #selectComeSchedule br {
+     	display: none;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp"/>
 	<div id="page"></div>
-	<a href="ex2.tpo">다음</a>
+	<a href="passengerForm.tpo">다음</a>
 	<%-- <c:forEach items="${fList }" var="fly">
 		${fly.vihicleId }
 		${fly.airlineNm }
@@ -207,10 +212,10 @@
                         </tr>
                     </thead>
 					<tbody style="display:block; height:400px; overflow:auto;" align="center" id="goTbody">
-                          <c:forEach items="${fList }" var="flight">
-                          <c:set var="time" value="${flight.depPlandTime }"/>
+                        <c:forEach items="${fList }" var="flight">
+                   		<c:set var="time" value="${flight.depPlandTime }"/>
                         <c:set var="time2" value="${flight.arrPlandTime }"/>
-                           <c:if test="${flight.airlineNm ne null }">
+                        <c:if test="${flight.airlineNm ne null }">
                            <tr style="display:table; width:100%;" class="d${flight.airlineNm } dAir d${fn:substring(time,8,10) } dTime">
                                <td style="width: 120px;">${flight.airlineNm }<br>&nbsp;${flight.vihicleId }</td>
                                <td style="line-height: 2.5; width: 150px;">${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }</td>
@@ -223,9 +228,9 @@
                                  <td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
                               </c:if>
                                <td style="line-height: 2.5; width: 20px;">9</td>
-                               <td style="width: 30px;"><input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure"></td>
+                               <td style="width: 30px;" id="departure"><input style="margin-top: 13px;" type="radio" name="DepSelect" id="departure"></td>
                            </tr>
-                           </c:if>
+                        </c:if>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -263,26 +268,25 @@
                         </tr>
                     </thead>
                     <tbody style="display:block; height:400px; overflow:auto;" align="center" id="comeTbody">
-                          <c:forEach items="${fList2 }" var="flight2">
-                          <c:set var="time3" value="${flight2.depPlandTime }"/>
+                    	<c:forEach items="${fList2 }" var="flight2">
+                        <c:set var="time3" value="${flight2.depPlandTime }"/>
                         <c:set var="time4" value="${flight2.arrPlandTime }"/>
-                           <c:if test="${flight2.airlineNm ne null }">
-                           <tr style="display:table; width:100%;" class="a${flight2.airlineNm } aAir a${fn:substring(time3,8,10) } aTime" onclick="fnTest(this);">
-                               <td style="width: 120px;">${flight2.airlineNm }<br>&nbsp;${flight2.vihicleId }</td>
-                               <td style="line-height: 2.5; width: 150px;">${fn:substring(time3,8,10) } : ${fn:substring(time3,10,12) } ~ ${fn:substring(time4,8,10) }: ${fn:substring(time4,10,12) }</td>
-                              <c:if test="${flight2.prestigeCharge eq 0 || flight2.prestigeCharge eq null}">
-                                 <td style="line-height: 2.5; width: 90px;">일반석</td>
-                                 <td style="line-height: 2.5; width: 75px;">${flight2.economyCharge }</td>
-                              </c:if>
-                              <c:if test="${flight2.prestigeCharge ne null && flight2.prestigeCharge ne 0}">
-                                 <td style="line-height: 2.5; width: 90px;">비즈니스</td>
-                                 <td style="line-height: 2.5; width: 75px;">${flight2.prestigeCharge }</td>
-                              </c:if>
-                        
-                               <td style="line-height: 2.5; width: 20px;">9</td>
-                               <td style="width: 30px;" id="departure"><input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure"></td>
-                           </tr>
-                           </c:if>
+                       	<c:if test="${flight2.airlineNm ne null }">
+                           	<tr style="display:table; width:100%;" class="a${flight2.airlineNm } aAir a${fn:substring(time3,8,10) } aTime">
+                               	<td style="width: 120px;">${flight2.airlineNm }<br>&nbsp;${flight2.vihicleId }</td>
+                               	<td style="line-height: 2.5; width: 150px;">${fn:substring(time3,8,10) } : ${fn:substring(time3,10,12) } ~ ${fn:substring(time4,8,10) } : ${fn:substring(time4,10,12) }</td>
+                               	<c:if test="${flight2.prestigeCharge eq 0 || flight2.prestigeCharge eq null}">
+                               		<td style="line-height: 2.5; width: 90px;">일반석</td>
+                                 	<td style="line-height: 2.5; width: 75px;">${flight2.economyCharge }</td>
+                               	</c:if>
+                               	<c:if test="${flight2.prestigeCharge ne null && flight2.prestigeCharge ne 0}">
+                                 	<td style="line-height: 2.5; width: 90px;">비즈니스</td>
+                                 	<td style="line-height: 2.5; width: 75px;">${flight2.prestigeCharge }</td>
+                               	</c:if>
+                               	<td style="line-height: 2.5; width: 20px;">9</td>
+                               	<td style="width: 30px;" id="arrival"><input style="margin-top: 13px;" type="radio" name="ArrSelect" id="arrival"></td>
+                           	</tr>
+                        </c:if>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -294,7 +298,7 @@
                 <h3>선택한 항공 스케줄</h3>
             </div>
             <div>
-                <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
+                <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;" name="selectSchedule">
                     <thead style="background-color: #09c6ab; color: white;" align="center">
                         <tr style="text-align: center;">
                             <th style="text-align: center;">여정</th>
@@ -306,87 +310,165 @@
                             <th style="text-align: center;">요청좌석</th>
                         </tr>
                     </thead>
+                    
                     <tbody style="text-align: center;">
+                    	<tr id="selectNoneGo">
+                    		<td style="line-height: 2" colspan="7">가는편을 선택해주세요.</td>
+                    	</tr>
                         <tr id="selectGoSchedule">
-                            <td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2">${acCount }석</td>
-                        </tr>
+							<td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
+		                    <td style="line-height: 2" id="depAlNm"></td>
+		                    <td style="line-height: 2" id="depPTime"></td>
+		                    <td style="line-height: 2" id="arrPTime"></td>
+		                    <td style="line-height: 2" id="sGrade"></td>
+		                    <td style="line-height: 2" id="oneFare"></td>
+		                    <td style="line-height: 2">${acCount }석</td>    
+		                </tr>
+                    	<tr id="selectNoneCome">
+                    		<td style="line-height: 2" colspan="7">오는편을 선택해주세요.</td>
+                    	</tr>
                         <tr id="selectComeSchedule">
                             <td style="line-height: 2">${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }</td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
-                            <td style="line-height: 2"></td>
+                            <td style="line-height: 2" id="depAlNm2"></td>
+		                    <td style="line-height: 2" id="depPTime2"></td>
+		                    <td style="line-height: 2" id="arrPTime2"></td>
+		                    <td style="line-height: 2" id="sGrade2"></td>
+		                    <td style="line-height: 2" id="oneFare2"></td>
                             <td style="line-height: 2">${acCount }석</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            
-           <script>
-            $(document).ready(function() {
-               $("#comeTbody>tr").click(function(e) {
-                  // var rowData = new Array();
-                  console.log($(e))
-                  var depMonth = ${fn:substring(depDay2,4,6) };
-                  var depDay = ${fn:substring(depDay2,6,8) };
-                  var tdArr = new Array();
-                  
-                  var tr = $(this);
-                  var td = tr.children();
-                  var fsRadio = td.eq(5).children().val();
-                  
-                  
-                  $(this).find('input:radio').prop('checked', true);
-                  
-                  $("input:checked[id=departure]").each(function() {
-                     if (fsRadio != $(this).val()) {
-                        $(this).attr("checked", false); // uncheck all checkboxes
-                            //alert("checked checkbox false");
-                     }
-                   });
-                  /* td.eq(4).children().attr("checked", "true"); */
 
-                  td.each(function(index, item) {
-                  tdArr.push(td.eq(index, item).text());
-                  //console.log(item);
-                  var sIndex = index + 1;
-                  if ( sIndex == 2) {
-                     console.log(item.innerHTML);
-                     var timeValue = item.innerHTML;
-                     console.log(timeValue.trim());
-                     var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
-                     var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(14,2);
-                     $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+"."+" "+depHour);
-                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+"."+" "+arrHour);
-                  } else if( sIndex == 1){
-                     $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
-                  } else if( sIndex == 3) {
-                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
-                  }else if( sIndex == 4) {
-                     $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
-                  }
-                  //console.log(index);
-                  if(index == 1) {
-                     var depTime;
-                     //var depTimeTest = depTime.html();
-                     //console.log(depTime);
-                     //console.log(depTimeTest);
-                  }
-                  if(index == 3) {
-                     var charge;
-                     //console.log(charge);
-                  }
-               });
-                  //console.log(tdArr);
-               });
-            });
+           	<script>
+	           	$(document).ready(function() {
+	           		for (var i = 0; i < 7; i++) {
+		               	$("#selectGoSchedule td:eq("+i+")").hide();
+	        		}
+	           		for (var i = 0; i < 7; i++) {
+		               	$("#selectComeSchedule td:eq("+i+")").hide();
+	        		}
+	           		$("#selectNoneGo td").show();
+	           		$("#selectNoneCome td").show();
+	           		
+	           		/* 오는편 테이블 */
+	               	$("#comeTbody>tr").click(function(e) {
+	                  	// var rowData = new Array();
+	                  	console.log($(e))
+	                  	var depMonth = ${fn:substring(depDay2,4,6) };
+	                  	var depDay = ${fn:substring(depDay2,6,8) };
+	                  	var tdArr = new Array();
+	                  
+	                  	var tr = $(this);
+	                  	var td = tr.children();
+	                  	var fsRadio = td.eq(5).children().val();
+	                  
+	                  	$(this).find("input[name='ArrSelect']:radio").prop('checked', true);
+	                  
+	                  	$("input:checked[id=departure]").each(function() {
+	                     	if (fsRadio != $(this).val()) {
+	                        	$(this).attr("checked", false); // uncheck all checkboxes
+	                            //alert("checked checkbox false");
+	                     	}
+	                   	});
+	                  	/* td.eq(4).children().attr("checked", "true"); */
+	
+	                  	td.each(function(index, item) {
+	                  		for (var i = 0; i < 7; i++) {
+	    		               	$("#selectComeSchedule td:eq("+i+")").show();
+	    	        		}
+	                  		$("#selectNoneCome td").hide();
+	                  		tdArr.push(td.eq(index, item).text());
+	                    	//console.log(item);
+			                var sIndex = index + 1;
+			                if (sIndex == 2) {
+			                   console.log(item.innerHTML);
+			                   var timeValue = item.innerHTML;
+			                   console.log(timeValue.trim());
+			                   var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+			                   var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(15,2);
+			                   $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+" "+depHour);
+			                   $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+" "+arrHour);
+			                } else if(sIndex == 1){
+			                   $("#selectComeSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+			                } else if(sIndex == 3) {
+			                   $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+			                }else if(sIndex == 4) {
+	                     		$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+	                  		}
+	                  		//console.log(index);
+	                  		if(index == 1) {
+	                     		var depTime;
+	                     		//var depTimeTest = depTime.html();
+	                     		//console.log(depTime);
+	                     		//console.log(depTimeTest);
+	                  		}
+	                  		if(index == 3) {
+	                     		var charge;
+	                     		//console.log(charge);
+	                  		}
+	                  		$("#depAirlineNm2").val($("#depAlNm2").text());
+			               	$("#depTime2").val($("#depPTime2").text());
+			               	$("#arrTime2").val($("#arrPTime2").text());
+			               	$("#seatGrade2").val($("#sGrade2").text());
+			               	$("#fare2").val($("#oneFare2").text());
+	               		});
+	               	});
+	               	/* 가는편 테이블 */
+	               	$("#goTbody>tr").click(function(e) {
+	                   	console.log($(e))
+	                   	var depMonth = ${fn:substring(depDay,4,6) };
+	                   	var depDay = ${fn:substring(depDay,6,8) };
+	                   	var tdArr = new Array();
+	                   
+	                   	var tr = $(this);
+	                   	var td = tr.children();
+	                   	var fsRadio = td.eq(5).children().val();
+	                   
+	                   	$(this).find("input[name='DepSelect']:radio").prop('checked', true);
+	                   
+	                   	$("input:checked[id=departure]").each(function() {
+	                      	if (fsRadio != $(this).val()) {
+	                         	$(this).attr("checked", false);
+	                      	}
+	                   	});
+	
+	                   	td.each(function(index, item) {
+	                   		for (var i = 0; i < 7; i++) {
+	    		               	$("#selectGoSchedule td:eq("+i+")").show();
+	    	        		}
+	                   		$("#selectNoneGo td").hide();
+		                   	tdArr.push(td.eq(index, item).text());
+		                   	var sIndex = index + 1;
+		                   	if (sIndex == 2) {
+		                      	console.log(item.innerHTML);
+		                      	var timeValue = item.innerHTML;
+		                      	console.log(timeValue.trim());
+		                    	var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+		                      	var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(15,2);
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+" "+depHour);
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+" "+arrHour);
+		                   	} else if( sIndex == 1){
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+		                   	} else if( sIndex == 3) {
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+		                   	} else if( sIndex == 4) {
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+		                   	}
+		                   	if(index == 1) {
+		                      	var depTime;
+		                   	}
+		                   	if(index == 3) {
+		                      	var charge;
+		                   	}
+		                   	$("#depAirlineNm").val($("#depAlNm").text());
+			               	$("#depTime").val($("#depPTime").text());
+			               	$("#arrTime").val($("#arrPTime").text());
+			               	$("#seatGrade").val($("#sGrade").text());
+			               	$("#fare").val($("#oneFare").text());
+	                	});
+	                });
+	            });
             </script>
         </article>
         
@@ -424,12 +506,32 @@
         </article>
         <br><br>
         <article>
-            <div style="width: 35%; margin: auto;">
-                <button onclick="#" class="btn btn-secondary" style="height: 60px;">
-                    항공 스케줄 다시 선택
-                </button>
-                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
-            </div>
+        	<form action="passengerFormRound.tpo" method="get">
+	        	<div id="dep">
+			        <input type="text" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
+			        <input type="text" id="depAirlineNm" name="depAirlineNm" value="">
+			        <input type="text" id="depTime" name="depTime" value="">
+			        <input type="text" id="arrTime" name="arrTime" value="">
+			        <input type="text" id="seatGrade" name="seatGrade" value="">
+			        <input type="text" id="fare" name="fare" value="">
+			        <input type="text" id="people" name="people" value="${acCount }석">
+		        </div>
+		        <div id="arr">
+			        <input type="text" id="depJourney2" name="depJourney2" value="${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }">
+			        <input type="text" id="depAirlineNm2" name="depAirlineNm2" value="">
+			        <input type="text" id="depTime2" name="depTime2" value="">
+			        <input type="text" id="arrTime2" name="arrTime2" value="">
+			        <input type="text" id="seatGrade2" name="seatGrade2" value="">
+			        <input type="text" id="fare2" name="fare2" value="">
+			        <input type="text" id="people2" name="people2" value="${acCount }석">
+		        </div>
+	            <div style="width: 35%; margin: auto;">
+	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
+	                    항공 스케줄 다시 선택
+	                </button>
+	                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
+	            </div>
+            </form>
         </article>
     </section>
     <!-- 컨텐츠 끝 -->

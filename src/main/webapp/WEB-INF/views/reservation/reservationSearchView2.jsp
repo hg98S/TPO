@@ -6,13 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TPO_항공권 검색</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style type="text/css">
+	#selectGoSchedule br {
+     	display: none;
+	}
+</style>
+
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp"/>
 	<div id="page"></div>
-	<a href="ex2.tpo">다음</a>
+	<a href="passengerForm.tpo">다음</a>
 	<%-- <c:forEach items="${fList }" var="fly">
 		${fly.vihicleId }
 		${fly.airlineNm }
@@ -124,33 +130,24 @@
 	                            <th style="width: 120px;">잔여석</th>
 	                        </tr>
 	                    </thead>
-	                    <tbody style="display:block; height:480px; overflow:auto;" align="center">
+	                    <tbody style="display:block; height:480px; overflow:auto;" align="center" id="goTbody">
 	                       	<c:forEach items="${fList }" var="flight">
 	                       	<c:set var="time" value="${flight.depPlandTime }"/>
 	                  		<c:set var="time2" value="${flight.arrPlandTime }"/>
                         	<c:if test="${flight.airlineNm ne null }">
                         	<tr style="display:table; width:100%;" class="d${flight.airlineNm } dAir d${fn:substring(time,8,10) } dTime">
-	                            <td style="width: 120px;">
-	                            	${flight.airlineNm }<br>
-	                                &nbsp;${flight.vihicleId }
-	                            </td>
-	                            <td style="line-height: 2.5; width: 150px;">
-	                               ${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }
-	                     		</td>
-			                     <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
+	                            <td style="width: 120px;">${flight.airlineNm }<br>&nbsp;${flight.vihicleId }</td>
+	                            <td style="line-height: 2.5; width: 150px;">${fn:substring(time,8,10) } : ${fn:substring(time,10,12) } ~ ${fn:substring(time2,8,10) } : ${fn:substring(time2,10,12) }</td>
+			                    <c:if test="${flight.prestigeCharge eq 0 || flight.prestigeCharge eq null}">
 			                        <td style="line-height: 2.5; width: 90px;">일반석</td>
 			                        <td style="line-height: 2.5; width: 75px;">${flight.economyCharge }</td>
-			                     </c:if>
-			                     
-			                     <c:if test="${flight.prestigeCharge ne null && flight.prestigeCharge ne 0}">
+			                    </c:if>
+			                    <c:if test="${flight.prestigeCharge ne null && flight.prestigeCharge ne 0}">
 			                        <td style="line-height: 2.5; width: 90px;">비즈니스</td>
-			                        <td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
-			                     </c:if>
-	                     
+			                    	<td style="line-height: 2.5; width: 75px;">${flight.prestigeCharge }</td>
+			                    </c:if>
 	                            <td style="line-height: 2.5; width: 20px;">9</td>
-	                            <td style="width: 30px;">
-	                                <input style="margin-top: 13px;" type="radio" name="DepartureSelect" id="departure">
-	                            </td>
+	                            <td style="width: 30px;" id="departure"><input style="margin-top: 13px;" type="radio" name="DepSelect" id="departure"></td>
 	                        </tr>
                         	</c:if>
                         	</c:forEach>
@@ -166,7 +163,7 @@
             </div>
         </article>
 	
-		<table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
+		<table align="center" class="table table-bordered" style="height: 100px; font-size: 20px;">
 			<caption><b>선택한 항공 스케줄</b></caption>
        		<thead style="background-color: #09c6ab; color: white; text-align: center;">
 				<tr style="text-align: center;">
@@ -180,18 +177,82 @@
                	</tr>
            	</thead>
             <tbody style="text-align: center;">
-				<tr>
+				<tr id="selectGoSchedule">
 					<td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
-                    <td style="line-height: 2">진에어</td>
-                    <td style="line-height: 2">2021.01.04(월) 07:15</td>
-                    <td style="line-height: 2">2021.01.04(월) 08:15</td>
-                    <td style="line-height: 2">일반석</td>
-                    <td style="line-height: 2">38900원</td>
-                    <td style="line-height: 2">${acCount }석</td>
+                    <td style="line-height: 2" id="depAlNm"></td>
+                    <td style="line-height: 2" id="depPTime"></td>
+                    <td style="line-height: 2" id="arrPTime"></td>
+                    <td style="line-height: 2" id="sGrade"></td>
+                    <td style="line-height: 2" id="oneFare"></td>
+                    <td style="line-height: 2">${acCount }석</td>    
+                </tr>
+                <tr id="selectNoneGo">
+                	<td style="line-height: 2" colspan="7">가는편을 선택해주세요.</td>
                 </tr>
             </tbody>
 		</table>
-        
+        <script>
+        	$(document).ready(function() {
+        		/* 가는편 테이블 */
+        		for (var i = 0; i < 7; i++) {
+	               	$("#selectGoSchedule td:eq("+i+")").hide();
+        		}
+        		$("#selectNoneGo td").show();
+               	$("#goTbody>tr").click(function(e) {
+                   	console.log($(e))
+                   	var depMonth = ${fn:substring(depDay,4,6) };
+                   	var depDay = ${fn:substring(depDay,6,8) };
+                   	var tdArr = new Array();
+                   
+                   	var tr = $(this);
+                   	var td = tr.children();
+                   	var fsRadio = td.eq(5).children().val();
+                   
+                   	$(this).find("input[name='DepSelect']:radio").prop('checked', true);
+                   
+                   	$("input:checked[id=departure]").each(function() {
+                      	if (fsRadio != $(this).val()) {
+                         	$(this).attr("checked", false);
+                      	}
+                   	});
+
+                   	td.each(function(index, item) {
+                   		for (var i = 0; i < 7; i++) {
+        	               	$("#selectGoSchedule td:eq("+i+")").show();
+                		}
+                   		$("#selectNoneGo td").hide();
+	                   	tdArr.push(td.eq(index, item).text());
+	                   	var sIndex = index + 1;
+	                   	if (sIndex == 2) {
+	                      	console.log(item.innerHTML);
+	                      	var timeValue = item.innerHTML;
+	                      	console.log(timeValue.trim());
+	                    	var depHour = timeValue.trim().substr(0,2)+":"+timeValue.trim().substr(5,2);
+	                      	var arrHour = timeValue.trim().substr(10,2)+":"+timeValue.trim().substr(15,2);
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(depMonth+"."+depDay+" "+depHour);
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(depMonth+"."+depDay+" "+arrHour);
+	                   	} else if( sIndex == 1){
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex)+")").html(item.innerHTML);
+	                   	} else if( sIndex == 3) {
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
+	                   	} else if( sIndex == 4) {
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+	                   	}
+	                   	if(index == 1) {
+	                      	var depTime;
+	                   	}
+	                   	if(index == 3) {
+	                      	var charge;
+	                   	}
+                	});
+	               	$("#depAirlineNm").val($("#depAlNm").text());
+	               	$("#depTime").val($("#depPTime").text());
+	               	$("#arrTime").val($("#arrPTime").text());
+	               	$("#seatGrade").val($("#sGrade").text());
+	               	$("#fare").val($("#oneFare").text());
+                });
+            });
+        </script>
         <article>
             · 상기 요금은 항공운임/발권대행수수료 등 총액이 포함된 금액이며, 발권일/환률 등에 따라 유류할증료와 제세공과금은 변동될 수 있습니다.<br>
             · <span style="color: red;">발권대행수수수료는 인원별 1,000원씩 부과되며 인터파크로 별도 승인, 결제 완료 후 항공권 취소 시 환불되지 않습니다. (편도-성인/소아기준)</span><br>
@@ -226,16 +287,27 @@
         </article>
         <br><br>
         <article>
-            <div style="width: 35%; margin: auto;">
-                <button onclick="#" class="btn btn-secondary" style="height: 60px;">
-                    항공 스케줄 다시 선택
-                </button>
-                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
-            </div>
+            <form action="passengerFormOne.tpo" method="get">
+	        	<div id="dep">
+			        <input type="text" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
+			        <input type="text" id="depAirlineNm" name="depAirlineNm" value="">
+			        <input type="text" id="depTime" name="depTime" value="">
+			        <input type="text" id="arrTime" name="arrTime" value="">
+			        <input type="text" id="seatGrade" name="seatGrade" value="">
+			        <input type="text" id="fare" name="fare" value="">
+			        <input type="text" id="people" name="people" value="${acCount }석">
+		        </div>
+	            <div style="width: 35%; margin: auto;">
+	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
+	                    항공 스케줄 다시 선택
+	                </button>
+	                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
+	            </div>
+            </form>
         </article>
     </section>
     <!-- 컨텐츠 끝 -->
    
-   <jsp:include page="/include/includeFooter.jsp"/>
+    <jsp:include page="/include/includeFooter.jsp"/>
 </body>
 </html>
