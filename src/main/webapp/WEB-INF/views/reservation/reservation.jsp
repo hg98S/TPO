@@ -55,245 +55,13 @@
                   </a> <!--   -->
                </nav>
 
-<!-- <<<<<<< HEAD
-				Main
-					<div id="main">
-						왕복
-							<article id="home" class="panel" style="background-color:#eeeeee;">
-								<form action="getReservationDataSearch.tpo">
-									<select id="twoway_dep" name="sDepAirportNm">
-										<option selected="selected" >출발지</option>
-										<option value="NAARKSI">인천</option>
-										<option value="NAARKSS">김포</option>
-										<option value="NAARKPC">제주</option>
-										<option value="NAARKPK">김해</option>
-										<option value="NAARKJJ">광주</option>
-										<option value="NAARKNY">양양</option>
-										<option value="NAARKJY">여수</option>
-										<option value="NAARKTH">포항</option>
-										<option value="NAARKPU">울산</option>
-										<option value="NAARKJK">군산</option>
-										<option value="NAARKNW">원주</option>
-										<option value="NAARKTN">대구</option>
-										<option value="NAARKTU">청주</option>
-										<option value="NAARKJB">무안</option>
-										<option value="NAARKPS">사천</option>
-									</select>
-									&ensp;
-									<span><img src="/resources/images/double-arrow.png" style="width:32px;height:32px;"></span>
-									&ensp;
-									<select id="twoway_arr" name="sArrAirportNm">
-										<option selected="selected">도착지</option>
-										<option value="NAARKSI">인천</option>
-										<option value="NAARKSS">김포</option>
-										<option value="NAARKPC">제주</option>
-										<option value="NAARKPK">김해</option>
-										<option value="NAARKJJ">광주</option>
-										<option value="NAARKNY">양양</option>
-										<option value="NAARKJY">여수</option>
-										<option value="NAARKTH">포항</option>
-										<option value="NAARKPU">울산</option>
-										<option value="NAARKJK">군산</option>
-										<option value="NAARKNW">원주</option>
-										<option value="NAARKTN">대구</option>
-										<option value="NAARKTU">청주</option>
-										<option value="NAARKJB">무안</option>
-										<option value="NAARKPS">사천</option>
-									</select>
-									<br><br>
-								
-									<div>
-										가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime" value="가는 날짜">
-									</div>
-									
-									&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;
-									<div>
-										오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" name="sArrPlandTime" value="오는 날짜">
-									</div>
-									
-									<script>
-										$("#datePicker_dep1").click(function() {
-											var str = $("#datePicker_dep1").val().replace(/\-/g,'');
-											console.log(str);
-											$("#datePicker_dep1").val(str);
-											return true;
-										});
-									</script>
-									
-									<div><br></div>
-									
-									<div>
-										<button type="button" id="select_person_btn" data-toggle="collapse" data-target="#twoway_select_person"
-										style="color:#777; background-color:#eeeeee;">
-											<span>성인</span>&nbsp;<span id="twoway_adult_headCount">1</span>명·<span>소아</span>&nbsp;<span id="twoway_child_headCount">0</span>명·<span>유아</span>&nbsp;<span id="twoway_infant_headCount">0</span>명
-										</button>
-									</div>
-									<div id="twoway_select_person" class="collapse">	
-										<div class="row twoway_AYIPart">
-											<p value="성인">성인</p>
-										</div>
-										<select class="row" id="twoway_adult_number" name="adultCount">
-											<option value="1" selected>1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>
-										<br>
-										<div class="row twoway_AYIPart">
-											<p value="소아">소아</p>
-										</div>
-										<select class="row" id="twoway_child_number" name="childCount">
-											<option value="0" selected>0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>
-										<br>
-										<div class="row twoway_AYIPart">
-											<p value="유아">유아</p>
-										</div>
-										<select class="row" id="twoway_infant_number" name="infantCount">
-											<option value="0" selected>0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>
-									</div>
-									<input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
-								</form>
-							</article>
-							
-						편도
-							<article id="contact" class="panel" style="background-color:#eeeeee;">
-								<form action="getReservationData.tpo">
-									<select id="oneway_dep" name="sDepAirportNm">
-										<option selected="selected">출발지</option>
-										<option value="NAARKSI">인천</option>
-										<option value="NAARKSS">김포</option>
-										<option value="NAARKPC">제주</option>
-										<option value="NAARKPK">김해</option>
-										<option value="NAARKJJ">광주</option>
-										<option value="NAARKNY">양양</option>
-										<option value="NAARKJY">여수</option>
-										<option value="NAARKTH">포항</option>
-										<option value="NAARKPU">울산</option>
-										<option value="NAARKJK">군산</option>
-										<option value="NAARKNW">원주</option>
-										<option value="NAARKTN">대구</option>
-										<option value="NAARKTU">청주</option>
-										<option value="NAARKJB">무안</option>
-										<option value="NAARKPS">사천</option>
-									</select>
-									&ensp;
-									<span><img src="/resources/images/next.png"></span>
-									&ensp;
-									<select id="oneway_arr" name="sArrAirportNm">
-										<option selected="selected">도착지</option>
-										<option value="NAARKSI">인천</option>
-										<option value="NAARKSS">김포</option>
-										<option value="NAARKPC">제주</option>
-										<option value="NAARKPK">김해</option>
-										<option value="NAARKJJ">광주</option>
-										<option value="NAARKNY">양양</option>
-										<option value="NAARKJY">여수</option>
-										<option value="NAARKTH">포항</option>
-										<option value="NAARKPU">울산</option>
-										<option value="NAARKJK">군산</option>
-										<option value="NAARKNW">원주</option>
-										<option value="NAARKTN">대구</option>
-										<option value="NAARKTU">청주</option>
-										<option value="NAARKJB">무안</option>
-										<option value="NAARKPS">사천</option>
-									</select>
-									<br><br>
-								
-									가는 날짜 : 
-									<input style="width:35%;" type="text" id="datePicker_dep2" class="form-control" value="가는 날짜" name="sDepPlandTime">
-									<div><br></div>
-									
-									<div>
-										<button type="button" id="select_person_btn" data-toggle="collapse" data-target="#oneway_select_person"
-										style="color:#777; background-color:#eeeeee;">
-											<span>성인</span>&nbsp;<span id="oneway_adult_headCount">1</span>명·<span>소아</span>&nbsp;<span id="oneway_child_headCount">0</span>명·<span>유아</span>&nbsp;<span id="oneway_infant_headCount">0</span>명
-										</button>
-									</div>
-									<div id="oneway_select_person" class="collapse">	
-										<div class="row oneway_AYIPart">
-											<p value="성인">성인</p>
-										</div>
-										<select class="row" id="oneway_adult_number" name="adultCount">
-											<option value="1" selected>1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>
-										<br>
-										<div class="row oneway_AYIPart">
-											<p value="소아">소아</p>
-										</div>
-										<select class="row" id="oneway_child_number" name="childCount">
-											<option value="0" selected>0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>
-										<br>
-										<div class="row oneway_AYIPart">
-											<p value="유아">유아</p>
-										</div>
-										<select class="row" id="oneway_infant_number" name="infantCount">
-											<option value="0" selected>0</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-										</select>						
-									</div>
-									<input type="submit" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
-								</form>
-							</article>
-					</div>
-======= -->
             <!-- Main -->
                <div id="main">
                   <!-- 왕복 -->
                      <article id="home" class="panel" style="background-color:#eeeeee;">
                         <form action="getReservationDataSearch.tpo">
-                           <select id="twoway_dep" name="sDepAirportNm">
-                              <option selected="selected" >출발지</option>
+                           <select id="twoway_dep" name="sDepAirportNm" required>
+                              <option value="" >출발지</option>
                               <option value="NAARKSI">인천</option>
                               <option value="NAARKSS">김포</option>
                               <option value="NAARKPC">제주</option>
@@ -313,8 +81,8 @@
                            &ensp;
                            <span><img src="/resources/images/double-arrow.png" style="width:32px;height:32px;"></span>
                            &ensp;
-                           <select id="twoway_arr" name="sArrAirportNm">
-                              <option selected="selected">도착지</option>
+                           <select id="twoway_arr" name="sArrAirportNm" required>
+                              <option value="">도착지</option>
                               <option value="NAARKSI">인천</option>
                               <option value="NAARKSS">김포</option>
                               <option value="NAARKPC">제주</option>
@@ -334,12 +102,12 @@
                            <br><br>
                         
                            <div>
-                              가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime" value="가는 날짜">
+                              가는 날짜 : <input style="width:35%;" type="text" id="datePicker_dep1" class="form-control" name="sDepPlandTime" value="가는 날짜" required>
                            </div>
                            
                            &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&nbsp;
                            <div>
-                              오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" name="sArrPlandTime" value="오는 날짜">
+                              오는 날짜 : <input style="width:35%;" type="text" id="datePicker_arr1" class="form-control" name="sArrPlandTime" value="오는 날짜" required>
                            </div>
                            
                            <script>
@@ -407,15 +175,15 @@
                                  <option value="9">9</option>
                               </select>
                            </div>
-                           <input type="submit" name="항공권 검색" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
+                           <input type="submit" id="twowayFlight" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;"><!--  onclick="return twoway_validate();" -->
                         </form>
                      </article>
                      
                   <!-- 편도 -->
                      <article id="contact" class="panel" style="background-color:#eeeeee;">
                         <form action="getReservationData.tpo">
-                           <select id="oneway_dep" name="sDepAirportNm">
-                              <option selected="selected">출발지</option>
+                           <select id="oneway_dep" name="sDepAirportNm" required>
+                              <option value="selected">출발지</option>
                               <option value="NAARKSI">인천</option>
                               <option value="NAARKSS">김포</option>
                               <option value="NAARKPC">제주</option>
@@ -435,7 +203,7 @@
                            &ensp;
                            <span><img src="/resources/images/next.png"></span>
                            &ensp;
-                           <select id="oneway_arr" name="sArrAirportNm">
+                           <select id="oneway_arr" name="sArrAirportNm" required>
                               <option selected="selected">도착지</option>
                               <option value="NAARKSI">인천</option>
                               <option value="NAARKSS">김포</option>
@@ -456,7 +224,7 @@
                            <br><br>
                         
                            가는 날짜 : 
-                           <input style="width:35%;" type="text" id="datePicker_dep2" class="form-control" value="가는 날짜" name="sDepPlandTime">
+                           <input style="width:35%;" type="text" id="datePicker_dep2" class="form-control" value="가는 날짜" name="sDepPlandTime" required>
                            <div><br></div>
                            
                            <div>
@@ -513,11 +281,10 @@
                                  <option value="9">9</option>
                               </select>                  
                            </div>
-                           <input type="submit" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;">
+                           <input type="submit" id="onewayFlight" value="항공권 검색" style="display:inline-block; float:right; margin:-50px -10px;"><!--  onclick="return oneway_validate();" -->
                         </form>
                      </article>
                </div>
-<!-- >>>>>>> refs/remotes/origin/1221_CYJ -->
 
             <!-- Scripts -->
             <script src="resources/assets/js/jquery.min.js"></script>
@@ -536,15 +303,8 @@
                       startDate: '+3d',   //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
                       endDate: '+3m',   //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
                       autoclose : true,   //사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
-                      /* calendarWeeks : false, */ //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
-                      /* clearBtn : false, */ //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-                      /* datesDisabled : ['2019-06-24','2019-06-26'], */ //선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
-                      /* daysOfWeekDisabled : [0,6], */   //선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
-                      /* daysOfWeekHighlighted : [3], */ //강조 되어야 하는 요일 설정
                       disableTouchKeyboard : false,   //모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
                       immediateUpdates: false,   //사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
-                      /* multidate : false, */ //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
-                      /* multidateSeparator :",", */ //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
                       templates : {
                           leftArrow: '&laquo;',
                           rightArrow: '&raquo;'
@@ -593,23 +353,6 @@
                       language : "ko"   //달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
                       
                   }); //datepicker end
-                  /* .on("changeDate", function(e) {
-                     if
-                          //이벤트의 종류
-                          //show : datePicker가 보이는 순간 호출
-                          //hide : datePicker가 숨겨지는 순간 호출
-                          //clearDate: clear 버튼 누르면 호출
-                          //changeDate : 사용자가 클릭해서 날짜가 변경되면 호출 (개인적으로 가장 많이 사용함)
-                          //changeMonth : 월이 변경되면 호출
-                          //changeYear : 년이 변경되는 호출
-                          //changeCentury : 한 세기가 변경되면 호출 ex) 20세기에서 21세기가 되는 순간
-                          
-                          console.log(e);// 찍어보면 event 객체가 나온다.
-                          //간혹 e 객체에서 date 를 추출해야 하는 경우가 있는데 
-                          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시)
-                          // 위와 같은 형태로 보인다. 
-                          // 추후에 yyyy-mm-dd 형태로 변경하는 코드를 업로드 하겠습니다. 
-                     }  */
                   $('#datePicker_dep1').datepicker().on('changeDate', function (selected) {
                      var minDate = new Date(selected.date.valueOf());
                      $('#datePicker_arr1').datepicker('setStartDate', minDate);
@@ -652,11 +395,39 @@
                      $("#oneway_infant_headCount").text(data);
                   });
                });
-               /* select box name으로 접근하여 선택 값 읽기
-               $(document).ready(function() {
-                  $("select[name=sDepAirportNm]").val();
-                  $("select[name=sArrAirportNm]").val();
-               }); */
+               
+               // 왕복 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜,오는날짜가 체크되어있지않을 경우
+               // alert 창 띄움
+				$("#twowayFlight").click(function() {
+				   var sDepAirportNm = $("#twoway_dep").val();
+				   var sArrAirportNm = $("#twoway_arr").val();
+				   var sDepPlandTime = $("#datePicker_dep1").html();
+				   var sArrPlandTime = $("#datePicker_arr1").html();
+				   if(sDepAirportNm == "") {
+				      alert("출발지를 선택해주세요.");
+				      $("#twoway_dep").focus();
+				      return false;
+				   }
+				   else if(sArrAirportNm == "") {
+					   alert("도착지를 선택해주세요.");
+					   $("#twoway_arr").focus();
+					   return false;
+				   }
+				   else if(sDepPlandTime == 0) {
+					   alert("가는 날짜를 선택해주세요.");
+					   $("#datePicker_dep1").focus();
+					   return false;
+				   }
+				   else if(sArrPlandTime == 0) {
+					   alert("오는 날짜를 선택해주세요.");
+					   $("#datePicker_arr1").focus();
+					   return false;
+				   }
+				});
+               
+				// 편도 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜가 체크되어있지않을 경우
+	            // alert 창 띄움
+               
             </script>
       
       </div>
