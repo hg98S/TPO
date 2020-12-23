@@ -48,4 +48,8 @@
    			select * from sight where sparking like '%주차 가능%' and sparking='있음' and SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음' order by sno desc
    		</if>
    </select>
+   
+   <select id="getListCount" resultType="int">
+   		select count(*) from sight
+   </select>
 </mapper>

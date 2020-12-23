@@ -31,11 +31,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.google.gson.Gson;
+import com.kh.tpo.sight.common.Pagination;
 import com.kh.tpo.sight.domain.PageInfo;
 import com.kh.tpo.sight.domain.Sight;
 import com.kh.tpo.sight.domain.SightReview;
 import com.kh.tpo.sight.service.SightService;
-import com.kh.tpo.sight.store.Pagination;
 
 @Controller
 public class SightController {
@@ -49,34 +49,38 @@ public class SightController {
 //  // sightList주소 불러오고, 페이징처리까지
 	  @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
 		public ModelAndView sightList (ModelAndView mv,ArrayList<Sight> sightList,
-				@RequestParam(value="page", required=false)Integer page, Model model) {
-		  
-		  
-		  ArrayList<Sight> sList = sService.selectSightList();
-			  
+				@RequestParam(value="page", required=false)Integer page, Model model) throws Exception{
+		  System.out.println(page);
+		  int currentPage = (page!=null)? page:1;
+		  int listCount = sService.getListCount();
+		  System.out.println(listCount);
+		  PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		  System.out.println(pi.toString());
+		  ArrayList<Sight> sList = sService.selectSightList(pi);
+//		  for(Sight list: sList) {
+//				System.out.println(list.toString());
+//			}
+			  // DB에 저장된 값이 있는 경우
 			  if(!sList.isEmpty()) {
 				  mv.addObject("sList", sList);
+				  mv.addObject("pi", pi);
 				  mv.setViewName("sight/sightList");;
-			  } else {
-				  try {
-					ac.getSightList(sightList);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				  if(!sList.isEmpty()) {
-					  mv.addObject("sList", sList);
-					  mv.setViewName("sight/sightList");;
-				  } else {
-					  mv.addObject("msg", "명소 조회 실패");
-					  mv.setViewName("common/errorPage");
-				  }
+			  }
+//			  else{ // DB에 저장된 값이 없는 경우
+//				 ac.getSightList(sightList);
+//				  if(!sList.isEmpty()) {
+//					  mv.addObject("sList", sList);
+//					  mv.setViewName("sight/sightList");;
+//				  } else {
+//					  mv.addObject("msg", "명소 조회 실패");
+//					  mv.setViewName("common/errorPage");
+//				  }
+//			  }
+			  else {
+				  mv.setViewName("common/errorPage");
 			  }
 			  return mv;
 		  }
-//		  for(SightList list: sList) {
-//				System.out.println(list.toString());
-//			}
 		  
 //		  if(sList == null) {
 //		  int currentPage = (page != null) ? page:1;
@@ -94,10 +98,10 @@ public class SightController {
 		  
 		 
 	  
-	  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
-	  public ModelAndView selectSight(ModelAndView mv, int sNo ,HttpServletRequest request) {
-		  Sight sight = new Sight();
-		  System.out.println(sNo);
+//	  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
+//	  public ModelAndView selectSight(ModelAndView mv, int sNo ,HttpServletRequest request) {
+//		  Sight sight = new Sight();
+//		  System.out.println(sNo);
 //		  if(sService.selectSight(sNo) == null ){
 //			  ac.getSightDetail(sNo);
 //			  mv.addObject("msg","다시 시도해 주십시오");
@@ -111,8 +115,8 @@ public class SightController {
 //			  System.out.println(sight.toString());
 //
 //		  }
-		  return mv;
-	  }
+//		  return mv;
+//	  }
 	  
 	  @RequestMapping(value="sightReviewWrieteForm.tpo" , method= RequestMethod.GET )
 	  public String writeReview() {
@@ -167,18 +171,30 @@ public class SightController {
 	  // 명소체크된 값 불러오는 메소드
 	  @ResponseBody
 	  @RequestMapping(value="sightChkList.tpo", method=RequestMethod.GET)
-	  public void sightChkList(HttpServletResponse response, int parking, int babyCar, int pet) throws Exception {
+	  public void sightChkList(HttpServletResponse response, int parking, int babyCar, int pet, @RequestParam(value="page", required=false)Integer page) throws Exception {
 		  System.out.println("parking: " + parking +", babyCar: " + babyCar + ", pet: " + pet);
+		  System.out.println(page);
+		  int currentPage = (page!=null)? page:1;
+		  int listCount = sService.getListCount();
+		  System.out.println(listCount);
+		  PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		  System.out.println(pi.toString());
 		  HashMap<String,Integer> chkValue = new HashMap<String, Integer>();
 		  chkValue.put("parking", parking);
 		  chkValue.put("babyCar", babyCar);
 		  chkValue.put("pet", pet);
-		  ArrayList<Sight> sightList = sService.sightChkList(chkValue);
-//		  for(Sight sight: sightList) {
-//			  System.out.println(sight.toString());
-//		  }
-		  new Gson().toJson(sightList, response.getWriter());
+		  ArrayList<Sight> sightList = sService.sightChkList(chkValue,pi);
+		  for(Sight sight: sightList) {
+		  System.out.println(sight.toString());
+		  }
+		  HashMap<String,Object> sightPage = new HashMap<String,Object>();
+		  sightPage.put("sightList", sightList);
+		  sightPage.put("pi", pi);
+	      response.setContentType("application/json");
+	      response.setCharacterEncoding("utf-8");
+		  new Gson().toJson(sightPage, response.getWriter());
 	  }
+	  
 }
 
 	    
