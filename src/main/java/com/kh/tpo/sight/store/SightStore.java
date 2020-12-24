@@ -18,20 +18,14 @@ public interface SightStore {
 	public int inserReply(SightReply reply);
 	public Sight selectSight(int sNo);
 	/*
-	 * 체크에 따른 명소리스트 불러오기
-	 * 
-	 * @param HashMap<String,int>
-	 * @return ArrayList<Sight>
-	 * */
-	public ArrayList<Sight> sightChkList(HashMap<String,Integer> chkValue,PageInfo pi);
-	/*
 	 * DB에 저장된 명소리스트 갯수
 	 * 
 	 * @param 
 	 * @return int
 	 * */
 	public int getListCount();
-	
+	public ArrayList<Sight> sightChkList(PageInfo pi,HashMap<String,Integer> chkValue);
+	public int sightChkCount(HashMap<String,Integer> chkValue);
 	/* review */
 	public ArrayList<SightReview> selectReviewList(int sNo);
 	public SightReview selectReview(int reviewNo);

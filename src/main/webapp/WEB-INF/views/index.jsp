@@ -121,7 +121,6 @@
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<!-- 객실리스트를 돌면서 해당 숙소와 일치하는 정보를 가져옴 -->
 						<!--  각 클래스명을 다르게해서 줘야함 -->
-					<a href="${sightList.sPicture }" class="sight">
 						<figure>
 						<% if(i==0) { %>
 						<div class="sight1">
@@ -177,7 +176,7 @@
 									</c:choose>
 								</p>
 								<p style="text-align:center">
-									<a><span class="btn btn-primary">바로가기</span></a>
+									<a class="btn btn-primary" href="selectSight.tpo?sno=${sightList.sNo }">바로가기</a>
 								</p>
 							</div>
 						</a>
@@ -334,7 +333,7 @@
 		    });
 		}); 
 		
-		$('.sight1').each(function() { // the containers for all your galleries
+	/* 	$('.sight1').each(function() { // the containers for all your galleries
 		    $(this).magnificPopup({
 		        delegate: 'a', // the selector for gallery item
 		        type: 'image',
@@ -360,7 +359,7 @@
 		          enabled:true
 		        }
 		    });
-		});
+		}); */
 	</script> 
 </body>
 </html>

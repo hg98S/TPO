@@ -49,6 +49,33 @@
    		</if>
    </select>
    
+   <select id="getChkCount" resultType="int" parameterType="HashMap">
+      	<if test="parking == 0 and babyCar == 0 and pet == 0">
+   			select count(*) from sight 
+   		</if>
+   		<if test="parking == 1 and babyCar == 0 and pet == 0">
+   			select count(*) from sight where sparking like '%있음%'
+   		</if>
+   		<if test="parking == 0 and babyCar == 1 and pet == 0">
+   		 	select count(*) from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가'
+   		</if> 
+   		<if test="parking == 0 and babyCar == 0 and pet == 1">
+   		 	select count(*) from sight where spet!='불가' and spet!='없음' 
+   		</if> 
+  		<if test="parking == 1 and babyCar == 1 and pet == 0">
+  			select count(*) from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and sparking like '%있음%' 
+   		</if>
+   		 <if test="parking == 0 and babyCar == 1 and pet == 1">
+   		 	select count(*) from sight where SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음'
+   		</if> 
+   		<if test="parking == 1 and babyCar == 0 and pet == 1">
+   			select count(*) from sight where sparking like '%주차 가능%' and sparking='있음' and spet!='불가' and spet!='없음' 
+   		</if> 
+   		<if test="parking == 1 and babyCar == 1 and pet == 1">
+   			select count(*) from sight where sparking like '%주차 가능%' and sparking='있음' and SBABYCARRIAGE!='없음' and SBABYCARRIAGE!='불가' and spet!='불가' and spet!='없음'
+   		</if>
+   </select>
+   
    <select id="getListCount" resultType="int">
    		select count(*) from sight
    </select>

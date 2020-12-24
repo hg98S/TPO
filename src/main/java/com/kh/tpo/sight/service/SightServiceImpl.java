@@ -59,10 +59,6 @@ public class SightServiceImpl implements SightService{
 		return sStore.insertReview(review);
 	}
 
-	@Override
-	public ArrayList<Sight> sightChkList(HashMap<String, Integer> chkValue,PageInfo pi) {
-		return sStore.sightChkList(chkValue,pi);
-	}
 
 	@Override
 	public int getListCount() {
@@ -82,6 +78,16 @@ public class SightServiceImpl implements SightService{
 	@Override
 	public int deleteReview(int reviewNo) {
 		return sStore.deleteReview(reviewNo);
+	}
+
+	@Override
+	public ArrayList<Sight> sightChkList(PageInfo pi, HashMap<String, Integer> chkValue) {
+		return sStore.sightChkList(pi, chkValue);
+	}
+
+	@Override
+	public int sightChkCount(HashMap<String,Integer> chkValue) {
+		return sStore.sightChkCount(chkValue);
 	}
 
 }

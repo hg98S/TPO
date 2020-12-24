@@ -10,43 +10,59 @@
 .checkPwd{
 	display:none;
 }
-
+.myPageList{
+	list-style:none;
+}
 </style>
 </head>
-<body>
+<body style="background:#ececec;">
 	<jsp:include page="/include/includeHeader.jsp"></jsp:include>
-	<div id="page"></div>
-	<section id="section" style="margin-top: 50px;">
-		<h1 id="title" align="center">${loginUser.userName } 님의 정보 보기</h1>
-		<!-- 이놈이 회원정보 div임 -->
-	<div id="pageCategory">
-	<div id="myPage" class="centerText">
+	<div id="page" ></div>
+	<section id="section" style="margin-top:50px;">
+	  <div style="margin-left:380px;">
+		<b style="font-size:25px;font-weight:bold; color:black">마이페이지</b> <small style="color:#b9b9b9"> my Page</small>
+		<hr style="height: 1px; width:70%; background-color: #007c6b;align:left; margin-left:0;">
+		<div id="registerleft" style="float:left; width:20%; padding-left:0px;">
+							<ul class="myPageList" style="line-style:none; padding-left:0px;">
+							<li ><a href="myPageView.tpo" onclick="fnMemberInfo()"><b style="color:gray">개인정보 관리</b></a></li>
+							<li><br></li>
+							<li><a href="#" onclick="fnReservationInfo()"><b style="color:gray">항공 예약 정보</b></a></li>
+							<li><br></li>
+							<li><a href="#" onclick="fnMemberDelete()"><b style="color:gray">회원 탈퇴</b></a></li>
+							</ul>
+		</div>
+		<div id="pageCategory">
+		<div id="myPage" class="centerText">
 		<form action="modifyMember.tpo" method="post">
 			<input type="hidden" name="userName" value="${loginUser.userName }">
-			<table width="650" cellspacing="5" style="margin:auto;">
+			<table class="registerForm" width="650" cellspacing="5" style="margin:auto;">
 				<tr>
-					<td>* 아이디</td>
+					<td> 아이디</td>
 					<td><input type="text" name="userId" id="userId" value="${loginUser.userId }" readonly></td>
+					<td><hr ></td>
 				</tr>
 				<tr>
-					<td>* 비밀번호</td>
+					<td> 비밀번호</td>
 					<td><input id="userPwd" type="password" name="userPwd" value="${loginUser.userPwd }" required></td>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 비밀번호 확인</td>
+					<td> 비밀번호 확인</td>
 					<td>
 					<input id="reuserPwd"  type="password" name="reuserPwd" required>
 					<span class="checkPwd ok" style="color:green">사용가능한 비밀번호 입니다.</span>
 					<span class="checkPwd error" style="color:red">비밀번호가 일치하지 않습니다.</span>
 					<span class="checkPwd check" style="color:red">비밀번호를 확인해주세요.</span>
 					</td>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 나이</td>
+					<td> 나이</td>
 					<td><input type="number" min="20" max="100" name="age" value="${loginUser.age }" readonly></td>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 성별</td>
+					<td> 성별</td>
 					<c:if test="${loginUser.gender eq 'M' }">
 					<td>
 					<input type="radio" name="gender" value="M" checked>남
@@ -59,9 +75,10 @@
 						<input type="radio" name="gender" value="F" checked>여
 						</td>
 					</c:if>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 국내/외 여부</td>
+					<td> 국내/외 여부</td>
 					<c:if test="${loginUser.domestic eq '국내인' }">
 					<td>
 					<input type="radio" name="domestic" value="국내인" checked>국내인
@@ -74,14 +91,17 @@
 						<input type="radio" name="domestic" value="국외인" checked>국외인
 						</td>
 					</c:if>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 이메일</td>
+					<td> 이메일</td>
 					<td><input type="email" name="email" value="${loginUser.email }" required></td>
+					<td><hr></td>
 				</tr>
 				<tr>
-					<td>* 전화번호</td>
+					<td> 전화번호</td>
 					<td><input type="text" name="phone" value="${loginUser.phone }" required></td>
+					<td><hr></td>
 				</tr>
 				<!-- 디비에서 가져온 주소값은 우편번호, 도로명 주소, 상세주소 형태 -->
 				<!-- ,(comma)를 기준으로  잘라서 우편번호, 도로명 주소, 상세 주소에 입력 -->
@@ -94,6 +114,7 @@
 						<input type="text" id="member_postcode" name="post" size="6" value="${addr }" required>
 						<button type="button" onclick="member_execDaumPostcode()">검색</button>
 					</td>
+					<td><hr></td>
 				</tr>
 				</c:if>
 				
@@ -101,6 +122,7 @@
 				<tr>
 					<td>도로명 주소</td>
 					<td><input type="text" id="member_address" name="roadAddress" value="${addr }" style="width:250px;" required></td>
+					<td><hr></td>
 				</tr>
 				</c:if>
 				
@@ -108,6 +130,7 @@
 				<tr>
 					<td>상세 주소</td>
 					<td><input type="text" id="member_detailAddress" name="detailAddress" value="${addr }" required></td>
+					<td><hr></td>
 				</tr>
 				</c:if>
 				
@@ -115,29 +138,30 @@
 				<tr>
 					<td>지번</td>
 					<td><input type="text" id="member_extraAddress"  name="extraAddress" value="${addr }" required></td>
+					<td><hr></td>
 				</tr>
 				</c:if>
 				</c:forTokens>
-					
-				<tr>
-					<td colspan="2" align="center">
-					<input type="submit" onclick="return fnSubmit()" value="수정하기">
-					<input type="reset" value="입력 취소">
+				<tr style="line-height:100px;">
+					<td colspan="4" align="center" style="padding-left:200px;">
+					<input class="btn btn-primary" type="submit" onclick="return fnSubmit()" value="수정하기">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input class="btn btn-danger" type="reset" value="입력 취소">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
 	</div>
-	<div style="text-align:center; margin-top:20px;">
-		<a href="myPageView.tpo" onclick="fnMemberInfo()"><b style="color:skyblue">개인정보 관리</b></a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" onclick="fnReservationInfo()"><b style="color:skyblue">항공 예약 정보</b></a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" onclick="fnMemberDelete()"><b style="color:skyblue">회원 탈퇴</b></a>
 	</div>
+		<!-- 이놈이 회원정보 div임 -->
 	</section>
+	
+	
 	<jsp:include page="/include/includeFooter.jsp"></jsp:include>
+	
+	
+	
 	<script>
 	//우편주소 script 
 		 function member_execDaumPostcode() {

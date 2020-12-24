@@ -103,6 +103,7 @@ public class MainController {
 		for(int i=0; i<gubunList.getLength(); i++) {
 			urban = new Urban();
 			// 첫번째꺼랑 마지막 합계는 가져오지 말것
+			System.out.println(i!=0&&i!=gubunList.getLength()-1);
 			if(i!=0&&i!=gubunList.getLength()-1) {
 				//	 	System.out.println(urban.getUrbanNo());
 				Element item = (Element)doc.getElementsByTagName("item").item(i);

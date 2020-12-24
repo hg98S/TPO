@@ -10,13 +10,27 @@
 	<div id="deletePage">
 		<form action="deleteMember.tpo" method="post">
 		<input type="hidden" id="userId" name="userId" value="${loginUser.userId }">
-		<table width="500" cellspacing="5" style="margin:auto;">
+		<table width="650" cellspacing="5" style="margin:auto;">
 				<tr>
-					<td>* 비밀번호</td>
-					<td><input type="password" id="userPwd" name="userPwd"></td>
-					<td><input type="submit" id="submit" onclick="return fnDeleteButton()" value="탈퇴하기"></td>
+					<td>
+							<ul class="myPageList" style="line-style:none;">
+						 	<li><b style="font-size:25px;font-weight:bold; color:black">마이페이지</b> <small style="color:#b9b9b9"> my Page</small></li>
+						 	<li><hr style="height: 1px; width:100%; background-color: #007c6b"></li>
+							<li ><a href="myPageView.tpo" onclick="fnMemberInfo()"><b style="color:gray">개인정보 관리</b></a></li>
+							<li><br></li>
+							<li><a href="#" onclick="fnReservationInfo()"><b style="color:gray">항공 예약 정보</b></a></li>
+							<li><br></li>
+							<li><a href="#" onclick="fnMemberDelete()"><b style="color:gray">회원 탈퇴</b></a></li>
+							</ul>
+					</td>
+			       <td style="width:50px;">
+					</td>
+					<td>비밀번호
+					<input type="password" id="userPwd" name="userPwd">
+					<input type="submit" id="submit" onclick="return fnDeleteButton()" value="탈퇴하기">
+					</td>
 				</tr>
-		</table>
+		</table>	
 		</form>
 	</div>
 	<script>
