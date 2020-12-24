@@ -59,7 +59,6 @@ public class SightServiceImpl implements SightService{
 		return sStore.insertReview(review);
 	}
 
-
 	@Override
 	public int getListCount() {
 		return sStore.getListCount();
@@ -88,6 +87,10 @@ public class SightServiceImpl implements SightService{
 	@Override
 	public int sightChkCount(HashMap<String,Integer> chkValue) {
 		return sStore.sightChkCount(chkValue);
+	}
+	@Override
+	public int modifyReview(SightReview review) {
+		return sStore.modifyReview(review);
 	}
 
 }

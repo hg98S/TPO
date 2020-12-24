@@ -99,5 +99,9 @@ public class SightStoreLogic implements SightStore{
 		return sqlSession.selectOne("sightMapper.getChkCount",chkValue);
 	}
 
+	@Override
+	public int modifyReview(SightReview review) {
+		return sqlSession.update("sightMapper.modifyReview", review);
+	}
 
 }
