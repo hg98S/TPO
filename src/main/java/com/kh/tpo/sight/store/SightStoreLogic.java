@@ -93,5 +93,10 @@ public class SightStoreLogic implements SightStore{
 		return sqlSession.delete("sightMapper.deleteReview", reviewNo);
 	}
 
+	@Override
+	public int modifyReview(SightReview review) {
+		return sqlSession.update("sightMapper.modifyReview", review);
+	}
+
 
 }

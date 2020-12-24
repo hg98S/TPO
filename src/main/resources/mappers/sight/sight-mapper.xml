@@ -70,5 +70,11 @@
 		DELETE FROM REVIEW
 		WHERE REVIEWNO=#{reviewNo}
 	</delete>
+	<update id="modifyReview">
+		UPDATE REVIEW
+		SET REVIEWTITLE=#{reviewTitle} , REVIEWCONTENT=#{reviewContent}
+		 , REVIEWSCORE=#{reviewScore} , REVIEWPICTURE=#{reviewPicture}
+		WHERE REVIEWNO=#{reviewNo}
+	</update>
 	
 </mapper>

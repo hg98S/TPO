@@ -102,8 +102,10 @@ public class SightController {
 		  public ModelAndView selectSight(ModelAndView mv,HttpServletRequest request) {
 			  Sight sight = new Sight();
 			  ArrayList<SightReview> rList = null;
-			  String sNo = request.getParameter("sno");
-			  int sightNumber = Integer.parseInt(sNo);
+//			  String sNo = request.getParameter("sno");
+			  int sightNumber = Integer.parseInt(request.getParameter("sno"));
+			  
+			  
 			  if(sService.selectSight(sightNumber) == null ){
 				  ac.getSightDetail(sightNumber);
 				  mv.addObject("msg","다시 시도해 주십시오");
@@ -143,6 +145,7 @@ public class SightController {
 	  public ModelAndView  insertReview (SightReview review, ModelAndView mv, 
 			  @RequestParam(name="uploadFile", required=false)MultipartFile uploadFile, HttpServletRequest request  ) {
 		  
+		  String sNo = request.getParameter("sNo");
 		  if(!uploadFile.getOriginalFilename().equals("")) {
 			  String filePath = saveFile(uploadFile, request);
 			  if(filePath != null) {
@@ -153,9 +156,9 @@ public class SightController {
 		  
 		  int result = sService.insertReview(review);
 		  if(result>0) {
-		  mv.addObject(review).setViewName("sight/sightDetail");
+			  mv.addObject("sno",sNo).setViewName("redirect:selectSight.tpo");
 		  }else {
-			  mv.addObject("msg", "리뷰 등록실패!").setViewName("common/errorPage");
+			  mv.addObject("msg", "리뷰 등록 실패").setViewName("redirect:common/errorPage");
 		  }
 		  return mv;
 	  }
@@ -212,22 +215,19 @@ public class SightController {
 	  
 	  
 		@RequestMapping(value="deleteReview.tpo", method=RequestMethod.GET)
-		public String reviewDelete ( Model model, HttpServletRequest request) {
+		public ModelAndView deleteReview ( ModelAndView mv, HttpServletRequest request) {
 			int reviewNo = 0;
 			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+			String sNo = request.getParameter("sNo");
 			SightReview review = sService.selectReview(reviewNo);
 			int result = sService.deleteReview(reviewNo);
 			
-			if(result >0) {
-				if(review.getReviewPicture() != null) {
-					deleteFile(review.getReviewPicture(), request);
-				}
-				return "redirect:sightList.rpo";
-			}else {
-				model.addAttribute("msg", "공지사항 삭제 실패");
-				return "common/errorPage";
-			}
-			
+			if(result>0) {
+				  mv.addObject("sno",sNo).setViewName("redirect:selectSight.tpo");
+			  }else {
+				  mv.addObject("msg", "리뷰 등록 실패").setViewName("redirect:common/errorPage");
+			  }
+			  return mv;
 		}
 		public void deleteFile(String fileName, HttpServletRequest request) {
 			// 파일 저장 경로 설정
@@ -239,8 +239,43 @@ public class SightController {
 			if(deleteFile.exists()) {
 				deleteFile.delete();
 			}
+		}
+		@RequestMapping(value="updateReviewView.tpo", method=RequestMethod.GET)
+		public ModelAndView updateReviewView (ModelAndView mv, int reviewNo, HttpServletRequest request ) {
+			mv.addObject("review", sService.selectReview(reviewNo))
+			.setViewName("sight/reviewUpdateForm");
 			
+			return mv;
+		}
+		
+		@RequestMapping(value="updateReview.tpo", method=RequestMethod.POST)
+		public ModelAndView reviewUpdate (ModelAndView mv, SightReview review, HttpServletRequest request, MultipartFile reloadFile) {
+			System.out.println(review);
+			String sNo = request.getParameter("sNo");
+			// 새로 업로드 된 파일이 있을경우
+			if (reloadFile != null && !reloadFile.isEmpty()) {
+				// 기존 업로드된 파일이 있을경우
+				if(review.getReviewPicture() != null) {
+					deleteFile (review.getReviewPicture(), request);
+				}
+				// 새로 업로드 된 파일 삭제
+				String  renameFileName= saveFile(reloadFile, request);
+				// 새로  업로드 된 파일이 잘 저장되어있다면
+				// DB 에 저장하도록세팅
+				if(renameFileName != null) {
+					review.setReviewPicture(reloadFile.getOriginalFilename());
+					//review.setReviewPicture(renameFileName);
+				}
+			}
+			int result = sService.modifyReview(review);
+			System.out.println(review);
+			if(result>0) {
+				mv.addObject("sno",sNo).setViewName("redirect:selectSight.tpo");
+			}else {
+				mv.addObject("msg", "리뷰 수정실패").setViewName("common/errorPage");
+			}
 			
+			return mv;
 		}
 }
 

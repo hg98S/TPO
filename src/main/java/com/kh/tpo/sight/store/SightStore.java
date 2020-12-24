@@ -36,4 +36,5 @@ public interface SightStore {
 	public ArrayList<SightReview> selectReviewList(int sNo);
 	public SightReview selectReview(int reviewNo);
 	public int deleteReview(int reviewNo);
+	public int modifyReview(SightReview review);
 }

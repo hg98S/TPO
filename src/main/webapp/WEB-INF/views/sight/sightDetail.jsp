@@ -13,7 +13,18 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<title>이것은 명소 상세 정보다 이말이야!</title>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=710b6c91d3c875d55970ff8a383d27ce&libraries=services"></script>
+	
+<title>관광 명소 상세페이지</title>
+<style>
+ul img{
+	width:150px;
+	height: 150px;
+}
+.media-body {
+	width: 100%;
+}
+</style>
 </head>
 <body>
 	<!--  header -->
@@ -27,8 +38,8 @@
 
 		<div class="media">
 			<div class="media-left media-middle">
-				<a href="#"> <img class="media-object" src="${sight.sPicture}"  alt="명소임ㅇㅇ아무튼명소">
-				</a>
+				<a href="#"> <img class="media-object" src="${sight.sPicture}"  alt="명소임ㅇㅇ아무튼명소"></a>
+				<div id="map" style="width:500px;height:400px;"></div>
 			</div>
 			<div class="media-body">
 				<h4 class="media-heading">
@@ -38,14 +49,32 @@
 			</div>
 		</div>
 		<div id="buttons">
-			<button class="btn btn-primary btn-xs">메인페이지</button>
+			<button onclick="returnList()" class="btn btn-primary btn-xs">리스트</button>
 			<button onclick="writeForm()" id="writeReview" type="button" class="btn btn-info btn-xs">리뷰작성</button>
 
 		</div>
 	</div>
+		<ul class="list-unstyled">
+		<c:forEach items="${review}" var="reviewList">
+			<li class="media"><img class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }"
+				alt="리뷰사진">
+				<div class="media-body">
+					<h5 class="mt-0 mb-1">${reviewList.reviewTitle }</h5>
+					${reviewList.reviewContent }
+				</div>
+				  <a href="javascript:location.href='deleteReview.tpo?reviewNo=${reviewList.reviewNo}'"
+				  class="btn btn-primary">리뷰삭제</a>
+				  <a href="javascript:location.href='updateReviewView.tpo?reviewNo=${reviewList.reviewNo}'"
+				  class="btn btn-primary">리뷰수정</a>
+				</li>
+		</c:forEach>
+	</ul>
 	
-			
+		
 <script>
+	function returnList(){
+		location.href="sightList.tpo"
+	}
 	function writeForm(){
 		location.href="sightReviewWrieteForm.tpo?sNo=${sight.sNo}"
 	}

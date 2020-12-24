@@ -84,4 +84,9 @@ public class SightServiceImpl implements SightService{
 		return sStore.deleteReview(reviewNo);
 	}
 
+	@Override
+	public int modifyReview(SightReview review) {
+		return sStore.modifyReview(review);
+	}
+
 }

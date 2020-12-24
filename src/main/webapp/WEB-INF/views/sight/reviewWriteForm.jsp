@@ -15,7 +15,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<title>이것은 명소 상세 정보다 이말이야!</title>
+<title>리뷰 작성 페이지</title>
 </head>
 <body>
 	<!--  header -->
@@ -65,9 +65,8 @@
                     <input type="hidden" name="ref_step"  value="">
                     <input type="hidden" name="ref_level"  value="">
                  
-                    <input type="submit" value="답글쓰기완료" class="btn btn-success">
+                    <input type="submit" value="리뷰작성완료" class="btn btn-success">
                     <input type="reset" value="취소" class="btn btn-warning">
-                    <input type="button"  class="btn btn-primary" onclick="location.href=''" value="전체글보기">
                 </td>
             </tr>
              

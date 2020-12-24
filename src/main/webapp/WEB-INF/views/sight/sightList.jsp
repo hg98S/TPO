@@ -133,7 +133,7 @@ img {
 							</c:if>
 							<div class="card-body">
 								<h5 class="card-title">${sightList.sName}</h5>
-								<a href="selectSight.kh?sno=${sightList.sNo }"  class="btn btn-primary">More</a>
+								<a href="selectSight.tpo?sno=${sightList.sNo }"  class="btn btn-primary">More</a>
 							</div>
 						</div>
 					</div>
