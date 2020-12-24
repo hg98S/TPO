@@ -370,7 +370,7 @@
 		                   	} else if( sIndex == 3) { // 좌석등급
 		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 		                   	} else if( sIndex == 4) { // 금액
-		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 		                   	}
 		                   	if(index == 1) {
 		                      	var depTime;
@@ -429,7 +429,7 @@
 			                } else if(sIndex == 3) {
 			                   $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 			                }else if(sIndex == 4) {
-	                     		$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+	                     		$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 	                  		}
 	                  		//console.log(index);
 	                  		if(index == 1) {
@@ -490,23 +490,28 @@
         <article>
         	<form action="passengerFormRound.tpo" method="get">
 	        	<div id="dep">
-			        <input type="text" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
-			        <input type="text" id="depAirlineNm" name="depAirlineNm" value="">
-			        <input type="text" id="depTime" name="depTime" value="">
-			        <input type="text" id="arrTime" name="arrTime" value="">
-			        <input type="text" id="seatGrade" name="seatGrade" value="">
-			        <input type="text" id="fare" name="fare" value="">
-			        <input type="text" id="people" name="people" value="${acCount }석">
+			        <input type="hidden" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
+			        <input type="hidden" id="depAirlineNm" name="depAirlineNm" value="">
+			        <input type="hidden" id="depTime" name="depTime" value="">
+			        <input type="hidden" id="arrTime" name="arrTime" value="">
+			        <input type="hidden" id="seatGrade" name="seatGrade" value="">
+			        <input type="hidden" id="fare" name="fare" value="원">
+			        <input type="hidden" id="people" name="people" value="${acCount }">
 		        </div>
 		        <div id="arr">
-			        <input type="text" id="depJourney2" name="depJourney2" value="${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }">
-			        <input type="text" id="depAirlineNm2" name="depAirlineNm2" value="">
-			        <input type="text" id="depTime2" name="depTime2" value="">
-			        <input type="text" id="arrTime2" name="arrTime2" value="">
-			        <input type="text" id="seatGrade2" name="seatGrade2" value="">
-			        <input type="text" id="fare2" name="fare2" value="">
-			        <input type="text" id="people2" name="people2" value="${acCount }석">
+			        <input type="hidden" id="depJourney2" name="depJourney2" value="${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }">
+			        <input type="hidden" id="depAirlineNm2" name="depAirlineNm2" value="">
+			        <input type="hidden" id="depTime2" name="depTime2" value="">
+			        <input type="hidden" id="arrTime2" name="arrTime2" value="">
+			        <input type="hidden" id="seatGrade2" name="seatGrade2" value="">
+			        <input type="hidden" id="fare2" name="fare2" value="원">
+			        <input type="hidden" id="people2" name="people2" value="${acCount }">
 		        </div>
+		        <input type="hidden" name="tCount" value="${tCount}">
+		        <input type="hidden" name="adultCount" value="${adultCount}">
+		        <input type="hidden" name="childCount" value="${childCount}">
+		        <input type="hidden" name="infantCount" value="${infantCount}">
+		        
 	            <div style="width: 35%; margin: auto;">
 	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
 	                    항공 스케줄 다시 선택

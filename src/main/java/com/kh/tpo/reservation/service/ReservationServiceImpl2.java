@@ -8,22 +8,16 @@ import org.springframework.stereotype.Service;
 import com.kh.tpo.member.domain.ReservationInfo;
 import com.kh.tpo.reservation.domain.Passenger;
 import com.kh.tpo.reservation.domain.Reservation;
-import com.kh.tpo.reservation.store.ReservationStore;
 
 @Service
-public class ReservationServiceImpl implements ReservationService{
+public class ReservationServiceImpl2 implements ReservationService2{
 	
 	@Autowired
-	public ReservationStore rStore;
+	public ReservationService2 rStore2;
 	
 	@Override
-	public int insertPassenger(Passenger passenger) {
-		return rStore.insertPassenger(passenger);
-	}
-
-	@Override
-	public int insertReservation(Reservation reservation) {
-		return rStore.insertReservation(reservation);
+	public int insertAll(Passenger passenger, Reservation reservation) {
+		return rStore2.insertAll(passenger, reservation);
 	}
 
 	@Override

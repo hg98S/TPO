@@ -11,6 +11,8 @@
 		<typeAlias type="com.kh.tpo.sight.domain.Sight" alias="Sight"/>
 		<typeAlias type="com.kh.tpo.sight.domain.SightReview" alias="SightReview"/>
 		<typeAlias type="com.kh.tpo.rest.domain.RestInfo" alias="RestInfo"/>
+		<typeAlias type="com.kh.tpo.reservation.domain.Passenger" alias="Passenger"/>
+		<typeAlias type="com.kh.tpo.reservation.domain.Reservation" alias="Reservation"/>
 	</typeAliases>
 	
 	<mappers>
@@ -18,5 +20,6 @@
 		<mapper resource="mappers/rest/rest-mapper.xml"/>
 		<mapper resource="mappers/main/main-mapper.xml"/>
 		<mapper resource="mappers/sight/sight-mapper.xml"/>
+		<mapper resource="mappers/reservation/reservation-mapper.xml"/>
 	</mappers>
 </configuration>

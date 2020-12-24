@@ -22,14 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.tpo.reservation.domain.FlightSchedule;
+import com.kh.tpo.reservation.domain.Passenger;
+import com.kh.tpo.reservation.domain.Reservation;
 import com.kh.tpo.reservation.domain.TestFlight;
 import com.kh.tpo.reservation.service.ReservationService;
 
 @Controller
 public class ReservationController {
 
-//	@Autowired
-//	private ReservationService reservationService;
+	@Autowired
+	private ReservationService rService;
 
 	// 메인페이지에서 항공권 검색창으로 이동
 	@RequestMapping(value = "reservation.tpo", method = RequestMethod.GET)
@@ -146,6 +148,9 @@ public class ReservationController {
 
 		model.addAttribute("fList", fList1);
 		model.addAttribute("fList2", fList2);
+		model.addAttribute("adultCount", adultCount);
+		model.addAttribute("childCount", childCount);
+		model.addAttribute("infantCount", infantCount);
 		model.addAttribute("acCount", acCount);
 		model.addAttribute("tCount", totalCount);
 		return "reservation/reservationSearchView";
@@ -164,6 +169,9 @@ public class ReservationController {
 		int totalCount = adultCount + childCount + infantCount;
 
 		model.addAttribute("fList", fList);
+		model.addAttribute("adultCount", adultCount);
+		model.addAttribute("childCount", childCount);
+		model.addAttribute("infantCount", infantCount);
 		model.addAttribute("acCount", acCount);
 		model.addAttribute("tCount", totalCount);
 		return "reservation/reservationSearchView2";
@@ -172,6 +180,7 @@ public class ReservationController {
 	// 서치뷰페이지에서 값을 받아서 passengerInsertForm에 뿌려주기(왕복)
 	@RequestMapping(value = "passengerFormRound.tpo", method = RequestMethod.GET)
 	public String passengerInsertForm(HttpServletRequest request, Model model) {
+
 		// 가는편
 		String depJourney = request.getParameter("depJourney");
 		String depAirlineNm = request.getParameter("depAirlineNm");
@@ -206,6 +215,17 @@ public class ReservationController {
 		model.addAttribute("fare2", fare2);
 		model.addAttribute("people2", people2);
 		
+		// 인원 수
+		int tCount = Integer.parseInt(request.getParameter("tCount"));
+		int adultCount = Integer.parseInt(request.getParameter("adultCount"));
+		int childCount = Integer.parseInt(request.getParameter("childCount"));
+		int infantCount = Integer.parseInt(request.getParameter("infantCount"));
+		
+		model.addAttribute("tCount", tCount);
+		model.addAttribute("adultCount", adultCount);
+		model.addAttribute("childCount", childCount);
+		model.addAttribute("infantCount", infantCount);
+		
 		return "reservation/passengerInsertForm";
 	}
 
@@ -234,9 +254,27 @@ public class ReservationController {
 	}
 		
 	// 예약 완료 페이지
-	@RequestMapping(value = "selectReservation.tpo", method = RequestMethod.POST)
-	public String reservationDetailView() {
-		return "reservation/reservationDetailView";
+	@RequestMapping(value = "multipleInsertRound.tpo", method = RequestMethod.POST)
+	public String insertMulti(HttpServletRequest request, Passenger passenger, int rPeople, String userId, Model model) {
+		
+		Reservation reservation = new Reservation();
+		reservation.setrPeople(rPeople);
+		reservation.setUserId(userId);
+		
+		int result = rService.insertPassenger(passenger);
+		int result2 = rService.insertReservation(reservation);
+		
+		System.out.println(passenger.toString());
+		
+		if (result > 0) {
+			if(result2 > 0) {
+				return "reservation/reservationDetailView";			
+			} else {
+				return "reservation/reservationError";
+			}
+		} else {
+			return "reservation/reservationError";
+		}
 	}
 
 	/*

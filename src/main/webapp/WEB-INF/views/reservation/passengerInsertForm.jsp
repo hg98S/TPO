@@ -14,7 +14,7 @@
 	
 	<!-- 컨텐츠 시작 -->
     <section class="gtco-container" style="margin-top: 50px;">
-        <form action="multipleInsert.tpo" method="post" class="was-validated">
+        <form action="multipleInsertRound.tpo" method="post" class="was-validated">
         <article>
             <h2>예약 정보 입력</h2>
             <div style="margin: auto; text-align: center;">
@@ -38,7 +38,7 @@
                             <td style="line-height: 2">${arrTime }</td>
                             <td style="line-height: 2">${seatGrade }</td>
                             <td style="line-height: 2">${fare }</td>
-                            <td style="line-height: 2">${people }</td>
+                            <td style="line-height: 2">${people }석</td>
                         </tr>
                         <tr>
                             <td style="line-height: 2">${depJourney2 }</td>
@@ -47,7 +47,7 @@
                             <td style="line-height: 2">${arrTime2 }</td>
                             <td style="line-height: 2">${seatGrade2 }</td>
                             <td style="line-height: 2">${fare2 }</td>
-                            <td style="line-height: 2">${people2 }</td>
+                            <td style="line-height: 2">${people2 }석</td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,14 +61,14 @@
         </article>
         <br>
         <article>
-            <h3>탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
+            <h3>대표 탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
             <table class="table table-bordered">
                 <tr>
                     <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
                         <b style="color: red;">*</b>&nbsp;<b>이름</b>
                     </td>
                     <td>
-                        <input id="passengerName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
+                        <input id="passengerName" name="pName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +76,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>성별</b>
                     </td>
                     <td>
-                        <select id="pGender" class="form-control form-control-sm" style="width: 150px;" required>
+                        <select id="pGender" name="pGender" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 성별 ==</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
@@ -88,7 +88,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>국적</b>
                     </td>
                     <td class="mb-3">
-                        <select id="nationality" class="form-control form-control-sm" style="width: 150px;" required>
+                        <select id="nationality" name="pNationality" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 국적 ==</option>
                             <option value="korea">한국</option>
                             <option value="china">중국</option>
@@ -108,7 +108,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>생년월일</b>
                     </td>
                     <td>
-                        <input id="pBirthDay" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
+                        <input id="pBirthDay" name="pBirthday" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
                     </td>
                 </tr>
                 <tr >
@@ -116,7 +116,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이메일</b>
                     </td>
                     <td>
-                        <input id="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
+                        <input id="pEmail" name="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
                     </td>
                 </tr>
                 <tr>
@@ -124,7 +124,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>전화번호</b>
                     </td>
                     <td>
-                        <input id="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
+                        <input id="pPhone" name="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
                     </td>
                 </tr>
             </table>
@@ -163,7 +163,8 @@
             </div>
         </article>
         <br>
-        
+        <input type="hidden" name="rPeople" value="${tCount }">
+    	<input type="hidden" name="userId" value="${loginUser.userId }">
     </form>
         <article>
             <div style="width: 35%; margin: auto;">
@@ -313,8 +314,8 @@
 				msg += '상점 거래ID : ' + rsp.merchant_uid + '\n';
 				msg += '결제 금액 : ' + rsp.paid_amount + '\n';
 				msg += '카드 승인번호 : ' + rsp.apply_num;
-				$("form").submit();
 				alert(msg);
+				$("form").submit();
 				return true;
 			} else {
 				var msg = '결제에 실패하였습니다.\n';

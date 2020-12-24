@@ -2,48 +2,31 @@ package com.kh.tpo.reservation.store;
 
 import java.util.ArrayList;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.kh.tpo.member.domain.ReservationInfo;
 import com.kh.tpo.reservation.domain.FlightSchedule;
 import com.kh.tpo.reservation.domain.Passenger;
 import com.kh.tpo.reservation.domain.Reservation;
 import com.kh.tpo.reservation.domain.ScheduleSearch;
 
+@Repository
 public class ReservationStoreLogic implements ReservationStore {
 
-	@Override
-	public ArrayList<FlightSchedule> selectAirlineSearchList(ScheduleSearch scheduleSearch) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<FlightSchedule> selectTimeSearchList(ScheduleSearch scheduleSearch) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<FlightSchedule> selectAllSearchList(ScheduleSearch scheduleSearch) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int addScheduleOne(FlightSchedule flightSchedule) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
 	@Override
 	public int insertPassenger(Passenger passenger) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("ReservationMapper.insertPassenger", passenger);
 	}
 
 	@Override
 	public int insertReservation(Reservation reservation) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("ReservationMapper.insertReservation", reservation);
 	}
 
 	@Override

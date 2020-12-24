@@ -427,15 +427,9 @@
                
 				// 편도 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜가 체크되어있지않을 경우
 	            // alert 창 띄움
-               
             </script>
-      
       </div>
    </section>
-   
    <jsp:include page="/include/includeFooter.jsp"></jsp:include>
-   
-   
-   
 </body>
 </html>

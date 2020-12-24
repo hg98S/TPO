@@ -14,7 +14,7 @@
 	
 	<!-- 컨텐츠 시작 -->
     <section class="gtco-container" style="margin-top: 50px;">
-        <form action="multipleInsert.tpo" method="post" class="was-validated">
+        <form action="multipleInsertOne.tpo" method="post" class="was-validated">
         <article>
             <h2>예약 정보 입력</h2>
             <div style="margin: auto; text-align: center;">
@@ -52,7 +52,7 @@
         </article>
         <br>
         <article>
-            <h3>탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
+            <h3>대표 탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
             <table class="table table-bordered">
                 <tr>
                     <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
@@ -304,9 +304,9 @@
 				msg += '상점 거래ID : ' + rsp.merchant_uid + '\n';
 				msg += '결제 금액 : ' + rsp.paid_amount + '\n';
 				msg += '카드 승인번호 : ' + rsp.apply_num;
-				$("form").submit();
 				alert(msg);
 				return true;
+				$("form").submit();
 			} else {
 				var msg = '결제에 실패하였습니다.\n';
 				msg += '에러내용 : ' + rsp.error_msg;

@@ -289,13 +289,13 @@
         <article>
             <form action="passengerFormOne.tpo" method="get">
 	        	<div id="dep">
-			        <input type="text" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
-			        <input type="text" id="depAirlineNm" name="depAirlineNm" value="">
-			        <input type="text" id="depTime" name="depTime" value="">
-			        <input type="text" id="arrTime" name="arrTime" value="">
-			        <input type="text" id="seatGrade" name="seatGrade" value="">
-			        <input type="text" id="fare" name="fare" value="">
-			        <input type="text" id="people" name="people" value="${acCount }석">
+			        <input type="hidden" id="depJourney" name="depJourney" value="${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }">
+			        <input type="hidden" id="depAirlineNm" name="depAirlineNm" value="">
+			        <input type="hidden" id="depTime" name="depTime" value="">
+			        <input type="hidden" id="arrTime" name="arrTime" value="">
+			        <input type="hidden" id="seatGrade" name="seatGrade" value="">
+			        <input type="hidden" id="fare" name="fare" value="">
+			        <input type="hidden" id="people" name="people" value="${acCount }석">
 		        </div>
 	            <div style="width: 35%; margin: auto;">
 	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
