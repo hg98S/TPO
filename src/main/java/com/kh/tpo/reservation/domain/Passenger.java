@@ -6,11 +6,10 @@ public class Passenger {
 
 	// 매개변수
 	private int pNo; // 승객번호
-	private int fsNo; // 항공일정번호
 	private String pName; // 승객이름
 	private String pGender; // 성별
-	private Date pBirthday; // 생년월일
-	private String nationality; // 국적
+	private String pBirthday; // 생년월일
+	private String pNationality; // 국적
 	private String pEmail; // 이메일
 	private String pPhone; // 전화번호
 	
@@ -18,15 +17,14 @@ public class Passenger {
 	public Passenger() {}
 	
 	// 매개변수 생성자
-	public Passenger(int pNo, int fsNo, String pName, String pGender, Date pBirthday, String nationality, String pEmail,
+	public Passenger(int pNo, String pName, String pGender, String pBirthday, String pNationality, String pEmail,
 			String pPhone) {
 		super();
 		this.pNo = pNo;
-		this.fsNo = fsNo;
 		this.pName = pName;
 		this.pGender = pGender;
 		this.pBirthday = pBirthday;
-		this.nationality = nationality;
+		this.pNationality = pNationality;
 		this.pEmail = pEmail;
 		this.pPhone = pPhone;
 	}
@@ -38,14 +36,6 @@ public class Passenger {
 
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
-	}
-
-	public int getFsNo() {
-		return fsNo;
-	}
-
-	public void setFsNo(int fsNo) {
-		this.fsNo = fsNo;
 	}
 
 	public String getpName() {
@@ -64,20 +54,20 @@ public class Passenger {
 		this.pGender = pGender;
 	}
 
-	public Date getpBirthday() {
+	public String getpBirthday() {
 		return pBirthday;
 	}
 
-	public void setpBirthday(Date pBirthday) {
+	public void setpBirthday(String pBirthday) {
 		this.pBirthday = pBirthday;
 	}
 
-	public String getNationality() {
-		return nationality;
+	public String getpNationality() {
+		return pNationality;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setpNationality(String pNationality) {
+		this.pNationality = pNationality;
 	}
 
 	public String getpEmail() {
@@ -99,7 +89,7 @@ public class Passenger {
 	// toString
 	@Override
 	public String toString() {
-		return "Passenger [pNo=" + pNo + ", fsNo=" + fsNo + ", pName=" + pName + ", pGender=" + pGender + ", pBirthday="
-				+ pBirthday + ", nationality=" + nationality + ", pEmail=" + pEmail + ", pPhone=" + pPhone + "]";
-	}
+		return "Passenger [pNo=" + pNo + ", pName=" + pName + ", pGender=" + pGender + ", pBirthday=" + pBirthday
+				+ ", pNationality=" + pNationality + ", pEmail=" + pEmail + ", pPhone=" + pPhone + "]";
+	}	
 }
