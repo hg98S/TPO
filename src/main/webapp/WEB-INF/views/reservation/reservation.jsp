@@ -131,7 +131,7 @@
                                  <p value="성인">성인</p>
                               </div>
                               <select class="row" id="twoway_adult_number" name="adultCount">
-                                 <option value="1" selected>1</option>
+                                 <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
                                  <option value="4">4</option>
@@ -146,7 +146,7 @@
                                  <p value="소아">소아</p>
                               </div>
                               <select class="row" id="twoway_child_number" name="childCount">
-                                 <option value="0" selected>0</option>
+                                 <option value="0">0</option>
                                  <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
@@ -162,7 +162,7 @@
                                  <p value="유아">유아</p>
                               </div>
                               <select class="row" id="twoway_infant_number" name="infantCount">
-                                 <option value="0" selected>0</option>
+                                 <option value="0">0</option>
                                  <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
@@ -237,7 +237,7 @@
                                  <p value="성인">성인</p>
                               </div>
                               <select class="row" id="oneway_adult_number" name="adultCount">
-                                 <option value="1" selected>1</option>
+                                 <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
                                  <option value="4">4</option>
@@ -252,7 +252,7 @@
                                  <p value="소아">소아</p>
                               </div>
                               <select class="row" id="oneway_child_number" name="childCount">
-                                 <option value="0" selected>0</option>
+                                 <option value="0">0</option>
                                  <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
@@ -268,7 +268,7 @@
                                  <p value="유아">유아</p>
                               </div>
                               <select class="row" id="oneway_infant_number" name="infantCount">
-                                 <option value="0" selected>0</option>
+                                 <option value="0">0</option>
                                  <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
@@ -368,18 +368,81 @@
                /* 왕복 */
                $(document).ready(function() {
                   $("#twoway_adult_number").change(function() {
-                     var data = $(this).find(":selected").html();
-                     $("#twoway_adult_headCount").text(data);
+                     var taData = $(this).find(":selected").html();
+                     $("#twoway_adult_headCount").text(taData);
                   });
                   $("#twoway_child_number").change(function() {
-                     var data = $(this).find(":selected").html();
-                     $("#twoway_child_headCount").text(data);
+                  	 var tcData = $(this).find(":selected").html();
+                     console.log(tcData);
+                     $("#twoway_child_headCount").text(tcData);
                   });
                   $("#twoway_infant_number").change(function() {
-                     var data = $(this).find(":selected").html();
-                     $("#twoway_infant_headCount").text(data);
+                     var tiData = $(this).find(":selected").html();
+                     console.log(tiData);
+                     $("#twoway_infant_headCount").text(tiData);
                   });
                });
+               $(document).ready(function() {
+            	   $("#twoway_select_person").change(function() {
+            		   var taData = parseInt($("#twoway_adult_number").find(":selected").val());
+                	   var tcData = parseInt($("#twoway_child_number").find(":selected").val());
+                	   var tiData = parseInt($("#twoway_infant_number").find(":selected").val());
+                	   var sum = parseInt(taData + tcData + tiData);
+                	   var taiSum = parseInt(taData + tiData);
+                	   console.log(taData +  '+' + tcData + '+' + tiData);
+                	   console.log(sum);
+                	   if(sum > 9) {
+                		   console.log(sum);
+                		   alert("성인/소아/유아 합은 최대 9명까지 가능합니다.");
+                		   $(this).focus();
+                		   return false;
+                	   }
+                	   else if(taData < tiData) {
+                		   alert("성인1명에 유아1명만을 예약하실수 있으며, 나머지 유아는 소아로 예약하셔야 합니다.");
+                		   $(this).focus();
+                		   return false;
+                	   }
+                	// 왕복 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜,오는날짜가 체크되어있지않을 경우
+                       // 성인<유아/성인+소아+유아>9 일때
+                       // alert 창 띄움
+                      
+                    	   $("#twowayFlight").click(function() { // 항공권 검색 버튼 클릭
+            				   var sDepAirportNm = $("#twoway_dep").val();
+            				   var sArrAirportNm = $("#twoway_arr").val();
+            				   var sDepPlandTime = $("#datePicker_dep1").val();
+            				   var sArrPlandTime = $("#datePicker_arr1").val();
+            				   console.log(sum +'/' + taData +'/' +tiData);
+            				   if(sDepAirportNm == "") {
+            				      alert("출발지를 선택해주세요.");
+            				      $("#twoway_dep").focus();
+            				      return false;
+            				   }
+            				   else if(sArrAirportNm == "") {
+            					   alert("도착지를 선택해주세요.");
+            					   $("#twoway_arr").focus();
+            					   return false;
+            				   }
+            				   else if(sDepPlandTime == "가는 날짜") {
+            					   alert("가는 날짜를 선택해주세요.");
+            					   $("#datePicker_dep1").focus();
+            					   return false;
+            				   }
+            				   else if(sArrPlandTime == "오는 날짜") {
+            					   alert("오는 날짜를 선택해주세요.");
+            					   $("#datePicker_arr1").focus();
+            					   return false;
+            				   }
+            				 
+            				   else if(sum > 9 && taData < tiData) {
+            					   alert("다시고르셈");
+            					   return false;
+            				   }
+            				   return false;
+            				});
+                       
+            	   });
+               });
+               
                /* 편도 */
                $(document).ready(function() {
                   $("#oneway_adult_number").change(function() {
@@ -396,37 +459,31 @@
                   });
                });
    
-               // 왕복 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜,오는날짜가 체크되어있지않을 경우
-               // alert 창 띄움
-				$("#twowayFlight").click(function() {
-				   var sDepAirportNm = $("#twoway_dep").val();
-				   var sArrAirportNm = $("#twoway_arr").val();
-				   var sDepPlandTime = $("#datePicker_dep1").html();
-				   var sArrPlandTime = $("#datePicker_arr1").html();
+               
+               
+				// 편도 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜가 체크되어있지않을 경우
+				// 성인<유아/성인+소아+유아>9 일때
+	            // alert 창 띄움
+               $("#onewayFlight").click(function() {
+				   var sDepAirportNm = $("#oneway_dep").val();
+				   var sArrAirportNm = $("#oneway_arr").val();
+				   var sDepPlandTime = $("#datePicker_dep2").val();
 				   if(sDepAirportNm == "") {
 				      alert("출발지를 선택해주세요.");
-				      $("#twoway_dep").focus();
+				      $("#oneway_dep").focus();
 				      return false;
 				   }
 				   else if(sArrAirportNm == "") {
 					   alert("도착지를 선택해주세요.");
-					   $("#twoway_arr").focus();
+					   $("#oneway_arr").focus();
 					   return false;
 				   }
 				   else if(sDepPlandTime == "가는 날짜") {
 					   alert("가는 날짜를 선택해주세요.");
-					   $("#datePicker_dep1").focus();
-					   return false;
-				   }
-				   else if(sArrPlandTime == "오는 날짜") {
-					   alert("오는 날짜를 선택해주세요.");
-					   $("#datePicker_arr1").focus();
+					   $("#datePicker_dep2").focus();
 					   return false;
 				   }
 				});
-               
-				// 편도 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜가 체크되어있지않을 경우
-	            // alert 창 띄움
             </script>
       </div>
    </section>
