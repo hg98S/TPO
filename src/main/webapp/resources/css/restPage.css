@@ -63,8 +63,8 @@
 /* TWELVE */
 
 .p12 a:first-of-type, .p12 a:last-of-type, .p12 a , .is-active{
-  background-color: #09c6ab;
-  color: #fff;
+  background-color:#fff;
+  color:#09c6ab;
   font-weight: bold;
 }
 

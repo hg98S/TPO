@@ -26,7 +26,7 @@
 
 
 </head>
-<body>
+<body style="background-color: #ececec">
 
 	<!-- <div class="gtco-loader"></div> -->
 
@@ -39,7 +39,6 @@
 	<!--section시작-->
 	<section class="gtco-container sectionmain" role="contentinfo">
 		<div class="section-container" style="margin-top: 950px;">
-
 			<div class="infoArea" style="height: 270px; width: 100%;">
 				<div class="well well-sm infoImage"
 					style="width: 38%; height: 250px; float: left;">
@@ -72,7 +71,7 @@
 				style="background-color: #eeeeee; width: 100%; padding-top: 15px; padding-bottom: 25px;">
 
 				&nbsp;&nbsp;&nbsp;<b>숙소소개</b> <br>
-				<div style="margin-left: 20px;">${rest.reInfo }</div>
+				<div style="margin-left: 20px;">${room[0].reInfo }</div>
 			</div>
 			<c:forEach items="${room }" var="room">
 				<div class="roomsArea">
@@ -152,7 +151,7 @@
 
 		<!-- <div id="map" style="width: 770px; height: 650px;"></div> -->
 
-		<jsp:include page="/include/includeFooter.jsp" />
+	
 
 		<script>
 		$(function() {
@@ -177,14 +176,10 @@
 			var geocoder = new kakao.maps.services.Geocoder();
 
 			// 주소로 좌표를 검색합니다
-			geocoder
-					.addressSearch(
-							"${rest.reAddr}",
+			geocoder.addressSearch(	"${room[0].reAddr }",
 							function(result, status) {
-
 								// 정상적으로 검색이 완료됐으면 
 								if (status === kakao.maps.services.Status.OK) {
-
 									coords = new kakao.maps.LatLng(
 											result[0].y, result[0].x);
 									// 결과값으로 받은 위치를 마커로 표시합니다
@@ -197,7 +192,7 @@
 									var infowindow = new kakao.maps.InfoWindow(
 											{
 												content : '<div style="width:150px;text-align:center;">'
-														+ "${rest.reName}"
+														+ "${room[0].reName }"
 														+ '</div>'
 											});
 									infowindow.open(map, marker);
@@ -216,5 +211,6 @@
 
 
 	</section>
+		<jsp:include page="/include/includeFooter.jsp" />
 </body>
 </html>

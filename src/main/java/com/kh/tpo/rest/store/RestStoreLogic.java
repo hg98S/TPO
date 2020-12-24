@@ -55,12 +55,6 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<Rest> selectSearchList(Search search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<RestInfo> roomSearchList(int reNo) {
 		// TODO Auto-generated method stub
 		return (ArrayList)session.selectList("RestMapper.selectRoomList", reNo);
@@ -87,8 +81,10 @@ public class RestStoreLogic implements RestStore{
 	}
 
 	@Override
-	public ArrayList<RestInfo> searchPrice(Search search) {
-		ArrayList<RestInfo> result = (ArrayList)session.selectList("RestMapper.SearchPrice", search);
+	public ArrayList<RestInfo> searchPrice(Search search, PageInfo page) {
+		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, page.getBoardLimit());
+		ArrayList<RestInfo> result = (ArrayList)session.selectList("RestMapper.SearchPrice", search, rowBounds);
 	//	System.out.println("Store: " + result);
 		return result;
 	}
@@ -100,13 +96,16 @@ public class RestStoreLogic implements RestStore{
 		return (ArrayList)session.selectList("RestMapper.alignList", search, rowBounds);
 	}
 
-	@Override
-	public ArrayList<RestInfo> searchLocal(Search search , PageInfo page) {
-		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, page.getBoardLimit());
-		return (ArrayList)session.selectList("RestMapper.searchLocal", search, rowBounds);
-	}
-
+	/*
+	 * @Override
+	 * 
+	 * public ArrayList<RestInfo> searchLocal(Search search , PageInfo page) { int
+	 * offset=(page.getCurrentPage()-1)*page.getBoardLimit(); RowBounds rowBounds =
+	 * new RowBounds(offset, page.getBoardLimit()); return
+	 * (ArrayList)session.selectList("RestMapper.searchLocal", search, rowBounds); }
+	 * 
+	 */
+	
 	@Override
 	public ArrayList<RestInfo> searchAllList(Search search,  PageInfo page) {
 		int offset=(page.getCurrentPage()-1)*page.getBoardLimit();

@@ -18,6 +18,7 @@ public class Rest {
 	private String reFacility;
 	private int clcik;
 	private int sumPrice;
+	private int rowMin;
 	
 	public Rest() {}
 
@@ -133,8 +134,6 @@ public class Rest {
 		this.clcik = clcik;
 	}
 
-	
-	
 	public int getSumPrice() {
 		return sumPrice;
 	}
@@ -143,35 +142,24 @@ public class Rest {
 		this.sumPrice = sumPrice;
 	}
 
+	public int getRowMin() {
+		return rowMin;
+	}
+
+	public void setRowMin(int rowMin) {
+		this.rowMin = rowMin;
+	}
+
 	@Override
 	public String toString() {
 		return "Rest [reNo=" + reNo + ", reName=" + reName + ", reAddr=" + reAddr + ", reImage=" + reImage
 				+ ", rePhone=" + rePhone + ", reUrl=" + reUrl + ", reInfo=" + reInfo + ", checkIn=" + checkIn
 				+ ", checkout=" + checkout + ", rTotal=" + rTotal + ", pTotal=" + pTotal + ", pStatus=" + pStatus
-				+ ", reFacility=" + reFacility + ", clcik=" + clcik + ", sumPrice=" + sumPrice + "]";
+				+ ", reFacility=" + reFacility + ", clcik=" + clcik + ", sumPrice=" + sumPrice + ", rowMin=" + rowMin
+				+ "]";
 	}
 
-	public Rest(int reNo, String reName, String reAddr, String reImage, String rePhone, String reUrl, String reInfo,
-			String checkIn, String checkout, int rTotal, int pTotal, String pStatus, String reFacility, int clcik,
-			int sumPrice) {
-		super();
-		this.reNo = reNo;
-		this.reName = reName;
-		this.reAddr = reAddr;
-		this.reImage = reImage;
-		this.rePhone = rePhone;
-		this.reUrl = reUrl;
-		this.reInfo = reInfo;
-		this.checkIn = checkIn;
-		this.checkout = checkout;
-		this.rTotal = rTotal;
-		this.pTotal = pTotal;
-		this.pStatus = pStatus;
-		this.reFacility = reFacility;
-		this.clcik = clcik;
-		this.sumPrice = sumPrice;
-	}
-
+	
 	
 	
 
