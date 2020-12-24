@@ -194,16 +194,16 @@
 		</if>
 		<if test="alignList == 'Price'">
 			select
-			rest.re_Name, min(room.roPrice)as rowMin, rest.rePhone, rest.reAddr, rest.reImage
+			rest.re_Name, min(room.roPrice)as rowMin, rest.rePhone, rest.reAddr, rest.reImage, rest.reNO
 			from rest join room on rest.reNo = room.RENO
-			group by rest.re_Name, rest.rePhone, rest.reAddr, rest.reImage
+			group by rest.re_Name, rest.rePhone, rest.reAddr, rest.reImage, rest.reNo
 			order by rowMin, re_Name
 		</if>
 		<if test="alignList == 'Click'">
 			select
-			rest.re_Name, rest.CLICK, rest.rePhone, rest.reAddr, rest.reImage
+			rest.re_Name, rest.CLICK, rest.rePhone, rest.reAddr, rest.reImage, rest.reNO
 			from rest join room on rest.reNo = room.RENO
-			group by rest.CLICK, rest.re_name, rest.rePhone, rest.reAddr, rest.reImage
+			group by rest.CLICK, rest.re_name, rest.rePhone, rest.reAddr, rest.reImage, rest.reNO
 			order by rest.CLICK desc
 		</if>
 	</select>

@@ -64,11 +64,6 @@ public class RestServiceImpl implements RestService{
 		return reStore.roomSearchList(reNo);
 	} 
 
-	@Override
-	public ArrayList<Rest> selectSearchList(Search search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Room roomInfo(int rNo) {
@@ -98,11 +93,11 @@ public class RestServiceImpl implements RestService{
 	}
 
 	// 지역조회
-	@Override
-	public ArrayList<RestInfo> searchLocal(Search search, PageInfo page) {
-		// TODO Auto-generated method stub
-		return reStore.searchLocal(search, page);
-	}
+	/*
+	 * @Override public ArrayList<RestInfo> searchLocal(Search search, PageInfo
+	 * page) { // TODO Auto-generated method stub return reStore.searchLocal(search,
+	 * page); }
+	 */
 	
 	@Override
 	public ArrayList<RestInfo> searchAllList(Search search, PageInfo page) {
@@ -112,8 +107,8 @@ public class RestServiceImpl implements RestService{
 	
 	// 가격조회
 	@Override
-	public ArrayList<RestInfo> searchPrice(Search search) {
-		ArrayList<RestInfo> result = reStore.searchPrice(search);
+	public ArrayList<RestInfo> searchPrice(Search search, PageInfo page) {
+		ArrayList<RestInfo> result = reStore.searchPrice(search, page);
 	//	System.out.println("rService: " + result);
 		return result;
 	}

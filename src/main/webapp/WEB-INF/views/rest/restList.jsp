@@ -9,7 +9,7 @@
 <!-- restPage.css -->
 <link rel="stylesheet" href="resources/css/restPage.css">
 </head>
-<body>
+<body style="background-color: #ececec">
 
 
 	<div class="gtco-loader"></div>
@@ -22,16 +22,16 @@
 	<!--헤더 끝-->
 	<!--section시작-->
 	<section class="gtco-container sectionmain" role="contentinfo">
-		<div class="section-container" style="margin-top: 1050px;">
+		<div class="section-container" style="margin-top: 950px;">
 			<div class="section-main">
 				<div class="main-side"
 					style="width: 25%; height: 100%; float: left;">
 
 					<div class="well well-lg search"
-						style="background-color: #eeeeee; padding-left: 6%; padding-top: 6%; width: 100%; padding-bottom: 3%;">
+						style="background-color: #0D7B6C; color: white; padding-left: 6%; padding-top: 6%; width: 100%; padding-bottom: 3%;">
 						<form action="searchAllList.tpo" method="get">
 							<h3>
-								<b id="rs">숙소검색</b>
+								<b id="rs" style="color: white;">숙소검색</b>
 							</h3>
 							<div class="search-list">
 								<b>목적지</b> <input type="text" class="well well-sm location"
@@ -61,7 +61,7 @@
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">+</button>
 										<input type="text" id="rAmount" class="amount" name="rAmount"
 											value="1" size="2"
-											style="border-style: none; padding-left: 15px; border-style: none; padding-left: 14px; margin-left: 1px;">
+											style="border-style: none; color:black; padding-left: 15px; border-style: none; padding-left: 14px; margin-left: 1px;">
 										<button type="button" class="updown" id="rminus" value=" - "
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">-</button>
 									</div>
@@ -70,7 +70,7 @@
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">+</button>
 										<input type="text" id="aAmount" class="amount" name="aAmount"
 											value="1" size="2"
-											style="border-style: none; padding-left: 15px;">
+											style="border-style: none; color:black; padding-left: 15px;">
 										<button type="button" class="updown" id="aminus" value=" - "
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">-</button>
 									</div>
@@ -79,22 +79,22 @@
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">+</button>
 										<input type="text" id="kAmount" class="amount" name="kAmount"
 											value="1" size="2"
-											style="border-style: none; padding-left: 15px;">
+											style="border-style: none; color:black; padding-left: 15px;">
 										<button type="button" class="updown" id="kminus" value=" - "
 											style="width: 30px; border-style: none; background-color: #00a38d; color: white">-</button>
 									</div>
 								</div>
 							</div>
 							<div class="search-list"
-								style="margin-top: 10%; margin-left: 1%; width: 100%; margin-bottom: 6%;">
-								<button type="submit" class="btn btn-primary btn-sm"
-									style="width: 220px; background-color: #09c6ab">검색</button>
+								style="margin-top: 10%; margin-left: 1%; width: 100%; margin-bottom: 5%;">
+								<button type="submit" class="btn btn-sm"
+									style="width: 220px; background-color: #f8ca00; color: black; font-size: 18px; font-weight: bold;">검&nbsp;&nbsp;&nbsp;색</button>
 							</div>
 						</form>
 					</div>
 
 					<div class="well well-lg search price-search"
-						style="background-color: #eeeeee; padding-left: 10%; padding-top: 6%; margin-top: 20px; width: 100%; height: 260px;">
+						style="background-color: white; border: 1px solid #09c6ab; padding-left: 10%; padding-top: 6%; margin-top: 20px; width: 100%; height: 305px;">
 
 						<h3>
 							<b id="rs">가격</b>
@@ -110,31 +110,39 @@
 									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;"
 									name="maxPrice" value="${ search.maxPrice}" id="max"> 원
 								까지
+								<button type="submit" class="btn btn-primary btn-sm"
+									style="width: 220px; background-color: #09c6ab">찾아보기</button>
 							</form>
 						</div>
 					</div>
 					<div class="well well-lg search name-search"
-						style="background-color: #eeeeee; padding-left: 10%; padding-top: 6%; width: 100%; float: left;">
-						<form action="rNameSearch.tpo" method="get">
-							<h3>
-								<b id="rs">숙소명</b>
-							</h3>
-							<input type="text" class="well well-sm location"
-								name="searchName"
-								style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;">&nbsp;
-							<button type="submit" class="btn btn-primary btn-xs"
-								style="width: 100px; margin-left: 50%;">검색</button>
-						</form>
+						style="background-color: white; border: 1px solid #09c6ab; padding-left: 10%; padding-top: 6%; width: 100%; float: left; height: 195px;">
+
+						<h3>
+							<b id="rs">숙소명</b>
+						</h3>
+						<div class="nameList">
+							<form action="rNameSearch.tpo" method="get">
+								<input type="text" class="well well-sm location"
+									name="searchName"
+									style="margin-top: 5%; background-color: white; width: 99%; height: 35px;">&nbsp;
+								<button type="submit" class="btn btn-primary btn-sm"
+									style="width: 100px; margin-left: 50%; margin-top: -20%;">검색</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="main-right"
 				style="width: 75%; height: 100%; float: left;">
 				<div class="well well-sm search sortarea"
-					style="background-color: #eeeeee; width: 100%; height: 60px; margin-left: 5%; float: left;">
-					<a href="alignList.tpo?alignList=Name" value="alignName">이름</a> | <a
-						href="alignList.tpo?alignList=Price" value="alignPrice">요금</a> | <a
-						href="alignList.tpo?alignList=Click" value="alignClick">최다클릭</a> |
+					style="border: none; background-color: white; width: 100%; height: 60px; margin-left: 5%; float: left; padding-left: 30px; padding-top: 18px;">
+					<a href="alignList.tpo?alignList=Name" value="alignName"
+						style="color: black;"><b>이름 </b></a><b style="color: black;">
+						| </b> <a href="alignList.tpo?alignList=Price" value="alignPrice"
+						style="color: black;"><b>요금 </b></a><b style="color: black;">
+						|</b> <a href="alignList.tpo?alignList=Click" value="alignClick"
+						style="color: black;"><b> 최다클릭 </b></a>
 				</div>
 				<div class=" restInfo-area"
 					style="width: 100%; height: 100%; margin-top: 10%;">
@@ -142,7 +150,7 @@
 						<input type="hidden" value="${rest.reNo}">
 						<a href="restDetail.tpo?reNo=${rest.reNo}">
 							<div class="well well-lg search restInfo"
-								style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">
+								style="background-color: white; border: none; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">
 								<c:if test="${rest.reImage eq '없음'}">
 									<div style="float: left">
 										<img src="resources/images/noimage.png"
@@ -154,7 +162,11 @@
 										<c:if test="${rest.sumPrice ne 0 }">
 											<b>최저금액 :</b>
 											${rest.sumPrice }
-									</c:if>
+										</c:if>
+										<c:if test="${rest.rowMin ne 0 }">
+											<b>최저금액 :</b>
+											${rest.rowMin }
+										</c:if>
 									</div>
 
 								</c:if>
@@ -173,8 +185,12 @@
 											: </b> <br> ${rest.reAddr } <br>
 										<c:if test="${rest.sumPrice ne 0 }">
 											<b>최저금액 :</b>
-											 ${rest.sumPrice }
-									</c:if>
+											${rest.sumPrice }
+										</c:if>
+										<c:if test="${rest.rowMin ne 0 }">
+											<b>최저금액 :</b>
+											${rest.rowMin }
+										</c:if>
 									</div>
 								</c:if>
 							</div>
@@ -185,16 +201,88 @@
 
 			<div class="pageDiv">
 
-				<div class="pagination p12" style="margin-top: -2.5%;">
+				<div class="pagination" style="margin-top: -0.5%; color: #09c6ab;">
 					<c:if test="${pi.currentPage<=1 }">
-						<a href="${before }">Previous</a>&nbsp;
-					</c:if>
-					<c:if test="${pi.currentPage>1 }">
-						<c:url var="before" value="restList.tpo">
-							<c:param name="page" value="${pi.currentPage-1 }"></c:param>
-						</c:url>
-						<a href="${before }">Previous</a>
-					</c:if>
+						<a href="${before }"
+							style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>&nbsp;
+               </c:if>
+					<c:choose>
+						<c:when test="${search.alignList eq 'Name' }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:when test="${search.alignList eq 'Price' }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:when test="${search.alignList eq 'Click' }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:when test="${search.location ne null }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="searchAllList.tpo">
+									<c:param name="location" value="${search.location}"></c:param>
+									<c:param name="sleep" value="${search.sleep}"></c:param>
+									<c:param name="rAmount" value="${search.rAmount}"></c:param>
+									<c:param name="aAmount" value="${search.aAmount}"></c:param>
+									<c:param name="kAmount" value="${search.kAmount}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:when test="${search.maxPrice ne null  }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="rPriceSearch.tpo">
+									<c:param name="minPrice" value="${search.minPrice}"></c:param>
+									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:when test="${search.searchName ne null  }">
+							<c:if test="${pi.currentPage>1 }">
+								<c:url var="before" value="rNameSearch.tpo">
+									<c:param name="searchName" value="${search.searchName}"></c:param>
+									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+								</c:url>
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+							<c:url var="before" value="restList.tpo">
+								<c:param name="page" value="${pi.currentPage-1 }"></c:param>
+							</c:url>
+							<c:if test="${pi.currentPage ne 1 }">
+								<a href="${before }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+
 					<!-- 페이지 -->
 					<c:forEach var="p" begin="${pi.startPage }" end="${pi.endpage }">
 						<c:choose>
@@ -204,13 +292,13 @@
 									<c:param name="page" value="${p }"></c:param>
 								</c:url>
 								<c:if test="${p eq pi.currentPage}">
-									<a class="is-active" style="background-color: #007c6b;"
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
 										href="${pagenation }">${p }</a>&nbsp; 
-							<%-- <font color="red" size="4">[${p }]</font> --%>
-									<%-- ${p } --%>
 								</c:if>
 								<c:if test="${p ne pi.currentPage}">
-									<a href="${pagination }">${p }</a>&nbsp;
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
 						</c:if>
 							</c:when>
 							<c:when test="${search.alignList eq 'Price' }">
@@ -219,13 +307,15 @@
 									<c:param name="page" value="${p }"></c:param>
 								</c:url>
 								<c:if test="${p eq pi.currentPage}">
-									<a class="is-active" style="background-color: #007c6b;"
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
 										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
 									<%-- ${p } --%>
 								</c:if>
 								<c:if test="${p ne pi.currentPage}">
-									<a href="${pagination }">${p }</a>&nbsp;
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
 					</c:if>
 							</c:when>
 							<c:when test="${search.alignList eq 'Click' }">
@@ -234,13 +324,15 @@
 									<c:param name="page" value="${p }"></c:param>
 								</c:url>
 								<c:if test="${p eq pi.currentPage}">
-									<a class="is-active" style="background-color: #007c6b;"
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
 										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
 									<%-- ${p } --%>
 								</c:if>
 								<c:if test="${p ne pi.currentPage}">
-									<a href="${pagination }">${p }</a>&nbsp;
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
 					</c:if>
 							</c:when>
 							<c:when test="${search.location ne null }">
@@ -253,13 +345,54 @@
 									<c:param name="page" value="${p }"></c:param>
 								</c:url>
 								<c:if test="${p eq pi.currentPage}">
-									<a class="is-active" style="background-color: #007c6b;"
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
+										"
 										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
 									<%-- ${p } --%>
 								</c:if>
 								<c:if test="${p ne pi.currentPage}">
-									<a href="${pagination }">${p }</a>&nbsp;
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
+						</c:if>
+							</c:when>
+							<c:when test="${search.searchName ne null }">
+								<c:url var="pagination" value="rNameSearch.tpo">
+									<c:param name="searchName" value="${search.searchName}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
+										"
+										href="${pagenation }">${p }</a>&nbsp; 
+							<%-- <font color="red" size="4">[${p }]</font> --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
+						</c:if>
+							</c:when>
+							<c:when
+								test="${search.maxPrice ne null && search.minPrice ne null }">
+								<c:url var="pagination" value="rPriceSearch.tpo">
+									<c:param name="minPrice" value="${search.minPrice}"></c:param>
+									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
+									<c:param name="page" value="${p }"></c:param>
+								</c:url>
+								<c:if test="${p eq pi.currentPage}">
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
+										"
+										href="${pagenation }">${p }</a>&nbsp; 
+							<%-- <font color="red" size="4">[${p }]</font> --%>
+									<%-- ${p } --%>
+								</c:if>
+								<c:if test="${p ne pi.currentPage}">
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
 						</c:if>
 							</c:when>
 							<c:otherwise>
@@ -267,263 +400,147 @@
 									<c:param name="page" value="${p }"></c:param>
 								</c:url>
 								<c:if test="${p eq pi.currentPage}">
-									<a class="is-active" style="background-color: #007c6b;"
+									<a class="is-active"
+										style="background-color: #007c6b; color: white; border: 1px solid #007c6b; border-radius: 30px;"
 										href="${pagenation }">${p }</a>&nbsp; 
 							<%-- <font color="red" size="4">[${p }]</font> --%>
 									<%-- ${p } --%>
 								</c:if>
 								<c:if test="${p ne pi.currentPage}">
-									<a href="${pagination }">${p }</a>&nbsp;
-					</c:if>
+									<a href="${pagination }"
+										style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">${p }</a>&nbsp;
+								</c:if>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+					<!-- 		다음 -->
 
-					<!-- 다음 -->
 					<c:if test="${pi.currentPage>=pi.maxPage }">
-					Next&nbsp;
-				</c:if>
-					<c:if test="${pi.currentPage<pi.maxPage }">
-						<c:url var="after" value="restList.tpo">
-							<c:param name="page" value="${pi.currentPage+1 }"></c:param>
-						</c:url>
-						<a href="${after }">Next</a>&nbsp;
-					</c:if>
+               Next&nbsp;
+            </c:if>
+					<c:choose>
+						<c:when test="${search.alignList eq 'Name' }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:when test="${search.alignList eq 'Price' }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:when test="${search.alignList eq 'Click' }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="alignList.tpo">
+									<c:param name="alignList" value="${search.alignList}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:when test="${search.location ne null }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="searchAllList.tpo">
+									<c:param name="location" value="${search.location}"></c:param>
+									<c:param name="sleep" value="${search.sleep}"></c:param>
+									<c:param name="rAmount" value="${search.rAmount}"></c:param>
+									<c:param name="aAmount" value="${search.aAmount}"></c:param>
+									<c:param name="kAmount" value="${search.kAmount}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }" background-color:white; border:1pxsolid#007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:when test="${search.searchName ne null  }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="rNameSearch.tpo">
+									<c:param name="searchName" value="${search.searchName}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:when test="${search.maxPrice ne null }">
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="rPriceSearch.tpo">
+									<c:param name="minPrice" value="${search.minPrice}"></c:param>
+									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+               </c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${pi.currentPage<pi.maxPage }">
+								<c:url var="after" value="restList.tpo">
+									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
+								</c:url>
+								<a href="${after }"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+                  </c:if>
+						</c:otherwise>
+					</c:choose>
 				</div>
 
 			</div>
 		</div>
 
-		<script type="text/javascript">
-		
-
-		// 가격 조회 부분
-			$('#min').change(function(){
-				var min2 = $('#min').val();
-				$('#min').attr('value',min2);
-				console.log(min);
-			});
-			$('#max').change(function(){
-					var max2 = $('#max').val();
-					$('#max').attr('value',max2);
-					console.log(max)
-				});
-			
-		// 객실부분
-		var rSum = 1;	
-		$("#rPlus").click(function(){
-			rSum = rSum+1;
-			$("#rAmount").attr('value',rSum);
-		});
-		$("#rminus").click(function(){
-			rSum = rSum-1;
-			$("#rAmount").attr('value',rSum);
-		});	
-		
-		// 성인부분
-		var aSum = 1;	
-		$("#aPlus").click(function(){
-			aSum = aSum+1;
-			$("#aAmount").attr('value',aSum);
-		});
-		$("#aminus").click(function(){
-			aSum = aSum-1;
-			$("#aAmount").attr('value',aSum);
-		});			
-
-		// 어린이 부분
-		var kSum = 1;	
-		$("#kPlus").click(function(){
-			kSum = kSum+1;
-			$("#kAmount").attr('value',kSum);
-		});
-		$("#kminus").click(function(){
-			kSum = kSum-1;
-			$("#kAmount").attr('value',kSum);
-		});	
-			
-			
-		// 지역 조회 부분
-		$("#location").change(function(){
-			var loca = $("#location").val();
-			$("#location").attr('value', loca);
-		});
-		
-		
-		// 지역 조회 ajax
-		
-		var page =1;
-		$("#location").keyup(function(){
-			var loca = $('#location').val();
-			$.ajax({
-				url : "searchLocation.tpo",
-				data : {"page" : page,
-						"location" : loca},
-				dataType : "json",
-				type : "get",
-				success : function(data){
-					/* $(".restInfo-area").remove(); */
-					//$(".well well-sm search sortarea").append("<div class='>" + data[0].rowMin + "</div>") */
-					$(".restInfo-area").empty();
-					successFunction(data);
-					console.log(data)
-					//page부분 삭제
-					$(".pageDiv").empty();				
-				// 뒤로가기 버튼 활성화
-						if(data.pi.currentPage <= 1){
-							$('.pageDiv').append(
-								'<div <div class="pagination p12 goFirstPage" style="margin-top: -2.5%;">'
-								+ '<a> Previous </a>&nbsp; </div>');
-						}else{
-							$('.pageDiv').append(
-									'<div <div class="pagination p12 disabled" style="margin-top: -2.5%;">'
-									+ '<a> Previous </a>&nbsp; </div>');
-						}
-				// 페이징 부분
-					for(var i= data.pi.startPage; i<= data.pi.endPage; i++){
-						if(data.pi.currentPage == i){
-							$('.pageDiv').append(
-									'<div <div class="pagination p12 activePage" style="margin-top: -2.5%;">'
-									+ '<a> ' + i + ' </a>&nbsp; </div>');
-						}else{
-							$('.pageDiv').append(
-									'<div <div class="pagination p12 goPage" style="margin-top: -2.5%;">'
-									+ '<a> ' + i + ' </a>&nbsp; </div>');
-						}
-					}
-				
-				// 다음페이지 활성화
-				if(data.pi.boradLimit < data.pi.pageLimit){
-							$('.pageDiv').append(
-									'<div <div class="pagination p12 goNextPage" style="margin-top: -2.5%;">'
-									+ '<a> Next </a>&nbsp; </div>');
-					}else{
-						$('.pageDiv').append(
-								'<div <div class="pagination p12 disabled" style="margin-top: -2.5%;">'
-								+ '<a> Next </a>&nbsp; </div>');
-					}	
-			
-					return data;													
-				}
-			})	
-		})
-		
-		// 최고 금액 설정x
-		$('#min').keyup(function(){
-			// 최저 최고 조회
-			if($("#max").val() == 0){
-			var min = $('#min').val();
-			console.log('min값 : ' + min);
-			$.ajax({
-				url:"searchRowPrice.tpo",
-				data : { "minPrice" : min},
-				dataType:"json",
-			    type: "get",
-				success : function(data){
-					/* $(".restInfo-area").remove(); */
-					//$(".well well-sm search sortarea").append("<div class='>" + data[0].rowMin + "</div>") */
-					var i;
-					$(".restInfo-area").empty();
-					successFunction(data);
-					//page부분 삭제
-					$(".pageDiv").empty();						
-					
-					return data;											
-				}
-			})
-			}
-			})
-			
-	
-		// 최고 금액 설정시
-			$('#max').keyup(function(){
-				// 최저 최고 조회
-				if($("#min").val() != 0){
-				var min = $('#min').val();
-				console.log('min값 : ' + min);
-				var max = $('#max').val();
-				console.log('max값 : ' + max);
-				$.ajax({
-					url:"searchPrice.tpo",
-					data : { "minPrice" : min , "maxPrice" : max},
-					dataType:"json",
-				    type: "get",
-					success : function(data){
-						/* $(".restInfo-area").remove(); */
-						//$(".well well-sm search sortarea").append("<div class='>" + data[0].rowMin + "</div>") */
-						var i;
-						$(".restInfo-area").empty();
-						//page부분 삭제
-						$(".pageDiv").empty();						
-						successFunction(data);
-						return data;											
-					}
-				})
-				}else{
-					var max = $('#max').val();
-					console.log('max값 : ' + max);
-					$.ajax({
-						url:"searchPrice.tpo",
-						data : {"maxPrice" : max},
-						dataType:"json",
-					    type: "get",
-						success : function(data){
-							/* $(".restInfo-area").remove(); */
-							//$(".well well-sm search sortarea").append("<div class='>" + data[0].rowMin + "</div>") */
-							var i;
-							$(".restInfo-area").empty();
-							//page부분 삭제
-							$(".pageDiv").empty();	
-							
-							successFunction(data);
-							return data;											
-						}
-					})
-				}
-			})
-			
-			// ajax 성공했을시 부분
-			function successFunction(data){
-				for(i =0; i<data.rList.length; i++){
-				if(data.rList[i].reImage == "없음"){
-					$('.restInfo-area').append(
-							'<input type="hidden" value="'+data.rList[i].reNo+'">'
-							+ '<a href="restDetail.tpo?reNo="'+data.rList[i].reNo+'">'
-							+ '<div class="well well-lg search restInfo" style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">'
-							+ '<div style="float: left">'
-							+ '<img src="resources/images/noimage.png" style="width: 270px; height: 230px;"/> '
-							+ '</div>'
-							+ '<div style="float: left; margin-left: 15px;">'
-							+ '<b>' + data.rList[i].reName +'</b> <br> <b>전화번호 :</b>' + data.rList[i].rePhone
-							+ '<br> <b>상세주소 :</b> <br>' + data.rList[i].reAddr + '<br>'
-							+ '<b>최저 금액</b> : ' + data.rList[i].rowMin + '원'
-							+ '</div></div>')
-						}else if(data.rList[i].reImage != "없음"){
-						$('.restInfo-area').append('<input type="hidden" value="'+data.rList[i].reNo+'">'
-							+ '<a href="restDetail.tpo?reNo="'+data.rList[i].reNo+'">'
-							+ '<div class="well well-lg search restInfo" style="background-color: #eeeeee; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">'
-							+ '<div style="float: left">'
-							+ '<img src="' + data.rList[i].reImage + '" style="width: 270px; height: 230px;" /> '
-							+ '</div>'
-							+ '<div style="float: left; margin-left: 15px;">'
-							+ '<b>' + data.rList[i].reName +'</b> <br> <b>전화번호 :</b>' + data.rList[i].rePhone
-							+ '<br> <b>상세주소 :</b> <br>' + data.rList[i].reAddr + '<br>'
-							+ '<b>최저 금액</b> : ' + data.rList[i].rowMin + '원'
-							+ '</div>'
-							+ '</div></a>');
-												}
-				}
-			}
-		
-		$()
-			
-			
-			
-		</script>
-
 	</section>
+
 	<!--section 끝-->
+	
+	<script type="text/javascript">
+//객실부분
+var rSum = 1;	
+$("#rPlus").click(function(){
+	rSum = rSum+1;
+	$("#rAmount").attr('value',rSum);
+});
+$("#rminus").click(function(){
+	rSum = rSum-1;
+	$("#rAmount").attr('value',rSum);
+});	
+
+// 성인부분
+var aSum = 1;	
+$("#aPlus").click(function(){
+	aSum = aSum+1;
+	$("#aAmount").attr('value',aSum);
+});
+$("#aminus").click(function(){
+	aSum = aSum-1;
+	$("#aAmount").attr('value',aSum);
+});			
+
+// 어린이 부분
+var kSum = 1;	
+$("#kPlus").click(function(){
+	kSum = kSum+1;
+	$("#kAmount").attr('value',kSum);
+});
+$("#kminus").click(function(){
+	kSum = kSum-1;
+	$("#kAmount").attr('value',kSum);
+});	
+
+</script>
+	
+	
 	<jsp:include page="/include/includeFooter.jsp" />
+
 
 </body>
 </html>
