@@ -15,7 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=39e18fbed61f7ff631c9562c6207cdf1&libraries=services"></script>
 <title>이것은 명소 상세 정보다 이말이야!</title>
-<style>
+<!-- <style>
 ul img{
 	width:150px;
 	height: 150px;
@@ -23,7 +23,7 @@ ul img{
 .media-body {
 	width: 100%;
 }
-</style>
+</style> -->
 </head>
 <body>
 	<!--  header -->
@@ -52,8 +52,21 @@ ul img{
 			<button onclick="writeForm()" id="writeReview" type="button" class="btn btn-info btn-xs">리뷰작성</button>
 
 		</div>
+		<ul>
+		<c:forEach items="${review}" var="reviewList">
+				<li class="media"><img class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }"
+				alt="리뷰사진">
+				<div class="media-body">
+					<h5 class="mt-0 mb-1">${reviewList.reviewTitle }</h5>
+					${reviewList.reviewContent }
+				</div>
+				  <a href="deleteReview.tpo?reviewNo=${reviewList.reviewNo}&sNo=${reviewList.sNo}" class="btn btn-primary">리뷰삭제</a>
+				  <a href="updateReviewView.tpo?reviewNo=${reviewList.reviewNo}" class="btn btn-primary">리뷰수정</a>
+				</li>
+		</c:forEach>
+		</ul>
 	</div>
-		<ul class="list-unstyled">
+		<%-- <ul>
 		<c:forEach items="${review}" var="reviewList">
 			<li class="media"><img class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }"
 				alt="리뷰사진">
@@ -67,7 +80,7 @@ ul img{
 				  class="btn btn-primary">리뷰수정</a>
 				</li>
 		</c:forEach>
-	</ul>
+		</ul> --%>
 	
 		
 <script>

@@ -204,12 +204,12 @@ public class SightController {
 		
 		@RequestMapping(value="deleteReview.tpo", method=RequestMethod.GET)
 		public ModelAndView deleteReview ( ModelAndView mv, HttpServletRequest request) {
-			int reviewNo = 0;
-			reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-			String sNo = request.getParameter("sNo");
-			SightReview review = sService.selectReview(reviewNo);
+			// 해당 명소 리뷰 번호
+			int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+			// 해당 명소에 대한 리뷰 삭제
 			int result = sService.deleteReview(reviewNo);
-			
+			// 해당 명소 번호
+			int sNo = Integer.parseInt(request.getParameter("sNo"));
 			if(result>0) {
 				  mv.addObject("sno",sNo).setViewName("redirect:selectSight.tpo");
 			  }else {
