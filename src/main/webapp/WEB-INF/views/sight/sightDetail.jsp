@@ -15,15 +15,30 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=39e18fbed61f7ff631c9562c6207cdf1&libraries=services"></script>
 <title>이것은 명소 상세 정보다 이말이야!</title>
-<!-- <style>
+<style>
 ul img{
 	width:150px;
 	height: 150px;
 }
-.media-body {
-	width: 100%;
+#pic_map{
+	display:inline-block;
 }
-</style> -->
+ /* text */
+.media-body {
+	float:left;
+	
+}
+/* 사진 */
+.media-object{
+	width:60%;'
+	float:left;
+}
+/* 지도 */
+#map{
+	float:right;
+}
+
+</style>
 </head>
 <body>
 	<!--  header -->
@@ -36,15 +51,19 @@ ul img{
 
 
 		<div class="media">
-			<div class="media-left media-middle">
-				<a href="#"> <img class="media-object" src="${sight.sPicture}"  alt="명소임ㅇㅇ아무튼명소"></a>
-				<div id="map" style="width:500px;height:400px;"></div>
+			<div id="pic_map" class="media-left media-middle">
+					
+				<img class="media-object" src="${sight.sPicture}"  alt="명소임ㅇㅇ아무튼명소">
+				
+				<div id="map" style="width:200px;height:200px;"></div>
+				
 			</div>
+			
 			<div class="media-body">
 				<h4 class="media-heading">
 					<c:out value="${sight.sName }" />
 				</h4>
-				<c:out value="${sight.sIntroduce }" />
+				<p><c:out value="${sight.sIntroduce }" /></p>
 			</div>
 		</div>
 		<div id="buttons">
