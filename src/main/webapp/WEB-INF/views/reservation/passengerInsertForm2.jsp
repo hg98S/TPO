@@ -277,6 +277,14 @@
                 }
        		}
        	}
+       	
+       	/* 로그인 상태 확인 */
+       	var id=$("input[name='userId']").html();
+       	//console.log(id);
+		if(id == '') {
+			alert("로그인 후 결제가 가능합니다.");
+			location.href='loginView.tpo';
+		}
     	
        	/* 결제 */
         var IMP = window.IMP;
