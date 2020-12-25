@@ -23,7 +23,6 @@
 			from SYS.DUAL
 		</foreach>
 		)T
-
 	</update>
 
 	<update id="selectRooms" parameterType="java.util.List">

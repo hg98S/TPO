@@ -22,16 +22,19 @@ public class RoomInfo {
 
 	public static ArrayList<Room> roomAPI() throws IOException {
 		API1 info = null;
-		String serviceKey =  "6B%2BzQRQRMk5iKSRdVZa28m%2BffDiHLBtrOGeNl5Jche0E4sUm3qQh9QzABnMxlnD3brePS5Jx7qAmWyAqyCcgHA%3D%3D";
+		String serviceKey =  "MTxIOXhjWedk7aVhlZwyFcY1Zc%2FwHL%2FAw71ocx%2FHUZ2OSILURHBaoxNHvG0ZgqP9kChQY1IwTrRgl7CBfUGyOg%3D%3D";
 		ArrayList<API1> rlist = new ArrayList<API1>();
 		String totalCount = null;
 		int check = 0;
-		String b = "1";
+		String b = "8";
+		String page = "4";
+		String currentPage = "1";
+		int startV = 61;
 		// url 토탈 값 가져오기
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append( "?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("97", "UTF-8")); /*한 페이지 결과 수*/
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(currentPage, "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
 		urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*(A=제목순,B=조회순,C=수정순,D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
@@ -99,8 +102,8 @@ public class RoomInfo {
 		// 숙소정보 가져오기(숙소정보api)
 		urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("97", "UTF-8")); /*한 페이지 결과 수*/
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(currentPage, "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
 		urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*(A=제목순,B=조회순,C=수정순,D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
@@ -156,6 +159,7 @@ public class RoomInfo {
 			org.w3c.dom.NodeList tList = doc.getElementsByTagName("title");
 
 			for(int i=0; i<tList.getLength(); i++ ) {
+			//	System.out.println("tList :"  + tList.getLength());
 				info = new API1();
 				Element item = (Element)doc.getElementsByTagName("item").item(i);
 
@@ -227,7 +231,9 @@ public class RoomInfo {
 
 
 		// 반복정보조회
-		for(int t = 0; t<97; t++) {
+		for(int t = 0; t<Integer.parseInt(page); t++) {
+		//	System.out.println("page :" + page);
+		//	System.out.println("t는 몇번 돌까?" + t);
 		//	System.out.println("처음 t 돌때 : " + t);
 			urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
@@ -306,19 +312,13 @@ public class RoomInfo {
 				org.w3c.dom.NodeList num = doc.getElementsByTagName("numOfRows");
 				//	System.out.println(con.toString());
 				//	System.out.println(roomList.getLength());
-
+				System.out.println("t : " + t);
 				for(int i=0; i<con.getLength(); i++ ) {		
-			//		System.out.println("i : " + i);
+				//	System.out.println("i : " + i);
 					for(int p=0; p<num.getLength(); p++ ) {
-			//			System.out.println("p : " + p);
+				//	System.out.println("p : " + p);
 						room = new Room();
 						Element item = (Element)doc.getElementsByTagName("item").item(i);	
-			//			System.out.println("t : " + t);
-						int a = 1;
-						int reNo = a+t;
-			//			System.out.println("reNo : " + reNo);
-						room.setReNo(reNo);
-
 
 						roomTitle  = item.getElementsByTagName("roomtitle").item(0);
 						//						System.out.println(accomcountlodging.getNodeName() + " : " + accomcountlodging.getChildNodes().item(0).getNodeValue());
@@ -373,6 +373,23 @@ public class RoomInfo {
 						String facility6 = null;
 						String facility7 = null;
 						String facility8 = null;
+						
+				//		System.out.println(t + "번째 item에는 무슨 갑이 있을까? " + roName);
+						int reNo = 0;
+						
+				//		System.out.println("startV : " + startV);
+						if(roName == null) {
+							reNo = startV+t;
+				//			System.out.println("item이 널일 경우 : " + reNo);
+						}else {
+							reNo =  startV+t;
+				//			System.out.println("item이 널이 아닐 경우 : " + reNo);
+							room.setReNo(reNo);
+						}
+						
+						
+			//			System.out.println("reNo : " + reNo);
+						System.out.println("reNo : " + reNo);
 
 
 						roomBath = item.getElementsByTagName("roombath").item(0);								
@@ -486,17 +503,19 @@ public class RoomInfo {
 							room.setRoImage(rooms1 + "," + rooms2 + "," + rooms3 + "," + rooms4);
 						}
 						oList.add(room);
+					//	System.out.println("객실정보 : " + oList.toString());	
 					}
 
 
 					//System.out.println("체크 oList : " + oList.toString());
 
 				}
-				//System.out.println("객실정보 : " + oList.toString());		
+					
 			}catch(Exception e) {
 				e.printStackTrace(); 
 			}
 		}
+		
 		return oList;
 
 	}		

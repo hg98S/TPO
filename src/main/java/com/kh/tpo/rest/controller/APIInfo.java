@@ -37,16 +37,19 @@ public class APIInfo {
 		ArrayList<API2> rlist2 = new ArrayList<API2>();
 		String totalCount = null;
 		int check = 0;
+		String bb = "31";		
+		String page = "20";
+		String currentPage = "1";
 		// url 토탈 값 가져오기
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append( "?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(currentPage, "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
 		urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*(A=제목순,B=조회순,C=수정순,D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
 		urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("N", "UTF-8")); /*목록구분(Y=목록,N=개수)*/
-		urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*지역코드*/
+		urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(bb, "UTF-8")); /*지역코드*/
 		urlBuilder.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*시군구코드(areaCode 필수)*/
 		urlBuilder.append("&" + URLEncoder.encode("hanOk","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*한옥 여부*/
 		urlBuilder.append("&" + URLEncoder.encode("benikia","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*베니키아 여부*/
@@ -106,13 +109,13 @@ public class APIInfo {
 		// 숙소정보 가져오기(숙소정보api)
 		urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
-		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
-		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+		urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*한 페이지 결과 수*/
+		urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(currentPage, "UTF-8")); /*현재 페이지 번호*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
 		urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
 		urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*(A=제목순,B=조회순,C=수정순,D=생성일순) 대표이미지가 반드시 있는 정렬 (O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
 		urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*목록구분(Y=목록,N=개수)*/
-		urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*지역코드*/
+		urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(bb, "UTF-8")); /*지역코드*/
 		urlBuilder.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*시군구코드(areaCode 필수)*/
 		urlBuilder.append("&" + URLEncoder.encode("hanOk","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*한옥 여부*/
 		urlBuilder.append("&" + URLEncoder.encode("benikia","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*베니키아 여부*/
@@ -168,10 +171,10 @@ public class APIInfo {
 
 				contentId =  item.getElementsByTagName("contentid").item(0);
 
-				System.out.println(contentId.getNodeName() + " : " + contentId.getChildNodes().item(0).getNodeValue());
+			//	System.out.println(contentId.getNodeName() + " : " + contentId.getChildNodes().item(0).getNodeValue());
 				String conId = contentId.getChildNodes().item(0).getNodeValue();
 				conList[i] = conId;
-				//		System.out.println(conList[i]);
+				System.out.println(conList[i]);
 				reName  = item.getElementsByTagName("title").item(0);
 				//	System.out.println(reName.getNodeName() + " : " + reName.getChildNodes().item(0).getNodeValue());
 				String title = reName.getFirstChild().getNodeValue();
@@ -236,7 +239,7 @@ public class APIInfo {
 
 
 		//=		System.out.println("소개정보조회 check : " + check);	
-		for(int t = 0; t<100; t++) {
+		for(int t = 0; t<Integer.parseInt(page); t++) {
 			//	System.out.println("1 : " +  t);
 			urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
@@ -307,11 +310,11 @@ public class APIInfo {
 						if(accomCountLodging != null) {
 							String pTotal = accomCountLodging.getFirstChild().getNodeValue();
 							String[]pTotal2 = pTotal.split("약| |명");
-								System.out.println(accomCountLodging.getNodeName() + " : " + accomCountLodging.getChildNodes().item(0).getNodeValue());
+						//		System.out.println(accomCountLodging.getNodeName() + " : " + accomCountLodging.getChildNodes().item(0).getNodeValue());
 					//		System.out.println("명수 체크 : " + pTotal.length());
 							if(pTotal.length()>4) {
 								result = Integer.parseInt(pTotal2[2]);
-								System.out.println( "결과값 : " +result);
+					//			System.out.println( "결과값 : " +result);
 								rec.setpTotal(result);
 							}else {
 								result = Integer.parseInt(pTotal2[0]);
@@ -373,7 +376,7 @@ public class APIInfo {
 
 						String reFacility = "";							
 						subFacility = item.getElementsByTagName("subfacility").item(0);
-						System.out.println(roomCount.getNodeName() + " : " + roomCount.getChildNodes().item(0).getNodeValue());
+					//	System.out.println(roomCount.getNodeName() + " : " + roomCount.getChildNodes().item(0).getNodeValue());
 						if(subFacility.getFirstChild()== null) {
 							reFacility = "홈페이지에서 확인해주시기 바랍니다.";
 						//	System.out.println(reFacility);
@@ -401,7 +404,7 @@ public class APIInfo {
 		}
 
 		// 공통정보조회
-		for(int t = 0; t<100; t++) {
+		for(int t = 0; t<Integer.parseInt(page); t++) {
 			urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"); /*URL*/
 			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "="+serviceKey); /*Service Key*/
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
@@ -468,8 +471,8 @@ public class APIInfo {
 						overView  = item.getElementsByTagName("overview").item(0);
 						if(overView != null) {
 							reInfo = overView.getFirstChild().getNodeValue();
-							//               System.out.println(overView.getNodeName() + " : " + overView.getChildNodes().item(0).getNodeValue());
-							//               System.out.println("숙박정보" + reInfo);
+							// System.out.println(overView.getNodeName() + " : " + overView.getChildNodes().item(0).getNodeValue());
+						//	 System.out.println("숙박정보" + reInfo);
 							intro.setReInfo(reInfo);
 							intro.setpStatus("Y");
 
@@ -503,9 +506,11 @@ public class APIInfo {
 		String reFacility = null;
 		String reInfo = null;
 		String pStatus = null;
-
+		//System.out.println(rlist1.size());
 		for(int b=0; b<rlist1.size(); b++) {
+			//System.out.println("b : " + b);
 			for(int j=0; j<=b; j++) {
+			//	System.out.println("j : " + j);
 				rest = new Rest();
 				reName = rlist.get(b).getReName();
 				reAddr = rlist.get(b).getReAddr();
@@ -534,14 +539,19 @@ public class APIInfo {
 				rest.setpStatus(pStatus);
 				//	System.out.println(rest.toString());
 				//	System.out.println(b);
+				
 			}
+			
 			joined.add(rest);	
-		//	System.out.println(joined.toString());
+			System.out.println(joined.toString());	
+		//	
 		}
+	
 		//			System.out.println("최종정보 : " + rlist.toString());
 		//			System.out.println("최종정보 : " + rlist1.toString());
 		//			System.out.println("최종정보 : " + rlist2.toString());
 		//	System.out.println(realFinal.toString());
+		
 		return joined;
 	}
 

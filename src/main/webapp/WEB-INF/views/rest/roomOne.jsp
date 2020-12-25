@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="resources/css/slide.css">
 <script src="resources/js/packed.js"></script>
 </head>
-<body>
+<body style="background-color: #ececec">
 
 	<!-- <div class="gtco-loader"></div> -->
 
@@ -100,14 +100,14 @@
 
 
 		<div class="well well-sm restIntro"
-			style="background-color: #eeeeee; width: 100%; padding-top: 15px; padding-bottom: 15px;">
+			style="background-color: white; border:2px solid #0D7B6C;  width: 100%; padding-top: 15px; padding-bottom: 15px;">
 			&nbsp;&nbsp;&nbsp;<b>객실명 : </b> ${room.roName } (${room.pLimit }명 ~
 			최대 ${room.pMaxCount }명)<br>
 
 		</div>
 		<div class="roomsArea">
 			<div class="well well-lg roomsInfo"
-				style="width: 100%; height: 100%; float: left; background-color: #eeeeee;">
+				style="width: 100%; height: 100%; float: left; background-color: white; border:none;">
 				<b>객실크기 : </b>${room.roSize } 평<br> <b>객실수 : </b>${room.roCount }
 				실 <br> <b>기준인원 : </b> ${room.pLimit }명 (최대인원 : ${room.pMaxCount }명)<br>
 				<b>객실금액 : </b> ${room.roPrice }원<br>
@@ -173,5 +173,6 @@
 			});
 		</script>
 	</section>
+		<jsp:include page="/include/includeFooter.jsp" />
 </body>
 </html>
