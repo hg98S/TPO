@@ -215,7 +215,8 @@ public class MemberController {
 	}
 	
 	// 항공예약정보조회(보류)
-//	public String reservationInfoView() {
-//		
-//	}
+	@RequestMapping(value="reservationInfo.tpo", method=RequestMethod.GET)
+	public String reservationInfoView() {
+		return "member/reservationInfo";
+	}
 }

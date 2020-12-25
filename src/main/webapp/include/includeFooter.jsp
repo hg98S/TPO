@@ -59,7 +59,7 @@
    
    <!-- 푸터 시작 -->
    <footer id="gtco-footer" role="contentinfo">
-   <hr id="footerHr" style=" height: 1px; width:75%; background-color: #007c6b; margin-top:-3%; margin-bottom:5%;">
+   <hr id="footerHr" style=" height: 1px; width:56%; background-color: white; margin-top:-3%; margin-bottom:5%;">
       <div class="gtco-container">
          <div class="row row-p   b-md">
             <div class="col-md-6">

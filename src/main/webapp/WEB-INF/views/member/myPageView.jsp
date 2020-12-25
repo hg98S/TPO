@@ -13,16 +13,26 @@
 .myPageList{
 	list-style:none;
 }
+.registerForm input{
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+.searchButton{
+	border-radius: 4px;
+	border: 1px solid #24cc63;
+	background: #24cc63;
+	color: white;
+}
 </style>
 </head>
 <body style="background:#ececec;">
 	<jsp:include page="/include/includeHeader.jsp"></jsp:include>
 	<div id="page" ></div>
 	<section id="section" style="margin-top:50px;">
-	  <div style="margin-left:380px;">
+	  <div style="margin-left:100px;">
 		<b style="font-size:25px;font-weight:bold; color:black">마이페이지</b> <small style="color:#b9b9b9"> my Page</small>
-		<hr style="height: 1px; width:70%; background-color: #007c6b;align:left; margin-left:0;">
-		<div id="registerleft" style="float:left; width:20%; padding-left:0px;">
+		<hr style="height: 1px; width:13%; background-color: #007c6b;align:left; margin-left:0;">
+		<div id="registerleft" style="float:left; width:17.5%;">
 							<ul class="myPageList" style="line-style:none; padding-left:0px;">
 							<li ><a href="myPageView.tpo" onclick="fnMemberInfo()"><b style="color:gray">개인정보 관리</b></a></li>
 							<li><br></li>
@@ -30,10 +40,10 @@
 							<li><br></li>
 							<li><a href="#" onclick="fnMemberDelete()"><b style="color:gray">회원 탈퇴</b></a></li>
 							</ul>
-		</div>
-		<div id="pageCategory">
+		</div >
+		<div id="pageCategory" style="float:left; width:80%;">
 		<div id="myPage" class="centerText">
-		<form action="modifyMember.tpo" method="post">
+		<form action="modifyMember.tpo" method="post" style="float:left;">
 			<input type="hidden" name="userName" value="${loginUser.userName }">
 			<table class="registerForm" width="650" cellspacing="5" style="margin:auto;">
 				<tr>
@@ -112,7 +122,7 @@
 					<td>우편번호</td>
 					<td>
 						<input type="text" id="member_postcode" name="post" size="6" value="${addr }" required>
-						<button type="button" onclick="member_execDaumPostcode()">검색</button>
+						<button type="button" class="searchButton" onclick="member_execDaumPostcode()">검색</button>
 					</td>
 					<td><hr></td>
 				</tr>
@@ -143,7 +153,7 @@
 				</c:if>
 				</c:forTokens>
 				<tr style="line-height:100px;">
-					<td colspan="4" align="center" style="padding-left:200px;">
+					<td colspan="4" align="center">
 					<input class="btn btn-primary" type="submit" onclick="return fnSubmit()" value="수정하기">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input class="btn btn-danger" type="reset" value="입력 취소">
@@ -234,10 +244,11 @@
 		}
 	}
 	
-	// 회원정보 페이지 보여주기
-	function fnMemberInfo(){
-	    /* $("#myPage").show(); */
-	/* 	$("#deletePage").hide(); */
+	// 항공예약정보 페이지 보여주기
+	function fnReservationInfo(){
+		$("#pageCategory").load("reservationInfo.tpo");
+		$("#myPage").hide(); 
+ 	    $("#deletePage").hide(); 
 	}
 	// 항공 예약 정보 페이지 보여주기
 	

@@ -384,67 +384,73 @@
                });
                $(document).ready(function() {
             	   $("#twoway_select_person").change(function() {
-            		   var taData = parseInt($("#twoway_adult_number").find(":selected").val());
-                	   var tcData = parseInt($("#twoway_child_number").find(":selected").val());
-                	   var tiData = parseInt($("#twoway_infant_number").find(":selected").val());
-                	   var sum = parseInt(taData + tcData + tiData);
-                	   var taiSum = parseInt(taData + tiData);
+            		   var taData = parseInt($("#twoway_adult_number").find(":selected").val());  // 성인인원
+                	   var tcData = parseInt($("#twoway_child_number").find(":selected").val());  // 소아인원
+                	   var tiData = parseInt($("#twoway_infant_number").find(":selected").val()); // 유아인원
+                	   var sum = parseInt(taData + tcData + tiData); // 총인원
                 	   console.log(taData +  '+' + tcData + '+' + tiData);
                 	   console.log(sum);
                 	   if(sum > 9) {
-                		   console.log(sum);
                 		   alert("성인/소아/유아 합은 최대 9명까지 가능합니다.");
                 		   $(this).focus();
+                		   // 초기화 작업1(성인 n명,소아 n명, 유아 n명 나오는 곳)
+                		   $("#twoway_adult_headCount").html("1");
+                		   $("#twoway_child_headCount").html("0");
+                		   $("#twoway_infant_headCount").html("0");
+                		   // 초기화 작업2 (각각의 select option값을 원 상태로 돌림)
+                		    $("#twoway_adult_number option:eq(0)").prop("selected", true);
+                		    $("#twoway_child_number option:eq(0)").prop("selected", true);
+                		    $("#twoway_infant_number option:eq(0)").prop("selected", true);
+                		    // 갑
                 		   return false;
                 	   }
                 	   else if(taData < tiData) {
                 		   alert("성인1명에 유아1명만을 예약하실수 있으며, 나머지 유아는 소아로 예약하셔야 합니다.");
+                		   // 초기화 작업1(성인 n명,소아 n명, 유아 n명 나오는 곳)
+                		   $("#twoway_adult_headCount").html("1");
+                		   $("#twoway_child_headCount").html("0");
+                		   $("#twoway_infant_headCount").html("0");
+                		   // 초기화 작업2 (각각의 select option값을 원 상태로 돌림)
+                		    $("#twoway_adult_number option:eq(0)").prop("selected", true);
+                		    $("#twoway_child_number option:eq(0)").prop("selected", true);
+                		    $("#twoway_infant_number option:eq(0)").prop("selected", true);
                 		   $(this).focus();
                 		   return false;
                 	   }
                 	// 왕복 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜,오는날짜가 체크되어있지않을 경우
                        // 성인<유아/성인+소아+유아>9 일때
-                       // alert 창 띄움
-                      
-                    	   $("#twowayFlight").click(function() { // 항공권 검색 버튼 클릭
-            				   var sDepAirportNm = $("#twoway_dep").val();
-            				   var sArrAirportNm = $("#twoway_arr").val();
-            				   var sDepPlandTime = $("#datePicker_dep1").val();
-            				   var sArrPlandTime = $("#datePicker_arr1").val();
-            				   console.log(sum +'/' + taData +'/' +tiData);
-            				   if(sDepAirportNm == "") {
-            				      alert("출발지를 선택해주세요.");
-            				      $("#twoway_dep").focus();
-            				      return false;
-            				   }
-            				   else if(sArrAirportNm == "") {
-            					   alert("도착지를 선택해주세요.");
-            					   $("#twoway_arr").focus();
-            					   return false;
-            				   }
-            				   else if(sDepPlandTime == "가는 날짜") {
-            					   alert("가는 날짜를 선택해주세요.");
-            					   $("#datePicker_dep1").focus();
-            					   return false;
-            				   }
-            				   else if(sArrPlandTime == "오는 날짜") {
-            					   alert("오는 날짜를 선택해주세요.");
-            					   $("#datePicker_arr1").focus();
-            					   return false;
-            				   }
-            				 
-            				   else if(sum > 9 && taData < tiData) {
-            					   alert("다시고르셈");
-            					   return false;
-            				   }
-            				   return false;
-            				});
-                       
             	   });
+            	   $("#twowayFlight").click(function() { // 항공권 검색 버튼 클릭
+    				   var sDepAirportNm = $("#twoway_dep").val();
+    				   var sArrAirportNm = $("#twoway_arr").val();
+    				   var sDepPlandTime = $("#datePicker_dep1").val();
+    				   var sArrPlandTime = $("#datePicker_arr1").val();
+    				   /* console.log(sum +'/' + taData +'/' +tcData +'/' +tiData ); */
+    				   if(sDepAirportNm == "") {
+    				      alert("출발지를 선택해주세요.");
+    				      $("#twoway_dep").focus();
+    				      return false;
+    				   }
+    				   else if(sArrAirportNm == "") {
+    					   alert("도착지를 선택해주세요.");
+    					   $("#twoway_arr").focus();
+    					   return false;
+    				   }
+    				   else if(sDepPlandTime == "가는 날짜") {
+    					   alert("가는 날짜를 선택해주세요.");
+    					   $("#datePicker_dep1").focus();
+    					   return false;
+    				   }
+    				   else if(sArrPlandTime == "오는 날짜") {
+    					   alert("오는 날짜를 선택해주세요.");
+    					   $("#datePicker_arr1").focus();
+    					   return false;
+    				   }
+    				});
                });
                
                /* 편도 */
-               $(document).ready(function() {
+                $(document).ready(function() {
                   $("#oneway_adult_number").change(function() {
                      var data = $(this).find(":selected").html();
                      $("#oneway_adult_headCount").text(data);
@@ -457,10 +463,47 @@
                      var data = $(this).find(":selected").html();
                      $("#oneway_infant_headCount").text(data);
                   });
+               }); 
+   				// 편도 인원 클릭할때 마다 
+               $(document).ready(function() {
+            	   $("#oneway_select_person").change(function() {
+            		   var oaData = parseInt($("#oneway_adult_number").find(":selected").val());  // 성인인원
+                	   var ocData = parseInt($("#oneway_child_number").find(":selected").val());  // 소아인원
+                	   var oiData = parseInt($("#oneway_infant_number").find(":selected").val()); // 유아인원
+                	   var oisum = parseInt(oaData + ocData + oiData); // 총인원
+                	   console.log(oaData +  '+' + ocData + '+' + oiData);
+                	   console.log(oisum);
+                	   if(oisum > 9) {
+                		   alert("성인/소아/유아 합은 최대 9명까지 가능합니다.");
+                		   $(this).focus();
+                		   // 초기화 작업1(성인 n명,소아 n명, 유아 n명 나오는 곳)
+                		   $("#oneway_adult_headCount").html("1");
+                		   $("#oneway_child_headCount").html("0");
+                		   $("#oneway_infant_headCount").html("0");
+                		   // 초기화 작업2 (각각의 select option값을 원 상태로 돌림)
+                		    $("#oneway_adult_number option:eq(0)").prop("selected", true);
+                		    $("#oneway_child_number option:eq(0)").prop("selected", true);
+                		    $("#oneway_infant_number option:eq(0)").prop("selected", true);
+                		    // 갑
+                		   return false;
+                	   }
+                	   else if(oaData < oiData) {
+                		   alert("성인1명에 유아1명만을 예약하실수 있으며, 나머지 유아는 소아로 예약하셔야 합니다.");
+                		   // 초기화 작업1(성인 n명,소아 n명, 유아 n명 나오는 곳)
+                		   $("#oneway_adult_headCount").html("1");
+                		   $("#oneway_child_headCount").html("0");
+                		   $("#oneway_infant_headCount").html("0");
+                		   // 초기화 작업2 (각각의 select option값을 원 상태로 돌림)
+                		    $("#oneway_adult_number option:eq(0)").prop("selected", true);
+                		    $("#oneway_child_number option:eq(0)").prop("selected", true);
+                		    $("#oneway_infant_number option:eq(0)").prop("selected", true);
+                		   $(this).focus();
+                		   return false;
+                	   }
+                	// 왕복 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜,오는날짜가 체크되어있지않을 경우
+                       // 성인<유아/성인+소아+유아>9 일때
+            	   });
                });
-   
-               
-               
 				// 편도 항공권 검색 버튼 눌렀을 때 출발지,도착지,가는날짜가 체크되어있지않을 경우
 				// 성인<유아/성인+소아+유아>9 일때
 	            // alert 창 띄움

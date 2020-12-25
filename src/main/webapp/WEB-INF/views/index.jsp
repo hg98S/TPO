@@ -39,13 +39,30 @@
 		<!-- 지도가 표시되는 곳 -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>ISSUE</h2>
-					<p>쿨럭.. 나 코로나 아니야..</p>
+					<h2>Corona Map</h2>
+					<p>국내 코로나 확진자수를 실시간으로 집계하여 제공합니다.</p>
 				</div>
 			</div>
 			<div class="row">
 				<!-- 시도별 지도 -->
-				<div class="urban col-lg-6 col-md-4 col-sm-6" style="margin-left: -100px;">
+				<div>
+				<div style="width:50%; text-align:left;"><h4>최신 날짜: ${currentDate }</h4></div>
+				<div style="width:50%; position:absolute; top:250px; left:1100px;">
+						<div>
+							<div style="float:left">10명 이하</div>&nbsp;&nbsp;
+							<div style="float:left;background:rgba(246, 234, 140, 0.7); width:10px; height:10px; margin-top:10px; margin-left:22.5px;" ></div>
+						</div>
+						<div>
+							<div style="float:left">10 ~ 50 미만</div>&nbsp;&nbsp;
+							<div style="float:left;background:rgba(242, 110, 92, 0.9); width:10px; height:10px; margin-top:10px; margin-left:5px;" ></div>
+						</div>
+						<div>
+							<div style="float:left">50명 이상</div>&nbsp;&nbsp;
+							<div style="float:left;background:rgba(192, 54, 71, 0.9); width:10px; height:10px; margin-top:10px; margin-left:22.5px;"></div>
+						</div>
+				</div>
+				</div>
+				<div class="urban col-lg-6 col-md-4 col-sm-6" style="margin-left: -100px; margin-top:20px;">
 					<div id="ubanMap">
 						<jsp:include page="common/urbanMap.jsp"></jsp:include>
 					</div>
@@ -109,7 +126,7 @@
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<br>
 						<h2>Most Popular Attraction</h2>
-						<p>여기가 9시 되면 배가 끊긴다며?</p>
+						<p> 어떤 명소들이 있는지 확인하고 여행 계획을 세워보세요.</p>
 					</div>
 				</div>
 				<div class="row">
@@ -165,7 +182,7 @@
 							        </c:otherwise>
 							</c:choose>
 							</h2>
-								<p style="color:black;">
+								<p style="color:black; text-align:center;">
 									<c:choose>
 									        <c:when test="${fn:length(sightList.sLocation) gt 30}">
 									        <c:out value="${fn:substring(sightList.sLocation, 0, 29)}">...</c:out>
@@ -191,7 +208,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 						<h2>Most Popular Room</h2>
-						<p>손만 잡고 잘래?</p>
+						<p>여행 목적과 스타일에 따라 적합한 숙소 유형을 찾아보세요.</p>
 					</div>
 				</div>
 				<div class="row">

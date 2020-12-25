@@ -77,55 +77,55 @@
 				<text id="LCD11" class="URBANTEXT" x="154" y="200"><a id="seoul">서울</a></text>
 				<!--  <rect width="70" height="80" fill="yellow" x="123" y="100" rx="20" ry="20"/>
 				 <line x1="123" y1="148" x2="193" y2="148" stroke-width="10" stroke="black" /> -->
-				 <text id="LCD11" class="urbanNum" x="145" y="220" fill="#0000ff"><a></a></text>
+				 <text id="LCD11" class="urbanNum" x="145" y="220" fill="red"><a></a></text>
 				
 				<text id="LCD26" class="URBANTEXT" x="503" y="685"><a id="busan">부산광역시</a></text>
-				<text id="LCD26" class="urbanNum" x="493" y="705" fill="#0000ff" ><a></a></text>
+				<text id="LCD26" class="urbanNum" x="493" y="705" fill="red" ><a></a></text>
 				
 				<text id="LCD27" class="URBANTEXT" x="418" y="562"><a id="daegu">대구광역시</a></text>
-				<text id="LCD27" class="urbanNum" x="403" y="582" fill="#0000ff" ><a></a></text>
+				<text id="LCD27" class="urbanNum" x="403" y="582" fill="red" ><a></a></text>
 				
 				<text id="LCD28" class="URBANTEXT" x="67" y="177"><a id="incheon">인천광역시</a></text>
-				<text id="LCD28" class="urbanNum" x="56" y="197" fill="#0000ff"><a></a></text>
+				<text id="LCD28" class="urbanNum" x="56" y="197" fill="red"><a></a></text>
 				
 				<text id="LCD29" class="URBANTEXT" x="127" y="687"><a id="gwangju">광주광역시</a></text>
-				<text id="LCD29" class="urbanNum" x="112" y="707" fill="#0000ff" ><a></a></text>
+				<text id="LCD29" class="urbanNum" x="112" y="707" fill="red" ><a></a></text>
 				
 				<text id="LCD30" class="URBANTEXT" x="221" y="463"><a id="daejeon">대전광역시</a></text>
-				<text id="LCD30" class="urbanNum" x="207" y="483" fill="#0000ff" ><a></a></text>
+				<text id="LCD30" class="urbanNum" x="207" y="483" fill="red" ><a></a></text>
 				
 				<text id="LCD31" class="URBANTEXT" x="531" y="622"><a id="ulsan">울산광역시</a></text>
-				<text id="LCD31" class="urbanNum" x="520" y="642" fill="#0000ff"><a></a></text>
+				<text id="LCD31" class="urbanNum" x="520" y="642" fill="red"><a></a></text>
 				
 				<text id="LCD36" class="URBANTEXT" x="199" y="408"><a id="sejong">세종특별자치시</a></text>
-				<text id="LCD36" class="urbanNum" x="187" y="428" fill="#0000ff" ><a></a></text>
+				<text id="LCD36" class="urbanNum" x="187" y="428" fill="red" ><a></a></text>
 				
 				<text id="LCD41" class="URBANTEXT" x="216" y="245"><a id="gyeonggi">경기도</a></text>
-				<text id="LCD41" class="urbanNum" x="205" y="265" fill="#0000ff"><a></a></text>
+				<text id="LCD41" class="urbanNum" x="205" y="265" fill="red"><a></a></text>
 				
 				<text id="LCD42" class="URBANTEXT" x="370" y="179"><a id="gangwon">강원도</a></text>
-				<text id="LCD42" class="urbanNum" x="355" y="199" fill="#0000ff" ><a></a></text>
+				<text id="LCD42" class="urbanNum" x="355" y="199" fill="red" ><a></a></text>
 				
 				<text id="LCD43" class="URBANTEXT" x="294" y="351"><a id="chungcheon1">충청북도</a></text>
-				<text id="LCD43" class="urbanNum" x="280" y="371" fill="#0000ff" ><a></a></text>
+				<text id="LCD43" class="urbanNum" x="280" y="371" fill="red" ><a></a></text>
 				
 				<text id="LCD44" class="URBANTEXT" x="105" y="449"><a id="chungcheon2">충청남도</a></text>
-				<text id="LCD44" class="urbanNum" x="92" y="469" fill="#0000ff" ><a></a></text>
+				<text id="LCD44" class="urbanNum" x="92" y="469" fill="red" ><a></a></text>
 				
 				<text id="LCD45" class="URBANTEXT" x="179" y="592"><a id="jeonla1">전라북도</a></text>
-				<text id="LCD45" class="urbanNum" x="168" y="612" fill="#0000ff" ><a></a></text>
+				<text id="LCD45" class="urbanNum" x="168" y="612" fill="red" ><a></a></text>
 				
 				<text id="LCD46" class="URBANTEXT" x="138" y="764"><a id="jeonla2">전라남도</a></text>
-				<text id="LCD46" class="urbanNum" x="123" y="784" fill="#0000ff" ><a></a></text>
+				<text id="LCD46" class="urbanNum" x="123" y="784" fill="red" ><a></a></text>
 				
 				<text id="LCD47" class="URBANTEXT" x="447" y="460"><a id="gyeongsang1">경상북도</a></text>
-				<text id="LCD47" class="urbanNum" x="438" y="480" fill="#0000ff"><a></a></text>
+				<text id="LCD47" class="urbanNum" x="438" y="480" fill="red"><a></a></text>
 				
 				<text id="LCD48" class="URBANTEXT" x="367" y="672"><a id="gyeongsang2">경상남도</a></text>
-				<text id="LCD48" class="urbanNum" x="357" y="692" fill="#0000ff" ><a></a></text>
+				<text id="LCD48" class="urbanNum" x="357" y="692" fill="red" ><a></a></text>
 				
 				<text id="LCD50" class="URBANTEXT" x="76" y="970"><a id="jeju">제주특별자치도</a></text>
-				<text id="LCD50" class="urbanNum" x="65" y="990" fill="#0000ff" ><a></a></text>
+				<text id="LCD50" class="urbanNum" x="65" y="990" fill="red" ><a></a></text>
 				</g>
 				</svg>
 	<!-- script -->

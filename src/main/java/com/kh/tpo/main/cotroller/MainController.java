@@ -341,6 +341,10 @@ public class MainController {
 		ArrayList<Rest> restList = mainService.selectRestList();
 		ArrayList<Room> roomList = mainService.selectRoomList();
 		ArrayList<MainSight> sightList = mainService.selectSightList();
+		// 데이터 등록일자 받아오는 날짜 타입
+		SimpleDateFormat registerdf = new SimpleDateFormat("yyyy-MM-dd");
+		// 데이터 등록일자(현재날짜)
+		String currentDate = registerdf.format(new Date(System.currentTimeMillis()));
 //		for(MainSight info: sightList) {
 //			System.out.println(info.toString());
 //		}
@@ -349,6 +353,7 @@ public class MainController {
 			model.addAttribute("roomList", roomList);
 			model.addAttribute("restList", restList);
 			model.addAttribute("sightList", sightList);
+			model.addAttribute("currentDate", currentDate);
 			return "index";
 		}else {
 			return "common/errorPage";
