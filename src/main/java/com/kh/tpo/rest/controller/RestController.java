@@ -78,6 +78,7 @@ public class RestController {
 			mv.addObject("room", room).addObject("currentPage", currentPage).setViewName("rest/restOne");
 		} else {
 			mv.addObject("msg", "게시글 상세조회 실패");
+			mv.setViewName("rest/restOne");
 		}
 		return mv;
 	}
@@ -100,7 +101,7 @@ public class RestController {
 			return "rest/restList";
 		} else {
 			model.addAttribute("msg", "게시글 상세조회 실패");
-			return "";
+			return "rest/restList";
 		}
 	}
 
@@ -121,6 +122,7 @@ public class RestController {
 			mv.setViewName("rest/restList");
 		} else {
 			mv.addObject("msg", "게시글 상세조회 실패");
+			mv.setViewName("rest/restList");
 		}
 		return mv;
 	}
@@ -138,7 +140,8 @@ public class RestController {
 			mv.addObject("pi", pi);
 			mv.setViewName("rest/restList");
 		} else {
-			mv.addObject("msg", "게시글 상세조회 실패");
+			mv.addObject("msg", "금액에 맞는 숙소가 존재하지 않습니다");
+			mv.setViewName("rest/restList");
 		}
 		return mv;
 	}
@@ -162,7 +165,8 @@ public class RestController {
 			mv.addObject("pi", pi);
 			mv.setViewName("rest/restList");
 		} else {
-			mv.addObject("msg", "게시글 상세조회 실패");
+			mv.addObject("msg", "제시한 검색어와 부합하는 숙소가 존재하지 않습니다.");
+			mv.setViewName("rest/restList");
 		}
 		return mv;
 	}

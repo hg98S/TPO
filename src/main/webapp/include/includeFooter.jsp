@@ -59,11 +59,11 @@
    
    <!-- 푸터 시작 -->
    <footer id="gtco-footer" role="contentinfo">
-   <hr id="footerHr" style=" height: 1px; width:75%; background-color: #007c6b; margin-top:-3%; margin-bottom:5%;">
+   <hr id="footerHr" style=" height: 1px; width:60%; background-color: #007c6b; margin-top:-2%; margin-bottom:3.1%; margin-left:21.5%;">
       <div class="gtco-container">
          <div class="row row-p   b-md">
-            <div class="col-md-6">
-               <div class="gtco-widget">
+            <div class="col-md-8">
+               <div class="gtco-widget" >
                   <h3>About Us</h3>
                   <p>
                      TPO<br>
@@ -73,8 +73,8 @@
                   </p>
                </div>
             </div>
-            <div class="col-md-6 col-md-push-1">
-               <div class="gtco-widget">
+            <div class="col-md-4 col-md-push-1">
+               <div class="gtco-widget" style="float: right; padding-right:25%;">
                   <h3>Get In Touch</h3>
                   <ul class="gtco-quick-contact">
                      <li><a href="#"><i class="icon-phone"></i> +82 2 090 0909</a></li>

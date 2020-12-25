@@ -133,8 +133,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="main-right"
-				style="width: 75%; height: 100%; float: left;">
+			
+			
+		
+			
+			<div class="main-right" style="width: 75%; height: 100%; float: left;">
 				<div class="well well-sm search sortarea"
 					style="border: none; background-color: white; width: 100%; height: 60px; margin-left: 5%; float: left; padding-left: 30px; padding-top: 18px;">
 					<a href="alignList.tpo?alignList=Name" value="alignName"
@@ -144,6 +147,8 @@
 						|</b> <a href="alignList.tpo?alignList=Click" value="alignClick"
 						style="color: black;"><b> 최다클릭 </b></a>
 				</div>
+				
+				<c:if test="${msg eq null}">
 				<div class=" restInfo-area"
 					style="width: 100%; height: 100%; margin-top: 10%;">
 					<c:forEach items="${rList }" var="rest">
@@ -156,17 +161,20 @@
 										<img src="resources/images/noimage.png"
 											style="width: 270px; height: 230px;" />
 									</div>
-									<div style="float: left; margin-left: 15px;">
-										<b>${rest.reName }</b> <br> <b>전화번호 :</b> ${rest.rePhone }
+									<div style="float: left; margin-left: 15px; margin-top:2%;">
+									<p style="line-height : 230%;">
+										<b style="font-size:17px; line-height:290%;">${rest.reName }</b> <br>
+										<b>전화번호 :</b> ${rest.rePhone }
 										<br> <b>상세주소 :</b> <br> ${rest.reAddr } <br>
 										<c:if test="${rest.sumPrice ne 0 }">
 											<b>최저금액 :</b>
 											${rest.sumPrice }
 										</c:if>
 										<c:if test="${rest.rowMin ne 0 }">
-											<b>최저금액 :</b>
+											<b >최저금액 :</b>
 											${rest.rowMin }
 										</c:if>
+										</p>
 									</div>
 
 								</c:if>
@@ -176,7 +184,8 @@
 											style="width: 270px; height: 210px;" />
 									</div>
 									<div style="float: left; margin-left: 15px;">
-										<b>${rest.reName }</b>
+									<p style="line-height : 230%;">
+									  <b style="font-size:17px; line-height:290%;">${rest.reName }</b>
 										<c:url var="restDetail" value="restDetail.tpo">
 											<c:param name="reName" value="${rest.reName }"></c:param>
 											<c:param name="page" value="${pi.currentPage }"></c:param>
@@ -191,6 +200,7 @@
 											<b>최저금액 :</b>
 											${rest.rowMin }
 										</c:if>
+										</p>
 									</div>
 								</c:if>
 							</div>
@@ -198,6 +208,14 @@
 					</c:forEach>
 				</div>
 			</div>
+	</c:if>
+	<c:if test="${msg ne null }">
+	<div class="well well-lg search restInfo" style="background-color: white; border: none; margin-top: 10%; margin-left: 5%; height: 260px; width: 100%; color: black">
+		${msg }
+	</div>
+	</c:if>
+
+
 
 			<div class="pageDiv">
 
@@ -416,7 +434,8 @@
 					<!-- 		다음 -->
 
 					<c:if test="${pi.currentPage>=pi.maxPage }">
-               Next&nbsp;
+                     <a href="#"
+									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
             </c:if>
 					<c:choose>
 						<c:when test="${search.alignList eq 'Name' }">

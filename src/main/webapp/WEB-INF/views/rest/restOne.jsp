@@ -50,35 +50,39 @@
 							style="width: 100%; height: 310px; margin-top: -10%;">
 					</c:if>
 				</div>
-				<div class="well well-sm  restName"
-					style="width: 60%; background-color: #eeeeee; height: 250px; margin-left: 2%; float: left; padding-left: 35px; padding-top: 15px;">
-					<b>${room[0].reName }</b>
-					<div style="margin-top: 10px; margin-left: 20px;">
-						전화번호 : ${room[0].rePhone } <br>홈페이지 : ${room[0].reUrl } <br>주소
-						: ${room[0].reAddr } <br>주차유무 :
+				<div class="well well-sm  restName" style="width: 60%; background-color: white; color:black; border:none; height: 250px; margin-left: 2%; float: left; padding-left: 35px; padding-top: 23px;">
+					<b style="font-size:18px;">${room[0].reName }</b>
+					<div style="margin-top: 5px; margin-left: 24px;">
+					<p style="line-height: 200%;">
+						<b style="font-size:16.5px;">전화번호 :</b> ${room[0].rePhone } <br>
+						<b style="font-size:16.5px;">홈페이지 :</b> ${room[0].reUrl } <br>
+						<b style="font-size:16.5px;">주소 :</b> ${room[0].reAddr } <br>
+						<b style="font-size:16.5px;">주차유무 :</b>
 						<c:if test="${room[0].pStatus eq 'Y'}">가능</c:if>
 						<br> <br>
+					</p>
 						<!-- <button type="button" class="btn btn-primary btn-sm" id="modalMap"
 							onclick="modalMap()">지도보기</button> -->
-						<button type="button" class="btn btn-primary btn-sm" id="modalMap"
-							data-toggle="modal" data-target="#myFullsizeModal">지도보기</button>
+						<button type="button" class="btn btn-sm" id="modalMap" style="background-color:#f8ca00; color:black; font-weight: bold; margin-top:-18%; margin-left:73%;"
+							data-toggle="modal" data-target="#myFullsizeModal" >지도보기</button>
 					</div>
 				</div>
 
 			</div>
 
-			<div class="well well-sm restIntro"
-				style="background-color: #eeeeee; width: 100%; padding-top: 15px; padding-bottom: 25px;">
+			<div class="well well restIntro"
+				style="width: 100%; padding-top: 20px; margin-bottom:5%; padding-bottom: 5px;  background-color:white; border : 2px solid #0D7B6C; color:black;">
 
-				&nbsp;&nbsp;&nbsp;<b>숙소소개</b> <br>
-				<div style="margin-left: 20px;">${room[0].reInfo }</div>
+				&nbsp;&nbsp;&nbsp;<b style="font-size:18px;">숙소소개</b> <br>
+				<div style="margin-left: 20px; margin-top:1%"><p style="line-height: 210%;">${room[0].reInfo }</p></div>
 			</div>
+			<p style="color:gray; font-size:20px; font-weight:inherit; ;">객실정보</p>
 			<c:forEach items="${room }" var="room">
-				<div class="roomsArea">
+				
+				<div class="roomsArea" style="border:none;">
 					<div class="well well-lg rooms"
-						style="height: 270px; background-color: #eeeeee; margin-top: 2%;">
-						<div class="roomsimage"
-							style="height: 100%; width: 30%; float: left;">
+						style="height: 270px; background-color:white; margin-top: 2%; border:none;">
+						<div class="roomsimage" style=" background-color: white; border:none;  height: 100%; width: 30%; float: left;">
 							<%-- ${room.roImage } --%>
 							<c:forTokens items="${room.roImage }" delims=","
 								varStatus="status" var="image">
@@ -95,10 +99,11 @@
 								<%-- <c:if test="${status.index eq 0}"> <img src="resources/images/noimage.png" style="height:100%; width:100%;"></c:if> --%>
 							</c:forTokens>
 						</div>
-						<a href="roomInfo.tpo?rNo=${room.rNo }" style="color:gray;">
-							<div class="well well-lg roomsInfo" style="width: 65%; height: 100%; float: left; margin-left: 5%; background-color: #eeeeee;">
-								<b>${room.roName }</b>
-								<div style="margin-left: 25px; margin-top: 10px;">
+						<a href="roomInfo.tpo?rNo=${room.rNo }" style="color:black;">
+							<div class="well well-lg roomsInfo" style="width: 65%; height: 100%; float: left; margin-left: 5%; background-color: white; border:1px solid #ececec;">
+								<b style="font-size:18px; "> &nbsp; &nbsp; &nbsp;${room.roName }</b>
+								<div style="margin-left: 40px; margin-top: 15px;">
+								<p style="line-height: 210%;">
 									체크인 : ${rest.checkIn }<br> 체크아웃 : ${rest.checkout }<br>
 									요금 : ${room.roPrice }(1박 기준)
 								</div>
@@ -108,7 +113,6 @@
 					</div>
 				</div>
 			</c:forEach>
-
 
 			<!-- 지도 테스트 -->
 
@@ -129,6 +133,7 @@
 				<div class="modal-dialog modal-fullsize modal-lg" role="document">
 					<div class="modal-content modal-fullsize">
 						<div class="modal-header">
+						${room[0].reName } 약도
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
