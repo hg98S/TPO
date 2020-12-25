@@ -6,20 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>TPO_탑승자 정보 입력</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <style type="text/css">
-	body {
-		background-color: #ececec;
-	}
+   body {
+      background-color: #ececec;
+   }
 </style>
 </head>
 <body>
-	<jsp:include page="/include/includeHeader.jsp" />
-	<div id="page"></div>
-	
-	<!-- 컨텐츠 시작 -->
+   <jsp:include page="/include/includeHeader.jsp" />
+   <div id="page"></div>
+   
+   <!-- 컨텐츠 시작 -->
     <section class="gtco-container" style="margin-top: 50px;">
         <form action="multipleInsertRound.tpo" method="post" class="was-validated">
         <article>
@@ -67,14 +66,14 @@
             </div>
         </article>
         <script>
-        	$(document).ready(function(){
-        		var depArea = "${depJourney }";
-        		$("#depArea").val(depArea.substr(0,2));
-        		$("#arrArea").val(depArea.substr(5,7));
-        		var depArea2 = "${depJourney2 }";
-        		$("#depArea2").val(depArea2.substr(0,2));
-        		$("#arrArea2").val(depArea2.substr(5,7));
-        	});
+           $(document).ready(function(){
+              var depArea = "${depJourney }";
+              $("#depArea").val(depArea.substr(0,2));
+              $("#arrArea").val(depArea.substr(5,7));
+              var depArea2 = "${depJourney2 }";
+              $("#depArea2").val(depArea2.substr(0,2));
+              $("#arrArea2").val(depArea2.substr(5,7));
+           });
         </script>
         <br>
         <article>
@@ -172,46 +171,44 @@
                         <col width="80px;">
                         <col width="80px;">
                     </colgroup>
-                    <input type="hidden" name="rPeople" value="${acCount }">
                     <tr>
                         <th style="height: 50px; font-size: 20px; line-height: 2.5; text-align: center; background-color: #09c6ab; color: white;"><b>총 합계 금액</b></th>
-                        <td style="font-size: 20px; line-height: 2.5; text-align: center;" id="totalCharge">${acCount}*(${fare }+${fare2 })원</td>
+                        <td style="font-size: 20px; line-height: 2.5; text-align: center;">58800원</td>
                     </tr>
                 </table>
             </div>
         </article>
         <br>
         <input type="hidden" name="rPeople" value="${tCount }">
-        <%-- <input type="hidden" name="rPeople" value="${acCount }"> --%>
-    	<input type="hidden" name="userId" value="${loginUser.userId }">
-    	
-    	<input type="hidden" name="riVihicleId" value="${depAirlineNm }">
-    	<input type="hidden" name="riVihicleId2" value="${depAirlineNm2 }">
-    	<input type="hidden" id="depArea" name="riDepartureArea" value="">
-    	<input type="hidden" id="depArea2" name="riDepartureArea2" value="">
-    	<input type="hidden" id="arrArea" name="riArrivalArea" value="">
-    	<input type="hidden" id="arrArea2" name="riArrivalArea2" value="">
-    	<input type="hidden" name="riDepartureDate" value="${depTime }">
-    	<input type="hidden" name="riDepartureDate2" value="${depTime2 }">
-    	<input type="hidden" name="riArrivalDate" value="${arrTime }">
-    	<input type="hidden" name="riArrivalDate2" value="${arrTime2 }">
-    	<input type="hidden" name="riFare" value="${fare }">
-    	<input type="hidden" name="riFare2" value="${fare2 }">
-    	<input type="hidden" name="riSeatGrade" value="${seatGrade }">
-    	<input type="hidden" name="riSeatGrade2" value="${seatGrade2 }">
-    	
-    	<input type="hidden" name="tCount" value="${tCount }">
-    	<input type="hidden" name="acCount" value="${people }">
-    	<input type="hidden" name="adultCount" value="${adultCount }">
-    	<input type="hidden" name="childCount" value="${childCount }">
-    	<input type="hidden" name="infantCount" value="${infantCount }">
+       <input type="hidden" name="userId" value="${loginUser.userId }">
+       
+       <input type="hidden" name="riVihicleId" value="${depAirlineNm }">
+       <input type="hidden" name="riVihicleId2" value="${depAirlineNm2 }">
+       <input type="hidden" id="depArea" name="riDepartureArea" value="">
+       <input type="hidden" id="depArea2" name="riDepartureArea2" value="">
+       <input type="hidden" id="arrArea" name="riArrivalArea" value="">
+       <input type="hidden" id="arrArea2" name="riArrivalArea2" value="">
+       <input type="hidden" name="riDepartureDate" value="${depTime }">
+       <input type="hidden" name="riDepartureDate2" value="${depTime2 }">
+       <input type="hidden" name="riArrivalDate" value="${arrTime }">
+       <input type="hidden" name="riArrivalDate2" value="${arrTime2 }">
+       <input type="hidden" name="riFare" value="${fare }">
+       <input type="hidden" name="riFare2" value="${fare2 }">
+       <input type="hidden" name="riSeatGrade" value="${seatGrade }">
+       <input type="hidden" name="riSeatGrade2" value="${seatGrade2 }">
+       
+       <input type="hidden" name="tCount" value="${tCount }">
+       <input type="hidden" name="acCount" value="${people }">
+       <input type="hidden" name="adultCount" value="${adultCount }">
+       <input type="hidden" name="childCount" value="${childCount }">
+       <input type="hidden" name="infantCount" value="${infantCount }">
     </form>
         <article>
             <div style="width: 35%; margin: auto;">
                 <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
                     항공 스케줄 다시 선택
                 </button>
-			    <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
+             <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
             </div>
         </article>
     </section>
@@ -231,153 +228,144 @@
 
     /* 동의여부 확인 및 value=Y선택 확인 */
     /* $("#check_module").click(function() {
-       	var check = $(".radio_chk:checked").length;
+          var check = $(".radio_chk:checked").length;
         var radios = $(":radio[value='Y']");
-       	if(check == 0) {
-       		alert('동의여부를 확인해주세요');
-       		return false;
-       	} else if (check > 0){
-       		for(var i = 0; i < radios.length; i++) {
-            	var $this = $(radios[i]);
+          if(check == 0) {
+             alert('동의여부를 확인해주세요');
+             return false;
+          } else if (check > 0){
+             for(var i = 0; i < radios.length; i++) {
+               var $this = $(radios[i]);
                 if(!$this.is(":checked")) {
-                	alert('반드시 동의해야 합니다.');
+                   alert('반드시 동의해야 합니다.');
                     $this.focus();
                 }
                 return false;
-       		}
-       	}
+             }
+          }
     }); */
     /* $("#check_module").click(function() { */
     function checkModule() {
-    	
-    	/* 탑승객 정보 입력확인 */
-    	var pName = $("#passengerName").val();
-    	var gender = $("#pGender").val();
-    	var nation = $("#nationality").val();
-    	var pBirthDay = $("#pBirthDay").val();
-    	var pEmail = $("#pEmail").val();
-    	var pPhone = $("#pPhone").val();   	
-    	if (pName == "") {
-    		alert("이름을 입력해주세요.");
-    		$("#passengerName").focus();
-    		return false;
-    	} else if (gender == "") {
-    		alert("성별을 선택해주세요.");
-    		$("#pGender").focus();
-    		return false;
-    	} else if (nation == "") {
-    		alert("국적을 선택해주세요.");
-    		$("#nationality").focus();
-    		return false;
-    	} else if (pBirthDay == "") {
-    		alert("생년월일을 입력해주세요.");
-    		$("#pBirthDay").focus();
-    		return false;
-    	} else if (pEmail == "") {
-    		alert("이메일을 입력해주세요.");
-    		$("#pEmail").focus();
-    		return false;
-    	} else if (pPhone == "") {
-    		alert("전화번호를 입력해주세요.");
-    		$("#pPhone").focus();
-    		return false;
-    	}
-		
-    	/* 약관동의 확인 및 동의함 체크여부 */
-    	var check = $(".radio_chk:checked").length;
+       
+       /* 탑승객 정보 입력확인 */
+       var pName = $("#passengerName").val();
+       var gender = $("#pGender").val();
+       var nation = $("#nationality").val();
+       var pBirthDay = $("#pBirthDay").val();
+       var pEmail = $("#pEmail").val();
+       var pPhone = $("#pPhone").val();      
+       if (pName == "") {
+          alert("이름을 입력해주세요.");
+          $("#passengerName").focus();
+          return false;
+       } else if (gender == "") {
+          alert("성별을 선택해주세요.");
+          $("#pGender").focus();
+          return false;
+       } else if (nation == "") {
+          alert("국적을 선택해주세요.");
+          $("#nationality").focus();
+          return false;
+       } else if (pBirthDay == "") {
+          alert("생년월일을 입력해주세요.");
+          $("#pBirthDay").focus();
+          return false;
+       } else if (pEmail == "") {
+          alert("이메일을 입력해주세요.");
+          $("#pEmail").focus();
+          return false;
+       } else if (pPhone == "") {
+          alert("전화번호를 입력해주세요.");
+          $("#pPhone").focus();
+          return false;
+       }
+      
+       /* 약관동의 확인 및 동의함 체크여부 */
+       var check = $(".radio_chk:checked").length;
         var radios = $(":radio[value='Y']");
-       	if(check == 0) {
-       		alert('동의여부를 확인해주세요');
-       		return false;
-       	} else if (check > 0){
-       		for(var i = 0; i < radios.length; i++) {
-            	var $this = $(radios[i]);
+          if(check == 0) {
+             alert('동의여부를 확인해주세요');
+             return false;
+          } else if (check > 0){
+             for(var i = 0; i < radios.length; i++) {
+               var $this = $(radios[i]);
                 if(!$this.is(":checked")) {
-                	alert('반드시 동의해야 합니다.');
+                   alert('반드시 동의해야 합니다.');
                     $this.focus();
-		       		return false;
+                   return false;
                 }
-       		}
-       	}
-       	
-       	/* 로그인 상태 확인 */
-       	var id=$("input[name='userId']").html();
-       	//console.log(id);
-		if(id == '') {
-			alert("로그인 후 결제가 가능합니다.");
-			location.href='loginView.tpo';
-		}
-    	
-       	/* 결제 */
+             }
+          }
+       
+          /* 결제 */
         var IMP = window.IMP;
-       	IMP.init('imp55814317');
-		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-		IMP.request_pay({
-			pg : 'inicis', // version 1.1.0부터 지원.
-			/*
-			 'kakao':카카오페이,
-			 html5_inicis':이니시스(웹표준결제)
-			 'nice':나이스페이
-			 'jtnet':제이티넷
-			 'uplus':LG유플러스
-			 'danal':다날
-			 'payco':페이코
-			 'syrup':시럽페이
-			 'paypal':페이팔
-			 */
-			pay_method : 'card',
-			/*
-			 'samsung':삼성페이,
-			 'card':신용카드,
-			 'trans':실시간계좌이체,
-			 'vbank':가상계좌,
-			 'phone':휴대폰소액결제
-			 */
-			merchant_uid : 'merchant_' + new Date().getTime(),
-			/*
-			 merchant_uid에 경우
-			 https://docs.iamport.kr/implementation/payment
-			 위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
-			 참고하세요.
-			 나중에 포스팅 해볼게요.
-			 */
-			name : '항공편 예매',
-			amount : 100, // 가격
-			buyer_email : 'iamport@siot.do', // 예매자 이메일 ${loginUser.email}
-			buyer_name : '구매자이름', // 예매자 이름 ${loginUser.userName}
-			buyer_tel : '010-1234-5678', // 예매자 전화번호 ${loginUser.phone}
-			buyer_addr : '서울특별시 강남구 삼성동', // 예매자 주소 ${loginUser.address}
-			buyer_postcode : '123-456', // 우편번호에 대한 정보가 우리는 없음..
-			m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-		/*
-		 모바일 결제시,
-		 결제가 끝나고 랜딩되는 URL을 지정
-		 (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-		 */
-		}, function(rsp) {
-			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.\n';
-				msg += '고유ID : ' + rsp.imp_uid + '\n';
-				msg += '상점 거래ID : ' + rsp.merchant_uid + '\n';
-				msg += '결제 금액 : ' + rsp.paid_amount + '\n';
-				msg += '카드 승인번호 : ' + rsp.apply_num;
-				alert(msg);
-				$("form").submit();
-				return true;
-			} else {
-				var msg = '결제에 실패하였습니다.\n';
-				msg += '에러내용 : ' + rsp.error_msg;
-				alert(msg);
-				return false;
-			}
-			alert(msg);
-		});
-		
+          IMP.init('imp55814317');
+      // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+      // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+      IMP.request_pay({
+         pg : 'inicis', // version 1.1.0부터 지원.
+         /*
+          'kakao':카카오페이,
+          html5_inicis':이니시스(웹표준결제)
+          'nice':나이스페이
+          'jtnet':제이티넷
+          'uplus':LG유플러스
+          'danal':다날
+          'payco':페이코
+          'syrup':시럽페이
+          'paypal':페이팔
+          */
+         pay_method : 'card',
+         /*
+          'samsung':삼성페이,
+          'card':신용카드,
+          'trans':실시간계좌이체,
+          'vbank':가상계좌,
+          'phone':휴대폰소액결제
+          */
+         merchant_uid : 'merchant_' + new Date().getTime(),
+         /*
+          merchant_uid에 경우
+          https://docs.iamport.kr/implementation/payment
+          위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+          참고하세요.
+          나중에 포스팅 해볼게요.
+          */
+         name : '항공편 예매',
+         amount : 100, // 가격
+         buyer_email : 'iamport@siot.do', // 예매자 이메일 ${loginUser.email}
+         buyer_name : '구매자이름', // 예매자 이름 ${loginUser.userName}
+         buyer_tel : '010-1234-5678', // 예매자 전화번호 ${loginUser.phone}
+         buyer_addr : '서울특별시 강남구 삼성동', // 예매자 주소 ${loginUser.address}
+         buyer_postcode : '123-456', // 우편번호에 대한 정보가 우리는 없음..
+         m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+      /*
+       모바일 결제시,
+       결제가 끝나고 랜딩되는 URL을 지정
+       (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+       */
+      }, function(rsp) {
+         if (rsp.success) {
+            var msg = '결제가 완료되었습니다.\n';
+            msg += '고유ID : ' + rsp.imp_uid + '\n';
+            msg += '상점 거래ID : ' + rsp.merchant_uid + '\n';
+            msg += '결제 금액 : ' + rsp.paid_amount + '\n';
+            msg += '카드 승인번호 : ' + rsp.apply_num;
+            alert(msg);
+            $("form").submit();
+            return true;
+         } else {
+            var msg = '결제에 실패하였습니다.\n';
+            msg += '에러내용 : ' + rsp.error_msg;
+            alert(msg);
+            return false;
+         }
+         alert(msg);
+      });
     }
 
     </script>
-	
-	<jsp:include page="/include/includeFooter.jsp" />
+   
+   <jsp:include page="/include/includeFooter.jsp" />
 </body>
 </html>
