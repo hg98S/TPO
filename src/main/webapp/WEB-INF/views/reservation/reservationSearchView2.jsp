@@ -12,6 +12,9 @@
 	#selectGoSchedule br {
      	display: none;
 	}
+	body {
+		background-color: #ececec;
+	}
 </style>
 
 </head>
@@ -123,11 +126,11 @@
 	                <table class="table table-hover">
 	                    <thead>
 	                        <tr style="display:table; width:100%;">
-	                            <th style="width: 120px;">항공/편명</th>
-	                            <th style="width: 100px;">운항시간</th>
-	                            <th style="width: 120px; text-align: center;">좌석</th>
-	                            <th style="width: 70px;">가격</th>
-	                            <th style="width: 120px;">잔여석</th>
+	                            <th style="width: 125px; text-align: center;">항공/편명</th>
+	                            <th style="width: 157px; text-align: center;">운항시간</th>
+	                            <th style="width: 94px; text-align: center;">좌석</th>
+	                            <th style="width: 79px; text-align: center;">가격</th>
+	                            <th colspan="2" style="width: 60px; padding-left: -20px;">잔여석</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody style="display:block; height:480px; overflow:auto;" align="center" id="goTbody">
@@ -172,7 +175,7 @@
                    	<th style="text-align: center;">출발시간</th>
                    	<th style="text-align: center;">도착시간</th>
                    	<th style="text-align: center;">좌석등급</th>
-                   	<th style="text-align: center;">금액</th>
+                   	<th style="text-align: center;">금액(1인)</th>
                    	<th style="text-align: center;">요청좌석</th>
                	</tr>
            	</thead>
@@ -236,7 +239,7 @@
 	                   	} else if( sIndex == 3) {
 	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 	                   	} else if( sIndex == 4) {
-	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML+'원');
+	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 	                   	}
 	                   	if(index == 1) {
 	                      	var depTime;
@@ -295,8 +298,13 @@
 			        <input type="hidden" id="arrTime" name="arrTime" value="">
 			        <input type="hidden" id="seatGrade" name="seatGrade" value="">
 			        <input type="hidden" id="fare" name="fare" value="">
-			        <input type="hidden" id="people" name="people" value="${acCount }석">
+			        <input type="hidden" id="people" name="people" value="${acCount }">
 		        </div>
+		        <input type="hidden" name="tCount" value="${tCount}">
+		        <input type="hidden" name="adultCount" value="${adultCount}">
+		        <input type="hidden" name="childCount" value="${childCount}">
+		        <input type="hidden" name="infantCount" value="${infantCount}">
+		        
 	            <div style="width: 35%; margin: auto;">
 	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
 	                    항공 스케줄 다시 선택

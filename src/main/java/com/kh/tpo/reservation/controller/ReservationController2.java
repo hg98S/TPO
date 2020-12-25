@@ -21,15 +21,19 @@
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //
+//import com.kh.tpo.member.domain.ReservationInfo;
+//import com.kh.tpo.member.domain.ReservationInfo2;
 //import com.kh.tpo.reservation.domain.FlightSchedule;
+//import com.kh.tpo.reservation.domain.Passenger;
+//import com.kh.tpo.reservation.domain.Reservation;
 //import com.kh.tpo.reservation.domain.TestFlight;
 //import com.kh.tpo.reservation.service.ReservationService;
 //
 //@Controller
-//public class ReservationController {
+//public class ReservationController2 {
 //
-////	@Autowired
-////	private ReservationService reservationService;
+//	@Autowired
+//	private ReservationService rService;
 //
 //	// 메인페이지에서 항공권 검색창으로 이동
 //	@RequestMapping(value = "reservation.tpo", method = RequestMethod.GET)
@@ -146,6 +150,9 @@
 //
 //		model.addAttribute("fList", fList1);
 //		model.addAttribute("fList2", fList2);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
 //		model.addAttribute("acCount", acCount);
 //		model.addAttribute("tCount", totalCount);
 //		return "reservation/reservationSearchView";
@@ -164,6 +171,9 @@
 //		int totalCount = adultCount + childCount + infantCount;
 //
 //		model.addAttribute("fList", fList);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
 //		model.addAttribute("acCount", acCount);
 //		model.addAttribute("tCount", totalCount);
 //		return "reservation/reservationSearchView2";
@@ -172,6 +182,7 @@
 //	// 서치뷰페이지에서 값을 받아서 passengerInsertForm에 뿌려주기(왕복)
 //	@RequestMapping(value = "passengerFormRound.tpo", method = RequestMethod.GET)
 //	public String passengerInsertForm(HttpServletRequest request, Model model) {
+//
 //		// 가는편
 //		String depJourney = request.getParameter("depJourney");
 //		String depAirlineNm = request.getParameter("depAirlineNm");
@@ -206,6 +217,17 @@
 //		model.addAttribute("fare2", fare2);
 //		model.addAttribute("people2", people2);
 //		
+//		/// 인원 수
+//		int tCount = Integer.parseInt(request.getParameter("tCount"));
+//		int adultCount = Integer.parseInt(request.getParameter("adultCount"));
+//		int childCount = Integer.parseInt(request.getParameter("childCount"));
+//		int infantCount = Integer.parseInt(request.getParameter("infantCount"));
+//		
+//		model.addAttribute("tCount", tCount);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
+//		
 //		return "reservation/passengerInsertForm";
 //	}
 //
@@ -230,133 +252,109 @@
 //		model.addAttribute("fare", fare);
 //		model.addAttribute("people", people);
 //		
+//		// 인원 수
+//		int tCount = Integer.parseInt(request.getParameter("tCount"));
+//		int adultCount = Integer.parseInt(request.getParameter("adultCount"));
+//		int childCount = Integer.parseInt(request.getParameter("childCount"));
+//		int infantCount = Integer.parseInt(request.getParameter("infantCount"));
+//		
+//		model.addAttribute("tCount", tCount);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
+//		
 //		return "reservation/passengerInsertForm2";
 //	}
 //		
-//	// 예약 완료 페이지
-//	@RequestMapping(value = "selectReservation.tpo", method = RequestMethod.POST)
-//	public String reservationDetailView() {
-//		return "reservation/reservationDetailView";
+//	// 예약 완료 페이지(왕복)
+//	@RequestMapping(value = "multipleInsertRound.tpo", method = RequestMethod.POST)
+//	public String insertMulti(HttpServletRequest request, Passenger passenger, int rPeople, String userId, ReservationInfo rInfo, ReservationInfo2 rInfo2, Model model) {
+//		
+//		Reservation reservation = new Reservation();
+//		reservation.setrPeople(rPeople);
+//		reservation.setUserId(userId);
+//		
+//		int result = rService.insertPassenger(passenger);
+//		int result2 = rService.insertReservation(reservation);
+//		int result3 = rService.insertRInfo(rInfo);
+//		int result4 = rService.insertRInfo(rInfo2);
+//		
+//		// 인원 수
+//		int tCount = Integer.parseInt(request.getParameter("tCount"));
+//		int acCount = Integer.parseInt(request.getParameter("acCount"));
+//		int adultCount = Integer.parseInt(request.getParameter("adultCount"));
+//		int childCount = Integer.parseInt(request.getParameter("childCount"));
+//		int infantCount = Integer.parseInt(request.getParameter("infantCount"));
+//		
+//		model.addAttribute("tCount", tCount);
+//		model.addAttribute("acCount", acCount);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
+//				
+//		System.out.println(passenger.toString());
+//		
+//		if (result > 0) {
+//			if(result2 > 0) {
+//				if(result3 > 0) {
+//					if(result4 > 0) {
+//						model.addAttribute("reservation", reservation);
+//						model.addAttribute("rInfo", rInfo);
+//						model.addAttribute("rInfo2", rInfo2);
+//						return "reservation/reservationDetailView";						
+//					} else {
+//						return "reservation/reservationError";
+//					}
+//				} else {
+//					return "reservation/reservationError";
+//				}
+//			} else {
+//				return "reservation/reservationError";
+//			}
+//		} else {
+//			return "reservation/reservationError";
+//		}
 //	}
-//
-//	/*
-//	 * @ResponseBody
-//	 * 
-//	 * @RequestMapping(value="reservationSearchView.tpo", method =
-//	 * RequestMethod.GET) public JSONArray testReservationSearchView() throws
-//	 * Exception { StringBuilder urlBuilder = new StringBuilder(
-//	 * "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList"
-//	 * ); URL urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") +
-//	 * "=EU79ymoWzbXgibv9N2xxkCNqTGTWwblmiNhJFJELWKjV322f7TRBlpIflk2DQtvooFmJZajrG9yhnaf1ozQ9ZQ%3D%3D"
-//	 * ); Service Key urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8")
-//	 * + "=" + URLEncoder.encode("200", "UTF-8")); 한 페이지 결과 수 urlBuilder.append("&"
-//	 * + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("",
-//	 * "UTF-8")); 페이지 번호 urlBuilder.append("&" +
-//	 * URLEncoder.encode("depAirportId","UTF-8") + "=" +
-//	 * URLEncoder.encode("NAARKSS", "UTF-8")); 출발공항ID urlBuilder.append("&" +
-//	 * URLEncoder.encode("arrAirportId","UTF-8") + "=" +
-//	 * URLEncoder.encode("NAARKPC", "UTF-8")); 도착공항ID urlBuilder.append("&" +
-//	 * URLEncoder.encode("depPlandTime","UTF-8") + "=" +
-//	 * URLEncoder.encode("20201220", "UTF-8")); 출발일 urlBuilder.append("&" +
-//	 * URLEncoder.encode("airlineId","UTF-8") + "=" + URLEncoder.encode("",
-//	 * "UTF-8")); 항공사ID urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") +
-//	 * "=" + URLEncoder.encode("json", "UTF-8")); 형식 URL url = new
-//	 * URL(urlBuilder.toString()); HttpURLConnection conn = (HttpURLConnection)
-//	 * url.openConnection(); conn.setRequestMethod("GET");
-//	 * conn.setRequestProperty("Content-type", "application/json");
-//	 * System.out.println("Response code: " + conn.getResponseCode());
-//	 * BufferedReader rd; if(conn.getResponseCode() >= 200 && conn.getResponseCode()
-//	 * <= 300) { rd = new BufferedReader(new
-//	 * InputStreamReader(conn.getInputStream())); } else { rd = new
-//	 * BufferedReader(new InputStreamReader(conn.getErrorStream())); } StringBuilder
-//	 * sb = new StringBuilder(); String line; while ((line = rd.readLine()) != null)
-//	 * { sb.append(line); } rd.close(); //conn.disconnect();
-//	 * System.out.println(sb.toString());
-//	 * 
-//	 * Object obj = JSONValue.parse(sb.toString());
-//	 * 
-//	 * JSONObject jobj = (JSONObject)obj;
-//	 * 
-//	 * JSONObject obj_response = (JSONObject)jobj.get("response"); JSONObject obj1 =
-//	 * (JSONObject)obj_response.get("body"); JSONObject obj2 =
-//	 * (JSONObject)obj1.get("items"); JSONArray obj3 = (JSONArray)obj2.get("item");
-//	 * System.out.println(obj3);
-//	 * 
-//	 * String [] flightScheduleList = new String [obj3.size()];
-//	 * 
-//	 * for(int i = 0; i < obj3.size(); i++) {
-//	 * 
-//	 * JSONObject reservationInfo = (JSONObject)obj3.get(i); // 2020-12-18 =>
-//	 * 20201218 //reservationInfo.get("depPlandTime").equals("20201218"); Long
-//	 * depPlandTime = (Long)reservationInfo.get("depPlandTime"); Long arrPlandTime =
-//	 * (Long)reservationInfo.get("arrPlandTime"); String depAirportNm =
-//	 * (String)reservationInfo.get("depAirportNm"); String arrAirportNm =
-//	 * (String)reservationInfo.get("arrAirportNm"); String airlineNm =
-//	 * (String)reservationInfo.get("airlineNm"); Long economyCharge =
-//	 * (Long)reservationInfo.get("economyCharge"); Long prestigeCharge =
-//	 * (Long)reservationInfo.get("prestigeCharge"); String vihicleId =
-//	 * (String)reservationInfo.get("vihicleId");
-//	 * 
-//	 * if(airlineNm != null && economyCharge != null && prestigeCharge != null &&
-//	 * vihicleId != null) { System.out.println("========= " + (i+1) +
-//	 * "검색 내용 ========="); System.out.println("출발시간 : " + depPlandTime);
-//	 * System.out.println("도착시간 : " + arrPlandTime); System.out.println("출발공항 : " +
-//	 * depAirportNm); System.out.println("도착공항 : " + arrAirportNm);
-//	 * System.out.println("항공사명 : " + airlineNm); System.out.println("일반석운임료 : " +
-//	 * economyCharge); System.out.println("비즈니스석운임료 : " + prestigeCharge);
-//	 * System.out.println("항공편명 : " + vihicleId);
-//	 * 
-//	 * } else { System.out.println("========= " + (i+1) + "검색 내용 =========");
-//	 * System.out.println("비어있음"); } }
-//	 * 
-//	 * return obj3; }
-//	 */
-//
-//	//   public static List<FlightSchedule> getAirportJson(String depAirportId, String arrAirportId, String depPlandTime) throws Exception {
-//	//       String result = testReservationSearchView(depAirportId, arrAirportId, depPlandTime);
-//	//       // Json형태의 String을 Json으로 만들기
-//	//       JSONParser parser = new JSONParser();
-//	//       JSONObject jsonObj = (JSONObject) parser.parse(result); 
-//	//       // Object to JSONObject 다운캐스팅. json 처럼 생겨야지만 다운캐스팅 가능..
-//	//       
-//	//       //response
-//	//       JSONObject j_response = (JSONObject) jsonObj.get("response");
-//	//       //System.out.println(j_response);
-//	//       JSONObject j_body = (JSONObject) j_response.get("body");
-//	//       JSONObject j_items = (JSONObject) j_body.get("items");
-//	//       JSONArray a_item = (JSONArray)j_items.get("item");
-//	//       //System.out.println(a_item);
-//	//       a_item.remove(0);
-//	//       
-//	//       // 1. Gson → 클래스로 변경 : AirVo
-//	//       // Gson gson = new Gson();
-//	//       // gson.fromJson(a_item.toString(), AirVo.class);
-//	//       
-//	//       // 2. Gson → 배열로 변경 : List<AirVo>
-//	//       Gson gson = new Gson();
-//	//       //List<AirVo> list = (List<AirVO>) gson.fromJson(a_item.toString(), AirVo.class);
-//	//       List<FlightSchedule> list = gson.fromJson(a_item.toString(), new TypeToken<List<FlightSchedule>>(){}.getType());
-//	//       for(FlightSchedule fs : list){
-//	//          System.out.println(fs.getArrPlandTime());
-//	//       }
-//	//       
-//	//       return list;
-//	//    }
-//	//   
-//	//   
-//	//   public String airport(FlightSchedule fs, Model model) throws Exception
-//	//   {
-//	//      Map<String, String> result = MyUtils.getAirportId();
-//	//      String depAirportId = result.get(fs.getDepAirportNm());
-//	//      String arrAirportId = result.get(fs.getArrAirportNm());
-//	//      String depPlandTime = fs.getDepPlandTime();
-//	//      String arrPlandTime = fs.getArrPlandTime();
-//	//      List<FlightSchedule> go = getAirportJson(depAirportId, arrAirportId, depPlandTime);
-//	//      List<FlightSchedule> back = getAirportJson(depAirportId, arrAirportId, arrPlandTime);
-//	//      
-//	//      model.addAttribute("go", go);
-//	//      model.addAttribute("back", back);
-//	//      
-//	//      return "reservation/reservationSearchView";
-//	//   }
+//	
+//	// 예약 완료 페이지(편도)
+//	@RequestMapping(value = "multipleInsertOne.tpo", method = RequestMethod.POST)
+//	public String insertMulti2(HttpServletRequest request, Passenger passenger, int rPeople, String userId, ReservationInfo rInfo, Model model) {
+//		
+//		Reservation reservation = new Reservation();
+//		reservation.setrPeople(rPeople);
+//		reservation.setUserId(userId);
+//		
+//		int result = rService.insertPassenger(passenger);
+//		int result2 = rService.insertReservation(reservation);
+//		int result3 = rService.insertRInfo(rInfo);
+//		
+//		// 인원 수
+//		int tCount = Integer.parseInt(request.getParameter("tCount"));
+//		int acCount = Integer.parseInt(request.getParameter("acCount"));
+//		int adultCount = Integer.parseInt(request.getParameter("adultCount"));
+//		int childCount = Integer.parseInt(request.getParameter("childCount"));
+//		int infantCount = Integer.parseInt(request.getParameter("infantCount"));
+//		
+//		model.addAttribute("tCount", tCount);
+//		model.addAttribute("acCount", acCount);
+//		model.addAttribute("adultCount", adultCount);
+//		model.addAttribute("childCount", childCount);
+//		model.addAttribute("infantCount", infantCount);
+//		
+//		if (result > 0) {
+//			if(result2 > 0) {
+//				if(result3 > 0) {
+//					model.addAttribute("reservation", reservation);
+//					model.addAttribute("rInfo", rInfo);
+//					return "reservation/reservationDetailView2";
+//				} else {
+//					return "reservation/reservationError";
+//				}
+//			} else {
+//				return "reservation/reservationError";
+//			}
+//		} else {
+//			return "reservation/reservationError";
+//		}
+//	}
 //}

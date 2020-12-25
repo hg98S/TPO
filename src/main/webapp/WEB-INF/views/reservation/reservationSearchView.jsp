@@ -12,6 +12,9 @@
    #selectGoSchedule br, #selectComeSchedule br {
         display: none;
    }
+   body {
+		background-color: #ececec;
+	}
 </style>
 </head>
 <body>
@@ -208,7 +211,7 @@
                             <th style="width: 157px; text-align: center;">운항시간</th>
                             <th style="width: 94px; text-align: center;">좌석</th>
                             <th style="width: 79px; text-align: center;">가격</th>
-                            <th colspan="2" style="width: 60px; padding-left: 20px;">잔여석</th>
+                            <th colspan="2" style="width: 60px; padding-left: -20px;">잔여석</th>
                         </tr>
                     </thead>
 					<tbody style="display:block; height:400px; overflow:auto;" align="center" id="goTbody">

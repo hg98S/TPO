@@ -11,6 +11,11 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous">
 </script>
+<style type="text/css">
+	body {
+		background-color: #ececec;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp" />
@@ -25,9 +30,7 @@
                 <img src="../resources/images/plane1.png" width="50px;" style="margin-top: -45px;">
             </h1>
         </article>
-        <article style="text-align: center;">
-            <h2 style="font-weight: 800">예약 번호 : 6865467</h2>
-        </article>
+        <br><br>
         <article>
             <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
                 <thead style="background-color: #09c6ab; color: white; text-align: center;">
@@ -43,22 +46,22 @@
                 </thead>
                 <tbody style="text-align: center;">
                     <tr>
-                        <td style="line-height: 2">김포 -> 제주</td>
-                        <td style="line-height: 2">진에어</td>
-                        <td style="line-height: 2">2021.01.04(월) 07:15</td>
-                        <td style="line-height: 2">2021.01.04(월) 08:15</td>
-                        <td style="line-height: 2">일반석</td>
-                        <td style="line-height: 2">38900원</td>
-                        <td style="line-height: 2">1석</td>
+                        <td style="line-height: 2">${rInfo.riDepartureArea } -> ${rInfo.riArrivalArea }</td>
+                        <td style="line-height: 2">${rInfo.riVihicleId }</td>
+                        <td style="line-height: 2">${rInfo.riDepartureDate }</td>
+                        <td style="line-height: 2">${rInfo.riArrivalDate }</td>
+                        <td style="line-height: 2">${rInfo.riSeatGrade }</td>
+                        <td style="line-height: 2">${rInfo.riFare }원</td>
+                        <td style="line-height: 2">${acCount }석</td>
                     </tr>
                     <tr>
-                        <td style="line-height: 2">제주 -> 김포</td>
-                        <td style="line-height: 2">진에어</td>
-                        <td style="line-height: 2">2021.01.08(금) 19:45</td>
-                        <td style="line-height: 2">2021.01.08(금) 20:45</td>
-                        <td style="line-height: 2">일반석</td>
-                        <td style="line-height: 2">19900원</td>
-                        <td style="line-height: 2">1석</td>
+                        <td style="line-height: 2">${rInfo2.riDepartureArea2 } -> ${rInfo2.riArrivalArea2 }</td>
+                        <td style="line-height: 2">${rInfo2.riVihicleId2 }</td>
+                        <td style="line-height: 2">${rInfo2.riDepartureDate2 }</td>
+                        <td style="line-height: 2">${rInfo2.riArrivalDate2 }</td>
+                        <td style="line-height: 2">${rInfo2.riSeatGrade2 }</td>
+                        <td style="line-height: 2">${rInfo2.riFare2 }원</td>
+                        <td style="line-height: 2">${acCount }석</td>
                     </tr>
                 </tbody>
             </table>
@@ -76,15 +79,15 @@
                 <tbody style="font-size: 20px;">
                     <tr>
                         <td style="text-align: center;">성인</td>
-                        <td style="text-align: center;">1명</td>
+                        <td style="text-align: center;">${adultCount }명</td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;">성인</td>
-                        <td style="text-align: center;">1명</td>
+                        <td style="text-align: center;">소아</td>
+                        <td style="text-align: center;">${childCount }명</td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;">성인</td>
-                        <td style="text-align: center;">1명</td>
+                        <td style="text-align: center;">유아</td>
+                        <td style="text-align: center;">${infantCount }명</td>
                     </tr>
                 </tbody>
             </table>

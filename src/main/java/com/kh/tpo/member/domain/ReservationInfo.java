@@ -5,11 +5,12 @@ import java.sql.Date;
 public class ReservationInfo {
 
 	private int riNo;
-	private int enNo;
+	private int enNo;	
+	private String riVihicleId;
 	private String riDepartureArea;
-	private String riArrivatlArea;
-	private Date riDepartureDate;
-	private Date riArrivalDate;
+	private String riArrivalArea;
+	private String riDepartureDate;
+	private String riArrivalDate;
 	private int riFare;
 	private String riSeatGrade;
 	
@@ -31,6 +32,14 @@ public class ReservationInfo {
 		this.enNo = enNo;
 	}
 
+	public String getRiVihicleId() {
+		return riVihicleId;
+	}
+
+	public void setRiVihicleId(String riVihicleId) {
+		this.riVihicleId = riVihicleId;
+	}
+
 	public String getRiDepartureArea() {
 		return riDepartureArea;
 	}
@@ -39,27 +48,27 @@ public class ReservationInfo {
 		this.riDepartureArea = riDepartureArea;
 	}
 
-	public String getRiArrivatlArea() {
-		return riArrivatlArea;
+	public String getRiArrivalArea() {
+		return riArrivalArea;
 	}
 
-	public void setRiArrivatlArea(String riArrivatlArea) {
-		this.riArrivatlArea = riArrivatlArea;
+	public void setRiArrivalArea(String riArrivalArea) {
+		this.riArrivalArea = riArrivalArea;
 	}
 
-	public Date getRiDepartureDate() {
+	public String getRiDepartureDate() {
 		return riDepartureDate;
 	}
 
-	public void setRiDepartureDate(Date riDepartureDate) {
+	public void setRiDepartureDate(String riDepartureDate) {
 		this.riDepartureDate = riDepartureDate;
 	}
 
-	public Date getRiArrivalDate() {
+	public String getRiArrivalDate() {
 		return riArrivalDate;
 	}
 
-	public void setRiArrivalDate(Date riArrivalDate) {
+	public void setRiArrivalDate(String riArrivalDate) {
 		this.riArrivalDate = riArrivalDate;
 	}
 
@@ -81,10 +90,11 @@ public class ReservationInfo {
 
 	@Override
 	public String toString() {
-		return "ReservationInfo [riNo=" + riNo + ", enNo=" + enNo + ", riDepartureArea=" + riDepartureArea
-				+ ", riArrivatlArea=" + riArrivatlArea + ", riDepartureDate=" + riDepartureDate + ", riArrivalDate="
-				+ riArrivalDate + ", riFare=" + riFare + ", riSeatGrade=" + riSeatGrade + "]";
+		return "ReservationInfo [riNo=" + riNo + ", enNo=" + enNo + ", riVihicleId=" + riVihicleId
+				+ ", riDepartureArea=" + riDepartureArea + ", riArrivalArea=" + riArrivalArea + ", riDepartureDate="
+				+ riDepartureDate + ", riArrivalDate=" + riArrivalDate + ", riFare=" + riFare + ", riSeatGrade="
+				+ riSeatGrade + "]";
 	}
-	
+
 	
 }
