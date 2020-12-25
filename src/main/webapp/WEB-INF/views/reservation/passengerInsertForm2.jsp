@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TPO_탑승자 정보 입력</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
@@ -154,7 +155,8 @@
             </div>
         </article>
         <br>
-        
+        <input type="hidden" name="rPeople" value="${tCount }">
+    	<input type="hidden" name="userId" value="${loginUser.userId }">
     </form>
         <article>
             <div style="width: 35%; margin: auto;">
@@ -249,6 +251,14 @@
                 }
        		}
        	}
+       	
+       	/* 로그인 상태 확인 */
+       	var id=$("input[name='userId']").html();
+       	//console.log(id);
+		if(id == '') {
+			alert("로그인 후 결제가 가능합니다.");
+			location.href='loginView.tpo';
+		}
     	
        	/* 결제 */
         var IMP = window.IMP;
