@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.tpo.member.domain.ReservationInfo;
+import com.kh.tpo.member.domain.ReservationInfo2;
 import com.kh.tpo.reservation.domain.Passenger;
 import com.kh.tpo.reservation.domain.Reservation;
 import com.kh.tpo.reservation.store.ReservationStore;
@@ -27,15 +28,18 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public ArrayList<Reservation> selectReservation() {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertRInfo(ReservationInfo rInfo) {
+		return rStore.insertRInfo(rInfo);
 	}
 
 	@Override
-	public int insertRInfo(ReservationInfo rInfo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertRInfo(ReservationInfo2 rInfo2) {
+		return rStore.insertRInfo(rInfo2);
+	}
+	
+	@Override
+	public ArrayList<Reservation> selectReservation() {
+		return null;
 	}
 
 }

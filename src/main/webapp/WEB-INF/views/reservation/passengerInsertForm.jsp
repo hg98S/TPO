@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>TPO_탑승자 정보 입력</title>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style type="text/css">
+	body {
+		background-color: #ececec;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp" />
@@ -59,6 +65,16 @@
                 </p>
             </div>
         </article>
+        <script>
+        	$(document).ready(function(){
+        		var depArea = "${depJourney }";
+        		$("#depArea").val(depArea.substr(0,2));
+        		$("#arrArea").val(depArea.substr(5,7));
+        		var depArea2 = "${depJourney2 }";
+        		$("#depArea2").val(depArea2.substr(0,2));
+        		$("#arrArea2").val(depArea2.substr(5,7));
+        	});
+        </script>
         <br>
         <article>
             <h3>대표 탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
@@ -165,6 +181,27 @@
         <br>
         <input type="hidden" name="rPeople" value="${tCount }">
     	<input type="hidden" name="userId" value="${loginUser.userId }">
+    	
+    	<input type="hidden" name="riVihicleId" value="${depAirlineNm }">
+    	<input type="hidden" name="riVihicleId2" value="${depAirlineNm2 }">
+    	<input type="hidden" id="depArea" name="riDepartureArea" value="">
+    	<input type="hidden" id="depArea2" name="riDepartureArea2" value="">
+    	<input type="hidden" id="arrArea" name="riArrivalArea" value="">
+    	<input type="hidden" id="arrArea2" name="riArrivalArea2" value="">
+    	<input type="hidden" name="riDepartureDate" value="${depTime }">
+    	<input type="hidden" name="riDepartureDate2" value="${depTime2 }">
+    	<input type="hidden" name="riArrivalDate" value="${arrTime }">
+    	<input type="hidden" name="riArrivalDate2" value="${arrTime2 }">
+    	<input type="hidden" name="riFare" value="${fare }">
+    	<input type="hidden" name="riFare2" value="${fare2 }">
+    	<input type="hidden" name="riSeatGrade" value="${seatGrade }">
+    	<input type="hidden" name="riSeatGrade2" value="${seatGrade2 }">
+    	
+    	<input type="hidden" name="tCount" value="${tCount }">
+    	<input type="hidden" name="acCount" value="${people }">
+    	<input type="hidden" name="adultCount" value="${adultCount }">
+    	<input type="hidden" name="childCount" value="${childCount }">
+    	<input type="hidden" name="infantCount" value="${infantCount }">
     </form>
         <article>
             <div style="width: 35%; margin: auto;">

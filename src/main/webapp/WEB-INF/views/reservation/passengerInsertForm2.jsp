@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>TPO_탑승자 정보 입력</title>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<style type="text/css">
+	body {
+		background-color: #ececec;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/include/includeHeader.jsp" />
@@ -50,6 +56,13 @@
                 </p>
             </div>
         </article>
+        <script>
+        	$(document).ready(function(){
+        		var depArea = "${depJourney }";
+        		$("#depArea").val(depArea.substr(0,2));
+        		$("#arrArea").val(depArea.substr(5,7));
+        	});
+        </script>
         <br>
         <article>
             <h3>대표 탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
@@ -59,7 +72,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이름</b>
                     </td>
                     <td>
-                        <input id="passengerName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
+                        <input id="passengerName" name="pName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +80,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>성별</b>
                     </td>
                     <td>
-                        <select id="pGender" class="form-control form-control-sm" style="width: 150px;" required>
+                        <select id="pGender" name="pGender" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 성별 ==</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
@@ -79,7 +92,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>국적</b>
                     </td>
                     <td class="mb-3">
-                        <select id="nationality" class="form-control form-control-sm" style="width: 150px;" required>
+                        <select id="nationality" name="pNationality" class="form-control form-control-sm" style="width: 150px;" required>
                             <option value="">== 국적 ==</option>
                             <option value="korea">한국</option>
                             <option value="china">중국</option>
@@ -99,7 +112,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>생년월일</b>
                     </td>
                     <td>
-                        <input id="pBirthDay" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
+                        <input id="pBirthDay" name="pBirthday" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
                     </td>
                 </tr>
                 <tr >
@@ -107,7 +120,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>이메일</b>
                     </td>
                     <td>
-                        <input id="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
+                        <input id="pEmail" name="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
                     </td>
                 </tr>
                 <tr>
@@ -115,7 +128,7 @@
                         <b style="color: red;">*</b>&nbsp;<b>전화번호</b>
                     </td>
                     <td>
-                        <input id="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
+                        <input id="pPhone" name="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
                     </td>
                 </tr>
             </table>
@@ -154,7 +167,22 @@
             </div>
         </article>
         <br>
-        
+        <input type="hidden" name="rPeople" value="${tCount }">
+    	<input type="hidden" name="userId" value="${loginUser.userId }">
+    	
+    	<input type="hidden" name="riVihicleId" value="${depAirlineNm }">
+    	<input type="hidden" id="depArea" name="riDepartureArea" value="">
+    	<input type="hidden" id="arrArea" name="riArrivalArea" value="">
+    	<input type="hidden" name="riDepartureDate" value="${depTime }">
+    	<input type="hidden" name="riArrivalDate" value="${arrTime }">
+    	<input type="hidden" name="riFare" value="${fare }">
+    	<input type="hidden" name="riSeatGrade" value="${seatGrade }">
+    	
+    	<input type="hidden" name="tCount" value="${tCount }">
+    	<input type="hidden" name="acCount" value="${people }">
+    	<input type="hidden" name="adultCount" value="${adultCount }">
+    	<input type="hidden" name="childCount" value="${childCount }">
+    	<input type="hidden" name="infantCount" value="${infantCount }">
     </form>
         <article>
             <div style="width: 35%; margin: auto;">
@@ -305,8 +333,8 @@
 				msg += '결제 금액 : ' + rsp.paid_amount + '\n';
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 				alert(msg);
-				return true;
 				$("form").submit();
+				return true;
 			} else {
 				var msg = '결제에 실패하였습니다.\n';
 				msg += '에러내용 : ' + rsp.error_msg;

@@ -7,10 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.tpo.member.domain.ReservationInfo;
-import com.kh.tpo.reservation.domain.FlightSchedule;
+import com.kh.tpo.member.domain.ReservationInfo2;
 import com.kh.tpo.reservation.domain.Passenger;
 import com.kh.tpo.reservation.domain.Reservation;
-import com.kh.tpo.reservation.domain.ScheduleSearch;
 
 @Repository
 public class ReservationStoreLogic implements ReservationStore {
@@ -25,8 +24,17 @@ public class ReservationStoreLogic implements ReservationStore {
 
 	@Override
 	public int insertReservation(Reservation reservation) {
-		// TODO Auto-generated method stub
 		return sqlSession.insert("ReservationMapper.insertReservation", reservation);
+	}
+	
+	@Override
+	public int insertRInfo(ReservationInfo rInfo) {
+		return sqlSession.insert("ReservationMapper.insertRInfo", rInfo);
+	}
+	
+	@Override
+	public int insertRInfo(ReservationInfo2 rInfo2) {
+		return sqlSession.insert("ReservationMapper.insertRInfo2", rInfo2);
 	}
 
 	@Override
@@ -34,11 +42,4 @@ public class ReservationStoreLogic implements ReservationStore {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public int insertRInfo(ReservationInfo rInfo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }
