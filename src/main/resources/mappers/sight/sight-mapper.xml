@@ -87,7 +87,7 @@
 	</insert>
 	<select id="selectReviewList" resultType="SightReview">
 		SELECT * FROM REVIEW
-		WHERE SNO=#{sNo}
+		WHERE SNO=#{sNo} order by sNo
 	</select>
 	<select id="selectReview" resultType="SightReview">
 		SELECT * FROM REVIEW 
