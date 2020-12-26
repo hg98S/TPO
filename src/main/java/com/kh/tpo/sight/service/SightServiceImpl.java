@@ -80,17 +80,18 @@ public class SightServiceImpl implements SightService{
 	}
 
 	@Override
-	public ArrayList<Sight> sightChkList(PageInfo pi, HashMap<String, Integer> chkValue) {
+	public ArrayList<Sight> sightChkList(PageInfo pi, HashMap<String, Object> chkValue) {
 		return sStore.sightChkList(pi, chkValue);
 	}
 
 	@Override
-	public int sightChkCount(HashMap<String,Integer> chkValue) {
+	public int sightChkCount(HashMap<String,Object> chkValue) {
 		return sStore.sightChkCount(chkValue);
 	}
 	@Override
 	public int modifyReview(SightReview review) {
 		return sStore.modifyReview(review);
 	}
+
 
 }

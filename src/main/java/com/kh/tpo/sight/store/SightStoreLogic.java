@@ -88,14 +88,14 @@ public class SightStoreLogic implements SightStore{
 	}
 
 	@Override
-	public ArrayList<Sight> sightChkList(PageInfo pi, HashMap<String, Integer> chkValue) {
+	public ArrayList<Sight> sightChkList(PageInfo pi, HashMap<String, Object> chkValue) {
 		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return (ArrayList)sqlSession.selectList("sightMapper.selectChkList", chkValue, rowBounds);
 	}
 
 	@Override
-	public int sightChkCount(HashMap<String,Integer> chkValue) {
+	public int sightChkCount(HashMap<String,Object> chkValue) {
 		return sqlSession.selectOne("sightMapper.getChkCount",chkValue);
 	}
 

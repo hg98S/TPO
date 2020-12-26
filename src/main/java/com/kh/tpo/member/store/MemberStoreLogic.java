@@ -1,5 +1,7 @@
 package com.kh.tpo.member.store;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,9 +41,8 @@ public class MemberStoreLogic implements MemberStore{
 	}
 
 	@Override
-	public ReservationInfo reservationInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ReservationInfo> reservationInfo(String userId) {
+		return (ArrayList)session.selectList("MemberMapper.reservationInfo", userId);
 	}
 
 	@Override
@@ -57,6 +58,11 @@ public class MemberStoreLogic implements MemberStore{
 	@Override
 	public int emailChk(Member member) {
 		return session.selectOne("MemberMapper.emailChk", member);
+	}
+
+	@Override
+	public int reservationCancel(int riNo) {
+		return session.delete("MemberMapper.reservationCancel", riNo);
 	}
 
 }

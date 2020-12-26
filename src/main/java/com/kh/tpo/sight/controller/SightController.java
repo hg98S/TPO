@@ -50,10 +50,8 @@ public class SightController {
     @RequestMapping(value="sightList.tpo", method=RequestMethod.GET)
      public ModelAndView sightList (ModelAndView mv,
            @RequestParam(value="page", required=false)Integer page, Model model) throws Exception{
-       System.out.println(page);
        int currentPage = (page!=null)? page:1;
        int listCount = sService.getListCount();
-       System.out.println(listCount);
        PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
        System.out.println(pi.toString());
        ArrayList<Sight> sList = sService.selectSightList(pi);
@@ -84,7 +82,15 @@ public class SightController {
 												Model model,
 												Integer parking,
 												Integer baby,
-												Integer pet) throws Exception{
+												Integer pet,
+												String sLocation) throws Exception{
+		  // 지역으로 검색을 안했을 때
+//		  System.out.println(page);
+//		  System.out.println(parking);
+//		  System.out.println(baby);
+//		  System.out.println(pet);
+//		  System.out.println(sName);
+	 if(sLocation=="" || sLocation==null) {
 		  if(parking==null) {
 			  parking=0;
 		  }
@@ -94,10 +100,12 @@ public class SightController {
 		  if(pet==null) {
 			  pet=0;
 		  }
-		  HashMap<String,Integer> chkValue = new HashMap<String, Integer>();
+		  sLocation = "";
+		  HashMap<String,Object> chkValue = new HashMap<String, Object>();
 		  chkValue.put("parking", parking);
 		  chkValue.put("babyCar", baby);
 		  chkValue.put("pet", pet);
+		  chkValue.put("sLocation", sLocation);
 		  int currentPage = (page!=null)? page:1;
 		  int listCount = sService.sightChkCount(chkValue);
 		  PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
@@ -116,7 +124,41 @@ public class SightController {
 				  mv.setViewName("sight/sightList");
 			  }
 			  return mv;
-		  }
+		 }else {
+			 if(parking==null) {
+				  parking=0;
+			  }
+			  if(baby==null) {
+				  baby=0;
+			  }
+			  if(pet==null) {
+				  pet=0;
+			  }
+			  HashMap<String,Object> chkValue = new HashMap<String, Object>();
+			  chkValue.put("parking", parking);
+			  chkValue.put("babyCar", baby);
+			  chkValue.put("pet", pet);
+			  chkValue.put("sLocation", sLocation);
+			  int currentPage = (page!=null)? page:1;
+			  int listCount = sService.sightChkCount(chkValue);
+			  PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+			  ArrayList<Sight> sList = sService.sightChkList(pi,chkValue);
+				  // DB에 저장된 값이 있는 경우
+				  if(!sList.isEmpty()) {
+					  mv.addObject("sList", sList);
+					  mv.addObject("pi", pi);		
+					  mv.addObject("chkValue", chkValue);
+					  mv.setViewName("sight/sightList");;
+				  }
+				  else {
+					  // 추후 수정
+					  mv.addObject("sList", sList);
+					  mv.addObject("chkValue", chkValue);
+					  mv.setViewName("sight/sightList");
+				  }
+			 return mv;
+		 }
+	  }
 		  
 		  @RequestMapping(value="selectSight.tpo",method=RequestMethod.GET)
 		  public ModelAndView selectSight(ModelAndView mv,HttpServletRequest request) {
@@ -265,6 +307,7 @@ public class SightController {
 			
 			return mv;
 		}
+		
 }
 
 	    

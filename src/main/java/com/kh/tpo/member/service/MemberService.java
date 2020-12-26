@@ -1,5 +1,7 @@
 package com.kh.tpo.member.service;
 
+import java.util.ArrayList;
+
 import com.kh.tpo.member.domain.Member;
 import com.kh.tpo.member.domain.ReservationInfo;
 
@@ -46,7 +48,7 @@ public interface MemberService {
 	 *  @Param Member
 	 *  @Return ReservationInfo
 	 * */
-	public ReservationInfo reservationInfo(String userId);
+	public ArrayList<ReservationInfo> reservationInfo(String userId);
 	/*
 	 * 	회원 아이디 찾기
 	 *  
@@ -68,4 +70,11 @@ public interface MemberService {
 	 *  @Return int
 	 * */
 	public int emailChk(Member member);
+	/*
+	 * 	회원 항공 예약 취소
+	 *  
+	 *  @Param int
+	 *  @Return int
+	 * */
+	public int reservationCancel(int riNo);
 }

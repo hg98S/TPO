@@ -47,7 +47,7 @@
 				<!-- 시도별 지도 -->
 				<div>
 				<div style="width:50%; text-align:left;"><h4>최신 날짜: ${currentDate }</h4></div>
-				<div style="width:50%; position:absolute; top:250px; left:1100px;">
+				<div style="width:50%; position:absolute; top:200px; left:1100px;">
 						<div>
 							<div style="float:left">10명 이하</div>&nbsp;&nbsp;
 							<div style="float:left;background:rgba(246, 234, 140, 0.7); width:10px; height:10px; margin-top:10px; margin-left:22.5px;" ></div>
@@ -295,15 +295,10 @@
 									</c:choose>
 								</p>
 								<p style="text-align:center">
-								<c:if test="${restList.reUrl eq '준비중'}">
 									<c:url var="roomDirect" value="restDetail.tpo">
 										<c:param name="reNo" value="${restList.reNo }"></c:param>
 									</c:url>
 									<a style="cursor:hand;" href="${roomDirect }"><span class="btn btn-primary">상세 페이지</span></a>
-								</c:if>
-								<c:if test="${restList.reUrl ne '준비중'}">
-									<a href="${restList.reUrl }"><span class="btn btn-primary">바로가기</span></a>
-								</c:if>
 								</p>
 							</div>
 						</a>

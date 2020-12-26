@@ -43,9 +43,12 @@
 		</div >
 		<div id="pageCategory" style="float:left; width:80%;">
 		<div id="myPage" class="centerText">
+		<h2 style="text-decoration:underline; margin-left:420px;">Personal Information</h2>
+		<p style="margin-left:850px;">HOME > 마이페이지 > <b>개인정보관리</b></p>
+		<br>
 		<form action="modifyMember.tpo" method="post" style="float:left;">
 			<input type="hidden" name="userName" value="${loginUser.userName }">
-			<table class="registerForm" width="650" cellspacing="5" style="margin:auto;">
+			<table class="registerForm" width="650" cellspacing="5" style="margin-left:400px;">
 				<tr>
 					<td> 아이디</td>
 					<td><input type="text" name="userId" id="userId" value="${loginUser.userId }" readonly></td>

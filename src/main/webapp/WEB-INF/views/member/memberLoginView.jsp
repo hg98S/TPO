@@ -43,8 +43,7 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td><input name="remember" type="checkbox"
-								value="Remember Me"> <sm style="color:#78EEB2">&nbsp; 아이디 저장</sm></td>
+							<td></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>

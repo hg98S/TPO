@@ -5,6 +5,19 @@
 		<result property="mCreateDate" column="m_create_date"/>
 		<result property="mModifyDate" column="m_modify_date"/>
 	</resultMap>
+	<resultMap type="RInfo" id="RInfoResultMap">
+		<result property="enNo" column="en_no"/>
+		<result property="rDate" column="r_date"/>
+		<result property="rPeople" column="r_people"/>
+		<result property="riNo" column="ri_no"/>
+		<result property="riVihicleId" column="ri_vihicle_id"/>
+		<result property="riDepartureArea" column="ri_departure_area"/>
+		<result property="riArrivalArea" column="ri_arrival_area"/>
+		<result property="riDepartureDate" column="ri_departure_date"/>
+		<result property="riArrivalDate" column="ri_arrival_date"/>
+		<result property="riFare" column="ri_fare"/>
+		<result property="riSeatGrade" column="ri_seatgrade"/>
+	</resultMap>
 	<!-- 로그인 -->
 	<select id="selectOne" resultMap="MemberResultMap">
 		select * from member where  userid=#{userId} and userpwd=#{userPwd} and mstatus='Y'
@@ -42,4 +55,13 @@
 		set mstatus='N'
 		where userid=#{userId} and userpwd=#{userPwd}
 	</update>
+	<!-- 회원예약정보 불러오기 -->
+	<select id="reservationInfo" resultMap="RInfoResultMap">
+		select * from reservation 
+		join reservation_info using (en_no)
+		where userId=#{userId}
+	</select>
+	<delete id="reservationCancel">
+		delete from RESERVATION_INFO where ri_no=#{riNo}
+	</delete>
 </mapper>

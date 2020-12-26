@@ -1,5 +1,6 @@
 package com.kh.tpo.member.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.mail.MessagingException;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.kh.tpo.member.domain.Member;
+import com.kh.tpo.member.domain.ReservationInfo;
 import com.kh.tpo.member.service.MemberService;
 
 @Controller
@@ -214,9 +216,25 @@ public class MemberController {
 			}
 	}
 	
-	// 항공예약정보조회(보류)
+	// 항공예약정보조회
 	@RequestMapping(value="reservationInfo.tpo", method=RequestMethod.GET)
-	public String reservationInfoView() {
+	public String reservationInfoView(Model model, HttpServletRequest request) {
+		ArrayList<ReservationInfo> rList = new ArrayList<ReservationInfo>();
+		HttpSession session = request.getSession();
+		String userId = (String)((Member)session.getAttribute("loginUser")).getUserId();
+		rList = mService.reservationInfo(userId);
+		model.addAttribute("rList", rList);
 		return "member/reservationInfo";
+	}
+	// 항공예약 취소
+	@RequestMapping(value="reservationCancel.tpo", method=RequestMethod.GET)
+	public String reservationCancel(HttpServletRequest request) {
+			int riNo = Integer.parseInt(request.getParameter("riNo"));
+			int result  = mService.reservationCancel(riNo);
+			if(result>0) {
+				return "redirect:myPageView.tpo";
+			}else {
+				return"common/errorPage";
+			}
 	}
 }

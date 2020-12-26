@@ -69,7 +69,7 @@
                      TPO<br>
                      Time(시간), Place(장소), Occasion(상황)에 맞는 옷차림을 의미하는 TPO처럼<br>
                      코로나에 의해 시기(계절)와 장소, 코로나의 확진자 현황에 따라 안전한 여행을 추천하고자합니다.<br>
-                     blah,blah,blah
+                     
                   </p>
                </div>
             </div>

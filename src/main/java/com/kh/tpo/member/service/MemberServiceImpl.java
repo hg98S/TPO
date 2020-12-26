@@ -1,5 +1,7 @@
 package com.kh.tpo.member.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,9 +41,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public ReservationInfo reservationInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ReservationInfo> reservationInfo(String userId) {
+		return mStore.reservationInfo(userId);
 	}
 
 	@Override
@@ -57,6 +58,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int emailChk(Member member) {
 		return mStore.emailChk(member);
+	}
+
+	@Override
+	public int reservationCancel(int riNo) {
+		return mStore.reservationCancel(riNo);
 	}
 
 	

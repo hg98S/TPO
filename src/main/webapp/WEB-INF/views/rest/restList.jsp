@@ -29,7 +29,7 @@
 
 					<div class="well well-lg search"
 						style="background-color: #0D7B6C; color: white; padding-left: 6%; padding-top: 6%; width: 100%; padding-bottom: 3%;">
-						<form action="searchAllList.tpo" method="get">
+						<form action="searchAllList.tpo" method="get" onSubmit="return searchAllList()">
 							<h3>
 								<b id="rs" style="color: white;">숙소검색</b>
 							</h3>
@@ -100,7 +100,7 @@
 							<b id="rs">가격</b>
 						</h3>
 						<div class="search-list">
-							<form action="rPriceSearch.tpo" method="get">
+							<form action="rPriceSearch.tpo" method="get" onSubmit="return rPriceSearch()">
 								<b>최저금액 </b><br> <input type="text"
 									class="well well-sm location"
 									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 65%; height: 35px;"
@@ -555,6 +555,55 @@ $("#kminus").click(function(){
 	$("#kAmount").attr('value',kSum);
 });	
 
+// 숙소검색 값이 하나라도 없는 경우 막기(목적지 / 숙박기간 )
+function searchAllList(){
+	
+	var location = $('input[name="location"]');
+	var sleep = $('input[name="sleep"]');
+	
+	var locationValue = $('input[name="location"]').val();
+	var sleepValue = $('input[name="sleep"]').val();
+	if(locationValue==''){
+		location.focus();
+		alert("목적지를 입력해 주세요.");
+		return false;
+	}
+	else if(sleepValue=='' || sleepValue==0){
+		sleep.focus();
+		alert("숙박기간을 입력해 주세요.");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function rPriceSearch(){
+	var minPrice = $('input[name="minPrice"]');
+	var maxPrice = $('input[name="maxPrice"]');
+	
+	var minPriceValue = $('input[name="minPrice"]').val();
+	var maxPriceValue = $('input[name="maxPrice"]').val();
+	
+	if(minPriceValue==0 && maxPriceValue==0){
+		minPrice.focus();
+		alert("최저/최고 금액을 입력해주세요.1");
+		return false;
+	}
+	else if(minPriceValue=='' && maxPriceValue==''){
+		minPrice.focus();
+		alert("최저/최고 금액을 입력해주세요.2");
+		return false;
+	}
+	else if(minPriceValue>maxPriceValue){
+		minPrice.focus();
+		alert("최저금액이 최고금액보다 높을 수 없습니다.");
+		minPrice.val(0);
+		maxPrice.val(0);
+		return false;
+	}else{
+		return true;
+	}
+}
 </script>
 	
 	

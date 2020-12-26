@@ -145,7 +145,7 @@ public class MainController {
 	
 	 // 서울 코로나 확진자 데이터 ... 
 //	@Scheduled(fixedDelay=1000)
-	@Scheduled(cron="0 00 12 * * ?")
+	@Scheduled(cron="0 30 11 * * ?")
 	public void insertCity() throws Exception{ 
 		URL req = new URL("http://openapi.seoul.go.kr:8088/56586777556b737431303242594c576e/json/Corona19Status/1/1000/");
 		HttpURLConnection conn = (HttpURLConnection)req.openConnection();

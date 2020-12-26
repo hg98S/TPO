@@ -195,11 +195,12 @@
 						var cityName = $(".gyeonggidoTEXT a:eq" + "(" + i + ")").text();
 						for(var j=0; j<data.length; j++){
 							// 3일 평균 데이터를 가져와서 각 위치에 넣음
-								if(data[j].cityName.indexOf(cityName) != -1){
+							if(data[j].cityName.indexOf(cityName) != -1){
 								var cityNum = $(".gyeonggidoNum a:eq" + "(" + i + ")");
 								cityNum.text(data[j].cConfirmedNum);
 							// 10명이하 노랑, 11명이상 49명이하, 나머지 선지색
 							var cityFill = $(".gyeonggidoOUTLINE:eq" + "(" + i + ")");
+							//	if(cityName!="남양주" && cityName!="동두천"){
 									if(data[j].cConfirmedNum<=10){
 										cityFill.css("fill","rgba(246, 234, 140, 0.7)");
 										cityNum.css("fill", "#000000");
@@ -210,6 +211,7 @@
 										cityFill.css("fill","rgba(192, 54, 71, 0.9)");
 										cityNum.css("fill", "#ffffff");
 										}
+							//	}
 							}
 						}
 					}
@@ -473,6 +475,36 @@
 				}
 			});  
 		 }
+		
+		// 충청북도
+		if(selectTag=="충청북도"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 충청남도
+		if(selectTag=="충청남도"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 경상북도
+		if(selectTag=="경상북도"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 경상남도
+		if(selectTag=="경상남도"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 울산광역시
+		if(selectTag=="울산광역시"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 부산광역시
+		if(selectTag=="부산광역시"){
+	 		alert("업데이트 중입니다.");
+		 }
+		// 광주광역시
+		if(selectTag=="광주광역시"){
+	 		alert("업데이트 중입니다.");
+		 }
+		
 	  });
 		
 		

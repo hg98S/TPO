@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div id="deletePage">
-		<h2 style="text-decoration:underline; margin-left:420px;">JOIN OUT</h2>
-		<p style="margin-left:700px;">HOME > 마이페이지 > <b>회원탈퇴</b></p>
+		<h2 style="text-decoration:underline; margin-left:500px;">JOIN OUT</h2>
+		<p style="margin-left:820px;">HOME > 마이페이지 > <b>회원탈퇴</b></p>
 		<form action="deleteMember.tpo" method="post">
 		<input type="hidden" id="userId" name="userId" value="${loginUser.userId }">
-		<div id="deleteTop" style="margin-top:50px; background:#f3f3f3;width:65%;">
+		<div id="deleteTop" style="margin-top:50px; margin-left:100px; background:#f3f3f3;width:65%;">
 			<div style="background:beige; padding: 10px;"><h3 style="color:#aeaaaa;">01</h3><h3 style="margin-top:-10px;">회원탈퇴안내</h3></div>
 			<div style="padding-left:15px; paddin-right:15px;" >고객님께서 회원 탈퇴를 원하신다니 저희 항공서비스가 많이 부족하고 미흡했나 봅니다.<br>
 					불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의 불편함을 해결해 드리도록 노력하겠습니다.<br><br>
@@ -21,7 +21,7 @@
 					2. 탈퇴 시 고객님께서 보유하셨던 적립금은 삭제 됩니다.
 			</div>
 		</div>
-		<div id="deleteBottom" style="margin-top:50px; background:#f3f3f3;width:65%; "> 
+		<div id="deleteBottom" style="margin-top:50px; margin-left:100px; background:#f3f3f3;width:65%; "> 
 			<div style="background:beige; padding: 10px;"><h3 style="color:#aeaaaa;">02</h3><h3 style="margin-top:-10px;">회원탈퇴하기</h3></div>
 			<div style="padding-left:15px; paddin-right:15px;" >
 			<b>비밀번호가 어떻게 되세요?</b>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<br>
-		<input type="submit" id="submit" class="btn btn-danger" style="margin-left:420px;" onclick="return fnDeleteButton()" value="탈퇴하기" > 
+		<input type="submit" id="submit" class="btn btn-danger" style="margin-left:500px;" onclick="return fnDeleteButton()" value="탈퇴하기" > 
 		</form>
 	</div>
 	<script>

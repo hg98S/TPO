@@ -61,7 +61,7 @@ span.checkPwd{
 			</div>
 			<div class="form-group">
 				<label for="yyyymmdd">* 생년월일</label>
-				 <input type="text" class="form-control" id="yyyymmdd" name="yyyymmdd" placeholder="생년월일 6글자를 입력해주세요" required>
+				 <input type="text" class="form-control" id="yyyymmdd" name="yyyymmdd" placeholder="생년월일 8글자를 입력해주세요" required>
 				 <input type="hidden" id="age" name="age">
 			</div>
 			<div class="form-group">

@@ -28,8 +28,8 @@ public interface SightService {
 	 * @return int
 	 * */
 	public int getListCount();
-	public ArrayList<Sight> sightChkList(PageInfo pi,HashMap<String,Integer> chkValue);
-	public int sightChkCount(HashMap<String,Integer> chkValue);
+	public ArrayList<Sight> sightChkList(PageInfo pi,HashMap<String,Object> chkValue);
+	public int sightChkCount(HashMap<String,Object> chkValue);
 	/* review */
 	public ArrayList<SightReview> selectReviewList(int sNo);
 	public SightReview selectReview(int reviewNo);
