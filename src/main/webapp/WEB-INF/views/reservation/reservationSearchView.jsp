@@ -516,10 +516,10 @@
 		        <input type="hidden" name="infantCount" value="${infantCount}">
 		        
 	            <div style="width: 35%; margin: auto;">
-	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
+	                <button type="button" onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
 	                    항공 스케줄 다시 선택
 	                </button>
-	                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
+	                <input type="submit" value="다음 단계" id="btn" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
 	            </div>
             </form>
         </article>

@@ -2,8 +2,6 @@ package com.kh.tpo.reservation.domain;
 
 public class TestFlight {
 
-   private String airportId; // 공항번호
-   private String airlineId; // 항공사번호
    private String vihicleId; // 항공편명
    private String airlineNm; // 항공사명
    private Long depPlandTime; // 출발시간
@@ -13,20 +11,6 @@ public class TestFlight {
    private Long economyCharge; // 일반석 운임료
    private Long prestigeCharge; // 비즈니스석 운임료
    
-   
-   
-   public String getAirportId() {
-      return airportId;
-   }
-   public void setAirportId(String airportId) {
-      this.airportId = airportId;
-   }
-   public String getAirlineId() {
-      return airlineId;
-   }
-   public void setAirlineId(String airlineId) {
-      this.airlineId = airlineId;
-   }
    public String getVihicleId() {
       return vihicleId;
    }
@@ -77,7 +61,7 @@ public class TestFlight {
    }
    @Override
    public String toString() {
-      return "TestFlight [airportId=" + airportId + ", airlineId=" + airlineId + ", vihicleId=" + vihicleId
+      return "TestFlight [vihicleId=" + vihicleId
             + ", airlineNm=" + airlineNm + ", depPlandTime=" + depPlandTime + ", arrPlandTime=" + arrPlandTime
             + ", depAirportNm=" + depAirportNm + ", arrAirportNm=" + arrAirportNm + ", economyCharge="
             + economyCharge + ", prestigeCharge=" + prestigeCharge + "]";
