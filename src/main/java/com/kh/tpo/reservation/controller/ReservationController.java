@@ -1,16 +1,16 @@
 package com.kh.tpo.reservation.controller;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -92,9 +92,9 @@ public class ReservationController {
 
 			JSONObject jItems = (JSONObject) jBody.get("items");
 			// System.out.println(j_items);
-
+			
 			aItem = (JSONArray) jItems.get("item");
-			// System.out.println(aItem);
+			System.out.println(aItem);
 
 			for (int i = 0; i < aItem.size(); i++) {
 				TestFlight flight = new TestFlight();
@@ -126,30 +126,44 @@ public class ReservationController {
 	// 항공권 검색 리스트 조회(왕복)
 	@RequestMapping(value = "reservationDataSearchRound.tpo", method = RequestMethod.GET)
 	public String getFlightScheduleSearch1(Model model, String sDepAirportNm, String sArrAirportNm, String sDepPlandTime,
-			String sArrPlandTime, int adultCount, int childCount, int infantCount) {
+			String sArrPlandTime, int adultCount, int childCount, int infantCount, HttpServletResponse resp) throws Exception {
+		
 		// 가는편
 		ArrayList<TestFlight> fList1 = searchair(sDepAirportNm, sArrAirportNm, sDepPlandTime);
 		// 오는편
 		ArrayList<TestFlight> fList2 = searchair(sArrAirportNm, sDepAirportNm, sArrPlandTime);
+		System.out.println(fList1);
+		System.out.println(fList2);
+		
 
 		// 인원수
 		int acCount = adultCount + childCount;
 		int totalCount = adultCount + childCount + infantCount;
-
-		model.addAttribute("fList", fList1);
-		model.addAttribute("fList2", fList2);
-		model.addAttribute("adultCount", adultCount);
-		model.addAttribute("childCount", childCount);
-		model.addAttribute("infantCount", infantCount);
-		model.addAttribute("acCount", acCount);
-		model.addAttribute("tCount", totalCount);
-		return "reservation/reservationSearchView";
+		
+		if (!fList1.isEmpty()) {
+			model.addAttribute("fList", fList1);
+			model.addAttribute("fList2", fList2);
+			model.addAttribute("adultCount", adultCount);
+			model.addAttribute("childCount", childCount);
+			model.addAttribute("infantCount", infantCount);
+			model.addAttribute("acCount", acCount);
+			model.addAttribute("tCount", totalCount);
+			System.out.println("100");
+			return "reservation/reservationSearchView";
+		} else {
+			System.out.println("400");
+			PrintWriter writer = resp.getWriter();
+			resp.setContentType("text/html; charset=UTF-8");
+			writer.println("<script>alert('선택하신 항공권은 존재하지 않습니다. 다시 선택해주세요.');</script>");
+			writer.flush();
+			return "reservation/reservation";
+		}
 	}
 
 	// 항공권 검색 리스트 조회(편도)
 	@RequestMapping(value = "reservationDataSearchOne.tpo", method = RequestMethod.GET)
 	public String getFlightScheduleSearch2(Model model, String sDepAirportNm, String sArrAirportNm,
-			String sDepPlandTime, int adultCount, int childCount, int infantCount) {
+			String sDepPlandTime, int adultCount, int childCount, int infantCount, HttpServletResponse resp) throws Exception {
 		
 		// 가는편
 		ArrayList<TestFlight> fList = searchair(sDepAirportNm, sArrAirportNm, sDepPlandTime);
@@ -158,13 +172,21 @@ public class ReservationController {
 		int acCount = adultCount + childCount;
 		int totalCount = adultCount + childCount + infantCount;
 
-		model.addAttribute("fList", fList);
-		model.addAttribute("adultCount", adultCount);
-		model.addAttribute("childCount", childCount);
-		model.addAttribute("infantCount", infantCount);
-		model.addAttribute("acCount", acCount);
-		model.addAttribute("tCount", totalCount);
-		return "reservation/reservationSearchView2";
+		if (!fList.isEmpty()) {
+			model.addAttribute("fList", fList);
+			model.addAttribute("adultCount", adultCount);
+			model.addAttribute("childCount", childCount);
+			model.addAttribute("infantCount", infantCount);
+			model.addAttribute("acCount", acCount);
+			model.addAttribute("tCount", totalCount);
+			return "reservation/reservationSearchView2";
+		} else {
+			PrintWriter writer = resp.getWriter();
+			resp.setContentType("text/html; charset=UTF-8");
+			writer.println("<script>alert('선택하신 항공권은 존재하지 않습니다. 다시 선택해주세요.');</script>");
+			writer.flush();
+			return "reservation/reservation";
+		}
 	}
 	
 	// 서치뷰페이지에서 값을 받아서 passengerInsertForm에 뿌려주기(왕복)
