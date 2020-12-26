@@ -12,16 +12,11 @@
 	#selectGoSchedule br {
      	display: none;
 	}
-	body {
-		background-color: #ececec;
-	}
 </style>
-
 </head>
-<body>
+<body style="background-color: #ececec;">
 	<jsp:include page="/include/includeHeader.jsp"/>
 	<div id="page"></div>
-	<a href="passengerForm.tpo">다음</a>
 	<%-- <c:forEach items="${fList }" var="fly">
 		${fly.vihicleId }
 		${fly.airlineNm }
@@ -241,12 +236,6 @@
 	                   	} else if( sIndex == 4) {
 	                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 	                   	}
-	                   	if(index == 1) {
-	                      	var depTime;
-	                   	}
-	                   	if(index == 3) {
-	                      	var charge;
-	                   	}
                 	});
 	               	$("#depAirlineNm").val($("#depAlNm").text());
 	               	$("#depTime").val($("#depPTime").text());
@@ -306,16 +295,28 @@
 		        <input type="hidden" name="infantCount" value="${infantCount}">
 		        
 	            <div style="width: 35%; margin: auto;">
-	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
+	                <button type="button" onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
 	                    항공 스케줄 다시 선택
 	                </button>
 	                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
 	            </div>
+	            <script>
+	            	/* 다음 단계 버튼 클릭시 항공권 선택 여부 확인 */
+	            	$(document).ready(function() {
+	            		$("#btn").click(function() {
+	            			var checkGoSchedule = $("#depAlNm").html();
+	            			console.log(checkGoSchedule);
+	            			if(checkGoSchedule == "") {
+	            				alert("항공권을 선택해주세요.");
+	            				return false;
+	            			}
+	            		})
+	            	});
+	            </script>
             </form>
         </article>
     </section>
     <!-- 컨텐츠 끝 -->
-   
     <jsp:include page="/include/includeFooter.jsp"/>
 </body>
 </html>

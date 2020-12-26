@@ -8,13 +8,8 @@
 <title>TPO_탑승자 정보 입력</title>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<style type="text/css">
-   body {
-      background-color: #ececec;
-   }
-</style>
 </head>
-<body>
+<body style="background-color: #ececec;">
    <jsp:include page="/include/includeHeader.jsp" />
    <div id="page"></div>
    
@@ -171,12 +166,23 @@
                         <col width="80px;">
                         <col width="80px;">
                     </colgroup>
-                    <tr>
-                        <th style="height: 50px; font-size: 20px; line-height: 2.5; text-align: center; background-color: #09c6ab; color: white;"><b>총 합계 금액</b></th>
-                        <td style="font-size: 20px; line-height: 2.5; text-align: center;">58800원</td>
+                    <tr id="totalCharge">
+                        <th style="height: 50px; font-size: 20px; line-height: 2.5; text-align: center; background-color: #09c6ab; color: white;"><b>총 합계 금액 (원)</b></th>
+                        <td style="font-size: 20px; line-height: 2.5; text-align: center;"></td>
                     </tr>
                 </table>
             </div>
+            <script>
+            $(document).ready(function() {
+            	var fare=${fare};
+            	console.log(fare);
+            	var acCount=${people};
+            	console.log(acCount);
+            	var fare2=${fare2};
+            	console.log(fare2);
+            	$("#totalCharge td").html((fare+fare2)*acCount);
+            });
+            </script>
         </article>
         <br>
         <input type="hidden" name="rPeople" value="${tCount }">
@@ -296,6 +302,14 @@
                 }
              }
           }
+          
+          /* 로그인 상태 확인 */
+       	var id=$("input[name='userId']").val();
+       	console.log(id);
+		if(id == '') {
+			alert("로그인 후 결제가 가능합니다.");
+			location.href='loginView.tpo';
+		}
        
           /* 결제 */
         var IMP = window.IMP;

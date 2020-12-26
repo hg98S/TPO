@@ -11,13 +11,8 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous">
 </script>
-<style type="text/css">
-	body {
-		background-color: #ececec;
-	}
-</style>
 </head>
-<body>
+<body style="background-color: #ececec;">
 	<jsp:include page="/include/includeHeader.jsp" />
 	<div id="page"></div>
 	

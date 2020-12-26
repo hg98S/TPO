@@ -30,17 +30,10 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-	body {
-		background-color: #ececec;
-	}
-</style>
-
-
 <!--한국어  달력 쓰려면 추가 로드-->
 <!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> --> 
 </head>
-<body>
+<body style="background-color: #ececec;">
    
    <jsp:include page="/include/includeHeader.jsp"></jsp:include>
    <section>
