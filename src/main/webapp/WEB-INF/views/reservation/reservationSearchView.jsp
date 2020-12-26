@@ -12,15 +12,11 @@
    #selectGoSchedule br, #selectComeSchedule br {
         display: none;
    }
-   body {
-		background-color: #ececec;
-	}
 </style>
 </head>
-<body>
+<body style="background-color: #ececec;">
 	<jsp:include page="/include/includeHeader.jsp"/>
 	<div id="page"></div>
-	<a href="passengerForm.tpo">다음</a>
 	<%-- <c:forEach items="${fList }" var="fly">
 		${fly.vihicleId }
 		${fly.airlineNm }
@@ -375,12 +371,6 @@
 		                   	} else if( sIndex == 4) { // 금액
 		                      	$("#selectGoSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 		                   	}
-		                   	if(index == 1) {
-		                      	var depTime;
-		                   	}
-		                   	if(index == 3) {
-		                      	var charge;
-		                   	}
 		                   	$("#depAirlineNm").val($("#depAlNm").text());
 			               	$("#depTime").val($("#depPTime").text());
 			               	$("#arrTime").val($("#arrPTime").text());
@@ -406,11 +396,8 @@
 	                  	$("input:checked[id=departure]").each(function() {
 	                     	if (fsRadio != $(this).val()) {
 	                        	$(this).attr("checked", false); // uncheck all checkboxes
-	                            //alert("checked checkbox false");
 	                     	}
 	                   	});
-	                  	/* td.eq(4).children().attr("checked", "true"); */
-	
 	                  	td.each(function(index, item) {
 	                  		for (var i = 0; i < 7; i++) {
 	    		               	$("#selectComeSchedule td:eq("+i+")").show();
@@ -433,17 +420,6 @@
 			                   $("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
 			                }else if(sIndex == 4) {
 	                     		$("#selectComeSchedule td:eq"+"("+(sIndex+1)+")").html(item.innerHTML);
-	                  		}
-	                  		//console.log(index);
-	                  		if(index == 1) {
-	                     		var depTime;
-	                     		//var depTimeTest = depTime.html();
-	                     		//console.log(depTime);
-	                     		//console.log(depTimeTest);
-	                  		}
-	                  		if(index == 3) {
-	                     		var charge;
-	                     		//console.log(charge);
 	                  		}
 	                  		$("#depAirlineNm2").val($("#depAlNm2").text());
 			               	$("#depTime2").val($("#depPTime2").text());
@@ -516,11 +492,26 @@
 		        <input type="hidden" name="infantCount" value="${infantCount}">
 		        
 	            <div style="width: 35%; margin: auto;">
-	                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
+	                <button type="button" onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
 	                    항공 스케줄 다시 선택
 	                </button>
 	                <input type="submit" id="btn" value="다음 단계" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
 	            </div>
+	            <script>
+	            	/* 다음 단계 버튼 클릭시 항공권 선택 여부 확인 */
+	            	$(document).ready(function() {
+	            		$("#btn").click(function() {
+	            			var checkGoSchedule = $("#depAlNm").html();
+	            			var checkComeSchedule = $("#depAlNm2").html();
+	            			console.log(checkGoSchedule);
+	            			console.log(checkComeSchedule);
+	            			if(checkGoSchedule == "" || checkComeSchedule == "") {
+	            				alert("항공권을 선택해주세요.");
+	            				return false;
+	            			}
+	            		})
+	            	});
+	            </script>
             </form>
         </article>
     </section>
