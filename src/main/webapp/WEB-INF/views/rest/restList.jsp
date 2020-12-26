@@ -36,14 +36,14 @@
 							<div class="search-list">
 								<b>목적지</b> <input type="text" class="well well-sm location"
 									name="location" id="location" value="${search.location }"
-									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px;">
+									style="margin-top: 5%; margin-bottom: 7%; background-color: white; width: 99%; height: 35px; color:black;">
 							</div>
 							<div class="search-list">
 								<b>숙박기간</b> <input type="text" class="well well-sm sleep"
 									name="sleep" value="${search.sleep }"
-									style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; background-color: white;">
+									style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; color:black; background-color: white;">
 								<b>박</b> <input type="text" class="well well-sm sleep"
-									style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; background-color: white;">
+									style="width: 40px; margin-top: -50%; margin-left: 4%; margin-bottom: 7%; height: 0%; color:black; background-color: white;">
 								<b>일</b>
 
 							</div>

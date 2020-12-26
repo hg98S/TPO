@@ -37,8 +37,8 @@ public class APIInfo {
 		ArrayList<API2> rlist2 = new ArrayList<API2>();
 		String totalCount = null;
 		int check = 0;
-		String bb = "31";		
-		String page = "20";
+		String bb = "39";		
+		String page = "5";
 		String currentPage = "1";
 		// url 토탈 값 가져오기
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
@@ -541,7 +541,7 @@ public class APIInfo {
 				//	System.out.println(b);
 				
 			}
-			
+		//	System.out.println(b);
 			joined.add(rest);	
 			System.out.println(joined.toString());	
 		//	

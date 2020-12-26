@@ -26,10 +26,10 @@ public class RoomInfo {
 		ArrayList<API1> rlist = new ArrayList<API1>();
 		String totalCount = null;
 		int check = 0;
-		String b = "8";
-		String page = "4";
+		String b = "39";
+		String page = "5";
 		String currentPage = "1";
-		int startV = 61;
+		int startV = 132;
 		// url 토탈 값 가져오기
 		StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay"); /*URL*/
 		urlBuilder.append( "?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + serviceKey); /*Service Key*/
