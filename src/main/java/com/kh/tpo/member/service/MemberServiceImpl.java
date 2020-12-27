@@ -65,5 +65,10 @@ public class MemberServiceImpl implements MemberService{
 		return mStore.reservationCancel(riNo);
 	}
 
+	@Override
+	public int phoneChk(String phone) {
+		return mStore.phoneChk(phone);
+	}
+	
 	
 }

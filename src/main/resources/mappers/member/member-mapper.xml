@@ -61,7 +61,12 @@
 		join reservation_info using (en_no)
 		where userId=#{userId}
 	</select>
+	<!--  예약정보 취소 -->
 	<delete id="reservationCancel">
 		delete from RESERVATION_INFO where ri_no=#{riNo}
 	</delete>
+	<!-- 회원 핸드폰번호 체크-->
+	<select id="phoneChk" resultType="int">
+		select count(*) from member where phone=#{phone}
+	</select>
 </mapper>

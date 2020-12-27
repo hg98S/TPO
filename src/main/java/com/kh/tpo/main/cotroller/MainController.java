@@ -43,7 +43,7 @@ public class MainController {
 	// 시도별 코로나 확진자 총합 데이터
 //	@Scheduled(fixedDelay=1000)
 //	@RequestMapping(value="coronaUrban.tpo", method=RequestMethod.GET)
-	@Scheduled(cron="0 0 11 * * ?")
+	@Scheduled(cron="0 40 16 * * ?")
 	public void insertUrban() throws Exception{
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"); /*URL*/
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=3oqwrivhuG7AyjAuZOIGA64eNYdob9QWOGadD8f6NY1IjGJdfcEONPpY3h%2BRlpnxkKEppGYVa6SI8bBWFAFBzw%3D%3D"); /*Service Key*/
@@ -145,7 +145,7 @@ public class MainController {
 	
 	 // 서울 코로나 확진자 데이터 ... 
 //	@Scheduled(fixedDelay=1000)
-	@Scheduled(cron="0 30 11 * * ?")
+	@Scheduled(cron="0 42 16 * * ?")
 	public void insertCity() throws Exception{ 
 		URL req = new URL("http://openapi.seoul.go.kr:8088/56586777556b737431303242594c576e/json/Corona19Status/1/1000/");
 		HttpURLConnection conn = (HttpURLConnection)req.openConnection();

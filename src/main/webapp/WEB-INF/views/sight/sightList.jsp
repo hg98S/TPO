@@ -92,7 +92,7 @@
 				<li>
 					<br>
 				<h3>
-				숙소명
+				지역명
 						</h3>
 						<div class="nameList">
 								<input type="text" class="well well-sm location" name="sLocation" id="location" value="${chkValue.sLocation }"
@@ -131,7 +131,7 @@
 					</div>
 				</c:forEach>
 				<c:if test="${fn:length(sList) == 0}">
-				<span>제공하지 않는 데이터 입니다.</span>
+				<span style="margin-left:20px;">제공하지 않는 데이터 입니다.</span>
 			</c:if>
 			</div>
 			<!-- 페이징 처리 -->

@@ -65,4 +65,9 @@ public class MemberStoreLogic implements MemberStore{
 		return session.delete("MemberMapper.reservationCancel", riNo);
 	}
 
+	@Override
+	public int phoneChk(String phone) {
+		return session.selectOne("MemberMapper.phoneChk", phone);
+	}
+
 }

@@ -245,4 +245,11 @@ public class MemberController {
 				return"common/errorPage";
 			}
 	}
+	// 핸드폰번호 유효성 체크
+	@ResponseBody
+	@RequestMapping(value="dupPhone.tpo", method=RequestMethod.GET)
+	public String phoneChk(String phone,HttpServletResponse response) throws Exception{
+		boolean phoneCheck = mService.phoneChk(phone)==0? true : false;
+			return phoneCheck+"";
+	}
 }

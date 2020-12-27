@@ -104,8 +104,8 @@
       	    $("#mailSend").on("click",function(){
       	    	var userId = $(".inputText").val();
       	    	var email = $(".inputEmail").val();
-      	    	/* console.log(userId);
-      	    	console.log(email); */
+      	    	// console.log(userId);
+      	    	console.log(email);
       	    	$.ajax({
       	    		url: "emailCheck.tpo",
       	    		type: "get",

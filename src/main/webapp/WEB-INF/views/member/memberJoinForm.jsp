@@ -24,6 +24,9 @@ span.checkId{
 span.checkPwd{
 	display:none;
 }
+span.checkPhone{
+	display:none;
+}
 </style>
 </head>
 <body>
@@ -85,6 +88,9 @@ span.checkPwd{
 			<div class="form-group">
 				<label for="phone">* 핸드폰</label>
 				 <input type="text" class="form-control" id="phone" name="phone" placeholder="('-' 없이 번호만 입력해주세요)" required>
+				 <span class="checkPhone ok" style="color:green">이 핸드폰번호는 사용 가능합니다.</span>
+				<span class="checkPhone error" style="color:red">이 핸드폰번호는 사용할 수 없습니다.</span>
+				<input type="hidden" id="phoneDuplicateCheck" value="0">
 			</div>
 			<div class="form-group">
 				* 주소 <input type="button" class="btn btn-info" onclick="member_execDaumPostcode()" value="우편번호 찾기" style="width:110px; height:50x; padding:0">
@@ -396,6 +402,10 @@ span.checkPwd{
    					$('input:radio[name=domestic]').focus();
    					return false;
    				 }
+   			 }else if($("#phoneDuplicateCheck").val()==0){
+   				alert("휴대폰 번호를 확인 해주세요.");
+   				$("#phone").focus();
+   				return false;
    			 }else{
    				 // 이용약관에 체크하지 않은 경우
    				if($('#termsOfUse').val()==0){
@@ -409,7 +419,28 @@ span.checkPwd{
    			 }
    		 }
    		 
-   		 
+   	   // 핸드폰 번호 체크  
+   		 // 핸드폰 
+   		 $('#phone').on("blur", function(){
+   			 var phone = $(this).val();
+   		 // 핸드폰 중복 확인 
+   			 $.ajax({
+   				url: "dupPhone.tpo",
+   				type: "get",
+   				data: {"phone": phone},
+   			 	success: function(result){
+					if(result=="true"){
+						$(".checkPhone.error").hide();
+						$(".checkPhone.ok").show();
+						$("#phoneDuplicateCheck").val(1);
+					}else{
+						$(".checkPhone.error").show();
+						$(".checkPhone.ok").hide();
+						$("#phoneDuplicateCheck").val(0);
+					}
+   			 	}
+   			 });
+   		 });
 </script>
 </body>
 </html>

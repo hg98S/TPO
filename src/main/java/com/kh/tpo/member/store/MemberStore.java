@@ -77,4 +77,11 @@ public interface MemberStore {
 	 *  @Return int
 	 * */
 	public int reservationCancel(int riNo);
+	/*
+	 * 	회원 핸드폰 번호
+	 *  
+	 *  @Param String
+	 *  @Return int
+	 * */
+	public int phoneChk(String phone);
 }
