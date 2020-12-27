@@ -599,12 +599,12 @@ function rPriceSearch(){
 	
 	if(minPriceValue==0 && maxPriceValue==0){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.1");
+		alert("최저/최고 금액을 입력해주세요.");
 		return false;
 	}
 	else if(minPriceValue=='' && maxPriceValue==''){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.2");
+		alert("최저/최고 금액을 입력해주세요.");
 		return false;
 	}
 	else if(minPriceValue>maxPriceValue){

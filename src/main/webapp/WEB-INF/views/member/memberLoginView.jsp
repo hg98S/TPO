@@ -49,7 +49,7 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td><input type="submit" name="login" class="login-submit"
+							<td><input type="submit" name="login" class="login-submit" 
 								value="SIGN IN"></td>
 						</tr>
 						<tr>

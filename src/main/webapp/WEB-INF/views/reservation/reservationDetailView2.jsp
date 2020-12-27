@@ -27,7 +27,7 @@
         </article>
         <br><br>
         <article>
-            <table align="center" class="table table-bordered" style="height: 150px; font-size: 20px;">
+            <table align="center" class="table table-bordered" style="height: 100px; font-size: 20px;">
                 <thead style="background-color: #09c6ab; color: white; text-align: center;">
                     <tr style="text-align: center;">
                         <th style="text-align: center;">여정</th>

@@ -148,7 +148,7 @@ ul img {
 				<li class="media" style="height:210px;  background-color:white; border : none; border-radius: 10px;">
 			
 					<div class="media-body" style="padding-left:15px; padding-top:5px; ">
-						<p class="mt-0 mb-1"><b style="font-size:23px; color:black;"></b>
+						<p class="mt-0 mb-1"><b style="font-size:23px; color:black;">${reviewList.reviewTitle }</b>
 						&nbsp;&nbsp;&nbsp;${ reviewList.userId}</p>						
 							<div style=" float : left; margin-left:12px; margin-top:1px; width: 130px; height: 155px; ">
 							<img style="width: 130px; height: 130px;"  class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }" alt="리뷰사진">														

@@ -1,5 +1,6 @@
 package com.kh.tpo.member.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,14 +41,21 @@ public class MemberController {
 	
 	// 로그인
 	@RequestMapping(value="login.tpo", method=RequestMethod.POST)
-	public String MemberLogin(HttpServletRequest request, Model model,Member member) {
+	public String MemberLogin(HttpServletRequest request, Model model,Member member,HttpServletResponse response) throws Exception{
 		HttpSession session  = request.getSession();
 		Member loginUser = mService.memberLogin(member);
 		if(loginUser!=null) {
 		session.setAttribute("loginUser", loginUser);
 		return "redirect:mainPage.tpo";
-		}else {
-		return "common/errorPage";
+		}
+		else {
+		PrintWriter out  = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+//		location.href='loginView.tpo';
+		out.print("<script>alert('등록된 회원정보가 없습니다.'); location.href='loginView.tpo';</script>");
+		out.flush();
+		out.close();
+		return "member/memberLoginView";
 		}
 	}
 	
