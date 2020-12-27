@@ -7,7 +7,7 @@
 </head>
 <body>
 <div>
-            <span style="font-size: 20px;">항공권 필수 규정 확인사항</span>
+            <span style="font-size: 20px; color: black;">항공권 필수 규정 확인사항</span>
             <span style="color: red; font-size: 20px;">
                 (실시간 항공의 모든 규정은 각 항공사 규정입니다)
             </span>
@@ -23,7 +23,7 @@
                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             일반규정 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r1" name="radio_chk1" class="radio_chk" value="Y">
                             <label for="r1" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r2" name="radio_chk1" class="radio_chk" value="N">
@@ -185,7 +185,7 @@
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             요금 규정 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r3" name="radio_chk2" class="radio_chk" value="Y">
                             <label for="r3" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r4" name="radio_chk2" class="radio_chk" value="N">
@@ -246,7 +246,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             수하물 규정 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r5" name="radio_chk3" class="radio_chk" value="Y">
                             <label for="r5" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r6" name="radio_chk3" class="radio_chk" value="N">
@@ -357,7 +357,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             취소/환불 규정 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r7" name="radio_chk4" class="radio_chk" value="Y">
                             <label for="r7" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r8" name="radio_chk4" class="radio_chk" value="N">
@@ -700,7 +700,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             개인정보 수집 및 이용 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r9" name="radio_chk5" class="radio_chk" value="Y">
                             <label for="r9" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r10" name="radio_chk5" class="radio_chk" value="N">
@@ -749,7 +749,7 @@ ex> 타항공사는 11월1일 00시부터 적용되나 이스타항공은 11월1
                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-align: left; background-color: whitesmoke; border-bottom: 0px solid lightgray; border-radius: 0px; margin: 0px; padding: 15px; width: 80%; float: left; text-decoration: none;">
                             개인정보 제 3자 제공 [필수]
                         </button>
-                        <div style="background-color: whitesmoke; border-bottom: 1px solid lightgray; height: 54.7px; padding: 4px;">
+                        <div style="background-color: whitesmoke; border-bottom: 2px solid lightgray; height: 54.7px; padding: 4px;">
                             <input type="radio" id="r11" name="radio_chk6" class="radio_chk" value="Y">
                             <label for="r11" style="font-size: 15px;">동의함</label>
                             <input type="radio" id="r12" name="radio_chk6" class="radio_chk" value="N">
