@@ -57,7 +57,7 @@
 
 </style>
 </head>
-<body>
+<body style="background-color:#ececec;">
 	<!--  header -->
 
 	<jsp:include page="/include/includeHeader.jsp" />
@@ -66,7 +66,7 @@
 	<!-- left sidebar -->
 	<section class="container" style="margin-top: 50px;">
 	<form action="sightChkList.tpo" method="get">
-		<div id="search" class="col-md-3">
+		<div id="search" class="col-md-3 " style="margin-right:15px; margin-top:65px; background-color:white; border-radius: 5px; padding-top:15px; ">
 			<h3>명소검색</h3>
 			<ul class="media-list">
 				<li class="media">
@@ -90,8 +90,17 @@
 					</div>
 				</li>
 				<li>
-					<input type="text" class="well well-sm location" name="sLocation" id="location" value="${chkValue.sLocation }">
-					<input class="btn btn-primary" type="submit" value="검색"  style="background:#1AAB8A; color:#fff; border:none; margin-top:10px; margin-left:10px;"/>
+					<br>
+				<h3>
+				숙소명
+						</h3>
+						<div class="nameList">
+								<input type="text" class="well well-sm location" name="sLocation" id="location" value="${chkValue.sLocation }"
+									style="margin-top: 5%; background-color: white; width: 99%; height: 35px;">&nbsp;
+								<button type="submit" class="btn btn-primary"
+									style="background:#1AAB8A; color:#fff; border:none;  margin-left:85px;">검색</button>
+						</div>
+			
 				</li>
 			</ul>
 		</div>
@@ -99,7 +108,7 @@
 
 
 		<!-- Content -->
-		<h2 id="contentTitle">명소 리스트</h2>
+		<h2 id="contentTitle">&nbsp;&nbsp;&nbsp;<b>명소 리스트</b></h2>
 		<div class="container">
 			<if test="${fn:length(sList) > 0}">
 			<div class="row sight">
