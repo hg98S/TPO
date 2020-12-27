@@ -145,7 +145,7 @@ ul img {
 				<li class="media" style="height:210px;  background-color:white; border : none; border-radius: 10px;">
 			
 					<div class="media-body" style="padding-left:15px; padding-top:5px; ">
-						<p class="mt-0 mb-1"><b style="font-size:23px; color:black;">${reviewList.reviewTitle }</b>
+						<p class="mt-0 mb-1"><b style="font-size:23px; color:black;"></b>
 						&nbsp;&nbsp;&nbsp;${ reviewList.userId}</p>						
 							<div style=" float : left; margin-left:12px; margin-top:1px; width: 130px; height: 155px; ">
 							<img style="width: 130px; height: 130px;"  class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }" alt="리뷰사진">														
@@ -181,8 +181,10 @@ ul img {
                   	</c:otherwise>            
                   </c:choose></div>
 					<div style="width:200px; margin-top:145px;">
+					<c:if test="${reviewList.userId eq loginUser.userId && !empty loginUser}">
 					<a href="updateReviewView.tpo?reviewNo=${reviewList.reviewNo}" style="color:#0D7B6C; ">리뷰수정</a>&nbsp;&nbsp;&nbsp;
 					<a href="deleteReview.tpo?reviewNo=${reviewList.reviewNo}&sNo=${reviewList.sNo}" style=" color:#0D7B6C;">리뷰삭제</a>
+					</c:if>
 					</div>
 					</div>
 					</li>
@@ -223,28 +225,25 @@ ul img {
               	 </div>
               	 </div>
 					<div style="width:200px; margin-top:40px;">
+					<c:if test="${reviewList.userId eq loginUser.userId && !empty loginUser}">
 					<a href="updateReviewView.tpo?reviewNo=${reviewList.reviewNo}" style="color:#0D7B6C; ">리뷰수정</a>&nbsp;&nbsp;&nbsp;
 					<a href="deleteReview.tpo?reviewNo=${reviewList.reviewNo}&sNo=${reviewList.sNo}" style=" color:#0D7B6C;">리뷰삭제</a>
+					</c:if>
 					</div>
 					</div>
 					</li>
 				</c:if>
-				
-				
 			</c:forEach>
 		</ul>
-
-
+		<input type="hidden" name="loginUserId" value="${loginUser.userId }">
 
 
 		<div id="buttons" style="text-align: right; margin-top:2.5%;">
 			<button onclick="returnList()" class="btn btn-info btn-xs" style="background-color: #f8ca00; border:none;  color:black;"><b>뒤로가기</b></button>
-			<button onclick="writeForm()" id="writeReview" type="button"
+			<button onclick="return writeForm()" id="writeReview" type="button"
 				class="btn btn-info btn-xs" style="background-color: #007c6b ; border:none; color:white;"><b>리뷰작성</b></button>
-
 		</div>
 		
-		</div>
 		<%-- <ul>
 		<c:forEach items="${review}" var="reviewList">
 			<li class="media"><img class="mr-3" src="../resources/reviewuploadfiles/${reviewList.reviewPicture }"
@@ -295,7 +294,14 @@ ul img {
 		location.href="sightList.tpo"
 	}
 	function writeForm(){
-		location.href="sightReviewWrieteForm.tpo?sNo=${sight.sNo}"
+			var loginUserId = $('input[name="loginUserId"]').val();
+			console.log(loginUserId);
+			if(loginUserId!=''){
+			location.href="sightReviewWrieteForm.tpo?sNo=${sight.sNo}"
+			}else{
+				alert("로그인 후 이용 가능합니다.");
+			return false;
+			}
 	}
 	
 	$(function() {

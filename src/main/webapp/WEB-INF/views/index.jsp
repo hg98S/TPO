@@ -46,8 +46,8 @@
 			<div class="row">
 				<!-- 시도별 지도 -->
 				<div>
-				<div style="width:50%; text-align:left;"><h4>최신 날짜: ${currentDate }</h4></div>
-				<div style="width:50%; position:absolute; top:200px; left:1100px;">
+				<div style="width:50%; position:absolute; top:1240px; left:1150px;"><h4>최신 날짜: ${currentDate }</h4></div>
+				<div style="width:50%; position:absolute; top:200px; left:1230px;">
 						<div>
 							<div style="float:left">10명 이하</div>&nbsp;&nbsp;
 							<div style="float:left;background:rgba(246, 234, 140, 0.7); width:10px; height:10px; margin-top:10px; margin-left:22.5px;" ></div>
