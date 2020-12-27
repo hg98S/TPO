@@ -154,8 +154,8 @@
 					<c:forEach items="${rList }" var="rest">
 						<input type="hidden" value="${rest.reNo}">
 						<a href="restDetail.tpo?reNo=${rest.reNo}">
-							<div class="well well-lg search restInfo"
-								style="background-color: white; border: none; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black">
+							<div class="well well-lg search restInfo" 
+							style="background-color: white; border: none; margin-top: 2%; margin-left: 5%; height: 260px; width: 100%; color: black;">
 								<c:if test="${rest.reImage eq '없음'}">
 									<div style="float: left">
 										<img src="resources/images/noimage.png"
@@ -163,7 +163,11 @@
 									</div>
 									<div style="float: left; margin-left: 15px; margin-top:2%;">
 									<p style="line-height : 230%;">
-										<b style="font-size:17px; line-height:290%;">${rest.reName }</b> <br>
+									 <c:forTokens items="${rest.reName }" delims="[" varStatus="status" var="name">
+										<c:if test="${status.index eq 0}">									
+										<b style="font-size:18px; line-height:290%;">${name}</b>
+										</c:if>
+										</c:forTokens><br>
 										<b>전화번호 :</b> ${rest.rePhone }
 										<br> <b>상세주소 :</b> <br> ${rest.reAddr } <br>
 										<c:if test="${rest.sumPrice ne 0 }">
@@ -185,11 +189,18 @@
 									</div>
 									<div style="float: left; margin-left: 15px;">
 									<p style="line-height : 230%;">
-									  <b style="font-size:17px; line-height:290%;">${rest.reName }</b>
+									
+		
 										<c:url var="restDetail" value="restDetail.tpo">
 											<c:param name="reName" value="${rest.reName }"></c:param>
 											<c:param name="page" value="${pi.currentPage }"></c:param>
 										</c:url>
+										<c:forTokens items="${rest.reName }" delims="[" varStatus="status" var="name">
+										
+										<c:if test="${status.index eq 0}">
+												<b style="font-size:18px; line-height:290%;">${name}</b>
+										</c:if>
+										</c:forTokens>
 										<br> <b>전화번호 :</b> ${rest.rePhone } <br> <b>상세주소
 											: </b> <br> ${rest.reAddr } <br>
 										<c:if test="${rest.sumPrice ne 0 }">
@@ -217,9 +228,9 @@
 
 
 
-			<div class="pageDiv">
+			<div class="pageDiv" >
 
-				<div class="pagination" style="margin-top: -0.5%; color: #09c6ab;">
+				<div class="pagination" style="margin-top: -0.5%; color: #09c6ab; margin-left:75px;">
 					<c:if test="${pi.currentPage<=1 }">
 						<a href="${before }"
 							style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>&nbsp;
@@ -269,21 +280,21 @@
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
 							</c:if>
 						</c:when>
-						<c:when test="${search.maxPrice ne null  }">
+						<c:when test="${search.searchName ne null  }">
 							<c:if test="${pi.currentPage>1 }">
-								<c:url var="before" value="rPriceSearch.tpo">
-									<c:param name="minPrice" value="${search.minPrice}"></c:param>
-									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
+								<c:url var="before" value="rNameSearch.tpo">
+									<c:param name="searchName" value="${search.searchName}"></c:param>
 									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
 								</c:url>
 								<a href="${before }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Previous</a>
 							</c:if>
 						</c:when>
-						<c:when test="${search.searchName ne null  }">
+						<c:when test="${search.maxPrice ne null  }">
 							<c:if test="${pi.currentPage>1 }">
-								<c:url var="before" value="rNameSearch.tpo">
-									<c:param name="searchName" value="${search.searchName}"></c:param>
+								<c:url var="before" value="rPriceSearch.tpo">
+									<c:param name="minPrice" value="${search.minPrice}"></c:param>
+									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
 									<c:param name="page" value="${pi.currentPage-1 }"></c:param>
 								</c:url>
 								<a href="${before }"
@@ -432,44 +443,49 @@
 						</c:choose>
 					</c:forEach>
 					<!-- 		다음 -->
-
-					<c:if test="${pi.currentPage>=pi.maxPage }">
-                     <a href="#"
-									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
-            </c:if>
+					
+					<c:if test="${pi.currentPage>=pi.maxPage and pi.startPage != pi.maxPage }">
+                     <a href="#" style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+       			     </c:if>
 					<c:choose>
 						<c:when test="${search.alignList eq 'Name' }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="alignList.tpo">
 									<c:param name="alignList" value="${search.alignList}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+								</c:if>
                </c:if>
 						</c:when>
 						<c:when test="${search.alignList eq 'Price' }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="alignList.tpo">
 									<c:param name="alignList" value="${search.alignList}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+								</c:if>s
                </c:if>
 						</c:when>
 						<c:when test="${search.alignList eq 'Click' }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="alignList.tpo">
 									<c:param name="alignList" value="${search.alignList}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+								</c:if>
                </c:if>
 						</c:when>
 						<c:when test="${search.location ne null }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="searchAllList.tpo">
 									<c:param name="location" value="${search.location}"></c:param>
 									<c:param name="sleep" value="${search.sleep}"></c:param>
@@ -478,38 +494,46 @@
 									<c:param name="kAmount" value="${search.kAmount}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
-								<a href="${after }" background-color:white; border:1pxsolid#007c6b; border-radius: 30px;">Next</a>&nbsp;
+								<c:if test="${pi.currentPage ne pi.maxPage }">
+								<a href="${after }" style="background-color:white; border:1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+								</c:if>
                </c:if>
 						</c:when>
 						<c:when test="${search.searchName ne null  }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="rNameSearch.tpo">
 									<c:param name="searchName" value="${search.searchName}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+									</c:if>
                </c:if>
 						</c:when>
 						<c:when test="${search.maxPrice ne null }">
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="rPriceSearch.tpo">
 									<c:param name="minPrice" value="${search.minPrice}"></c:param>
 									<c:param name="maxPrice" value="${search.maxPrice}"></c:param>
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
+								</c:if>
                </c:if>
 						</c:when>
 						<c:otherwise>
-							<c:if test="${pi.currentPage<pi.maxPage }">
+							<c:if test="${pi.currentPage<=pi.maxPage }">
 								<c:url var="after" value="restList.tpo">
 									<c:param name="page" value="${pi.currentPage+1 }"></c:param>
 								</c:url>
+								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
-                  </c:if>
+							</c:if>s		
+               			   </c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -599,12 +623,12 @@ function rPriceSearch(){
 	
 	if(minPriceValue==0 && maxPriceValue==0){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.");
+		alert("최저/최고 금액을 입력해주세요.1");
 		return false;
 	}
 	else if(minPriceValue=='' && maxPriceValue==''){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.");
+		alert("최저/최고 금액을 입력해주세요.2");
 		return false;
 	}
 	else if(minPriceValue>maxPriceValue){
