@@ -31,7 +31,7 @@
                             <th style="text-align: center;">요청좌석</th>
                         </tr>
                     </thead>
-                    <tbody style="text-align: center;">
+                    <tbody style="text-align: center; background-color: #ffffff">
                         <tr>
                             <td style="line-height: 2">${depJourney }</td>
                             <td style="line-height: 2">${depAirlineNm }</td>
@@ -75,19 +75,19 @@
             <h3>대표 탑승자 정보 입력<span style="color: red;">[필수입력]</span></h3>
             <table class="table table-bordered">
                 <tr>
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:14px 8px 2px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>이름</b>
                     </td>
-                    <td>
-                        <input id="passengerName" name="pName" class="form-control form-control-sm" style="width: 200px;" type="text" placeholder="이름을 입력해주세요" >
+                    <td style="background-color: #ffffff;">
+                        <input id="passengerName" name="pName" class="form-control form-control-sm" style="width: 200px; background-color: #ffffff;" type="text" placeholder="이름을 입력해주세요" >
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:13px 8px 3px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>성별</b>
                     </td>
-                    <td>
-                        <select id="pGender" name="pGender" class="form-control form-control-sm" style="width: 150px;" required>
+                    <td style="background-color: #ffffff;">
+                        <select id="pGender" name="pGender" class="form-control form-control-sm" style="width: 150px; background-color: #ffffff;" required>
                             <option value="">== 성별 ==</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
@@ -95,11 +95,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:14px 8px 2px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>국적</b>
                     </td>
-                    <td class="mb-3">
-                        <select id="nationality" name="pNationality" class="form-control form-control-sm" style="width: 150px;" required>
+                    <td class="mb-3" style="background-color: #ffffff;">
+                        <select id="nationality" name="pNationality" class="form-control form-control-sm" style="width: 150px; background-color: #ffffff;" required>
                             <option value="">== 국적 ==</option>
                             <option value="korea">한국</option>
                             <option value="china">중국</option>
@@ -115,27 +115,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:14px 8px 2px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>생년월일</b>
                     </td>
-                    <td>
-                        <input id="pBirthDay" name="pBirthday" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)20000101" >
+                    <td style="background-color: #ffffff;">
+                        <input id="pBirthDay" name="pBirthday" class="form-control form-control-sm" style="width: 350px; background-color: #ffffff;" type="text" placeholder="ex)20000101" >
                     </td>
                 </tr>
                 <tr >
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:14px 8px 2px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>이메일</b>
                     </td>
-                    <td>
-                        <input id="pEmail" name="pEmail" class="form-control form-control-sm" style="width: 350px;" type="email" placeholder="이메일을 입력해주세요"  >
+                    <td style="background-color: #ffffff;">
+                        <input id="pEmail" name="pEmail" class="form-control form-control-sm" style="width: 350px; background-color: #ffffff;" type="email" placeholder="이메일을 입력해주세요"  >
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center;">
+                    <td style="background-color: #09c6ab; color: white; font-size: 20; line-height: 2.3; text-align: center; padding:14px 8px 2px 8px; width: 210px;">
                         <b style="color: red;">*</b>&nbsp;<b>전화번호</b>
                     </td>
-                    <td>
-                        <input id="pPhone" name="pPhone" class="form-control form-control-sm" style="width: 350px;" type="text" placeholder="ex)01012345678" >
+                    <td style="background-color: #ffffff;">
+                        <input id="pPhone" name="pPhone" class="form-control form-control-sm" style="width: 350px; background-color: #ffffff;" type="text" placeholder="ex)01012345678" >
                     </td>
                 </tr>
             </table>
@@ -168,7 +168,7 @@
                     </colgroup>
                     <tr id="totalCharge">
                         <th style="height: 50px; font-size: 20px; line-height: 2.5; text-align: center; background-color: #09c6ab; color: white;"><b>총 합계 금액 (원)</b></th>
-                        <td style="font-size: 20px; line-height: 2.5; text-align: center;"></td>
+                        <td style="font-size: 20px; line-height: 2.5; text-align: center; background-color: #ffffff;"></td>
                     </tr>
                 </table>
             </div>
@@ -211,10 +211,10 @@
     </form>
         <article>
             <div style="width: 35%; margin: auto;">
-                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
-                    항공 스케줄 다시 선택
+                <button onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="font-size: 18px; height: 60px; background-color: #f8ca00; color: #000000">
+                    <b>항공권 다시 선택</b>
                 </button>
-             <button type="button" id="check_module" onclick="checkModule();" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">다음단계</button>
+             <button type="button" id="check_module" onclick="checkModule();" style="font-size: 18px; background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;"><b>다음단계</b></button>
             </div>
         </article>
     </section>

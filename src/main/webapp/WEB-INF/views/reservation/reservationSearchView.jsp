@@ -210,7 +210,7 @@
                             <th colspan="2" style="width: 60px; padding-left: -20px;">잔여석</th>
                         </tr>
                     </thead>
-					<tbody style="display:block; height:400px; overflow:auto;" align="center" id="goTbody">
+					<tbody style="display:block; height:400px; overflow:auto; background-color: #ffffff;" align="center" id="goTbody">
                         <c:forEach items="${fList }" var="flight">
                    		<c:set var="time" value="${flight.depPlandTime }"/>
                         <c:set var="time2" value="${flight.arrPlandTime }"/>
@@ -246,7 +246,7 @@
                             <th colspan="2" style="width: 60px; padding-left: 20px;">잔여석</th>
                         </tr>
                     </thead>
-                    <tbody style="display:block; height:400px; overflow:auto;" align="center" id="comeTbody">
+                    <tbody style="display:block; height:400px; overflow:auto; background-color: #ffffff;" align="center" id="comeTbody">
                     	<c:forEach items="${fList2 }" var="flight2">
                         <c:set var="time3" value="${flight2.depPlandTime }"/>
                         <c:set var="time4" value="${flight2.arrPlandTime }"/>
@@ -292,9 +292,9 @@
                     </thead>       
                     <tbody style="text-align: center;">
                     	<tr id="selectNoneGo">
-                    		<td style="line-height: 2" colspan="7">가는편을 선택해주세요.</td>
+                    		<td style="line-height: 2; background-color: #ffffff;" colspan="7">가는편을 선택해주세요.</td>
                     	</tr>
-                        <tr id="selectGoSchedule">
+                        <tr id="selectGoSchedule" style="background-color: #ffffff;">
 							<td style="line-height: 2">${fList[0].depAirportNm } -> ${fList[0].arrAirportNm }</td>
 		                    <td style="line-height: 2" id="depAlNm"></td>
 		                    <td style="line-height: 2" id="depPTime"></td>
@@ -304,9 +304,9 @@
 		                    <td style="line-height: 2">${acCount }석</td>    
 		                </tr>
                     	<tr id="selectNoneCome">
-                    		<td style="line-height: 2" colspan="7">오는편을 선택해주세요.</td>
+                    		<td style="line-height: 2; background-color: #ffffff;" colspan="7">오는편을 선택해주세요.</td>
                     	</tr>
-                        <tr id="selectComeSchedule">
+                        <tr id="selectComeSchedule" style="background-color: #ffffff;">
                             <td style="line-height: 2">${fList2[0].depAirportNm } -> ${fList2[0].arrAirportNm }</td>
                             <td style="line-height: 2" id="depAlNm2"></td>
 		                    <td style="line-height: 2" id="depPTime2"></td>
@@ -492,10 +492,10 @@
 		        <input type="hidden" name="infantCount" value="${infantCount}">
 		        
 	            <div style="width: 35%; margin: auto;">
-	                <button type="button" onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="height: 60px;">
-	                    항공 스케줄 다시 선택
+	                <button type="button" onclick="location.href='reservation.tpo'" class="btn btn-secondary" style="font-size: 18px; height: 60px; background-color: #f8ca00; color: #000000;">
+	                    <b>항공권 다시 선택</b>
 	                </button>
-	                <input type="submit" value="다음 단계" id="btn" style="background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
+	                <input type="submit" value="다음 단계" id="btn" style="font-size: 18px; font-weight: bold; background-color: #09c6ab; height: 60px; border-radius: 5px; border: 1px solid #09c6ab; color: white; width: 150px;">
 	            </div>
 	            <script>
 	            	/* 다음 단계 버튼 클릭시 항공권 선택 여부 확인 */

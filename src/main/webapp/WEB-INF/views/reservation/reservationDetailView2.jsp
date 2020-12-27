@@ -40,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody style="text-align: center;">
-                    <tr>
+                    <tr style="background-color: #ffffff;">
                         <td style="line-height: 2">${rInfo.riDepartureArea } -> ${rInfo.riArrivalArea }</td>
                         <td style="line-height: 2">${rInfo.riVihicleId }</td>
                         <td style="line-height: 2">${rInfo.riDepartureDate }</td>
@@ -62,7 +62,7 @@
                         <th style="text-align: center;">인원</th>
                     </tr>
                 </thead>
-                <tbody style="font-size: 20px;">
+                <tbody style="font-size: 20px; background-color: #ffffff;">
                     <tr>
                         <td style="text-align: center;">성인</td>
                         <td style="text-align: center;">${adultCount }명</td>
