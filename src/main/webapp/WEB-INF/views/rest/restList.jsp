@@ -532,7 +532,7 @@
 								<c:if test="${pi.currentPage ne pi.maxPage }">
 								<a href="${after }"
 									style="background-color: white; border: 1px solid #007c6b; border-radius: 30px;">Next</a>&nbsp;
-							</c:if>s		
+							</c:if>		
                			   </c:if>
 						</c:otherwise>
 					</c:choose>
@@ -623,12 +623,12 @@ function rPriceSearch(){
 	
 	if(minPriceValue==0 && maxPriceValue==0){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.1");
+		alert("최저/최고 금액을 입력해주세요.");
 		return false;
 	}
 	else if(minPriceValue=='' && maxPriceValue==''){
 		minPrice.focus();
-		alert("최저/최고 금액을 입력해주세요.2");
+		alert("최저/최고 금액을 입력해주세요.");
 		return false;
 	}
 	else if(minPriceValue>maxPriceValue){
