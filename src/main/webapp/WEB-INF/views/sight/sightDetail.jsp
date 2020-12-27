@@ -83,37 +83,40 @@ ul img {
 						
 					
 						
-						<c:if test="${fn:contains(sight.sBabyCarriage,'있음')}">
+						<c:if test="${fn:contains(sight.sBabyCarriage,'있음' or '가능')}">
 						<b style="font-size:16.5px;">유모차 대여 :</b> 가능<br>
 						</c:if>
-				     	<c:if test="${fn:contains(sight.sBabyCarriage,'가능')}">
+<%-- 				     	<c:if test="${fn:contains(sight.sBabyCarriage,'가능')}">
 						<b style="font-size:16.5px;">유모차 대여 :</b> 가능<br>
-						</c:if>
-						<c:if test="${!fn:contains(sight.sBabyCarriage,not '있음'or'가능')}">
+						</c:if> --%>
+						<c:if test="${!fn:contains(sight.sBabyCarriage,not '있음'and'가능')}">
 						<b style="font-size:16.5px;">유모차 대여 :</b> 불가능<br>
 						</c:if>
 						
-						<c:if test="${fn:contains(sight.sParking,'있음')}">
+						<c:if test="${fn:contains(sight.sParking,'있음' or '가능')}">
 						<b style="font-size:16.5px;">주차유무 :</b> 가능<br>
 						</c:if>
-						<c:if test="${fn:contains(sight.sParking,'가능')}">
+ 						<%-- <c:if test="${fn:contains(sight.sParking,'가능')}">
 						<b style="font-size:16.5px;">주차유무 :</b> 가능<br>
-						</c:if>
+						</c:if> --%>
 						<c:if test="${fn:contains(sight.sParking,null)}">
 						<b style="font-size:16.5px;">주차유무 :</b> 불가능<br>
 						</c:if>
-						<c:if test="${fn:contains(sight.sParking, not '있음' or '가능')}">
+						<c:if test="${fn:contains(sight.sParking, not '있음' and '가능')}">
+						<b style="font-size:16.5px;">주차유무 :</b> 불가능<br>
+						</c:if>
+						<c:if test="${fn:contains(sight.sParking,'불가능')}">
 						<b style="font-size:16.5px;">주차유무 :</b> 불가능<br>
 						</c:if>
 
 						
-						<c:if test="${fn:contains(sight.sPet,'있음')}">
+						<c:if test="${fn:contains(sight.sPet,'있음'or'가능')}">
 						<b style="font-size:16.5px;">애완동물 동반 :</b> 가능
 						</c:if>
-						<c:if test="${fn:contains(sight.sPet,'가능')}">
+<%-- 						<c:if test="${fn:contains(sight.sPet,'가능')}">
 						<b style="font-size:16.5px;">애완동물 동반 :</b> 가능
-						</c:if>
-						<c:if test="${!fn:contains(sight.sPet,not '있음'or'가능')}">
+						</c:if> --%>
+						<c:if test="${!fn:contains(sight.sPet,not '있음'and'가능')}">
 						<b style="font-size:16.5px;">애완동물 동반 :</b> 불가능
 						</c:if>
 					</p>

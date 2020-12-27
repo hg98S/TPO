@@ -156,7 +156,7 @@
 				</c:if>
 				</c:forTokens>
 				<tr style="line-height:100px;">
-					<td colspan="4" align="center">
+					<td colspan="4" align="center" style="padding-right:280px; padding-top:30px;">
 					<input class="btn btn-primary" type="submit" onclick="return fnSubmit()" value="수정하기">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input class="btn btn-danger" type="reset" value="입력 취소">

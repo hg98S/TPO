@@ -31,9 +31,8 @@
 <div id="page"></div>
 
 <!--  content -->
-	<section class="gtco-container sectionmain" role="contentinfo">
-	<b style="font-size: 30px; font-weight: bold;">명소 리뷰 작성 </b>
-	<article>
+	<section class="gtco-container sectionmain" role="contentinfo" style="margin-top:2%;">
+	<b style="font-size: 30px; font-weight: bold; color:black;">명소 리뷰 작성 </b>
 
 		<div class="container" role="main"  style="margin-top:15px; margin-left:5%;">
 
@@ -59,10 +58,9 @@
 				
 				
 				<div class="mb-3">
+					<div style="float: left;">제목</div> <div style="float: left; margin-left:40%;"><input type="file"  name="uploadFile" value="사진등록" style="float: left; margin-left:100%; margin-bottom:4%;"></div>
 
-					<label for="title">제목</label>
-
-					<input type="text"  class="form-control" name="reviewTitle"  placeholder="제목을 입력해 주세요" style="width:950px;">
+					<input type="text"  class="form-control" name="reviewTitle"  placeholder="제목을 입력해 주세요" style="width:1000px; float: none; background-color:white;">
 
 				</div>
 
@@ -72,7 +70,7 @@
 
 					<label for="reg_id">작성자</label>
 
-					<input type="text"  class="form-control" name="userId" value="${sessionScope.loginUser.userId }" disabled>
+					<input type="text"  class="form-control" name="userId" value="${sessionScope.loginUser.userId }"  style="width:1000px; background-color:white;" readonly="readonly"> 
 
 				</div>
 
@@ -82,21 +80,27 @@
 
 					<label for="content">내용</label>
 
-					<textarea rows="9" cols="40" name="reviewContent" class="form-control" placeholder="내용을 입력해주세요" id="reContent" onkeyup="fnChkByte(this);"></textarea>
-					<div style="margin-left: 89%; margin-top:1%;"><span id="byteInfo">0</span>/100byte</div>
+					<textarea rows="9" cols="40" name="reviewContent" class="form-control" placeholder="내용을 입력해주세요" id="reContent" onkeyup="fnChkByte(this);" style="width:1000px;  background-color:white;"></textarea>
+					<div style="margin-left: 83.5%; margin-top:1%;"><span id="byteInfo">0</span>/100byte</div>
 
 				</div>
 				
-				<div >
+<!-- 				<div class="mb-3">
+
+					<label for="file">사진</label>
+
+					<input type="file"  class="form-control" name="uploadFile" >
+				</div> -->
+				
+				<div style="margin-left:67%; margin-top:5%;">
 			
 			        <input type="hidden" name="sNo"  value="${sNo }">
                     <input type="hidden" name="ref"  value="">
                     <input type="hidden" name="ref_step"  value="">
                     <input type="hidden" name="ref_level"  value="">
-			
-
-				<input type="submit" value="작성완료" class="btn btn-success" style="background-color: #f8ca00; border:none;  color:black;">
-                 <input type="reset" value="작성취소" class="btn btn-warning" style="background-color: #007c6b ; border:none; color:white;">
+					
+				<input type="submit" value="작성완료" class="btn" style="background-color: #007c6b; color:white; ">
+                 <input type="reset" value="작성취소" class="btn btn-warning" style="background-color: #f8ca00; border:none; color:black;">
 
 			</div>
 			</form>
@@ -105,7 +109,6 @@
 
 		</div>
 
-	</article>	
 	
 <%--     <div style="margin-top: 50px;">
         <b style="font-size: 30px; font-weight: bold;">명소 리뷰 작성 </b>

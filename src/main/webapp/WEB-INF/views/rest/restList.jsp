@@ -531,6 +531,10 @@ $("#rPlus").click(function(){
 $("#rminus").click(function(){
 	rSum = rSum-1;
 	$("#rAmount").attr('value',rSum);
+	if(rSum <0){
+		alert('다시 확인해주세요');
+	$("#rAmount").attr('value',1);
+	}
 });	
 
 // 성인부분
@@ -542,6 +546,10 @@ $("#aPlus").click(function(){
 $("#aminus").click(function(){
 	aSum = aSum-1;
 	$("#aAmount").attr('value',aSum);
+	if(aSum <0){
+		alert('다시 확인해주세요');
+	$("#aAmount").attr('value',1);
+	}
 });			
 
 // 어린이 부분
@@ -549,10 +557,15 @@ var kSum = 1;
 $("#kPlus").click(function(){
 	kSum = kSum+1;
 	$("#kAmount").attr('value',kSum);
+	
 });
 $("#kminus").click(function(){
 	kSum = kSum-1;
 	$("#kAmount").attr('value',kSum);
+	if(kSum <0){
+		alert('다시 확인해주세요');
+	$("#kAmount").attr('value',1);
+	}
 });	
 
 // 숙소검색 값이 하나라도 없는 경우 막기(목적지 / 숙박기간 )
